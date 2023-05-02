@@ -1,0 +1,31 @@
+<ng-container *transloco="let t">
+  <ion-item
+    [lines]="this.lines"
+    [class.invalid]="this.invalid"
+    [color]="this.color"
+  >
+    <ion-label [position]="this.position">
+      {{ t(this.label) }}
+    </ion-label>
+    <ion-input
+      [(ngModel)]="this.valueInput"
+      [autocapitalize]="this.autocapitalize"
+      [autocomplete]="this.autocomplete"
+      [autocorrect]="this.autocorrect"
+      [autofocus]="this.autofocus"
+      [clearInput]="this.clearInput"
+      [clearOnEdit]="this.clearOnEdit"
+      [name]="this.name"
+      [debounce]="this.debounce"
+      [disabled]="this.disabled"
+      [type]="this._type"
+    ></ion-input>
+    <ion-note color="danger" *ngIf="this.invalid && this.dirty" slot="helper">{{
+      this.error | json
+    }}</ion-note>
+    <ion-note slot="error">finalmengte</ion-note>
+    <ion-note *ngIf="!this.invalid || !this.dirty" slot="helper"
+      >&nbsp;</ion-note
+    >
+  </ion-item>
+</ng-container>

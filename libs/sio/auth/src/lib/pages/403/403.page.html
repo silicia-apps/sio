@@ -1,0 +1,35 @@
+<sio-page title="Accesso Negato"></sio-page>
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <div class="ion-text-center">
+      <sio-icon slot="start" color="danger" name="lock-closed"></sio-icon>
+    </div>
+    <div>
+      <ion-toolbar
+        ><ion-title size="large">Account Richiesto</ion-title></ion-toolbar
+      >
+    </div>
+  </ion-header>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <sio-icon color="danger" name="lock-closed"></sio-icon>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <p>
+          Per Accedere a tutte le funzionalità dell'applicazione devi
+          autenticarti, fallo adesso l'account è <strong>Gratuito</strong>
+        </p>
+      </ion-col>
+    </ion-row>
+    <ion-row
+      ><ion-col>
+        <ion-button expand="block" (click)="goLogin()"
+          >Accedi Adesso</ion-button
+        >
+      </ion-col></ion-row
+    >
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,33 @@
+<ion-header *ngIf="this.toolbar && !this.fullmode" collapse="fade" [translucent]="true" class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ng-container>
+        <ion-menu-button *ngIf="this.menu"></ion-menu-button>
+        <ion-back-button *ngIf="this.back"></ion-back-button>
+      </ng-container>
+    </ion-buttons>
+    <ion-title>{{ this.title| transloco }}</ion-title>
+    <ion-buttons slot="end">
+      <ng-content select="[slot='end']"> </ng-content>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [color]="this.color" [fullscreen]="true" class="ion-padding">
+  <ion-header *ngIf="this.toolbar && !this.fullmode" collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">{{ this.title| transloco }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <div #container>
+    <ng-content></ng-content>
+  </div>
+  <ng-container *ngIf="!container.hasChildNodes()">
+    <div id="container">
+    <h1>{{ 'PAGE_COMPONENT_DEFAULT_1' | transloco }}</h1>
+    <strong>{{ 'PAGE_COMPONENT_DEFAULT_2' | transloco }}</strong>
+    <p>
+      {{ 'PAGE_COMPONENT_LINK'}} <a target="_blank" rel="noopener noreferrer" href="https://github.com/silicia-apps/sio/wiki">SIO Framework</a>
+    </p>
+  </div>
+  </ng-container>
+</ion-content>

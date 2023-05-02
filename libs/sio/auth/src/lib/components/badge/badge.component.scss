@@ -1,0 +1,14 @@
+:host {
+  ion-avatar {
+    border: 2px solid var(--ion-color-dark);
+  }
+  ion-avatar.small {
+    width: 32px;
+    height: 32px;
+  }
+
+  ion-avatar.large {
+    width: 48px;
+    height: 48px;
+  }
+}

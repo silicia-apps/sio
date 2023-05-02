@@ -1,0 +1,13 @@
+<sio-page title="auth.PAGE_TITLE_PROFILE"></sio-page>
+<ion-content>
+  <ion-card>
+    <sio-menu id="logged"></sio-menu>
+  </ion-card>
+  <ion-card>
+    <sio-menu-item
+      icon="exit"
+      caption="auth.M_EXIT"
+      (eClick)="this.logout()"
+    ></sio-menu-item>
+  </ion-card>
+</ion-content>

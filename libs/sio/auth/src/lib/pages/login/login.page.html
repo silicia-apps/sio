@@ -1,0 +1,25 @@
+<sio-page fullmode>
+    <ion-grid>
+      <ion-row>
+        <ion-col class="ion-text-center">
+          <br />
+          <br />
+          <img src="assets/icon/favicon.png" alt="" />
+          <h2>{{ (this.sioCoreAppComponentState.state$ | async)?.title }}</h2>
+          <br />
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col
+          size-xs="0"
+          size-sm="1"
+          size-md="2"
+          size-lg="3"
+          size-xl="4"
+        ></ion-col>
+        <ion-col size-xs="12" size-sm="10" size-md="8" size-lg="6" size-xl="4">
+          <sio-auth-login></sio-auth-login>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+</sio-page>

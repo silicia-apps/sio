@@ -1,0 +1,45 @@
+<div *ngIf="this.type === 'button'; else default">
+  <a
+    (click)="this.goPage(this.urlNeedLogin)"
+    *ngIf="!this.sioAuthState.isAutenticated; else logged2"
+  >
+    <sio-icon name="person"></sio-icon>
+  </a>
+</div>
+<ng-template #logged2>
+  <a (click)="this.goPage(this.urlProfilePage)">
+    <ion-avatar [class]="this.size">
+      <ion-img
+        [src]="this.sioAuthState.user?.details?.photoURL"
+      ></ion-img>
+    </ion-avatar>
+  </a>
+</ng-template>
+<ng-template #default>
+  <div content *ngIf="!this.sioAuthState.isAutenticated; else logged">
+    <ng-content id="message"></ng-content>
+    <ion-item button (click)="(this.urlLoginPage)">
+      <sio-icon [name]="this.icon" [slot]="this.position"></sio-icon>
+      <ion-label>
+        {{ this.text | transloco }}
+      </ion-label>
+    </ion-item>
+  </div>
+  <ng-template #logged>
+    <ion-accordion-group [expand]="this.shape">
+      <ion-accordion>
+        <ion-item slot="header" [color]="this.color">
+          <ion-avatar slot="start">
+            <img [src]="this.sioAuthState.user?.details?.photoURL" />
+          </ion-avatar>
+          <ion-label>
+            <h1>{{ this.sioAuthState.user?.displayName }}</h1>
+            <p>{{ this.sioAuthState.user?.email?.address }}</p>
+          </ion-label>
+        </ion-item>
+        <div slot="content">
+          <sio-menu id="logged"></sio-menu>
+        </div> </ion-accordion
+    ></ion-accordion-group>
+  </ng-template>
+</ng-template>

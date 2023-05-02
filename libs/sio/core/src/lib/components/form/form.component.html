@@ -1,0 +1,35 @@
+<ng-container *transloco="let t">
+  <form
+    *ngIf="(this.state.state$ | async)?.layout"
+    ngxsForm="{{ this.state.name }}.data"
+    [formGroup]="this.form"
+    (ngSubmit)="this.onSubmit()"
+  >
+    <sio-input
+      *ngFor="let item of (this.state.state$ | async)?.layout"
+      [label]="item.label"
+      [name]="item.name"
+      [type]="item.type"
+      [formControlName]="item.name"
+      [color]="this.color"
+    ></sio-input>
+    <br />
+    <ion-button
+      size="large"
+      expand="block"
+      color="primary"
+      type="submit"
+      [disabled]="!this.state.valid"
+    >
+      {{ t('auth.SUBMIT') }}
+    </ion-button>
+    <ion-button
+      *ngIf="this.cancel"
+      expand="block"
+      color="danger"
+      (click)="this.state.resetForm()"
+    >
+      {{ t('auth.RESET') }}
+    </ion-button>
+  </form>
+</ng-container>

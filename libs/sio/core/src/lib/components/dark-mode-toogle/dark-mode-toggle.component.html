@@ -1,0 +1,7 @@
+<ion-list inset="true">
+  <ion-item lines="none" button>
+    <sio-icon [name]="this.icon" slot="start"></sio-icon>
+    <ion-toggle #darkmode_toggle (ionChange)="this.onChange($event)" slot="end"></ion-toggle>
+    <label>{{ this.label | transloco }}</label>
+  </ion-item>
+</ion-list>

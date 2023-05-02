@@ -1,0 +1,34 @@
+<div *ngIf="this.position === 'side'; then side; else tab"></div>
+<ng-template #side>
+  <ion-accordion-group *ngIf="this.sioCoreMenuState.caption" [expand]="this.shape">
+    <ion-accordion [value]="this.sioCoreMenuState.caption" [toggleIconSlot]="this.toggleIconSlot"
+      [toggleIcon]="this.toggleIcon">
+      <ion-item slot="header" [color]="this.color">
+        <ion-label>{{ this.sioCoreMenuState.caption | transloco }}</ion-label>
+      </ion-item>
+      <ion-list slot="content" inset="true">
+        <sio-menu-item *ngFor="
+              let item of sioCoreMenuState.items | keyvalue;
+              trackBy: trackItems
+            " [color]="this.color" [icon]="item.value.icon" [caption]="item.value.caption" [lines]="this.lines"
+          [style]="this.style">
+        </sio-menu-item>
+      </ion-list>
+    </ion-accordion>
+  </ion-accordion-group>
+  <div *ngIf="!this.sioCoreMenuState.caption">
+    <ion-list inset="true">
+      <ion-menu-toggle auto-hide="false">
+        <sio-menu-item *ngFor="
+              let item of this.sioCoreMenuState.items | keyvalue;
+              trackBy: trackItems
+            " [color]="this.color" [icon]="item.value.icon" [caption]="item.value.caption" [lines]="this.lines"
+          [url]="item.value.url" [style]="this.style" [tabbed]="false" [badge]="item.value.badge!">
+        </sio-menu-item>
+      </ion-menu-toggle>
+    </ion-list>
+  </div>
+</ng-template>
+<ng-template #tab>
+  <sio-tabs *ngIf="this.position === 'bottom' || 'top'" [position]="this.position" color="primary"></sio-tabs> 
+</ng-template>

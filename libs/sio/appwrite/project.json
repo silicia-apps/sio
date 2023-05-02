@@ -1,0 +1,50 @@
+{
+  "name": "sio-appwrite",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/sio/appwrite/src",
+  "prefix": "sio-appwrite",
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:package",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "libs/sio/appwrite/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/sio/appwrite/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/sio/appwrite/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/sio/appwrite/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/sio/appwrite/**/*.ts",
+          "libs/sio/appwrite/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}
