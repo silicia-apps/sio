@@ -1,5 +1,5 @@
 {
-  "name": "silicia",
+  "name": "sio",
   "version": "0.0.1",
   "license": "LGPL V3",
   "scripts": {},
@@ -44,7 +44,7 @@
     "ng-packagr": "~15.2.2",
     "npm": "^9.6.3",
     "nx": "16.0.2",
-    "nx-cloud": "16.0.5",
+    "nx-cloud": "^16.0.5",
     "postcss": "^8.4.5",
     "postcss-import": "~14.1.0",
     "postcss-preset-env": "~7.5.0",
