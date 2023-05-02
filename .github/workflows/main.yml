@@ -17,7 +17,9 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
           # Defaults to the user or organization that owns the workflow file
           scope: '@sio'
-      - run: npm ci
+      - run: npx nx build sio-core
+      - run: npx nx build sio-auth
+      - run: npx nx build sio-appwrite
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
