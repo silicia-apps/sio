@@ -14,7 +14,7 @@ import { SioAuthModule } from '@sio/auth';
 
 @NgModule({
   declarations: [AppComponent],
-  entryComponents: [],
+  //entryComponents: [AppComponent],
   imports: [
     BrowserModule,
     SioCoreModule.forRoot(environment),
