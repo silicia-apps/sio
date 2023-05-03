@@ -1,4 +1,4 @@
-name: CI
+name: Compile All Projects
 
 on:
   push:
