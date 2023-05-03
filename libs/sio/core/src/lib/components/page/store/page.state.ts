@@ -17,7 +17,7 @@ const PAGE_STATE_TOKEN = new StateToken<SioCorePageComponentInterface>('page');
   name: PAGE_STATE_TOKEN,
   defaults: {
     'toolbar': true, 
-    'title': 'PAGE_TITLE',
+    'title': 'T_PAGE',
     'menu': false,
     'back': false,
     'search': false,

@@ -34,7 +34,7 @@ export class SioAuthLoginComponent {
     private sioCoreLoggerService: SioCoreLoggerService,
     public sioAuthLoginComponentState: SioAuthLoginComponentState
   ) {
-    console.error(this.color);
+    this.sioCoreLoggerService.debug(`[SioAuthLoginComponent][constructor]`);
   }
 
   async login() {

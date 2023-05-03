@@ -52,9 +52,9 @@ export class EnsureModuleLoadedOnceGuard {
       developmentMode: true,
       executionStrategy: NoopNgxsExecutionStrategy,
     }),
-    NgxsLoggerPluginModule.forRoot({
+    /*NgxsLoggerPluginModule.forRoot({
       collapsed: true,
-    }),
+    }),*/
     NgxsDataPluginModule.forRoot(),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NgxsRouterPluginModule.forRoot(),
@@ -98,7 +98,7 @@ export class SioCoreModule extends EnsureModuleLoadedOnceGuard {
           },
           multi: true ,
         },*/ 
-       { provide: ErrorHandler, useClass: SioCoreErrorHandlerService }, 
+       //{ provide: ErrorHandler, useClass: SioCoreErrorHandlerService }, 
       ],
     };
   }

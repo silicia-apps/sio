@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -31,7 +32,7 @@ export class SioCoreAlertService {
     this._alert = await this.alertController.create({
       header: name,
       backdropDismiss: false,
-      subHeader: 'Important message',
+      subHeader: undefined,
       message: message,
       buttons: buttons,
     });

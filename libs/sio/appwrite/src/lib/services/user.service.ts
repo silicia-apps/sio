@@ -13,7 +13,7 @@ import {
   SioCorePluginServiceConfigModel,
   sioCorePluginServiceConfigToken,
 } from '@sio/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 
 @Loggable()
 @Injectable()
@@ -267,6 +267,9 @@ export class SioAppwriteUserService implements SioAuthPluginServiceInterface {
         break;
       case 'Network request failed':
         error.message = 'NO_NETWORK';
+        break;
+      case 'Invalid credentials. Please check the email and password.':
+        error.message = "BACKEND_AUTH_INVALID_CREDENTIALS";
         break;
       default:
         error.message = e.message;

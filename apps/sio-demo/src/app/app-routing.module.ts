@@ -1,18 +1,29 @@
 import { NgModule } from '@angular/core';
 import { SioAuthGuard } from '@sio/auth';
-import { NoPreloading, PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import {
+  NoPreloading,
+  PreloadAllModules,
+  RouterModule,
+  Routes,
+} from '@angular/router';
 
 const routes: Routes = [
   {
     path: 'home',
     loadChildren: () =>
-      import('./home/home.module').then((m) => m.HomePageModule), canActivate: [SioAuthGuard],
-      data: { level: 0 },
+      import('./home/home.module').then((m) => m.HomePageModule),
   },
   {
-    path: 'one',
+    path: 'public',
     loadChildren: () =>
-      import('./one/one.module').then((m) => m.OnePageModule),
+      import('./public/public.module').then((m) => m.PublicPageModule),
+  },
+  {
+    path: 'private',
+    loadChildren: () =>
+      import('./private/private.module').then((m) => m.PrivatePageModule),
+    canActivate: [SioAuthGuard],
+    data: { level: 0 },
   },
   {
     path: '',
@@ -22,9 +33,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: NoPreloading }),
-  ],
+  imports: [RouterModule.forRoot(routes, { preloadingStrategy: NoPreloading })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

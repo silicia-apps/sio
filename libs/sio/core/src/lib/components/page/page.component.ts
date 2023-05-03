@@ -42,7 +42,7 @@ export class SioCorePageComponent implements OnInit {
     public sioCorePageComponentState: SioCorePageComponentState,
   ) {
     this.toolbar = true;
-    this.title = 'PAGE_TITLE';
+    this.title = 'T_PAGE';
     this.menu = false;
     this.back = false;
     this.search = false

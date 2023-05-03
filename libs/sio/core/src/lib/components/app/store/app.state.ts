@@ -135,7 +135,7 @@ export class SioCoreAppComponentState extends NgxsDataRepository<SioCoreAppCompo
   @DataAction()
   public async throwError(
     message: string,
-    name: string = 'sio',
+    name: string = 'sio-error',
     // eslint-disable-next-line @typescript-eslint/ban-types
     action: Function = (): null => {
       return null;

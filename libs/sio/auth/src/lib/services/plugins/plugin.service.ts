@@ -7,19 +7,19 @@ import {
 import { Loggable, SioCoreAppComponentState } from '@sio/core';
 import { SioAuthPluginServiceInterface } from './interfaces';
 import { SioAuthPluginServiceToken } from './tokens';
+import { TranslocoService } from '@ngneat/transloco';
 
 @Loggable()
 @Injectable({ providedIn: 'root' })
-export class SioAuthPluginService
-  implements SioAuthPluginServiceInterface
-{
+export class SioAuthPluginService implements SioAuthPluginServiceInterface {
   private readonly plugins: SioAuthPluginServiceInterface[];
 
   constructor(
     @Optional()
     @Inject(SioAuthPluginServiceToken)
     plugins: SioAuthPluginServiceInterface[],
-    private sioCoreAppComponentState: SioCoreAppComponentState
+    private sioCoreAppComponentState: SioCoreAppComponentState,
+    private translocoService: TranslocoService
   ) {
     plugins = plugins || [];
     this.plugins = Array.isArray(plugins) ? plugins : [plugins];
@@ -31,7 +31,10 @@ export class SioAuthPluginService
     } catch (e) {
       const error = e as Error;
       if (error.name === 'sio-error')
-        this.sioCoreAppComponentState.throwError(error.message, error.name);
+        this.sioCoreAppComponentState.throwError(
+          this.translocoService.translate(error.message),
+          this.translocoService.translate('AUTH_ERROR')
+        );
     }
     return null;
   }
@@ -42,7 +45,10 @@ export class SioAuthPluginService
     } catch (e) {
       const error = e as Error;
       if (error.name === 'sio-error')
-        this.sioCoreAppComponentState.throwError(error.message, error.name);
+        this.sioCoreAppComponentState.throwError(
+          this.translocoService.translate(error.message),
+          this.translocoService.translate('AUTH_ERROR')
+        );
     }
     return null;
   }
@@ -52,12 +58,14 @@ export class SioAuthPluginService
     password: string
   ): Promise<SioAuthSessionInterface | null> {
     try {
-      console.error(JSON.stringify(this.plugins));
-      return this.plugins[0].createSessionWithCredentials(username, password);
+      return await this.plugins[0].createSessionWithCredentials(username, password);
     } catch (e) {
       const error = e as Error;
       if (error.name === 'sio-error')
-        this.sioCoreAppComponentState.throwError(error.message, error.name);
+        this.sioCoreAppComponentState.throwError(
+          this.translocoService.translate('auth.'+error.message),
+          this.translocoService.translate('auth.AUTH_ERROR')
+        );
       return null;
     }
   }
@@ -68,7 +76,10 @@ export class SioAuthPluginService
     } catch (e) {
       const error = e as Error;
       if (error.name === 'sio-error')
-        this.sioCoreAppComponentState.throwError(error.message, error.name);
+        this.sioCoreAppComponentState.throwError(
+          this.translocoService.translate('auth.'+error.message),
+          this.translocoService.translate('AUTH_ERROR')
+        );
       return null;
     }
   }

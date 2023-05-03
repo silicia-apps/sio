@@ -34,7 +34,8 @@ export const environment: SioCoreEnvironmentInterface = {
         style: 'rounded',
         items: {
           1: { id: 1, icon: 'home', url: 'home' },
-          2: { id: 2, icon: 'notifications', url: 'one' },
+          2: { id: 2, icon: 'lock-open', url: 'public'},
+          3: { id: 3, icon: 'lock-closed', url: 'private' },
         },
       },
       logged: {
