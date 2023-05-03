@@ -1,4 +1,4 @@
-[![CI](https://github.com/silicia-apps/sio/actions/workflows/ci.yml/badge.svg)](https://github.com/silicia-apps/sio/actions/workflows/compile.yml)
+[![Compile All Projects](https://github.com/silicia-apps/sio/actions/workflows/compile.yml/badge.svg?branch=main)](https://github.com/silicia-apps/sio/actions/workflows/compile.yml)
 
 # Silicia
 
