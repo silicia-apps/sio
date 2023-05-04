@@ -26,6 +26,8 @@
     "@nx/linter": "16.1.0",
     "@nx/web": "16.1.0",
     "@nx/workspace": "16.1.0",
+    "@nxext/capacitor": "^15.7.0",
+    "@nxext/ionic-angular": "^15.7.0",
     "@schematics/angular": "16.0.0",
     "@types/jest": "^29.4.0",
     "@types/node": "16.11.7",
