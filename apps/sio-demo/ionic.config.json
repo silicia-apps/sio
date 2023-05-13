@@ -1,7 +1,0 @@
-{
-  "name": "sio-demo",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular"
-}

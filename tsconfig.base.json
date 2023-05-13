@@ -15,9 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@sio/appwrite": ["libs/sio/appwrite/src/index.ts"],
-      "@sio/auth": ["libs/sio/auth/src/index.ts"],
-      "@sio/core": ["libs/sio/core/src/index.ts"]
+      "@sio/appwrite": ["libs/appwrite/src/index.ts"],
+      "@sio/auth": ["libs/auth/src/index.ts"],
+      "@sio/core": ["libs/core/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
