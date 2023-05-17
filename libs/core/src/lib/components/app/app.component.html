@@ -1,6 +1,6 @@
 <ion-app>
   <div *ngIf="this.sioCoreAppComponentState.sidemenu !== 'none' && !this.sioCoreAppComponentState.fullmode; then sidemenu; else blank"></div>
-  <ng-template #sidemenu>
+  <ng-template #sidemenu> 
     <ion-split-pane when="xl" contentId="main-content" (ionSplitPaneVisible)="sioAppSplitPanelVisible($event)">
       <ion-menu contentId="main-content" [type]="!(this.sioCoreAppComponentState.sidemenu === 'none' ||  this.sioCoreAppComponentState.sidemenu === 'toogle')?this.sioCoreAppComponentState.sidemenu:'reveal'" [swipeGesture]="(this.sioCoreAppComponentState.sidemenu !== 'toogle')">
         <ion-header class="ion-no-border">
