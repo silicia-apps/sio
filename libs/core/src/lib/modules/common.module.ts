@@ -1,6 +1,7 @@
 import {
   ModuleWithProviders,
   NgModule,
+  CUSTOM_ELEMENTS_SCHEMA,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -24,6 +25,7 @@ import { RouterModule } from '@angular/router';
 
 
 @NgModule({
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   declarations: [...SioCoreComponents],
   imports: [
     HttpClientModule,

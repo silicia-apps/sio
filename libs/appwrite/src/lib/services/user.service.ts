@@ -1,5 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
-import { Client, Account, Avatars, Models } from 'appwrite';
+import { SioAppwriteClientService } from './client.service';
+import { Account, Avatars, Models } from 'appwrite';
 
 import { 
   SioAuthUserInterface,
@@ -13,13 +14,12 @@ import {
   SioCorePluginServiceConfigModel,
   sioCorePluginServiceConfigToken,
 } from '@sio/core';
-import { Observable, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Loggable()
 @Injectable()
 export class SioAppwriteUserService implements SioAuthPluginServiceInterface {
   private readonly account: Account;
-  private readonly client: Client;
   private readonly avatars: Avatars;
 
   // constructor(@Inject(siliciaCoreBackendPluginConfigToken) readonly config: SiliciaCoreBackendPluginConfigInterface) {
@@ -27,17 +27,12 @@ export class SioAppwriteUserService implements SioAuthPluginServiceInterface {
     @Inject(sioCorePluginServiceConfigToken)
     readonly config: SioCorePluginServiceConfigModel,
     @Inject(SioCoreLoggerService)
-    private loggerService: SioCoreLoggerService
+    private loggerService: SioCoreLoggerService,
+    private sioAppwriteClientService: SioAppwriteClientService,
   ) {
-    this.client = new Client();
-    this.account = new Account(this.client);
-    this.avatars = new Avatars(this.client);
-    if (this.config !== undefined) {
-      this.client
-        .setEndpoint(this.config.apiEndpoint || '')
-        .setProject(this.config.projectID || '');
-      // .setLocale(this.config.locale);
-    }
+    this.sioAppwriteClientService.Connect(this.config.apiEndpoint as string, this.config.projectID as string);
+    this.account = new Account(this.sioAppwriteClientService.client);
+    this.avatars = new Avatars(this.sioAppwriteClientService.client);
   }
 
   private sioAuthUser(
@@ -140,7 +135,7 @@ export class SioAppwriteUserService implements SioAuthPluginServiceInterface {
       user
     );
     return new Observable((observer) => {
-      this.client.subscribe('account', (data) => {
+      this.sioAppwriteClientService.client.subscribe('account', (data) => {
         this.loggerService.debug(
           `[SioAppwriteUserService][socket] Detected Session change`,
           data

@@ -10,12 +10,14 @@ import {
 } from '@sio/auth';
 
 import { SioCoreLoggerService } from '@sio/core';
+import { SioAppwriteClientService } from '../services/client.service';
 
 export function appwriteUserFactory(
   config: SioAuthPluginServiceConfigInterface,
-  sioCoreLoggerService: SioCoreLoggerService
+  sioCoreLoggerService: SioCoreLoggerService,
+  sioAppwriteClientService: SioAppwriteClientService,
 ): SioAppwriteUserService {
-  return new SioAppwriteUserService(config, sioCoreLoggerService);
+  return new SioAppwriteUserService(config, sioCoreLoggerService, sioAppwriteClientService);
 }
 @NgModule({
   imports: [CommonModule],
@@ -34,6 +36,7 @@ export class AppwriteAuthModule {
           deps: [SioAuthPluginServiceConfigToken, SioCoreLoggerService],
           multi: true,
         },
+        SioAppwriteClientService,
       ],
     };
   }

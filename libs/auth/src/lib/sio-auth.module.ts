@@ -34,9 +34,9 @@ import { TRANSLOCO_SCOPE } from '@ngneat/transloco';
       provide: TRANSLOCO_SCOPE,
       useValue: {
         scope: 'auth',
-        loader: InlineLoaderFactory(
-          (lang: string) => import(`./i18n/${lang}.json`).then((a) => { console.log('logged'); return a}).catch((e) => { console.error(`./i18n/${lang}.json not found`);return {}})
-        )
+       //loader: InlineLoaderFactory(
+       //   (lang: string) => import(`./i18n/${lang}.json`).then((a) => { console.log('logged'); return a}).catch((e) => { console.error(`./i18n/${lang}.json not found`);return {}})
+       // )
       },
       multi: true,
     },

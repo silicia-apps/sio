@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit } from '@angular/core';
 import { SioCoreLoggerService } from '../../services';
 import { SioCorePageComponentState } from './store';
 import { SioCoreAppComponentState } from '../app/store';
@@ -7,6 +7,8 @@ import { AttributeBoolean } from '@angular-ru/cdk/decorators';
 import { InputBoolean } from '@angular-ru/cdk/typings';
 
 import { SioColorType } from '../../shared/shared.type';
+import { Select } from '@ngxs/store';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'sio-page',
@@ -19,12 +21,15 @@ export class SioCorePageComponent implements OnInit {
   //@Input() set title(value: string) { this.sioCorePageComponentState.setTitle(value) };
   
   @Input() color: SioColorType;
+
   @AttributeBoolean() @Input() set toolbar(value: InputBoolean) {
     this.sioCorePageComponentState.setToolbar(value as boolean);
   }
+
   @AttributeBoolean() @Input() set menu(value: InputBoolean) {
     this.sioCorePageComponentState.setMenu(value as boolean);
   }
+  
   @AttributeBoolean() @Input() set back(value: InputBoolean) {
     this.sioCorePageComponentState.setBack(value as boolean);
   }
@@ -36,19 +41,28 @@ export class SioCorePageComponent implements OnInit {
     this.sioCoreAppComponentState.SetFullmode(value as boolean);
   }
 
+  public split : boolean;
+
   constructor(
+    private elementRef: ElementRef, 
     private sioLoggerService: SioCoreLoggerService,
-    private sioCoreAppComponentState: SioCoreAppComponentState,
+    public sioCoreAppComponentState: SioCoreAppComponentState,
     public sioCorePageComponentState: SioCorePageComponentState,
   ) {
     this.toolbar = true;
     this.title = 'T_PAGE';
     this.menu = false;
     this.back = false;
-    this.search = false
+    this.search = false;
+    this.split = false;
+    this.elementRef.nativeElement.classList.add('ion-page');
+    //this.sioCoreAppComponentState.setSidemenu('pricetags');
   }
+
+  //@Select(SioCoreAppComponentState.split) split$!: Observable<boolean>; 
 
   ngOnInit(): void {
     this.sioLoggerService.debug(`[sioCorePageComponentState][ngOnInit]`);
+    //this.split$.subscribe((value) => { this.split = value});
   }
 }

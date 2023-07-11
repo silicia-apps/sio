@@ -20,7 +20,7 @@ export class SioCoreDarkModeToggleComponent implements OnInit {
 
   public label = 'L_DARKMODE';
 
-  @Select(SioCoreAppComponentState.darkmode) darkmode$!: Observable<boolean>;
+  @Select(SioCoreAppComponentState.darkmode) darkmode$!: Observable<boolean>; 
 
   @ViewChild('darkmode_toggle', { static: true }) ionToggle!: IonToggle;
 

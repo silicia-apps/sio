@@ -1,2 +1,2 @@
-export * from './lib/services/user.service';
-export * from './lib/modules/appwrite-auth.module';
+export * from './lib/services';
+export * from './lib/modules';

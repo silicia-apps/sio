@@ -1,0 +1,14 @@
+<ion-header *ngIf="this.toolbar && !this.fullmode" collapse="fade" [translucent]="true" class="ion-no-border">
+  <ion-toolbar [color]="this.color">
+    <ion-buttons slot="start">
+      <ng-container>
+        <ion-menu-button *ngIf="this.menu"></ion-menu-button>
+        <ion-back-button *ngIf="this.back"></ion-back-button>
+      </ng-container>
+    </ion-buttons>
+    <ion-title>{{ this.title| transloco }}</ion-title>
+    <ion-buttons slot="end">
+      <ng-content select="[slot='end']"> </ng-content>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>

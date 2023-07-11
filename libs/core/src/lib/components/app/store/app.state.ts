@@ -39,6 +39,7 @@ const APP_STATE_TOKEN = new StateToken<SioCoreAppComponentStateModel>('app');
 })
 @Injectable()
 export class SioCoreAppComponentState extends NgxsDataRepository<SioCoreAppComponentStateModel> {
+  
   @Selector()
   static loading(state: SioCoreAppComponentStateModel) {
     return state.loading;

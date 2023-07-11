@@ -11,6 +11,7 @@ export class SioCoreIconComponent {
   @Input() public name: string | undefined = undefined;
   @Input() public url: string | undefined = undefined;
   @Input() public size: 'small' | 'large' | undefined = undefined;
+  @Input() public only = false;
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   constructor() {}

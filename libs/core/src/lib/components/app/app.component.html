@@ -1,7 +1,7 @@
 <ion-app>
   <div *ngIf="this.sioCoreAppComponentState.sidemenu !== 'none' && !this.sioCoreAppComponentState.fullmode; then sidemenu; else blank"></div>
   <ng-template #sidemenu> 
-    <ion-split-pane when="xl" contentId="main-content" (ionSplitPaneVisible)="sioAppSplitPanelVisible($event)">
+    <ion-split-pane side="start" when="lg" contentId="main-content" (ionSplitPaneVisible)="sioAppSplitPanelVisible($event)">
       <ion-menu contentId="main-content" [type]="!(this.sioCoreAppComponentState.sidemenu === 'none' ||  this.sioCoreAppComponentState.sidemenu === 'toogle')?this.sioCoreAppComponentState.sidemenu:'reveal'" [swipeGesture]="(this.sioCoreAppComponentState.sidemenu !== 'toogle')">
         <ion-header class="ion-no-border">
           <ion-toolbar color="primary">
@@ -28,7 +28,45 @@
             <ng-content select="[slot='side_footer']"></ng-content>
           </div>
           <ng-container *ngIf="!side_footer.hasChildNodes()">
-            <ion-toolbar >
+            <ion-toolbar>
+              <ion-list lines="none">
+                <ion-item>powered by Sio</ion-item>
+              </ion-list>
+              <ion-buttons slot="end">
+                <ion-button href="https://github.com/silicia-apps/sio" target="_blank" shape="round" fill="clear">
+                  <ion-icon slot="start" name="logo-github"></ion-icon>
+                </ion-button>
+              </ion-buttons>
+            </ion-toolbar>
+          </ng-container>
+        </ion-footer>
+      </ion-menu>
+      <ion-menu side="end" contentId="right-content" [type]="!(this.sioCoreAppComponentState.sidemenu === 'none' ||  this.sioCoreAppComponentState.sidemenu === 'toogle')?this.sioCoreAppComponentState.sidemenu:'reveal'" [swipeGesture]="(this.sioCoreAppComponentState.sidemenu !== 'toogle')">
+        <ion-header class="ion-no-border">
+          <ion-toolbar color="primary">
+            <div #right_header>
+              <ng-content select="[slot='right_header']"></ng-content>
+            </div>
+            <ng-container *ngIf="!right_header.hasChildNodes()">
+              <ion-title>{{
+                (this.sioCoreAppComponentState.state$ | async)?.title
+                }}</ion-title>
+            </ng-container>
+          </ion-toolbar> 
+        </ion-header>
+        <ion-content>
+          <div #right_content>
+            <ng-content select="[slot='right_content']"></ng-content>
+          </div>
+          <ng-container *ngIf="!right_content.hasChildNodes()">
+          </ng-container>
+        </ion-content>
+        <ion-footer class="ion-no-border">
+          <div #right_footer>
+            <ng-content select="[slot='right_footer']"></ng-content>
+          </div>
+          <ng-container *ngIf="!right_footer.hasChildNodes()">
+            <ion-toolbar>
               <ion-list lines="none">
                 <ion-item>powered by Sio</ion-item>
               </ion-list>
@@ -42,14 +80,14 @@
         </ion-footer>
       </ion-menu>
       <ion-router-outlet id="main-content">
-        <sio-menu *ngIf="this.tab" [id]="this.tab" [position]="(this.split$ | async)?'top':'bottom'"></sio-menu> 
+        <sio-menu *ngIf="this.tab" [id]="this.tab" [position]="'bottom' //(this.split$ | async)?'top':'bottom'"></sio-menu>
         <ng-content></ng-content>
       </ion-router-outlet>
     </ion-split-pane>
   </ng-template>
   <ng-template #blank>
     <ion-router-outlet id="main-content">
-      <sio-menu *ngIf="this.tab && this.sioCoreAppComponentState.fullmode" [id]="this.tab" [position]="(this.split$ | async)?'top':'bottom'"></sio-menu>
+      <sio-menu *ngIf="this.tab && this.sioCoreAppComponentState.fullmode" [id]="this.tab" [position]="'bottom' //(this.split$ | async)?'top':'bottom'"></sio-menu>
       <ng-content></ng-content>
     </ion-router-outlet>
   </ng-template>

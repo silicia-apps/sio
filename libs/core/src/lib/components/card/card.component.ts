@@ -18,7 +18,7 @@ export class SioCoreCardComponent {
   @Input() public shape: 'compact' | 'inset' = 'compact';
   @Input() public title = '';
   @Input() public subtitle = '';
-  @Input() public img = null;
+  @Input() public img : string | null = null;
   @Input() public altImg = 'Alternative Text for image';
   @Input() public type: 'standard' | 'media' | 'accordion' = 'standard';
 
