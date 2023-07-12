@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicModule } from '@ionic/angular';
-import { SioCommonModule, SioCoreModule } from '@sio/core';
+import { SioCommonModule } from '@sio/core';
 
 @Component({
   selector: 'sio-root',

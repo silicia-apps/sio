@@ -23,7 +23,7 @@ const APP_STATE_TOKEN = new StateToken<SioCoreAppComponentStateModel>('app');
   defaults: {
     'title': 'APP_TITLE',
     'dark': false,
-    'sidemenu': 'overlay',
+    'sidemenu': 'none',
     'fullmode': false,
     urls: {
       login: '/auth/login',
@@ -120,7 +120,7 @@ export class SioCoreAppComponentState extends NgxsDataRepository<SioCoreAppCompo
   }
 
   @DataAction()
-  public async ShowLoading(message: string = 'WAITING') {
+  public async ShowLoading(message = 'WAITING') {
     if (message) {
       this.ctx.patchState({
         loading: { show: true, message: message },
@@ -136,7 +136,7 @@ export class SioCoreAppComponentState extends NgxsDataRepository<SioCoreAppCompo
   @DataAction()
   public async throwError(
     message: string,
-    name: string = 'sio-error',
+    name = 'sio-error',
     // eslint-disable-next-line @typescript-eslint/ban-types
     action: Function = (): null => {
       return null;
