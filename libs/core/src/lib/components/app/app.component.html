@@ -4,7 +4,7 @@
     <ion-split-pane side="start" when="lg" contentId="main-content" (ionSplitPaneVisible)="sioAppSplitPanelVisible($event)">
       <ion-menu contentId="main-content" [type]="!(this.sioCoreAppComponentState.sidemenu === 'none' ||  this.sioCoreAppComponentState.sidemenu === 'toogle')?this.sioCoreAppComponentState.sidemenu:'reveal'" [swipeGesture]="(this.sioCoreAppComponentState.sidemenu !== 'toogle')">
         <ion-header class="ion-no-border">
-          <ion-toolbar color="primary">
+          <ion-toolbar>
             <div #side_header>
               <ng-content select="[slot='side_header']"></ng-content>
             </div>

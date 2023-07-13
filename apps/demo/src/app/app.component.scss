@@ -1,3 +1,7 @@
-:root {
-    --sio-left-menu-color: #ff3700;
-}    
+ 
+  sio-app[color="red"] {
+    --sio-left-menu-content-color: #ff3700;
+    --sio-left-menu-header-color: #b19d97;
+    --sio-left-menu-footer-color: #00ff00;
+  }
+

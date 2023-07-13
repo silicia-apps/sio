@@ -1,15 +1,46 @@
 :host {
-  
+
+  --sio-left-menu-header-color: var(--ion-color-primary);
+  --sio-left-menu-content-color: var(--ion-color-secondary);
+  --sio-left-menu-footer-color: var(--ion-color-primary);;
+
   ion-split-pane {
     //--side-min-width: 300px;
     //--side-width: 360px;
     //--side-max-width: 360px;
     --border: 0px 0px 0px 0px;
+  
+    ion-menu {
+      --background: var(--sio-left-menu-content-color);
+      ion-header{
+        --background: var(--sio-left-menu-header-color);
+        ion-toolbar {
+          --background: var(--sio-left-menu-header-color);  
+        }
+      }
+      ion-content{            
+        --background: var(--sio-left-menu-content-color);
+      }
+      ion-footer {
+        --background: var(--sio-left-menu-footer-color);  
+        ion-toolbar {
+          --background: var(--sio-left-menu-footer-color);
+          ion-list {
+            --background: var(--sio-left-menu-footer-color) !important; 
+            ion-list-header{ 
+              --background: var(--sio-left-menu-footer-color);  
+            }
+            ion-item{
+              --background: var(--sio-left-menu-footer-color);
+          }
+          }
+          
+        }
+      }
+    }
   }
   
-  ion-menu::part(container) {
-    background-color: var(--sio-left-menu-color);
-  }
+  
 
   
 }
