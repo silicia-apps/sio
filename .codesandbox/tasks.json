@@ -1,0 +1,21 @@
+{
+  // These tasks will run in order when initializing your CodeSandbox project.
+  "setupTasks": [
+    {
+      "name": "Install Dependencies",
+      "command": "npm install"
+    }
+  ],
+
+  // These tasks can be run from CodeSandbox. Running one will open a log in the app.
+  "tasks": {
+    "npx nx serve demo --host=0.0.0.0": {
+      "name": "preview",
+      "command": "npx nx serve demo --disableHostCheck",
+      "runAtStart": true,
+      "preview": {
+        "port": 4200
+      }
+    }
+  }
+}

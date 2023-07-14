@@ -3,7 +3,7 @@
   <ng-template #sidemenu> 
     <ion-split-pane side="start" when="lg" contentId="main-content" (ionSplitPaneVisible)="sioAppSplitPanelVisible($event)">
       <ion-menu contentId="main-content" [type]="!(this.sioCoreAppComponentState.sidemenu === 'none' ||  this.sioCoreAppComponentState.sidemenu === 'toogle')?this.sioCoreAppComponentState.sidemenu:'reveal'" [swipeGesture]="(this.sioCoreAppComponentState.sidemenu !== 'toogle')">
-        <ion-header class="ion-no-border">
+        <ion-header collapse="fade" [translucent]="true" class="ion-no-border">
           <ion-toolbar>
             <div #side_header>
               <ng-content select="[slot='side_header']"></ng-content>
@@ -23,15 +23,13 @@
             <sio-menu *ngIf="this.menu" [id]="this.menu"></sio-menu>
           </ng-container>
         </ion-content>
-        <ion-footer class="ion-no-border">
+        <ion-footer [translucent]="true" collapse="fade" class="ion-no-border">
           <div #side_footer>
             <ng-content select="[slot='side_footer']"></ng-content>
           </div>
           <ng-container *ngIf="!side_footer.hasChildNodes()">
-            <ion-toolbar>
-              <ion-list lines="none">
-                <ion-item>powered by Sio</ion-item>
-              </ion-list>
+            <ion-toolbar class="ion-no-border">
+                <ion-item lines="none"><ion-label>powered by Sio</ion-label></ion-item>
               <ion-buttons slot="end">
                 <ion-button href="https://github.com/silicia-apps/sio" target="_blank" shape="round" fill="clear">
                   <ion-icon slot="start" name="logo-github"></ion-icon>
@@ -42,8 +40,8 @@
         </ion-footer>
       </ion-menu>
       <ion-menu side="end" contentId="right-content" [type]="!(this.sioCoreAppComponentState.sidemenu === 'none' ||  this.sioCoreAppComponentState.sidemenu === 'toogle')?this.sioCoreAppComponentState.sidemenu:'reveal'" [swipeGesture]="(this.sioCoreAppComponentState.sidemenu !== 'toogle')">
-        <ion-header class="ion-no-border">
-          <ion-toolbar color="primary">
+        <ion-header collapse="fade" [translucent]="true" class="ion-no-border">
+          <ion-toolbar>
             <div #right_header>
               <ng-content select="[slot='right_header']"></ng-content>
             </div>
@@ -61,18 +59,16 @@
           <ng-container *ngIf="!right_content.hasChildNodes()">
           </ng-container>
         </ion-content>
-        <ion-footer class="ion-no-border">
+        <ion-footer [translucent]="true" collapse="fade" class="ion-no-border">
           <div #right_footer>
             <ng-content select="[slot='right_footer']"></ng-content>
           </div>
           <ng-container *ngIf="!right_footer.hasChildNodes()">
             <ion-toolbar>
-              <ion-list lines="none">
-                <ion-item>powered by Sio</ion-item>
-              </ion-list>
+              <ion-item lines="none"><ion-label>Writed with love</ion-label></ion-item>
               <ion-buttons slot="end">
                 <ion-button href="https://github.com/silicia-apps/sio" target="_blank" shape="round" fill="clear">
-                  <ion-icon slot="start" name="logo-github"></ion-icon>
+                  <ion-icon slot="start" name="home"></ion-icon>
                 </ion-button>
               </ion-buttons>
             </ion-toolbar>

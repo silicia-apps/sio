@@ -1,48 +1,66 @@
+:host[color="primary"] {
+    --sio-toolbar-color: var(--ion-color-primary);
+    --sio-left-menu-header-color: var(--ion-color-primary);
+    --sio-left-menu-footer-color: var(--ion-color-primary);
+    --sio-right-menu-header-color: var(--ion-color-primary);
+    --sio-right-menu-footer-color: var(--ion-color-primary);
+}
+
+:host[color="danger"] {
+    --sio-toolbar-color: var(--ion-color-danger);
+    --sio-left-menu-header-color: var(--ion-color-danger);
+    --sio-left-menu-footer-color: var(--ion-color-danger);
+    --sio-right-menu-header-color: var(--ion-color-danger);
+    --sio-right-menu-footer-color: var(--ion-color-danger);
+}
+
 :host {
-
-  --sio-left-menu-header-color: var(--ion-color-primary);
-  --sio-left-menu-content-color: var(--ion-color-secondary);
-  --sio-left-menu-footer-color: var(--ion-color-primary);;
-
   ion-split-pane {
     //--side-min-width: 300px;
     //--side-width: 360px;
     //--side-max-width: 360px;
     --border: 0px 0px 0px 0px;
-  
-    ion-menu {
+
+    ion-menu[side='start'] {
       --background: var(--sio-left-menu-content-color);
-      ion-header{
+      ion-header {
         --background: var(--sio-left-menu-header-color);
         ion-toolbar {
-          --background: var(--sio-left-menu-header-color);  
+          --background: var(--sio-left-menu-header-color);
         }
       }
-      ion-content{            
+      ion-content {
         --background: var(--sio-left-menu-content-color);
       }
       ion-footer {
-        --background: var(--sio-left-menu-footer-color);  
+        --background: var(--sio-left-menu-footer-color);
         ion-toolbar {
           --background: var(--sio-left-menu-footer-color);
-          ion-list {
-            --background: var(--sio-left-menu-footer-color) !important; 
-            ion-list-header{ 
-              --background: var(--sio-left-menu-footer-color);  
-            }
-            ion-item{
-              --background: var(--sio-left-menu-footer-color);
+          ion-item {
+            --background: var(--sio-left-menu-footer-color);
           }
+        }
+      }
+    }
+
+    ion-menu[side='end'] {
+      --background: var(--sio-right-menu-content-color);
+      ion-header {
+        ion-toolbar {
+          --background: var(--sio-right-menu-header-color);
+        }
+      }
+      ion-content {
+        --background: var(--sio-right-menu-content-color);
+      }
+      ion-footer {
+        ion-toolbar {
+          --background: var(--sio-right-menu-footer-color);
+          ion-item {
+            --background: var(--sio-right-menu-footer-color);
           }
-          
         }
       }
     }
   }
-  
-  
-
-  
 }
-
-
