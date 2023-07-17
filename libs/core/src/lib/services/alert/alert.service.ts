@@ -9,7 +9,7 @@ export class SioCoreAlertService {
   constructor(private alertController: AlertController) {}
 
   async show(
-    name: string = 'error',
+    name = 'error',
     message: string,
     // eslint-disable-next-line @typescript-eslint/ban-types
     action: Function

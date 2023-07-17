@@ -238,7 +238,7 @@ export class SioAppwriteUserService implements SioAuthPluginServiceInterface {
     );
   }
 
-  async logout(session: string = 'current'): Promise<boolean> {
+  async logout(session = 'current'): Promise<boolean> {
     try {
       this.loggerService.info(`[Appwrite][logout] - Try to logout`);
       await this.account.deleteSession(session);

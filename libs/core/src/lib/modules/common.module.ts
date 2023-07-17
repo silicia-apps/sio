@@ -41,7 +41,7 @@ import { RouterModule } from '@angular/router';
 })
 export class SioCommonModule {
   static forChild(
-    scope: string = ''
+    scope = ''
   ): ModuleWithProviders<SioCommonModule> {
     return {
       ngModule: SioCommonModule,
