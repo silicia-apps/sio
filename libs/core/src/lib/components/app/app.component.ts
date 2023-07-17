@@ -13,6 +13,7 @@ import {
   SioCoreAlertService,
   SioCoreLoggerService,
 } from '../../services';
+import { SioColorType } from '../../shared/shared.type';
 
 // import { E_APPSTYLE } from './app.enum';
 //import { sioCoreMenuInterface } from '../menu/menu.interface';
@@ -40,6 +41,8 @@ export class SioCoreAppComponent implements OnInit, OnDestroy {
     );
     this.sioCoreAppComponentState.setSidemenu(value);
   }
+
+  @Input() color: SioColorType;
 
   @Select(SioCoreAppComponentState.loading)
   loading$!: Observable<{ show: boolean; message: string }>;

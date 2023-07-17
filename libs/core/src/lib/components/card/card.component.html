@@ -1,11 +1,12 @@
 <ion-card [disabled]="this.disabled">
+  <ion-img *ngIf="this.img" [alt]="this.altImg" [src]="this.img"  />
   <ion-accordion-group [value]="this.value" (ionChange)="this.test()">
     <ion-accordion
-      [value]="this.value"
+      [value]="false"
       [toggleIcon]="this.toggleIcon"
       [toggleIconSlot]="this.toggleIconSlot"
     >
-      <img *ngIf="this.img" [alt]="this.altImg" [src]="this.img" slot="header" />
+      
       <ion-item [color]="this.color" slot="header">
         <ion-card-header [color]="this.color">
           <div #header><ng-content select="[slot='header']"></ng-content></div>
