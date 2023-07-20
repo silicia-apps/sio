@@ -1,6 +1,6 @@
 import { Injectable, Optional } from '@angular/core';
 import { SioCoreEnvironmentInterface } from './environment.interface';
-import { SioCoreLoggerService } from '../logger';
+//import { SioCoreLoggerService } from '../logger';
 import { LogLevel } from '../../shared/shared.enum';
 import { SioCoreAppCompomentInterface } from '../../components/app';
 
@@ -28,7 +28,7 @@ export class SioCoreEnvironmentConfig implements SioCoreEnvironmentInterface {
 export class SioCoreEnvironmentService {
   private _config!: SioCoreEnvironmentInterface;
   constructor(
-    private sioLoggerService: SioCoreLoggerService,
+    //private sioLoggerService: SioCoreLoggerService,
     @Optional() config?: SioCoreEnvironmentConfig) {
     if (config) {
       this._config = config;
