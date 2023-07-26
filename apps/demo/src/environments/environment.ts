@@ -2,8 +2,57 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-export const environment = {
-  production: false
+// This file can be replaced during build by using the `fileReplacements` array.
+// `ng build` replaces `environment.ts` with `environment.prod.ts`.
+// The list of file replacements can be found in `angular.json`.
+
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { SioCoreEnvironmentInterface, SioCorePluginServiceConfigModel } from '@sio/core';
+//import { LOGGER_OPTIONS } from '@angular-ru/cdk/logger';
+
+export const environment: SioCoreEnvironmentInterface = {
+  production: false,
+  language: {
+    avaibles: ['it', 'en'],
+    default: 'it',
+    fallback: 'en',
+  },
+  logLevel: 0,
+  plugins: [
+    NgxsLoggerPluginModule.forRoot(),
+    NgxsReduxDevtoolsPluginModule.forRoot(),
+  ],
+  backend: {},
+  app: {
+    'sidemenu': 'toogle',
+    title: 'Demo App',
+    urls: {
+      login: '',
+      redirectTo: '',
+    },
+    menu: {
+      main: {
+        id: 'main',
+        items: {
+          1: { id: 1, icon: 'home', url: 'home', badge: 3 },
+          2: { id: 2, icon: 'information-circle', url: 'about' },
+          3: { id: 3, icon: 'settings', url: 'settings' }
+        },
+      },
+      logged: {
+        id: 'logged',
+        items: {
+          1: {
+            id: 1,
+            icon: 'person',
+            caption: 'T_MENU_LOGGED_PROFILE',
+            url: '/auth/profile',
+          },
+        },
+      },
+    },
+  },
 };
 
 /*
