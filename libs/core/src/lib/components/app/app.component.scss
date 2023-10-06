@@ -18,9 +18,9 @@
 
 :host {
   ion-split-pane {
-    //--side-min-width: 300px;
-    //--side-width: 360px;
-    //--side-max-width: 360px;
+    --side-min-width: 300px;
+    --side-width: 300px;
+    --side-max-width: 300px;
     --border: 0px 0px 0px 0px;
 
     ion-menu[side='start'] {

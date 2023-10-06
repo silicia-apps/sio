@@ -8,19 +8,6 @@
   }
   
   swiper-slide {
-    display: flex;
-    position: relative;
-  
-    flex-direction: column;
-    flex-shrink: 0;
-    align-items: center;
-    justify-content: center;
-  
     width: auto;
-    
-    font-size: 18px;
-  
-    text-align: center;
-    box-sizing: border-box;
   }
 }

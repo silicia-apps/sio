@@ -50,9 +50,9 @@ export class SioCoreAppComponentState extends NgxsDataRepository<SioCoreAppCompo
     return state.dark;
   }
 
-  @Selector()
-  static split(state: SioCoreAppComponentStateModel) {
-    return state.split;
+  @Computed()
+  get split() {
+    return this.snapshot.split;
   }
 
   @Selector()

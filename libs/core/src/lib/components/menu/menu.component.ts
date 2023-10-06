@@ -3,6 +3,7 @@ import { SioColorType } from '../../shared/shared.type';
 import { SioCoreMenuInterface } from './store/menu.interface';
 import { SioCoreMenuState } from './store/menu.state';
 import { SioCoreLoggerService } from '../../services/logger';
+import { SioCoreAppComponentState } from '../app/store';
 
 @Component({
   selector: 'sio-menu',
@@ -28,6 +29,7 @@ export class SioCoreMenuComponent implements OnInit {
 
   constructor(
     private sioCoreLoggerService: SioCoreLoggerService,
+    public sioCoreAppComponentState: SioCoreAppComponentState,
     private _sioCoreMenuState: SioCoreMenuState
   ) { }
 

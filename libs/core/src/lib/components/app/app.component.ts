@@ -70,8 +70,8 @@ export class SioCoreAppComponent implements OnInit, OnDestroy {
     ); } else this.sioCoreLoggerService.warn('[sioCoreAppComponent][Constructor] No config in environment file');
   }
 
-  @Select(SioCoreAppComponentState.split)
-  split$!: Observable<boolean>;
+  //@Select(SioCoreAppComponentState.split)
+  //split$!: Observable<boolean>;
 
   ngOnInit(): void {
     (async () => {
