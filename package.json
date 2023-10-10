@@ -28,7 +28,7 @@
     "rxjs": "~7.8.1",
     "swiper": "^10.3.1",
     "tslib": "^2.6.2",
-    "zone.js": "^0.14.0"
+    "zone.js": "~0.13.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "16.2.5",
@@ -51,11 +51,11 @@
     "@schematics/angular": "16.2.5",
     "@types/jest": "^29.5.5",
     "@types/node": "^20.8.4",
-    "@typescript-eslint/eslint-plugin": "^6.7.5",
-    "@typescript-eslint/parser": "^6.7.5",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
     "cypress": "^13.3.0",
     "eslint": "^8.51.0",
-    "eslint-config-prettier": "^9.0.0",
+    "eslint-config-prettier": "^8.0.0",
     "eslint-plugin-cypress": "2.15.1",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
