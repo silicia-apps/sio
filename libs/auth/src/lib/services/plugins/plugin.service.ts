@@ -7,7 +7,7 @@ import {
 import { Loggable, SioCoreAppComponentState } from '@sio/core';
 import { SioAuthPluginServiceInterface } from './interfaces';
 import { SioAuthPluginServiceToken } from './tokens';
-import { TranslocoService } from '@ngneat/transloco';
+import { TranslateService } from '@ngx-translate/core';
 
 @Loggable()
 @Injectable({ providedIn: 'root' })
@@ -19,7 +19,7 @@ export class SioAuthPluginService implements SioAuthPluginServiceInterface {
     @Inject(SioAuthPluginServiceToken)
     plugins: SioAuthPluginServiceInterface[],
     private sioCoreAppComponentState: SioCoreAppComponentState,
-    private translocoService: TranslocoService
+    private translateService: TranslateService
   ) {
     plugins = plugins || [];
     this.plugins = Array.isArray(plugins) ? plugins : [plugins];
@@ -32,8 +32,8 @@ export class SioAuthPluginService implements SioAuthPluginServiceInterface {
       const error = e as Error;
       if (error.name === 'sio-error')
         this.sioCoreAppComponentState.throwError(
-          this.translocoService.translate(error.message),
-          this.translocoService.translate('AUTH_ERROR')
+          this.translateService.getTranslation(error.message),
+          this.translateService.getTranslation('AUTH_ERROR')
         );
     }
     return null;
@@ -46,8 +46,8 @@ export class SioAuthPluginService implements SioAuthPluginServiceInterface {
       const error = e as Error;
       if (error.name === 'sio-error')
         this.sioCoreAppComponentState.throwError(
-          this.translocoService.translate(error.message),
-          this.translocoService.translate('AUTH_ERROR')
+          this.translateService.getTranslation(error.message),
+          this.translateService.getTranslation('AUTH_ERROR')
         );
     }
     return null;
@@ -63,8 +63,8 @@ export class SioAuthPluginService implements SioAuthPluginServiceInterface {
       const error = e as Error;
       if (error.name === 'sio-error')
         this.sioCoreAppComponentState.throwError(
-          this.translocoService.translate('auth.'+error.message),
-          this.translocoService.translate('auth.AUTH_ERROR')
+          this.translateService.getTranslation('auth.'+error.message),
+          this.translateService.getTranslation('auth.AUTH_ERROR')
         );
       return null;
     }
@@ -77,8 +77,8 @@ export class SioAuthPluginService implements SioAuthPluginServiceInterface {
       const error = e as Error;
       if (error.name === 'sio-error')
         this.sioCoreAppComponentState.throwError(
-          this.translocoService.translate('auth.'+error.message),
-          this.translocoService.translate('AUTH_ERROR')
+          this.translateService.getTranslation('auth.'+error.message),
+          this.translateService.getTranslation('AUTH_ERROR')
         );
       return null;
     }

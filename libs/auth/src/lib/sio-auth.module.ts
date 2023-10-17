@@ -14,9 +14,6 @@ import { sioAuthRoutes } from './lib.routes';
 
 import { SioAuthState } from './store';
 
-import { InlineLoaderFactory } from '@sio/core';
-import { TRANSLOCO_SCOPE } from '@ngneat/transloco';
-
 @NgModule({
   declarations: [...SioAuthComponents],
   imports: [
@@ -29,17 +26,6 @@ import { TRANSLOCO_SCOPE } from '@ngneat/transloco';
     NgxsFormPluginModule,
   ],
   exports: [...SioAuthComponents],
-  providers: [
-    {
-      provide: TRANSLOCO_SCOPE,
-      useValue: {
-        scope: 'auth',
-       //loader: InlineLoaderFactory(
-       //   (lang: string) => import(`./i18n/${lang}.json`).then((a) => { console.log('logged'); return a}).catch((e) => { console.error(`./i18n/${lang}.json not found`);return {}})
-       // )
-      },
-      multi: true,
-    },
-  ]
+  providers: []
 })
 export class SioAuthModule {}

@@ -8,7 +8,7 @@
       <ion-label *ngIf="item.value.caption !== '--' && item.value.id < 6">{{ (item.value.caption ? item.value.caption :
         'M_'+item.value.url!.replace('/',
         '_').toUpperCase()) |
-        transloco }}</ion-label>
+        translate }}</ion-label>
       <ion-badge *ngIf="item.value.caption !== '--' && item.value.id < 6 && item.value.badge! > 0">{{ item.value.badge
         }}</ion-badge>
     </ion-tab-button>
@@ -22,7 +22,7 @@
       <ion-label *ngIf="item.value.caption !== '--' && item.value.id < 6">{{ (item.value.caption ? item.value.caption :
         'M_'+item.value.url!.replace('/',
         '_').toUpperCase()) |
-        transloco }}</ion-label>
+        translate }}</ion-label>
       <ion-badge *ngIf="item.value.caption !== '--' && item.value.id < 6 && item.value.badge! > 0">{{ item.value.badge
         }}</ion-badge>
     </ion-tab-button>

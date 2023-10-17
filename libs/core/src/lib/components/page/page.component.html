@@ -6,7 +6,7 @@
         <ion-back-button *ngIf="this.back"></ion-back-button>
       </ng-container>
     </ion-buttons>
-    <ion-title>{{ this.title| transloco }}</ion-title>
+    <ion-title>{{ this.title| translate }}</ion-title>
     <ion-buttons slot="end">
       <ng-content select="[slot='end']"> </ng-content>
     </ion-buttons>
@@ -19,7 +19,7 @@
 <ion-content [fullscreen]="true" class="ion-padding">
   <ion-header *ngIf="this.toolbar && !this.fullmode" collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">{{ this.title | transloco }}</ion-title>
+      <ion-title size="large">{{ this.title | translate }}</ion-title>
     </ion-toolbar>
   </ion-header>
   <div #content>
@@ -27,8 +27,8 @@
   </div>
   <ng-container *ngIf="!content.hasChildNodes()">
     <div id="container">
-      <h1>{{ 'PAGE_COMPONENT_DEFAULT_1' | transloco }}</h1>
-      <strong>{{ 'PAGE_COMPONENT_DEFAULT_2' | transloco }}</strong>
+      <h1>{{ 'PAGE_COMPONENT_DEFAULT_1' | translate }}</h1>
+      <strong>{{ 'PAGE_COMPONENT_DEFAULT_2' | translate }}</strong>
       <p>
         {{ 'PAGE_COMPONENT_LINK'}} <a target="_blank" rel="noopener noreferrer"
           href="https://github.com/silicia-apps/sio/wiki">SIO Framework</a>

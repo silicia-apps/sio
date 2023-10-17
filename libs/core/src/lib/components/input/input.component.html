@@ -1,10 +1,9 @@
-<ng-container *transloco="let t">
   <ion-item
     [class.invalid]="this.invalid"
     [color]="this.color"
   >
     <ion-input
-      [label] = "t(this.label)"
+      label = "{{ this.label | translate }}"
       [labelPlacement] = "this.position"
       fill="outline"
       [(ngModel)]="this.valueInput"
@@ -22,4 +21,3 @@
       [helperText]="this.label"
     ></ion-input>
   </ion-item>
-</ng-container>
