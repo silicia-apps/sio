@@ -1,5 +1,5 @@
 import { ModuleWithProviders } from "@angular/core";
-import { SioCoreAppCompomentInterface } from '../../components/app';
+import { SioCoreAppCompomentInterface } from '../../interfaces';
 import { SioCorePluginServiceConfigModel } from "../plugins";
 
 export interface SioCoreEnvironmentInterface {

@@ -2,7 +2,7 @@ import { Injectable, Optional } from '@angular/core';
 import { SioCoreEnvironmentInterface } from './environment.interface';
 //import { SioCoreLoggerService } from '../logger';
 import { LogLevel } from '../../shared/shared.enum';
-import { SioCoreAppCompomentInterface } from '../../components/app';
+import { SioCoreAppCompomentInterface } from '../../interfaces';
 
 export class SioCoreEnvironmentConfig implements SioCoreEnvironmentInterface {
   production = false;

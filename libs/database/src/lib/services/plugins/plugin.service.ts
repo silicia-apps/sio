@@ -34,8 +34,8 @@ export class SioDatabasePluginService
       const error = e as Error;
       if (error.name === 'sio-error')
         this.sioCoreAppComponentState.throwError(
-          this.translateService.translate(error.message),
-          this.translateService.translate('DATABASE_ERROR')
+          error.message,
+          'DATABASE_ERROR'
         );
     }
     return false;
@@ -52,8 +52,8 @@ export class SioDatabasePluginService
       const error = e as Error;
       if (error.name === 'sio-error')
         this.sioCoreAppComponentState.throwError(
-          this.translateService.translate(error.message),
-          this.translateService.translate('DATABASE_ERROR')
+          error.message,
+          'DATABASE_ERROR'
         );
     }
     return false;
@@ -70,8 +70,8 @@ export class SioDatabasePluginService
       const error = e as Error;
       if (error.name === 'sio-error')
         this.sioCoreAppComponentState.throwError(
-          this.translateService.translate(error.message),
-          this.translateService.translate('DATABASE_ERROR')
+          error.message,
+          'DATABASE_ERROR'
         );
     }
     return false;
@@ -87,8 +87,8 @@ export class SioDatabasePluginService
       const error = e as Error;
       if (error.name === 'sio-error')
         this.sioCoreAppComponentState.throwError(
-          this.translateService.translate(error.message),
-          this.translateService.translate('DATABASE_ERROR')
+          error.message,
+          'DATABASE_ERROR'
         );
     }
     return false;

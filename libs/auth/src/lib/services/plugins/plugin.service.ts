@@ -32,8 +32,8 @@ export class SioAuthPluginService implements SioAuthPluginServiceInterface {
       const error = e as Error;
       if (error.name === 'sio-error')
         this.sioCoreAppComponentState.throwError(
-          this.translateService.getTranslation(error.message),
-          this.translateService.getTranslation('AUTH_ERROR')
+          error.message,
+          'AUTH_ERROR'
         );
     }
     return null;
@@ -46,8 +46,8 @@ export class SioAuthPluginService implements SioAuthPluginServiceInterface {
       const error = e as Error;
       if (error.name === 'sio-error')
         this.sioCoreAppComponentState.throwError(
-          this.translateService.getTranslation(error.message),
-          this.translateService.getTranslation('AUTH_ERROR')
+          error.message,
+          'AUTH_ERROR'
         );
     }
     return null;
@@ -63,8 +63,8 @@ export class SioAuthPluginService implements SioAuthPluginServiceInterface {
       const error = e as Error;
       if (error.name === 'sio-error')
         this.sioCoreAppComponentState.throwError(
-          this.translateService.getTranslation('auth.'+error.message),
-          this.translateService.getTranslation('auth.AUTH_ERROR')
+          'auth.'+error.message,
+          'auth.AUTH_ERROR'
         );
       return null;
     }
@@ -77,8 +77,8 @@ export class SioAuthPluginService implements SioAuthPluginServiceInterface {
       const error = e as Error;
       if (error.name === 'sio-error')
         this.sioCoreAppComponentState.throwError(
-          this.translateService.getTranslation('auth.'+error.message),
-          this.translateService.getTranslation('AUTH_ERROR')
+          'auth.'+error.message,
+          'AUTH_ERROR'
         );
       return null;
     }
