@@ -13,7 +13,7 @@
     <ng-container *ngIf="!start.hasChildNodes()">
       <sio-icon [name]="this.icon" slot="start"></sio-icon>
     </ng-container>
-    <ion-label>{{ this.caption! | transloco }}</ion-label>
+    <ion-label>{{ this.caption! | translate }}</ion-label>
     <div #end>
       <ng-content slot="end" select="[slot='end']"></ng-content>
     </div>

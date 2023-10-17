@@ -11,7 +11,7 @@
     <ion-thumbnail *ngIf="this.image && !this.avatar" slot="start">
       <ion-img [alt]="this.alt" [src]="this.image" />
     </ion-thumbnail>
-    <ion-label><h2>Heading</h2><p>{{ this.label | transloco }}</p></ion-label>
+    <ion-label><h2>Heading</h2><p>{{ this.label | translate }}</p></ion-label>
     <ion-label slot="end">€ 5,00</ion-label>
     <ion-button slot="end"><sio-icon name="add"></sio-icon></ion-button>
   </ion-item>

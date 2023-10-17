@@ -4,7 +4,7 @@
 Silicia Ionic Framework (SIO) is a library for developing open-source hybrid applications released under the MIT license. This library was created with the aim of eliminating all the redundant code necessary for development in ionic or angular and with the purpose of inserting the most used libraries. Here are the features of the library:
 
 * state integration with ngxs and angular-ru/ngxs libraries
-* multilingual support integration via transloco library
+* multilingual support integration via translate library
 * plugin support for various types of backends (currently appwrite)
 * wrapping core Ionic components into new components with state and other functionality (such as dynamic forms and menus)
 

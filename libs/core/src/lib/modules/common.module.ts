@@ -6,23 +6,22 @@ import {
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import { HttpClient } from '@angular/common/http';
+
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 /* ngxs */
 import { NgxsFormPluginModule } from '@ngxs/form-plugin';
-import { InlineLoaderFactory } from '../shared/shared.helpers';
-
-// Translate Module
-import {
-  TranslocoModule,
-  //TranslocoPipe,
-  TRANSLOCO_SCOPE,
- // Translation,
-} from '@ngneat/transloco';
 
 import { SioCoreComponents } from '../components';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
+export function create2TranslateLoader(http: HttpClient) {
+  console.log('pippo load');
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -34,10 +33,10 @@ import { RouterModule } from '@angular/router';
     RouterModule,
     ReactiveFormsModule,
     IonicModule,
-    TranslocoModule,
+    TranslateModule,
     NgxsFormPluginModule,
   ],
-  exports: [...SioCoreComponents, TranslocoModule, IonicModule ],
+  exports: [...SioCoreComponents, IonicModule, TranslateModule ],
 })
 export class SioCommonModule {
   static forChild(
@@ -46,16 +45,7 @@ export class SioCommonModule {
     return {
       ngModule: SioCommonModule,
       providers: [
-        {
-          provide: TRANSLOCO_SCOPE,
-          useValue: {
-            scope: scope,
-            //loader: InlineLoaderFactory(
-            //  (lang: string) => import(`./i18n/${lang}.json`).then((a) => { console.log('logged'); return a}).catch((e) => { console.error(`./i18n/${lang}.json not found`);return {}})
-            //)
-          },
-          multi: true,
-        },
+        
       ],
     };
   }

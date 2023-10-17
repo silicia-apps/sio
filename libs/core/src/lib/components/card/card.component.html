@@ -6,8 +6,8 @@
         <ion-card-header [color]="this.color">
           <div #header><ng-content select="[slot='header']"></ng-content></div>
           <ng-container *ngIf="!header.hasChildNodes()">
-            <ion-card-title>{{ this.title | transloco }}</ion-card-title>
-            <ion-card-subtitle>{{ this.subtitle | transloco }}</ion-card-subtitle>
+            <ion-card-title>{{ this.title | translate }}</ion-card-title>
+            <ion-card-subtitle>{{ this.subtitle | translate }}</ion-card-subtitle>
           </ng-container>
         </ion-card-header>
       </ion-item>

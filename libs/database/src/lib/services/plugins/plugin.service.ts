@@ -2,7 +2,7 @@ import { Inject, Injectable, Optional } from '@angular/core';
 import { Loggable, SioCoreAppComponentState } from '@sio/core';
 import { SioDatabasePluginServiceInterface } from './interfaces';
 import { SioDatabasePluginServiceToken } from './tokens';
-import { TranslocoService } from '@ngneat/transloco';
+import { TranslateService } from '@ngx-translate/core';
 
 @Loggable()
 @Injectable({ providedIn: 'root' })
@@ -16,7 +16,7 @@ export class SioDatabasePluginService
     @Inject(SioDatabasePluginServiceToken)
     plugins: SioDatabasePluginServiceInterface[],
     private sioCoreAppComponentState: SioCoreAppComponentState,
-    private translocoService: TranslocoService
+    private translateService: TranslateService
   ) {
     plugins = plugins || [];
     this.plugins = Array.isArray(plugins) ? plugins : [plugins];
@@ -34,8 +34,8 @@ export class SioDatabasePluginService
       const error = e as Error;
       if (error.name === 'sio-error')
         this.sioCoreAppComponentState.throwError(
-          this.translocoService.translate(error.message),
-          this.translocoService.translate('DATABASE_ERROR')
+          this.translateService.translate(error.message),
+          this.translateService.translate('DATABASE_ERROR')
         );
     }
     return false;
@@ -52,8 +52,8 @@ export class SioDatabasePluginService
       const error = e as Error;
       if (error.name === 'sio-error')
         this.sioCoreAppComponentState.throwError(
-          this.translocoService.translate(error.message),
-          this.translocoService.translate('DATABASE_ERROR')
+          this.translateService.translate(error.message),
+          this.translateService.translate('DATABASE_ERROR')
         );
     }
     return false;
@@ -70,8 +70,8 @@ export class SioDatabasePluginService
       const error = e as Error;
       if (error.name === 'sio-error')
         this.sioCoreAppComponentState.throwError(
-          this.translocoService.translate(error.message),
-          this.translocoService.translate('DATABASE_ERROR')
+          this.translateService.translate(error.message),
+          this.translateService.translate('DATABASE_ERROR')
         );
     }
     return false;
@@ -87,8 +87,8 @@ export class SioDatabasePluginService
       const error = e as Error;
       if (error.name === 'sio-error')
         this.sioCoreAppComponentState.throwError(
-          this.translocoService.translate(error.message),
-          this.translocoService.translate('DATABASE_ERROR')
+          this.translateService.translate(error.message),
+          this.translateService.translate('DATABASE_ERROR')
         );
     }
     return false;

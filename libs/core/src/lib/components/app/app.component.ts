@@ -4,6 +4,7 @@ import { SioCoreAppComponentState } from './store/app.state';
 //import { E_SIDEMENU } from '../menu/menu.enum';
 import { Select } from '@ngxs/store';
 import { Observable, Subject } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 
 import { Platform, IonRouterOutlet } from '@ionic/angular';
 import { App } from '@capacitor/app';
@@ -62,7 +63,8 @@ export class SioCoreAppComponent implements OnInit, OnDestroy {
     private sioCoreLoadingService: SioCoreLoadingService,
     private sioCoreAlertService: SioCoreAlertService,
     private sioCoreEnvironmentService: SioCoreEnvironmentService,
-    private sioCoreLoggerService: SioCoreLoggerService
+    private sioCoreLoggerService: SioCoreLoggerService,
+    private translateService: TranslateService,
   ) {
     if(this.sioCoreEnvironmentService.config) {
     this.sioCoreAppComponentState.LoadConfig(
@@ -75,6 +77,8 @@ export class SioCoreAppComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     (async () => {
+      this.translateService.addLangs(['en','it']);
+      this.translateService.use('en');
       this.sioCoreLoggerService.info('check platform...');
       let platform = await this.platform.ready();
       switch (platform) {

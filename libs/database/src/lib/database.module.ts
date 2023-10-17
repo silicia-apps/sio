@@ -5,9 +5,6 @@ import { NgxsModule } from '@ngxs/store';
 
 import { SioCommonModule } from '@sio/core';
 
-import { InlineLoaderFactory } from '@sio/core';
-import { TRANSLOCO_SCOPE } from '@ngneat/transloco';
-
 @NgModule({
   declarations: [],
   imports: [
@@ -16,18 +13,7 @@ import { TRANSLOCO_SCOPE } from '@ngneat/transloco';
     NgxsModule.forFeature([]),
   ],
   exports: [],
-  providers: [
-    {
-      provide: TRANSLOCO_SCOPE,
-      useValue: {
-        scope: 'database',
-        //loader: InlineLoaderFactory(
-        //  (lang: string) => import(`./i18n/${lang}.json`).then((a) => { console.log('logged'); return a}).catch((e) => { console.error(`./i18n/${lang}.json not found`);return {}})
-        //)
-      },
-      multi: true,
-    },
-  ]
+  providers: []
 })
 export class SioDatabaseModule {}
 
