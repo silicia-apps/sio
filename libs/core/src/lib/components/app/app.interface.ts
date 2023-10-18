@@ -3,6 +3,11 @@ import { SioCoreMenuInterface } from '../menu';
 export interface SioCoreAppCompomentInterface {
   title: string;
   //style: number;
+  language : {
+    default: string,
+    fallback: string,
+    avaibles: string[],
+  };
   sidemenu: SioSideMenuType;
   fullmode?: boolean;
   menu?: { [id: string]: SioCoreMenuInterface };

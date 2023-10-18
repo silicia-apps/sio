@@ -77,10 +77,10 @@ export class SioCoreAppComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     (async () => {
-      this.translateService.addLangs(['en','it']);
-      this.translateService.use('en');
-      this.sioCoreLoggerService.info('check platform...');
+      this.sioCoreLoggerService.info('await for platform avaible...');
       let platform = await this.platform.ready();
+      this.translateService.addLangs(this.sioCoreEnvironmentService.config.app.language.avaibles);
+      this.sioCoreLoggerService.info('Check platform...');
       switch (platform) {
         case 'dom':
           platform = 'browser';

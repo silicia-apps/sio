@@ -14,8 +14,10 @@ import { SioCoreListComponent } from './list';
 import { SioCoreItemComponent } from './item';
 import { SioCoreModalComponent } from './modal';
 import { SioCoreSlideComponent } from './slide';
+import { SioCoreLanguageSelectorComponent } from './language-selector/language-selector.component';
 
 export { SioCoreAppComponent } from './app';
+export { SioCoreLanguageSelectorComponent } from './language-selector/language-selector.component';
 export { SioCoreCardComponent } from './card';
 export { SioCoreDarkModeToggleComponent } from './dark-mode-toogle';
 export { SioCoreFormComponent } from './form';
@@ -34,6 +36,7 @@ export { SioCoreSlideComponent } from './slide';
 
 export const SioCoreComponents = [
   SioCoreAppComponent,
+  SioCoreLanguageSelectorComponent,
   SioCoreCardComponent,
   SioCoreDarkModeToggleComponent,
   SioCoreFormComponent,
