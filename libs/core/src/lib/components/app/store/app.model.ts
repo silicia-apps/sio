@@ -5,6 +5,11 @@ import { SioCoreTabsStateModel } from '../../tabs';
 
 export interface SioCoreAppComponentStateModel extends SioCoreAppCompomentInterface {
   title: string;
+  language: {
+    default: string,
+    fallback: string,
+    avaibles: string[],
+  },
   dark: boolean | undefined;
   split: boolean | undefined;
   urls: {

@@ -21,6 +21,11 @@ const APP_STATE_TOKEN = new StateToken<SioCoreAppComponentStateModel>('app');
 @State<SioCoreAppComponentStateModel>({
   name: APP_STATE_TOKEN,
   defaults: {
+    'language': {
+      'avaibles': ['en'],
+      'default' : 'en',
+      'fallback' : 'en'
+    },
     'title': 'APP_TITLE',
     'dark': false,
     'sidemenu': 'none',
@@ -53,6 +58,11 @@ export class SioCoreAppComponentState extends NgxsDataRepository<SioCoreAppCompo
   @Computed()
   get split() {
     return this.snapshot.split;
+  }
+
+  @Computed()
+  get currentLanguage() {
+    return this.snapshot.language.default;
   }
 
   @Selector()

@@ -15,7 +15,7 @@
         "main": "apps/demo/src/main.ts",
         "polyfills": ["zone.js"],
         "tsConfig": "apps/demo/tsconfig.app.json",
-        "assets": ["apps/demo/src/assets"],
+        "assets": ["apps/demo/src/assets","@sio/core/assets/"],
         "styles": [
           "apps/demo/src/theme/variables.scss",
           "apps/demo/src/global.scss"

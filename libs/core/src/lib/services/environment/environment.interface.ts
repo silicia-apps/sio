@@ -5,11 +5,6 @@ import { SioCorePluginServiceConfigModel } from "../plugins";
 export interface SioCoreEnvironmentInterface {
   logLevel: number,
   backend : SioCorePluginServiceConfigModel,
-  language: {
-    default: string,
-    fallback: string,
-    avaibles: string[],
-  }
   production: boolean,
   plugins?: ModuleWithProviders<unknown>[],
   app: SioCoreAppCompomentInterface,

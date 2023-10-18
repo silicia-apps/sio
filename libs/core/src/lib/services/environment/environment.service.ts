@@ -8,13 +8,14 @@ export class SioCoreEnvironmentConfig implements SioCoreEnvironmentInterface {
   production = false;
   logLevel = LogLevel.Info;
   backend = {};
-  language = {
-    default: 'en',
-    fallback: 'en',
-    avaibles: ['it', 'en'],
-  };
+  
   app: SioCoreAppCompomentInterface = {
     title: 'TEST',
+    language : {
+      default: 'en',
+      fallback: 'en',
+      avaibles: ['it', 'en'],
+    },
     sidemenu: 'overlay',
     //dark: false,
     menu: {},
