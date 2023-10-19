@@ -17,6 +17,7 @@ import { NgxsFormPluginModule } from '@ngxs/form-plugin';
 import { SioCoreComponents } from '../components';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { createTranslateLoader } from './core.module';
 
 export function create2TranslateLoader(http: HttpClient) {
   console.log('pippo load');
@@ -33,7 +34,16 @@ export function create2TranslateLoader(http: HttpClient) {
     RouterModule,
     ReactiveFormsModule,
     IonicModule,
-    TranslateModule,
+    TranslateModule.forChild(
+      {
+        'extend' : true,
+        'loader': {
+          'provide': TranslateLoader,
+          'useFactory': createTranslateLoader, 
+          'deps': [HttpClient],
+        },
+      } 
+    ),
     NgxsFormPluginModule,
   ],
   exports: [...SioCoreComponents, IonicModule, TranslateModule ],

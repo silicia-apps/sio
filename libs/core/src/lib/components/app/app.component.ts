@@ -1,6 +1,9 @@
 import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { SioCoreAppComponentState } from './store/app.state';
 
+import { it } from '../../../i18n/it';
+import { en } from '../../../i18n/en';
+
 //import { E_SIDEMENU } from '../menu/menu.enum';
 import { Select } from '@ngxs/store';
 import { Observable, Subject } from 'rxjs';
@@ -56,7 +59,7 @@ export class SioCoreAppComponent implements OnInit, OnDestroy {
   ionRouterOutlet!: IonRouterOutlet;
 
   public position: 'side' | 'bottom' | 'top' = 'bottom';
-
+ 
   constructor(
     public sioCoreAppComponentState: SioCoreAppComponentState,
     private platform: Platform,
@@ -70,6 +73,8 @@ export class SioCoreAppComponent implements OnInit, OnDestroy {
     this.sioCoreAppComponentState.LoadConfig(
       this.sioCoreEnvironmentService.config.app
     ); } else this.sioCoreLoggerService.warn('[sioCoreAppComponent][Constructor] No config in environment file');
+    this.translateService.setTranslation('it', it, true);
+    this.translateService.setTranslation('en', en, true);
   }
 
   //@Select(SioCoreAppComponentState.split)
@@ -79,7 +84,12 @@ export class SioCoreAppComponent implements OnInit, OnDestroy {
     (async () => {
       this.sioCoreLoggerService.info('await for platform avaible...');
       let platform = await this.platform.ready();
-      this.translateService.addLangs(this.sioCoreEnvironmentService.config.app.language.avaibles);
+      
+      this.translateService.setTranslation('it', it, true);
+      this.translateService.setTranslation('en', en, true);
+      
+      //this.translateService.addLangs(this.sioCoreEnvironmentService.config.app.language.avaibles);
+      this.translateService.use(this.sioCoreEnvironmentService.config.app.language.default);
       this.sioCoreLoggerService.info('Check platform...');
       switch (platform) {
         case 'dom':
