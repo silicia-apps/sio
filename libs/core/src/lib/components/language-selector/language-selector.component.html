@@ -1,6 +1,7 @@
 <ion-item>
-    <ion-select [label]="this.label" (ionChange)="this.onChange($event)">
+    <ion-select label="{{ this.label | translate }}" (ionChange)="this.onChange($event)">
       <ion-select-option value="it">Italiano</ion-select-option>
       <ion-select-option value="en">Inglese</ion-select-option>
     </ion-select>
   </ion-item>
+  {{ this.label | translate }}

@@ -49,15 +49,7 @@ export function createTranslateLoader(http: HttpClient) {
   imports: [
     CommonModule,
     HttpClientModule,
-    TranslateModule.forRoot({
-      'defaultLanguage': 'it',
-      'loader': {
-        'provide': TranslateLoader,
-        'useFactory': createTranslateLoader, 
-        'deps': [HttpClient],
-      },
-      'parser': { provide: TranslateParser, useClass: NgxTranslateDebugParser },
-    }),
+    TranslateModule.forRoot(),
     LoggerModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
