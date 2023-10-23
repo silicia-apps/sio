@@ -1,6 +1,6 @@
 # database
 
-This library was generated with [Nx](https://nx.dev).
+Please not use this library. It's very early stage please use from 0.1.x 
 
 ## Running unit tests
 
