@@ -14,7 +14,7 @@ Installation
 to install the library add it to your project
 
 ```bash
-$ npm install @sio/core
+$ npm install @silicia/core
 ```
 start a new ionic project with
 
@@ -28,7 +28,7 @@ open the app.module.ts file and add the library
 ```ts
 ...
 import { environment } from '../assets/environments/environment';
-import {} from '@sio/core';
+import {} from '@silicia/core';
 ...
 @NgModule({
   ...
