@@ -15,7 +15,7 @@
         "main": "apps/demo/src/main.ts",
         "polyfills": ["zone.js"],
         "tsConfig": "apps/demo/tsconfig.app.json",
-        "assets": ["apps/demo/src/assets","@sio/core/assets/"],
+        "assets": ["apps/demo/src/assets"],
         "styles": [
           "apps/demo/src/theme/variables.scss",
           "apps/demo/src/global.scss"
@@ -68,7 +68,7 @@
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": ["apps/demo/**/*.ts", "apps/demo/**/*.html"]

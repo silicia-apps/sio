@@ -40,7 +40,7 @@
           </ng-container>
         </ion-footer>
       </ion-menu>
-      <ion-menu side="end" contentId="right-content" [type]="!(this.sioCoreAppComponentState.sidemenu === 'none' ||  this.sioCoreAppComponentState.sidemenu === 'toogle')?this.sioCoreAppComponentState.sidemenu:'reveal'" [swipeGesture]="(this.sioCoreAppComponentState.sidemenu !== 'toogle')">
+      <ion-menu *ngIf="false" side="end" contentId="right-content" [type]="!(this.sioCoreAppComponentState.sidemenu === 'none' ||  this.sioCoreAppComponentState.sidemenu === 'toogle')?this.sioCoreAppComponentState.sidemenu:'reveal'" [swipeGesture]="(this.sioCoreAppComponentState.sidemenu !== 'toogle')">
         <ion-header class="ion-no-border">
           <ion-toolbar>
             <div #right_header>
