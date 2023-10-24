@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { NgxsModule } from '@ngxs/store';
 
-import { SioCommonModule } from '@sio/core';
+import { SioCommonModule } from '@silicia/core';
 
 @NgModule({
   declarations: [],

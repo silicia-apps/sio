@@ -6,14 +6,14 @@ import {
   SioAuthUserInterface,
   SioAuthSessionInterface,
   SioAuthPluginServiceInterface,
-} from '@sio/auth';
+} from '@silicia/auth';
 
 import {
   Loggable,
   SioCoreLoggerService,
   SioCorePluginServiceConfigModel,
   sioCorePluginServiceConfigToken,
-} from '@sio/core';
+} from '@silicia/core';
 import { Observable } from 'rxjs';
 
 @Loggable()

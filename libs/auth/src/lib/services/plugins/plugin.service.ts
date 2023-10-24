@@ -4,7 +4,7 @@ import {
   SioAuthSessionInterface,
   SioAuthUserInterface,
 } from '../../interfaces';
-import { Loggable, SioCoreAppComponentState } from '@sio/core';
+import { Loggable, SioCoreAppComponentState } from '@silicia/core';
 import { SioAuthPluginServiceInterface } from './interfaces';
 import { SioAuthPluginServiceToken } from './tokens';
 import { TranslateService } from '@ngx-translate/core';

@@ -4,7 +4,7 @@ import {
   Router,
   UrlTree,
 } from '@angular/router';
-import { Loggable, SioCoreLoggerService } from '@sio/core';
+import { Loggable, SioCoreLoggerService } from '@silicia/core';
 import { SioAuthUserStatusType } from '../types';
 import { SioAuthState } from '../store';
 

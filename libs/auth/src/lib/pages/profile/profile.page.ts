@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SioCoreLoggerService } from '@sio/core';
+import { SioCoreLoggerService } from '@silicia/core';
 
 import { SioAuthState } from '../../store';
 

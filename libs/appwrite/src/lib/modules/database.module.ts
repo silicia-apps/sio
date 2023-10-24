@@ -7,9 +7,9 @@ import {
   SioDatabasePluginServiceConfigInterface,
   SioDatabasePluginServiceConfigToken,
   SioDatabasePluginServiceToken,
-} from '@sio/database';
+} from '@silicia/database';
 
-import { SioCoreLoggerService } from '@sio/core';
+import { SioCoreLoggerService } from '@silicia/core';
 import { SioAppwriteClientService } from '../services/client.service';
 
 export function appwriteDatabaseFactory(

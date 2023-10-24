@@ -7,7 +7,7 @@ import { NgxsModule } from '@ngxs/store';
 import { NgxsFormPluginModule } from '@ngxs/form-plugin';
 
 import { SioAuthComponents } from './components';
-import { SioCommonModule } from '@sio/core';
+import { SioCommonModule } from '@silicia/core';
 import { SioAuthLoginComponentState } from './components/login/store/login.state';
 
 import { sioAuthRoutes } from './lib.routes';

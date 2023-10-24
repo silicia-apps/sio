@@ -1,7 +1,7 @@
 import { Computed, StateRepository } from '@angular-ru/ngxs/decorators';
 import { Injectable } from '@angular/core';
 import { State } from '@ngxs/store';
-import { SioCoreFormComponentState, SioCoreFormComponentStateModel } from '@sio/core';
+import { SioCoreFormComponentState, SioCoreFormComponentStateModel } from '@silicia/core';
 
 @StateRepository()
 @State<SioCoreFormComponentStateModel>({

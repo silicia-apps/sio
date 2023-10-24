@@ -55,6 +55,11 @@ export class SioCoreAppComponentState extends NgxsDataRepository<SioCoreAppCompo
     return state.dark;
   }
 
+  @Selector()
+  static error(state: SioCoreAppComponentStateModel) {
+    return state.errors;
+  }
+
   @Computed()
   get split() {
     return this.snapshot.split;
@@ -65,11 +70,21 @@ export class SioCoreAppComponentState extends NgxsDataRepository<SioCoreAppCompo
     return this.snapshot.language.default;
   }
 
-  @Selector()
-  static error(state: SioCoreAppComponentStateModel) {
-    return state.errors;
+  @Computed()
+  get sidemenu(): SioSideMenuType {
+    return this.snapshot.sidemenu;
   }
 
+  @Computed()
+  get fullmode(): boolean {
+    return this.snapshot.fullmode as boolean;
+  }
+  
+  @Computed()
+  get darkmode(): boolean {
+    return this.snapshot.dark || false;
+  }
+  
   @DataAction()
   LoadConfig(value: SioCoreAppCompomentInterface): void {
     this.ctx.patchState(value);
@@ -96,16 +111,7 @@ export class SioCoreAppComponentState extends NgxsDataRepository<SioCoreAppCompo
     });
   }
 
-  @Computed()
-  get sidemenu(): SioSideMenuType {
-    return this.snapshot.sidemenu;
-  }
-
-  @Computed()
-  get fullmode(): boolean {
-    return this.snapshot.fullmode as boolean;
-  }
-
+  
 
   /*@DataAction()
   SetStyle(@Payload('style') value: number): void {
@@ -114,10 +120,7 @@ export class SioCoreAppComponentState extends NgxsDataRepository<SioCoreAppCompo
     });
   }*/
 
-  @Computed()
-  get darkmode(): boolean {
-    return this.snapshot.dark || false;
-  }
+  
 
   @DataAction()
   public setDark(value: boolean) {

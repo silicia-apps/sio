@@ -7,9 +7,9 @@ import {
   SioAuthPluginServiceConfigInterface,
   SioAuthPluginServiceConfigToken,
   SioAuthPluginServiceToken,
-} from '@sio/auth';
+} from '@silicia/auth';
 
-import { SioCoreLoggerService } from '@sio/core';
+import { SioCoreLoggerService } from '@silicia/core';
 import { SioAppwriteClientService } from '../services/client.service';
 
 export function appwriteUserFactory(

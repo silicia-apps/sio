@@ -1,6 +1,6 @@
 {
-  "name": "@sio/core",
-  "version": "0.0.1",
+  "name": "@silicia/core",
+  "version": "0.0.5",
   "peerDependencies": {
     "@angular/common": "^15.2.0",
     "@angular/core": "^15.2.0"

@@ -16,7 +16,7 @@
           </ion-toolbar> 
         </ion-header>
         <ion-content>
-          <sio-menu *ngIf="this.tab && this.sioCoreAppComponentState.split" [id]="this.tab"></sio-menu>
+          <sio-menu *ngIf="this.tab && this.sioCoreAppComponentState.split && this.sioCoreAppComponentState.sidemenu === 'tab'" [id]="this.tab"></sio-menu>
           <div #side_content>
             <ng-content select="[slot='side_content']"></ng-content>
           </div>
@@ -78,13 +78,13 @@
       </ion-menu>
       <ion-router-outlet id="main-content">
         <ng-content></ng-content>
-        <sio-menu *ngIf="this.tab" [id]="this.tab" position="bottom"></sio-menu>
+        <sio-menu *ngIf="this.tab && !this.sioCoreAppComponentState.split" [id]="this.tab" position="bottom"></sio-menu>
       </ion-router-outlet>
     </ion-split-pane>
   </ng-template>
   <ng-template #blank>
     <ion-router-outlet id="main-content">
-      <sio-menu *ngIf="this.tab && this.sioCoreAppComponentState.fullmode" [id]="this.tab" [position]="'bottom' //(this.split$ | async)?'top':'bottom'"></sio-menu>
+      <sio-menu *ngIf="this.tab && this.sioCoreAppComponentState.fullmode && this.sioCoreAppComponentState.sidemenu === 'tab' " [id]="this.tab" [position]="'bottom' //(this.split$ | async)?'top':'bottom'"></sio-menu>
       <ng-content></ng-content>
     </ion-router-outlet>
   </ng-template>

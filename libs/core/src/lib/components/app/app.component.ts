@@ -39,9 +39,11 @@ export class SioCoreAppComponent implements OnInit, OnDestroy {
   @Input() tab: string | undefined = undefined;
 
   @Input()
-  set sidemenu(value: 'overlay' | 'reveal' | 'push' | 'toogle' | 'none') {
+  set sidemenu(
+    value: 'overlay' | 'reveal' | 'push' | 'toogle' | 'tab' | 'none',
+  ) {
     this.sioCoreLoggerService.debug(
-      `[sioCoreAppComponent][sidemenu] set sidemenu to ${value}`
+      `[sioCoreAppComponent][sidemenu] set sidemenu to ${value}`,
     );
     this.sioCoreAppComponentState.setSidemenu(value);
   }
@@ -52,14 +54,14 @@ export class SioCoreAppComponent implements OnInit, OnDestroy {
   loading$!: Observable<{ show: boolean; message: string }>;
 
   @Select(SioCoreAppComponentState.error)
-  
+
   // eslint-disable-next-line @typescript-eslint/ban-types
   error$!: Observable<{ name: string; message: string; action: Function }>;
   @ViewChild(IonRouterOutlet, { static: true })
   ionRouterOutlet!: IonRouterOutlet;
 
   public position: 'side' | 'bottom' | 'top' = 'bottom';
- 
+
   constructor(
     public sioCoreAppComponentState: SioCoreAppComponentState,
     private platform: Platform,
@@ -69,12 +71,17 @@ export class SioCoreAppComponent implements OnInit, OnDestroy {
     private sioCoreLoggerService: SioCoreLoggerService,
     private translateService: TranslateService,
   ) {
-    if(this.sioCoreEnvironmentService.config) {
-    this.sioCoreAppComponentState.LoadConfig(
-      this.sioCoreEnvironmentService.config.app
-    ); } else this.sioCoreLoggerService.warn('[sioCoreAppComponent][Constructor] No config in environment file');
-    this.translateService.setTranslation('it', it, true);
-    this.translateService.setTranslation('en', en, true);
+    if (this.sioCoreEnvironmentService.config) {
+      this.sioCoreAppComponentState.LoadConfig(
+        this.sioCoreEnvironmentService.config.app,
+      );
+    } else {
+      this.sioCoreLoggerService.warn(
+        '[sioCoreAppComponent][Constructor] No config in environment file',
+      );
+    }
+    //this.translateService.setTranslation('it', it, true);
+    //this.translateService.setTranslation('en', en, true);
   }
 
   //@Select(SioCoreAppComponentState.split)
@@ -84,12 +91,14 @@ export class SioCoreAppComponent implements OnInit, OnDestroy {
     (async () => {
       this.sioCoreLoggerService.info('await for platform avaible...');
       let platform = await this.platform.ready();
-      
+
       this.translateService.setTranslation('it', it, true);
       this.translateService.setTranslation('en', en, true);
-      
+
       //this.translateService.addLangs(this.sioCoreEnvironmentService.config.app.language.avaibles);
-      this.translateService.use(this.sioCoreEnvironmentService.config.app.language.default);
+      this.translateService.use(
+        this.sioCoreEnvironmentService.config.app.language.default,
+      );
       this.sioCoreLoggerService.info('Check platform...');
       switch (platform) {
         case 'dom':
@@ -98,7 +107,7 @@ export class SioCoreAppComponent implements OnInit, OnDestroy {
           const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
           this.sioCoreAppComponentState.setDark(prefersDark.matches);
           prefersDark.addEventListener('change', (mediaQuery) =>
-            this.sioCoreAppComponentState.setDark(mediaQuery.matches)
+            this.sioCoreAppComponentState.setDark(mediaQuery.matches),
           );
           break;
         case 'hybrid':
@@ -112,59 +121,62 @@ export class SioCoreAppComponent implements OnInit, OnDestroy {
               const { keyboardHeight } = ev;
               this.sioCoreLoggerService.debug(
                 '[sioCoreAppComponent][ngOnInit] raise keyboardDidShow event',
-                keyboardHeight
+                keyboardHeight,
               );
               // Do something with the keyboard height such as translating an input above the keyboard.
             });
 
             this.platform.keyboardDidHide.subscribe(() => {
               this.sioCoreLoggerService.debug(
-                '[sioCoreAppComponent][ngOnInit] raise keyboardDidHide event'
+                '[sioCoreAppComponent][ngOnInit] raise keyboardDidHide event',
               );
               // Move input back to original location
             });
           });
           break;
         default:
-          this.sioCoreAppComponentState.throwError('sio', 'UNKNOW_PLATFORM : ' + platform);
+          this.sioCoreAppComponentState.throwError(
+            'sio',
+            'UNKNOW_PLATFORM : ' + platform,
+          );
       }
       this.sioCoreLoggerService.debug(
-        `[sioCoreAppComponent][ngOnInit] - Platform ${platform} detected`
+        `[sioCoreAppComponent][ngOnInit] - Platform ${platform} detected`,
       );
       await this.sioCoreLoadingService.create();
       this.platform.pause.subscribe(async () => {
         this.sioCoreLoggerService.debug(
-          '[sioCoreAppComponent][ngOnInit] - Pause event detected'
+          '[sioCoreAppComponent][ngOnInit] - Pause event detected',
         );
       });
       this.platform.resize.subscribe(async () => {
         this.sioCoreLoggerService.debug(
-          '[sioCoreAppComponent][ngOnInit] - Resize event detected'
+          '[sioCoreAppComponent][ngOnInit] - Resize event detected',
         );
       });
       this.platform.resume.subscribe(async () => {
         this.sioCoreLoggerService.debug(
-          '[sioCoreAppComponent][ngOnInit] - Resume event detected'
+          '[sioCoreAppComponent][ngOnInit] - Resume event detected',
         );
       });
       this.sioCoreLoggerService.debug(
-        '[sioCoreAppComponent][ngOnInit] - Subscribe for Errors'
+        '[sioCoreAppComponent][ngOnInit] - Subscribe for Errors',
       );
       this.error$.subscribe(async (value) => {
         if (value && value.message) {
           const alert: unknown = await this.sioCoreAlertService.show(
             value.name,
             value.message,
-            value.action
+            value.action,
           );
           this.sioCoreLoggerService.debug(
             '[sioCoreAppComponent][ngOnInit] - Show Alert',
-            alert
+            alert,
           );
         }
       });
       this.sioCoreLoggerService.debug(
-        '[sioCoreAppComponent][ngOnInit] - Subscribe for Loader'
+        '[sioCoreAppComponent][ngOnInit] - Subscribe for Loader',
       );
       this.loading$.subscribe((value) => {
         if (value.show) this.sioCoreLoadingService.show(value.message);
@@ -172,7 +184,7 @@ export class SioCoreAppComponent implements OnInit, OnDestroy {
       });
       this.sioCoreLoggerService.debug(
         '[sioCoreAppComponent][ngOnInit] - Platform Ready',
-        this.platform
+        this.platform,
       );
     })();
   }
@@ -181,7 +193,7 @@ export class SioCoreAppComponent implements OnInit, OnDestroy {
   sioAppSplitPanelVisible(e: any) {
     this.sioCoreLoggerService.debug(
       '[sioAppCoreComponent][sioAppSPlitPanleVisible] - Split Panel State Changed',
-      e.detail.visible
+      e.detail.visible,
     );
     this.sioCoreAppComponentState.setSplit(e.detail.visible);
   }

@@ -1,14 +1,14 @@
 import { Injectable, Inject } from '@angular/core';
 import { Client, Databases } from 'appwrite';
 
-import { SioDatabasePluginServiceInterface } from '@sio/database';
+import { SioDatabasePluginServiceInterface } from '@silicia/database';
 
 import {
   Loggable,
   SioCoreLoggerService,
   SioCorePluginServiceConfigModel,
   sioCorePluginServiceConfigToken,
-} from '@sio/core';
+} from '@silicia/core';
 import { SioAppwriteClientService } from './client.service';
 
 @Loggable()

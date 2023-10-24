@@ -1,5 +1,5 @@
 import { Inject, Injectable, Optional } from '@angular/core';
-import { Loggable, SioCoreAppComponentState } from '@sio/core';
+import { Loggable, SioCoreAppComponentState } from '@silicia/core';
 import { SioDatabasePluginServiceInterface } from './interfaces';
 import { SioDatabasePluginServiceToken } from './tokens';
 import { TranslateService } from '@ngx-translate/core';

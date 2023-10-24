@@ -16,7 +16,7 @@ import { SioAuthSessionInterface, SioAuthUserInterface } from '../interfaces';
 import {
   SioCoreLoggerService,
   SioCoreAppComponentState,
-} from '@sio/core';
+} from '@silicia/core';
 
 import {
   SioAuthPluginService

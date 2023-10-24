@@ -1,6 +1,6 @@
 /* eslint-disable @angular-eslint/component-class-suffix */
 import { Component, OnInit } from '@angular/core';
-import { SioCoreAppComponentState, SioCoreLoggerService } from '@sio/core';
+import { SioCoreAppComponentState, SioCoreLoggerService } from '@silicia/core';
 
 @Component({
   selector: 'sio-auth-signup-page',

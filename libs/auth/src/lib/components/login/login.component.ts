@@ -1,11 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { SioAuthState } from '../../store';
-import { SioCoreLoggerService, SioCoreFormComponentInputInterface } from '@sio/core';
+import { SioCoreLoggerService, SioCoreFormComponentInputInterface } from '@silicia/core';
 import { SioAuthLoginComponentState } from './store/login.state';
 import { Navigate } from '@ngxs/router-plugin';
-import { Loggable } from '@sio/core';
+import { Loggable } from '@silicia/core';
 import { ActionType } from '@ngxs/store';
-import { SioColorType } from '@sio/core';
+import { SioColorType } from '@silicia/core';
 
 @Loggable()
 @Component({

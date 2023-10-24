@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SioCommonModule } from '@sio/core';
+import { SioCommonModule } from '@silicia/core';
 
 @Component({
   selector: 'sio-home',

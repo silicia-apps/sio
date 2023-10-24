@@ -8,7 +8,7 @@
 
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
-import { SioCoreEnvironmentInterface, SioCorePluginServiceConfigModel } from '@sio/core';
+import { SioCoreEnvironmentInterface, SioCorePluginServiceConfigModel } from '@silicia/core';
 //import { LOGGER_OPTIONS } from '@angular-ru/cdk/logger';
 
 export const environment: SioCoreEnvironmentInterface = {

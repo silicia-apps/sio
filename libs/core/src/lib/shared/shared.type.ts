@@ -17,4 +17,5 @@ export type SioSideMenuType =
   | 'reveal' 
   | 'push' 
   | 'toogle'
+  | 'tab'
   | undefined;

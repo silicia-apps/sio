@@ -15,10 +15,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@sio/appwrite": ["libs/appwrite/src/index.ts"],
-      "@sio/auth": ["libs/auth/src/index.ts"],
-      "@sio/core": ["libs/core/src/index.ts"],
-      "@sio/database": ["libs/database/src/index.ts"]
+      "@silicia/appwrite": ["libs/appwrite/src/index.ts"],
+      "@silicia/auth": ["libs/auth/src/index.ts"],
+      "@silicia/core": ["libs/core/src/index.ts"],
+      "@silicia/database": ["libs/database/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -1,5 +1,5 @@
 {
-  "name": "@sio/database",
+  "name": "@silicia/database",
   "version": "0.0.2",
   "peerDependencies": {
     "@angular/common": "^15.2.0",

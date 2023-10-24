@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { SioCommonModule } from '@sio/core';
+import { SioCommonModule } from '@silicia/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { SioAuth403Page } from './403.page';

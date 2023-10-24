@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {
   SioCoreAppComponentState,
   SioCoreLoggerService,
-  Loggable } from '@sio/core';
+  Loggable } from '@silicia/core';
 
 @Loggable()
 @Component({
