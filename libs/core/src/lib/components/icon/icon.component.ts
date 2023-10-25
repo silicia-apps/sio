@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { SioColorType } from '../../shared/shared.type';
+import { SioCoreLoggerService } from '../../services/logger';
 
 @Component({
   selector: 'sio-icon',
@@ -14,6 +15,9 @@ export class SioCoreIconComponent {
   @Input() public only = false;
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  constructor() {}
-
+  constructor(
+    private sioLoggerService: SioCoreLoggerService,
+  ) {
+    this.sioLoggerService.debug('[SioCoreIconComponent] Create Icon' + this.name, this.name);
+  }
 }
