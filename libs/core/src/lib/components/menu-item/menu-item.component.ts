@@ -30,7 +30,9 @@ export class SioCoreMenuItemComponent implements OnInit {
   @Output() sioCoreMenuItemClick = new EventEmitter();
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  constructor(private sioCoreLoggerService: SioCoreLoggerService) {}
+  constructor(private sioCoreLoggerService: SioCoreLoggerService) {
+    this.sioCoreLoggerService.debug('[SioCoreMenuItem][constructor] add menu item' + this.caption);
+  }
 
   ngOnInit(): void {
     if (this.type !== 'custom')
