@@ -30,3 +30,10 @@
     }
   }
 }
+
+:host[visible=false] {
+  ion-tab-bar {
+    /* Your styles for the selected ion-tab-bar here */
+    display: none;
+  }
+}
