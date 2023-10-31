@@ -12,8 +12,8 @@ import {
 import { NgxsDataRepository } from '@angular-ru/ngxs/repositories';
 import { SioCoreMenuState } from '../../menu/store/menu.state';
 import { SioCoreTabsState } from '../../tabs/store/tabs.state';
-import { SioCorePageComponentState } from '../../page'
-import { SioSideMenuType } from '../../../shared/shared.type';
+import { SioCorePageComponentState } from '../../page';
+import { SioSideMenuType } from '../../../interfaces';
 
 const APP_STATE_TOKEN = new StateToken<SioCoreAppComponentStateModel>('app');
 
@@ -21,30 +21,39 @@ const APP_STATE_TOKEN = new StateToken<SioCoreAppComponentStateModel>('app');
 @State<SioCoreAppComponentStateModel>({
   name: APP_STATE_TOKEN,
   defaults: {
-    'language': {
-      'avaibles': ['en'],
-      'default' : 'en',
-      'fallback' : 'en'
+    language: {
+      avaibles: ['en'],
+      default: 'en',
+      fallback: 'en',
     },
-    'title': 'APP_TITLE',
-    'dark': false,
-    'sidemenu': 'none',
-    'fullmode': false,
-    urls: {
+    layout: {
+      split: false,
+      dark: false,
+      left_panel: {
+        type: 'none',
+        menu: undefined,
+      },
+      right_panel: {
+        type: 'none',
+        menu: undefined,
+      },
+      tab: {
+        desktop: 'none',
+        mobile: 'bottom',
+        menu: undefined,
+      },
+    },
+    title: 'APP_TITLE',
+    routes: {
       login: '/auth/login',
       redirectTo: '/',
     },
-    menu: undefined,
-    tabs: undefined,
-    style: 3,
-    split: false,
     loading: { show: false, message: '' },
   } as SioCoreAppComponentStateModel,
   children: [SioCoreMenuState, SioCoreTabsState, SioCorePageComponentState],
 })
 @Injectable()
 export class SioCoreAppComponentState extends NgxsDataRepository<SioCoreAppComponentStateModel> {
-  
   @Selector()
   static loading(state: SioCoreAppComponentStateModel) {
     return state.loading;
@@ -52,7 +61,7 @@ export class SioCoreAppComponentState extends NgxsDataRepository<SioCoreAppCompo
 
   @Selector()
   static darkmode(state: SioCoreAppComponentStateModel) {
-    return state.dark;
+    return state.layout?.dark;
   }
 
   @Selector()
@@ -61,30 +70,45 @@ export class SioCoreAppComponentState extends NgxsDataRepository<SioCoreAppCompo
   }
 
   @Computed()
-  get split() {
-    return this.snapshot.split;
+  get split(): boolean {
+    return this.snapshot.layout?.split || false;
+  }
+
+  @DataAction()
+  setSplit(value: boolean) {
+    this.patchState({ layout: { split: value }});
   }
 
   @Computed()
   get currentLanguage() {
-    return this.snapshot.language.default;
+    return this.snapshot.language?.default;
   }
 
   @Computed()
-  get sidemenu(): SioSideMenuType {
-    return this.snapshot.sidemenu;
+  get leftPanelType(): SioSideMenuType {
+    return this.snapshot.layout?.left_panel?.type;
   }
 
   @Computed()
-  get fullmode(): boolean {
-    return this.snapshot.fullmode as boolean;
+  get rightPanelType(): SioSideMenuType {
+    return this.snapshot.layout?.right_panel?.type;
   }
-  
+
+  @Computed()
+  get full(): boolean {
+    return this.snapshot.layout?.full || false;
+  }
+
   @Computed()
   get darkmode(): boolean {
-    return this.snapshot.dark || false;
+    return this.snapshot.layout?.dark || false;
   }
-  
+
+  @Computed()
+  get tab(): any {
+    return this.snapshot.layout?.tab;
+  }
+
   @DataAction()
   LoadConfig(value: SioCoreAppCompomentInterface): void {
     this.ctx.patchState(value);
@@ -96,41 +120,37 @@ export class SioCoreAppComponentState extends NgxsDataRepository<SioCoreAppCompo
       title: value,
     });
   }
+  
+  @DataAction()
+  setLeftPanelType(value: SioSideMenuType) {
+    this.ctx.patchState({ layout : { left_panel : { type : value }}});
+  }
+
+  @DataAction()
+  setRightPanelType(value: SioSideMenuType) {
+    this.ctx.patchState({ layout : { right_panel : { type : value }}});
+  }
 
   @DataAction()
   public SetFullmode(value: boolean) {
     this.patchState({
-      fullmode: value,
+      layout: { full: value },
     });
   }
 
-  @DataAction()
-  public setSidemenu(value: SioSideMenuType) {
-    this.patchState({
-      sidemenu: value,
-    });
-  }
-
-  
-
-  /*@DataAction()
+    /*@DataAction()
   SetStyle(@Payload('style') value: number): void {
     this.patchState({
       style: value,
     });
   }*/
 
+  @DataAction()
+  public set dark(value: boolean) {
+    this.patchState({ layout: { dark: value } });
+  }
+
   
-
-  @DataAction()
-  public setDark(value: boolean) {
-    this.patchState({ dark: value });
-  }
-
-  @DataAction()
-  public setSplit(value: boolean) {
-    this.patchState({ split: value });
-  }
 
   @DataAction()
   public async ShowLoading(message = 'WAITING') {
@@ -153,7 +173,7 @@ export class SioCoreAppComponentState extends NgxsDataRepository<SioCoreAppCompo
     // eslint-disable-next-line @typescript-eslint/ban-types
     action: Function = (): null => {
       return null;
-    }
+    },
   ): Promise<void> {
     this.patchState({
       errors: {

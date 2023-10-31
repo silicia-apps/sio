@@ -3,7 +3,7 @@ import { IonToggle } from '@ionic/angular';
 import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Loggable, SioCoreLoggerService } from '../../services';
-import { SioColorType } from '../../shared/shared.type';
+import { SioColorType } from '../../interfaces';
 import { SioCoreAppComponentState } from '../../store';
 
 @Loggable()

@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { SioCoreMenuState, SioCoreMenuInterface } from '../menu/store';
+import { SioCoreMenuInterface } from '../../interfaces';
+import { SioCoreMenuState } from '../menu/store';
+import { SioCoreAppComponentState } from '../app/store';
 import { Loggable, SioCoreLoggerService } from '../../services/logger';
 import { Nullable } from '@angular-ru/cdk/typings';
 
@@ -35,7 +37,8 @@ export class SioCoreTabsComponent implements OnInit {
 
   constructor(
     private sioCoreLoggerService: SioCoreLoggerService,
-    private sioCoreMenuState$: SioCoreMenuState
+    private sioCoreMenuState$: SioCoreMenuState,
+    public sioCoreAppComponentState: SioCoreAppComponentState,
   ) {
     this.id = 'main';
     this.color = undefined;

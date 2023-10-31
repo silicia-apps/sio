@@ -1,4 +1,6 @@
 import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+
+import {} from ''
 import { SioCoreAppComponentState } from './store/app.state';
 
 import { it } from '../../../i18n/it';
@@ -35,6 +37,7 @@ export class SioCoreAppComponent implements OnInit, OnDestroy {
     this.sioCoreAppComponentState.SetTitle(value);
   }
 
+  @input() layout: 
   @Input() menu: string | undefined = undefined;
   @Input() tab: string | undefined = undefined;
 
@@ -95,7 +98,7 @@ export class SioCoreAppComponent implements OnInit, OnDestroy {
       this.translateService.setTranslation('it', it, true);
       this.translateService.setTranslation('en', en, true);
 
-      //this.translateService.addLangs(this.sioCoreEnvironmentService.config.app.language.avaibles);
+      this.translateService.addLangs(this.sioCoreEnvironmentService.config.app.language.avaibles);
       this.translateService.use(
         this.sioCoreEnvironmentService.config.app.language.default,
       );
@@ -189,7 +192,7 @@ export class SioCoreAppComponent implements OnInit, OnDestroy {
     })();
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  
   sioAppSplitPanelVisible(e: any) {
     this.sioCoreLoggerService.debug(
       '[sioAppCoreComponent][sioAppSPlitPanleVisible] - Split Panel State Changed',
