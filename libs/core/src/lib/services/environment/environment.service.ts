@@ -8,18 +8,32 @@ export class SioCoreEnvironmentConfig implements SioCoreEnvironmentInterface {
   production = false;
   logLevel = LogLevel.Info;
   backend = {};
-  
+
   app: SioCoreAppCompomentInterface = {
-    title: 'TEST',
-    language : {
+    title: 'APP_TITLE',
+    language: {
       default: 'en',
       fallback: 'en',
       avaibles: ['it', 'en'],
     },
-    sidemenu: 'overlay',
-    //dark: false,
-    menu: {},
-    urls: { login: '/auth/login', redirectTo: '/' },
+    layout: {
+      left_panel: {
+        menu: undefined,
+        type: 'none',
+      },
+      right_panel: {
+        menu: undefined,
+        type: 'none',
+      },
+      tab: {
+        desktop: 'none',
+        mobile: 'none',
+        menu: undefined,
+      },
+      dark: false,
+      split: false,
+    },
+    routes: { login: '/auth/login', redirectTo: '/' },
   };
 }
 
@@ -30,7 +44,8 @@ export class SioCoreEnvironmentService {
   private _config!: SioCoreEnvironmentInterface;
   constructor(
     //private sioLoggerService: SioCoreLoggerService,
-    @Optional() config?: SioCoreEnvironmentConfig) {
+    @Optional() config?: SioCoreEnvironmentConfig,
+  ) {
     if (config) {
       this._config = config;
     }

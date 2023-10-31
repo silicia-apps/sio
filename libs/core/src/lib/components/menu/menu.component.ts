@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { SioColorType } from '../../shared/shared.type';
-import { SioCoreMenuInterface } from './store/menu.interface';
+import { SioColorType } from '../../types';
+import { SioCoreMenuInterface } from '../../interfaces';
 import { SioCoreMenuState } from './store/menu.state';
 import { SioCoreLoggerService } from '../../services/logger';
 import { SioCoreAppComponentState } from '../app/store';

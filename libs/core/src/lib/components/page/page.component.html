@@ -6,7 +6,7 @@
         <ion-back-button *ngIf="this.back"></ion-back-button>
       </ng-container>
     </ion-buttons>
-    <ion-title>{{ this.title| translate }}</ion-title>
+    <ion-title>{{ this.title | translate }}</ion-title>
     <ion-buttons slot="end">
       <ng-content select="[slot='end']"> </ng-content>
     </ion-buttons>
@@ -30,8 +30,8 @@
       <h1>{{ 'PAGE_COMPONENT_DEFAULT_1' | translate }}</h1>
       <strong>{{ 'PAGE_COMPONENT_DEFAULT_2' | translate }}</strong>
       <p>
-        {{ 'PAGE_COMPONENT_LINK'}} <a target="_blank" rel="noopener noreferrer"
-          href="https://github.com/silicia-apps/sio/wiki">SIO Framework</a>
+        {{ 'PAGE_COMPONENT_LINK' | translate }} <a target="_blank" rel="noopener noreferrer"
+          href="https://silicia-apps.gitbook.io/sio-framework/">SIO Framework</a>
       </p>
     </div>
   </ng-container>

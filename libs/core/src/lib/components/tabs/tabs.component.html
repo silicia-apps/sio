@@ -1,5 +1,5 @@
 <ion-tabs (ionTabsDidChange)="this.ionTabsDidChange(1)" (ionTabsWillChange)="this.ionTabsWillChange(1)">
-  <ion-tab-bar *ngIf="this.position === 'bottom'" slot="bottom" [color]="this.color" class="ion-no-border">
+  <ion-tab-bar *ngIf="this.position === 'bottom' && !this.sioCoreAppComponentState.split" slot="bottom" [color]="this.color" class="ion-no-border">
     <ion-tab-button *ngFor="let item of sioCoreMenuState?.items | keyvalue" [tab]="item.value.url" [disabled]="false" 
       [download]="undefined">
       <ion-icon *ngIf="item.value.caption !== '--' && item.value.id < 6" [ios]="item.value.icon + '-outline'"

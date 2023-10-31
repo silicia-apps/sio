@@ -4,7 +4,7 @@ import { NgxsDataEntityCollectionsRepository } from '@angular-ru/ngxs/repositori
 import { Injectable } from '@angular/core';
 import { Navigate } from '@ngxs/router-plugin';
 import { ActionType, State } from '@ngxs/store';
-import { SioCoreMenuInterface } from './menu.interface';
+import { SioCoreMenuInterface } from '../../interfaces';
 
 @StateRepository()
 @State({

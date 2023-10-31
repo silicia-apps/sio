@@ -6,7 +6,7 @@ import { SioCoreAppComponentState } from '../app/store';
 import { AttributeBoolean } from '@angular-ru/cdk/decorators';
 import { InputBoolean } from '@angular-ru/cdk/typings';
 
-import { SioColorType } from '../../shared/shared.type';
+import { SioColorType } from '../../types';
 import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 
@@ -18,7 +18,6 @@ import { Observable } from 'rxjs';
 export class SioCorePageComponent implements OnInit {
   
   @Input() title: string;
-  //@Input() set title(value: string) { this.sioCorePageComponentState.setTitle(value) };
   
   @Input() color: SioColorType;
 
@@ -50,7 +49,7 @@ export class SioCorePageComponent implements OnInit {
     public sioCorePageComponentState: SioCorePageComponentState,
   ) {
     this.toolbar = true;
-    this.title = 'T_PAGE';
+    this.title = 'PAGE_TITLE';
     this.menu = false;
     this.back = false;
     this.search = false;

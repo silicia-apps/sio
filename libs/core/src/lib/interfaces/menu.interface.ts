@@ -1,4 +1,4 @@
-import { SioCoreMenuItemInterface } from '../../menu-item';
+import { SioCoreMenuItemInterface } from './menu-item.interface';
 
 export interface SioCoreMenuInterface {
   id: string;

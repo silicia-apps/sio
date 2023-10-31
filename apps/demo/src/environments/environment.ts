@@ -8,7 +8,10 @@
 
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
-import { SioCoreEnvironmentInterface, SioCorePluginServiceConfigModel } from '@silicia/core';
+import {
+  SioCoreEnvironmentInterface,
+  SioCorePluginServiceConfigModel,
+} from '@silicia/core';
 //import { LOGGER_OPTIONS } from '@angular-ru/cdk/logger';
 
 export const environment: SioCoreEnvironmentInterface = {
@@ -20,34 +23,29 @@ export const environment: SioCoreEnvironmentInterface = {
   ],
   backend: {},
   app: {
-    'language': {
-      'avaibles': ['it', 'en'],
-      'default': 'it',
-      'fallback': 'en',
+    title: 'Demo App',
+    language: {
+      avaibles: ['it', 'en'],
+      default: 'it',
+      fallback: 'en',
     },
-    'sidemenu': 'toogle',
-    'title': 'Demo App',
-    'urls': {
-      login: '',
-      redirectTo: '',
-    },
-    'menu': {
-      'main': {
-        'id': 'main',
-        'items': {
-          1: { 'id': 1, 'icon': 'home', 'url': 'home', badge: 3 },
-          2: { 'id': 2, 'icon': 'information-circle', 'url': 'about' },
-          3: { 'id': 3, 'icon': 'settings', 'url': 'settings' }
+    menu: {
+      main: {
+        id: 'main',
+        items: {
+          1: { id: 1, icon: 'home', url: 'home', badge: 3 },
+          2: { id: 2, icon: 'information-circle', url: 'about' },
+          3: { id: 3, icon: 'settings', url: 'settings' },
         },
       },
-      'logged': {
-        'id': 'logged',
-        'items': {
+      logged: {
+        id: 'logged',
+        items: {
           1: {
-            'id': 1,
-            'icon': 'person',
-            'caption': 'T_MENU_LOGGED_PROFILE',
-            'url': '/auth/profile',
+            id: 1,
+            icon: 'person',
+            caption: 'T_MENU_LOGGED_PROFILE',
+            url: '/auth/profile',
           },
         },
       },

@@ -9,5 +9,6 @@ export interface SioCoreTabInterface {
 
 export interface SioCoreTabsStateModel {
   id: string;
+  visible: boolean;
   tabs: { [id: number]: SioCoreTabInterface };
 }
