@@ -1,4 +1,4 @@
-import { SioCoreItemInterface } from '../../item';
+import { SioCoreItemInterface } from '../../../interfaces';
 
 export interface SioCoreListInterface {
   id: string;

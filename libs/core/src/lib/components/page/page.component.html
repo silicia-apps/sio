@@ -10,7 +10,7 @@
     <ion-buttons slot="end">
       <ng-content select="[slot='end']"> </ng-content>
     </ion-buttons>
-    <ion-buttons *ngIf="!this.sioCoreAppComponentState.snapshot.split" slot="end">
+    <ion-buttons *ngIf="!this.sioCoreAppComponentState.snapshot.layout!.split" slot="end">
       <ng-content select="[slot='mobile']"></ng-content>
       <ion-menu-button *ngIf="true" menu="end"></ion-menu-button>  
     </ion-buttons>

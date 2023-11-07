@@ -6,7 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { SioCoreFormComponentState } from './store/form.state';
-import { SioColorType } from '../../shared/shared.type';
+import { SioColorType } from '../../types';
 
 @Loggable()
 @Component({

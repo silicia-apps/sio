@@ -3,7 +3,7 @@ import { IonToggle } from '@ionic/angular';
 import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Loggable, SioCoreLoggerService } from '../../services';
-import { SioColorType } from '../../interfaces';
+import { SioColorType } from '../../types';
 import { SioCoreAppComponentState } from '../../store';
 
 @Loggable()
@@ -42,11 +42,11 @@ export class SioCoreDarkModeToggleComponent implements OnInit {
     this.sioCoreLoggerService.debug('[SioCoreDarkModeToggleComponent][onChange] - Switch style');
     if (event.detail.checked) {
       this.sioCoreLoggerService.debug('[SioCoreDarkModeToggleComponent][onChange] - New Style is Dark Mode');
-      this.sioCoreAppComponentState.setDark(true);
+      this.sioCoreAppComponentState.dark = true;
       this.icon = 'moon';
     } else {
       this.sioCoreLoggerService.debug('[SioCoreDarkModeToggleComponent][onChange] - New Style is Light Mode');
-      this.sioCoreAppComponentState.setDark(false);
+      this.sioCoreAppComponentState.dark = false;
       this.icon = 'sunny';
     }
   }

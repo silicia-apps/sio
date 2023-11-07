@@ -26,16 +26,16 @@ const PAGE_STATE_TOKEN = new StateToken<SioCorePageComponentInterface>('page');
 @Injectable()
 export class SioCorePageComponentState extends NgxsDataRepository<SioCorePageComponentInterface> {
 
-  @DataAction()
-  public setTitle(value: string) {
-    this.patchState({ 'title': value });
-  }
-
   @Computed()
   public get title(): string | undefined {
     return this.snapshot.title;
   }
 
+  @DataAction()
+  public setTitle(value: string) {
+    this.patchState({ 'title': value });
+  }
+  
   @DataAction()
   public setMenu(value: boolean) {
     this.patchState({ 'menu': value });

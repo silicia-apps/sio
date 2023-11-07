@@ -5,7 +5,7 @@ import { SioCoreAppComponentState } from '../app/store';
 import { AttributeBoolean } from '@angular-ru/cdk/decorators';
 import { InputBoolean } from '@angular-ru/cdk/typings';
 
-import { SioColorType } from '../../shared/shared.type';
+import { SioColorType } from '../../types';
 
 @Component({
   selector: 'sio-header',

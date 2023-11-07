@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Selector, StateToken } from '@ngxs/store';
 import { SioCoreAppComponentStateModel } from './app.model';
-import { SioCoreAppCompomentInterface } from '../app.interface';
+import {
+  SioCoreAppCompomentInterface,
+  SioCoreLayoutInterface,
+} from '../../../interfaces';
 
 import { State } from '@ngxs/store';
 import {
@@ -13,7 +16,7 @@ import { NgxsDataRepository } from '@angular-ru/ngxs/repositories';
 import { SioCoreMenuState } from '../../menu/store/menu.state';
 import { SioCoreTabsState } from '../../tabs/store/tabs.state';
 import { SioCorePageComponentState } from '../../page';
-import { SioSideMenuType } from '../../../interfaces';
+import { SioSideMenuType } from '../../../types';
 
 const APP_STATE_TOKEN = new StateToken<SioCoreAppComponentStateModel>('app');
 
@@ -70,13 +73,18 @@ export class SioCoreAppComponentState extends NgxsDataRepository<SioCoreAppCompo
   }
 
   @Computed()
+  get layout(): SioCoreLayoutInterface {
+    return this.snapshot.layout || {};
+  }
+
+  @Computed()
   get split(): boolean {
     return this.snapshot.layout?.split || false;
   }
 
   @DataAction()
   setSplit(value: boolean) {
-    this.patchState({ layout: { split: value }});
+    this.patchState({ layout: { split: value } });
   }
 
   @Computed()
@@ -105,7 +113,7 @@ export class SioCoreAppComponentState extends NgxsDataRepository<SioCoreAppCompo
   }
 
   @Computed()
-  get tab(): any {
+  get tab(): unknown {
     return this.snapshot.layout?.tab;
   }
 
@@ -120,15 +128,15 @@ export class SioCoreAppComponentState extends NgxsDataRepository<SioCoreAppCompo
       title: value,
     });
   }
-  
+
   @DataAction()
   setLeftPanelType(value: SioSideMenuType) {
-    this.ctx.patchState({ layout : { left_panel : { type : value }}});
+    this.ctx.patchState({ layout: { left_panel: { type: value } } });
   }
 
   @DataAction()
   setRightPanelType(value: SioSideMenuType) {
-    this.ctx.patchState({ layout : { right_panel : { type : value }}});
+    this.ctx.patchState({ layout: { right_panel: { type: value } } });
   }
 
   @DataAction()
@@ -138,7 +146,7 @@ export class SioCoreAppComponentState extends NgxsDataRepository<SioCoreAppCompo
     });
   }
 
-    /*@DataAction()
+  /*@DataAction()
   SetStyle(@Payload('style') value: number): void {
     this.patchState({
       style: value,
@@ -149,8 +157,6 @@ export class SioCoreAppComponentState extends NgxsDataRepository<SioCoreAppCompo
   public set dark(value: boolean) {
     this.patchState({ layout: { dark: value } });
   }
-
-  
 
   @DataAction()
   public async ShowLoading(message = 'WAITING') {

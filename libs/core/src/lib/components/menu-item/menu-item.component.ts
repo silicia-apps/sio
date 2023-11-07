@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { SioCoreLoggerService } from '../../services/logger';
-import { SioColorType } from '../../shared/shared.type';
+import { SioColorType } from '../../types';
 
 @Component({
   selector: 'sio-menu-item',

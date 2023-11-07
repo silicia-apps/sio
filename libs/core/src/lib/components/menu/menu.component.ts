@@ -14,7 +14,7 @@ export class SioCoreMenuComponent implements OnInit {
   @Input() public id = 'main';
   @Input() public lines: 'full' | 'inset' | 'none' = 'none';
   //@Input() public shape: 'line' | 'dot' | 'rounded' = 'line';
-  @Input() public position: 'side' | 'bottom' | 'top' = 'side';
+  @Input() public position: 'side' | 'bottom' | 'top' | 'none' = 'side';
   @Input() public color: SioColorType;
   @Input() public toggleIconSlot: 'start' | 'end' = 'end';
   @Input() public toggleIcon = 'chevron-up-outline';

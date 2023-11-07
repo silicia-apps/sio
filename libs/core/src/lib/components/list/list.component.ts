@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { SioColorType } from '../../shared/shared.type';
+import { SioColorType } from '../../types';
 import { SioCoreListInterface } from './store/list.interface';
 import { SioCoreListState } from './store/list.state';
 import { SioCoreLoggerService } from '../../services/logger';

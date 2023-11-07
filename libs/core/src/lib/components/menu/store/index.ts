@@ -1,2 +1,2 @@
-export * from './menu.interface';
+export * from '../../../interfaces/menu.interface';
 export * from './menu.state';

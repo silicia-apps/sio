@@ -1,12 +1,9 @@
 import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
-
-import {} from ''
 import { SioCoreAppComponentState } from './store/app.state';
 
 import { it } from '../../../i18n/it';
 import { en } from '../../../i18n/en';
 
-//import { E_SIDEMENU } from '../menu/menu.enum';
 import { Select } from '@ngxs/store';
 import { Observable, Subject } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
@@ -19,10 +16,9 @@ import {
   SioCoreAlertService,
   SioCoreLoggerService,
 } from '../../services';
-import { SioColorType } from '../../shared/shared.type';
 
-// import { E_APPSTYLE } from './app.enum';
-//import { sioCoreMenuInterface } from '../menu/menu.interface';
+import { SioColorType } from '../../types';
+import { SioCoreLayoutInterface } from '../menu-item';
 
 @Component({
   selector: 'sio-app',
@@ -37,20 +33,7 @@ export class SioCoreAppComponent implements OnInit, OnDestroy {
     this.sioCoreAppComponentState.SetTitle(value);
   }
 
-  @input() layout: 
-  @Input() menu: string | undefined = undefined;
-  @Input() tab: string | undefined = undefined;
-
-  @Input()
-  set sidemenu(
-    value: 'overlay' | 'reveal' | 'push' | 'toogle' | 'tab' | 'none',
-  ) {
-    this.sioCoreLoggerService.debug(
-      `[sioCoreAppComponent][sidemenu] set sidemenu to ${value}`,
-    );
-    this.sioCoreAppComponentState.setSidemenu(value);
-  }
-
+  @Input() layout: SioCoreLayoutInterface | undefined = undefined;
   @Input() color: SioColorType;
 
   @Select(SioCoreAppComponentState.loading)
@@ -62,8 +45,6 @@ export class SioCoreAppComponent implements OnInit, OnDestroy {
   error$!: Observable<{ name: string; message: string; action: Function }>;
   @ViewChild(IonRouterOutlet, { static: true })
   ionRouterOutlet!: IonRouterOutlet;
-
-  public position: 'side' | 'bottom' | 'top' = 'bottom';
 
   constructor(
     public sioCoreAppComponentState: SioCoreAppComponentState,
@@ -98,9 +79,9 @@ export class SioCoreAppComponent implements OnInit, OnDestroy {
       this.translateService.setTranslation('it', it, true);
       this.translateService.setTranslation('en', en, true);
 
-      this.translateService.addLangs(this.sioCoreEnvironmentService.config.app.language.avaibles);
+      this.translateService.addLangs(this.sioCoreEnvironmentService.config.app.language?.avaibles || []);
       this.translateService.use(
-        this.sioCoreEnvironmentService.config.app.language.default,
+        this.sioCoreEnvironmentService.config.app.language?.default || 'en',
       );
       this.sioCoreLoggerService.info('Check platform...');
       switch (platform) {
@@ -108,9 +89,9 @@ export class SioCoreAppComponent implements OnInit, OnDestroy {
           platform = 'browser';
           // eslint-disable-next-line no-case-declarations
           const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-          this.sioCoreAppComponentState.setDark(prefersDark.matches);
+          this.sioCoreAppComponentState.dark = prefersDark.matches;
           prefersDark.addEventListener('change', (mediaQuery) =>
-            this.sioCoreAppComponentState.setDark(mediaQuery.matches),
+            this.sioCoreAppComponentState.dark = mediaQuery.matches,
           );
           break;
         case 'hybrid':
@@ -192,7 +173,8 @@ export class SioCoreAppComponent implements OnInit, OnDestroy {
     })();
   }
 
-  
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   sioAppSplitPanelVisible(e: any) {
     this.sioCoreLoggerService.debug(
       '[sioAppCoreComponent][sioAppSPlitPanleVisible] - Split Panel State Changed',

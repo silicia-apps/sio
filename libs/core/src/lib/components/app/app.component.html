@@ -2,7 +2,7 @@
   <div *ngIf="(this.sioCoreAppComponentState.leftPanelType === 'none' &&  this.sioCoreAppComponentState.rightPanelType === 'none') || this.sioCoreAppComponentState.full; then blank; else split"></div>
   <ng-template #split> 
     <ion-split-pane side="start" when="lg" contentId="main-content" (ionSplitPaneVisible)="sioAppSplitPanelVisible($event)">
-      <ion-menu contentId="main-content" [type]="!(this.sioCoreAppComponentState.leftPanelType === 'none' ||  this.sioCoreAppComponentState.sidemenu === 'toogle')?this.sioCoreAppComponentState.sidemenu:'reveal'" [swipeGesture]="(this.sioCoreAppComponentState.sidemenu !== 'toogle')">
+      <ion-menu contentId="main-content" [type]="!(this.sioCoreAppComponentState.leftPanelType === 'none' ||  this.sioCoreAppComponentState. === 'toogle')?this.sioCoreAppComponentState.sidemenu:'reveal'" [swipeGesture]="(this.sioCoreAppComponentState.sidemenu !== 'toogle')">
         <ion-header class="ion-no-border">
           <ion-toolbar [color]="this.color">
             <div #side_header>
@@ -16,7 +16,7 @@
           </ion-toolbar> 
         </ion-header>
         <ion-content>
-          <sio-menu *ngIf="this.tab && this.sioCoreAppComponentState.split && this.sioCoreAppComponentState.sidemenu === 'tab'" id="tab"></sio-menu>
+          <sio-menu *ngIf="this.tab && this.sioCoreAppComponentState.split" id="tab"></sio-menu>
           <div #side_content>
             <ng-content select="[slot='side_content']"></ng-content>
           </div>
@@ -83,7 +83,7 @@
   </ng-template>
   <ng-template #blank>
     <ion-router-outlet id="main-content">
-      <sio-menu *ngIf="this.tab && this.sioCoreAppComponentState.fullmode && this.sioCoreAppComponentState.sidemenu === 'tab' " id="tab" [position]="'bottom' //(this.split$ | async)?'top':'bottom'"></sio-menu>
+      <sio-menu *ngIf="this.sioCoreAppComponentState.layout?.tab?.menu && this.sioCoreAppComponentState.full" id="tab" [position]="this.sioCoreAppComponentState.layout?.tab?.mobile || 'side'"></sio-menu>
       <ng-content></ng-content>
     </ion-router-outlet>
   </ng-template>
