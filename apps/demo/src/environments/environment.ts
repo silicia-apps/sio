@@ -29,17 +29,20 @@ export const environment: SioCoreEnvironmentInterface = {
       default: 'it',
       fallback: 'en',
     },
-    layout: {
-      left_panel: {
-        menu: 'main'
-      }
-    },
     menu: {
       main: {
         id: 'main',
         items: {
           1: { id: 1, icon: 'home', url: 'home', badge: 3 },
-          2: { id: 2, icon: 'information-circle', url: 'about' },
+          2: { id: 2, icon: 'information-circle', url: 'info' },
+          3: { id: 3, icon: 'settings', url: 'settings' },
+        },
+      },
+      secondary: {
+        id: 'secondary',
+        items: {
+          1: { id: 1, icon: 'stats', url: 'stats', badge: 3 },
+          2: { id: 2, icon: 'information-circle', url: 'info' },
           3: { id: 3, icon: 'settings', url: 'settings' },
         },
       },

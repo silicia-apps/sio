@@ -11,7 +11,7 @@ import { SioCoreAppComponentState } from '../app/store';
   styleUrls: ['./menu.component.scss'],
 })
 export class SioCoreMenuComponent implements OnInit {
-  @Input() public id = 'main';
+  @Input() public menuID = 'main';
   @Input() public lines: 'full' | 'inset' | 'none' = 'none';
   //@Input() public shape: 'line' | 'dot' | 'rounded' = 'line';
   @Input() public position: 'side' | 'bottom' | 'top' | 'none' = 'side';
@@ -34,8 +34,8 @@ export class SioCoreMenuComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.sioCoreLoggerService.debug('[sioCoreMenuComponent][ngOnInit]');
-    this.sioCoreMenuState = this._sioCoreMenuState.snapshot[this.id];
+    this.sioCoreLoggerService.debug('[sioCoreMenuComponent][ngOnInit]', this.menuID);
+    this.sioCoreMenuState = this._sioCoreMenuState.snapshot[this.menuID];
     this.sioCoreLoggerService.debug('[sioCoreMenuComponent][ngOnInit]', this.sioCoreMenuState);
   }
 

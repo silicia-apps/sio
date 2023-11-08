@@ -7,13 +7,13 @@ import { Nullable } from '@angular-ru/cdk/typings';
 
 @Loggable()
 @Component({
-  selector: 'sio-tabs',
-  templateUrl: './tabs.component.html',
-  styleUrls: ['./tabs.component.scss'],
+  selector: 'sio-tab',
+  templateUrl: './tab.component.html',
+  styleUrls: ['./tab.component.scss'],
 })
-export class SioCoreTabsComponent implements OnInit {
-  @Input() public id: string;
-  @Input() public position: 'top' | 'bottom' | 'side' = 'bottom';
+export class SioCoreTabComponent implements OnInit {
+  @Input() public tabID: string;
+  @Input() public position: any; //'top' | 'bottom' = 'bottom';
   @Input() public style: 'default' | 'reiner' = 'default';
   @Input() public color:
     | 'danger'
@@ -40,7 +40,8 @@ export class SioCoreTabsComponent implements OnInit {
     private sioCoreMenuState$: SioCoreMenuState,
     public sioCoreAppComponentState: SioCoreAppComponentState,
   ) {
-    this.id = 'main';
+    this.sioCoreLoggerService.debug(`[sioCoreTabComponent][constructor]`);
+    this.tabID = 'main';
     this.color = undefined;
   }
 
@@ -55,7 +56,8 @@ export class SioCoreTabsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.sioCoreMenuState = this.sioCoreMenuState$.snapshot[this.id];
+    this.sioCoreMenuState = this.sioCoreMenuState$.snapshot[this.tabID];
+    console.log(this.sioCoreMenuState);
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

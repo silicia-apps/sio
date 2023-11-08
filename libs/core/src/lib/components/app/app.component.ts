@@ -18,7 +18,6 @@ import {
 } from '../../services';
 
 import { SioColorType, SioSideMenuType } from '../../types';
-import { SioCoreLayoutInterface } from '../menu-item';
 
 @Component({
   selector: 'sio-app',
@@ -34,8 +33,37 @@ export class SioCoreAppComponent implements OnInit, OnDestroy {
   }
 
   @Input()
-  set leftPanelType (value: SioSideMenuType) {
+  set leftPanelType(value: SioSideMenuType) {
     this.sioCoreAppComponentState.setLeftPanelType(value);
+  }
+
+  @Input()
+  set rightPanelType(value: SioSideMenuType) {
+    this.sioCoreAppComponentState.setRightPanelType(value);
+  }
+
+  @Input()
+  set leftPanelMenuID(value: string) {
+    this.sioCoreAppComponentState.setLeftMenuID(value);
+  }
+
+  @Input()
+  set rightPanelMenuID(value: string) {
+    this.sioCoreAppComponentState.setRightMenuID(value);
+  }
+  @Input()
+  set tabMenuID(value: string) {
+    this.sioCoreAppComponentState.setTabMenuID(value);
+  }
+
+  @Input()
+  set tabDesktopPosition(value: string) {
+    this.sioCoreAppComponentState.setTabDesktop(value);
+  }
+
+  @Input()
+  set tabMobilePosition(value: string) {
+    this.sioCoreAppComponentState.setTabMobile(value);
   }
 
   @Input() color: SioColorType;
@@ -59,9 +87,14 @@ export class SioCoreAppComponent implements OnInit, OnDestroy {
     private sioCoreLoggerService: SioCoreLoggerService,
     private translateService: TranslateService,
   ) {
-    this.sioCoreLoggerService.info(`[sioCoreAppComponentState][constructor] Check config...`);
+    this.sioCoreLoggerService.info(
+      `[sioCoreAppComponentState][constructor] Check config...`,
+    );
     if (this.sioCoreEnvironmentService.config) {
-      this.sioCoreLoggerService.info(`[sioCoreAppComponentState][constructor] Config found loading...`, this.sioCoreEnvironmentService.config);
+      this.sioCoreLoggerService.info(
+        `[sioCoreAppComponentState][constructor] Config found loading...`,
+        this.sioCoreEnvironmentService.config,
+      );
       this.sioCoreAppComponentState.LoadConfig(
         this.sioCoreEnvironmentService.config.app,
       );
@@ -85,7 +118,9 @@ export class SioCoreAppComponent implements OnInit, OnDestroy {
       this.translateService.setTranslation('it', it, true);
       this.translateService.setTranslation('en', en, true);
 
-      this.translateService.addLangs(this.sioCoreEnvironmentService.config.app.language?.avaibles || []);
+      this.translateService.addLangs(
+        this.sioCoreEnvironmentService.config.app.language?.avaibles || [],
+      );
       this.translateService.use(
         this.sioCoreEnvironmentService.config.app.language?.default || 'en',
       );
@@ -178,7 +213,6 @@ export class SioCoreAppComponent implements OnInit, OnDestroy {
       );
     })();
   }
-
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   sioAppSplitPanelVisible(e: any) {

@@ -11,7 +11,7 @@ import {
 } from '@angular-ru/ngxs/decorators';
 import { NgxsDataRepository } from '@angular-ru/ngxs/repositories';
 import { SioCoreMenuState } from '../../menu/store/menu.state';
-import { SioCoreTabsState } from '../../tabs/store/tabs.state';
+import { SioCoreTabsState } from '../../tab/store/tabs.state';
 import { SioCorePageComponentState } from '../../page';
 import { SioSideMenuType } from '../../../types';
 
@@ -39,7 +39,7 @@ const APP_STATE_TOKEN = new StateToken<SioCoreAppComponentStateModel>('app');
       },
       tab: {
         desktop: 'none',
-        mobile: 'bottom',
+        mobile: 'none',
         menu: undefined,
       },
     },
@@ -76,7 +76,9 @@ export class SioCoreAppComponentState extends NgxsDataRepository<SioCoreAppCompo
 
   @DataAction()
   setSplit(value: boolean) {
-    this.patchState({ layout: { split: value } });
+    this.ctx.setState((state) => {
+      return { ...state, layout: { ...state.layout, split: value } };
+    });
   }
 
   @Computed()
@@ -120,8 +122,13 @@ export class SioCoreAppComponentState extends NgxsDataRepository<SioCoreAppCompo
   }
 
   @Computed()
-  get tab(): unknown {
-    return this.snapshot.layout?.tab;
+  get tabDesktopPosition(): unknown {
+    return this.snapshot.layout?.tab?.desktop;
+  }
+
+  @Computed()
+  get tabMobilePosition(): unknown {
+    return this.snapshot.layout?.tab?.mobile;
   }
 
   @DataAction()
@@ -138,18 +145,95 @@ export class SioCoreAppComponentState extends NgxsDataRepository<SioCoreAppCompo
 
   @DataAction()
   setLeftPanelType(value: SioSideMenuType) {
-    const layout = this.ctx.getState().layout;
-    if (layout) layout.dark = true;
-    console.error(JSON.stringify(layout));
-    if (layout?.left_panel) { layout.left_panel.type = value }
-   // else if (layout) layout.left_panel = { type : value }
-    console.error('new '+ JSON.stringify(layout));
-    this.ctx.patchState({ layout: layout });
+    this.ctx.setState((state) => {
+      return {
+        ...state,
+        layout: {
+          ...state.layout,
+          left_panel: { ...state.layout?.left_panel, type: value },
+        },
+      };
+    });
   }
 
   @DataAction()
   setRightPanelType(value: SioSideMenuType) {
-    this.ctx.patchState({ layout: { right_panel: { type: value } } });
+    this.ctx.setState((state) => {
+      return {
+        ...state,
+        layout: {
+          ...state.layout,
+          right_panel: { ...state.layout?.right_panel, type: value },
+        },
+      };
+    });
+  }
+
+  @DataAction()
+  setTabDesktop(value: any) {
+    this.ctx.setState((state) => {
+      return {
+        ...state,
+        layout: {
+          ...state.layout,
+          tab: { ...state.layout?.tab, desktop: value },
+        },
+      };
+    });
+  }
+
+  @DataAction()
+  setTabMobile(value: any) {
+    this.ctx.setState((state) => {
+      return {
+        ...state,
+        layout: {
+          ...state.layout,
+          tab: { ...state.layout?.tab, mobile: value },
+        },
+      };
+    });
+  }
+
+  @DataAction()
+  setLeftMenuID(value: string) {
+    this.ctx.setState((state) => {
+      return {
+        ...state,
+        layout: {
+          ...state.layout,
+          left_panel: { ...state.layout?.left_panel, menu: value },
+        },
+      };
+    });
+  }
+
+  @DataAction()
+  setRightMenuID(value: string) {
+    console.log(value);
+    this.ctx.setState((state) => {
+      return {
+        ...state,
+        layout: {
+          ...state.layout,
+          right_panel: { ...state.layout?.right_panel, menu: value },
+        },
+      };
+    });
+  }
+
+  @DataAction()
+  setTabMenuID(value: string) {
+    console.log(value);
+    this.ctx.setState((state) => {
+      return {
+        ...state,
+        layout: {
+          ...state.layout,
+          tab: { ...state.layout?.tab, menu: value },
+        },
+      };
+    });
   }
 
   @DataAction()

@@ -7,7 +7,7 @@ import { SioCoreInputComponent } from './input';
 import { SioCoreMenuComponent } from './menu';
 import { SioCoreMenuItemComponent } from './menu-item';
 import { SioCorePageComponent } from './page';
-import { SioCoreTabsComponent } from './tabs';
+import { SioCoreTabComponent } from './tab';
 import { SioCoreHeaderComponent } from './header';
 import { SioCoreTitleComponent } from './title';
 import { SioCoreListComponent } from './list';
@@ -26,7 +26,7 @@ export { SioCoreInputComponent } from './input';
 export { SioCoreMenuComponent } from './menu';
 export { SioCoreMenuItemComponent } from './menu-item';
 export { SioCorePageComponent } from './page';
-export { SioCoreTabsComponent } from './tabs';
+export { SioCoreTabComponent } from './tab';
 export { SioCoreHeaderComponent } from './header';
 export { SioCoreTitleComponent } from './title';
 export { SioCoreListComponent} from './list';
@@ -45,7 +45,7 @@ export const SioCoreComponents = [
   SioCoreMenuComponent,
   SioCoreMenuItemComponent,
   SioCorePageComponent,
-  SioCoreTabsComponent,
+  SioCoreTabComponent,
   SioCoreHeaderComponent,
   SioCoreTitleComponent,
   SioCoreListComponent,

@@ -1,19 +1,19 @@
-:host[color="primary"] {
-    --sio-toolbar-color: var(--ion-color-primary);
-    --sio-left-menu-header-color: var(--ion-color-primary);
-    --sio-left-menu-content-color: var(--ion-color-primary);
-    --sio-left-menu-footer-color: var(--ion-color-primary);
-    --sio-right-menu-header-color: var(--ion-color-primary);
-    --sio-right-menu-content-color: var(--ion-color-primary);
-    --sio-right-menu-footer-color: var(--ion-color-primary);
+:host[color='primary'] {
+  --sio-toolbar-color: var(--ion-color-primary);
+  --sio-left-menu-header-color: var(--ion-color-primary);
+  --sio-left-menu-content-color: var(--ion-color-primary);
+  --sio-left-menu-footer-color: var(--ion-color-primary);
+  --sio-right-menu-header-color: var(--ion-color-primary);
+  --sio-right-menu-content-color: var(--ion-color-primary);
+  --sio-right-menu-footer-color: var(--ion-color-primary);
 }
 
-:host[color="danger"] {
-    --sio-toolbar-color: var(--ion-color-danger);
-    --sio-left-menu-header-color: var(--ion-color-danger);
-    --sio-left-menu-footer-color: var(--ion-color-danger);
-    --sio-right-menu-header-color: var(--ion-color-danger);
-    --sio-right-menu-footer-color: var(--ion-color-danger);
+:host[color='danger'] {
+  --sio-toolbar-color: var(--ion-color-danger);
+  --sio-left-menu-header-color: var(--ion-color-danger);
+  --sio-left-menu-footer-color: var(--ion-color-danger);
+  --sio-right-menu-header-color: var(--ion-color-danger);
+  --sio-right-menu-footer-color: var(--ion-color-danger);
 }
 
 :host {
@@ -48,6 +48,7 @@
     ion-menu[side='end'] {
       --background: var(--sio-right-menu-content-color);
       ion-header {
+        --background: var(--sio-right-menu-header-color);
         ion-toolbar {
           --background: var(--sio-right-menu-header-color);
         }
@@ -56,6 +57,7 @@
         --background: var(--sio-right-menu-content-color);
       }
       ion-footer {
+        --background: var(--sio-right-menu-footer-color);
         ion-toolbar {
           --background: var(--sio-right-menu-footer-color);
           ion-item {
