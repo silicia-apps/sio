@@ -17,7 +17,7 @@ import {
   SioCoreLoggerService,
 } from '../../services';
 
-import { SioColorType } from '../../types';
+import { SioColorType, SioSideMenuType } from '../../types';
 import { SioCoreLayoutInterface } from '../menu-item';
 
 @Component({
@@ -33,7 +33,11 @@ export class SioCoreAppComponent implements OnInit, OnDestroy {
     this.sioCoreAppComponentState.SetTitle(value);
   }
 
-  @Input() layout: SioCoreLayoutInterface | undefined = undefined;
+  @Input()
+  set leftPanelType (value: SioSideMenuType) {
+    this.sioCoreAppComponentState.setLeftPanelType(value);
+  }
+
   @Input() color: SioColorType;
 
   @Select(SioCoreAppComponentState.loading)
@@ -55,7 +59,9 @@ export class SioCoreAppComponent implements OnInit, OnDestroy {
     private sioCoreLoggerService: SioCoreLoggerService,
     private translateService: TranslateService,
   ) {
+    this.sioCoreLoggerService.info(`[sioCoreAppComponentState][constructor] Check config...`);
     if (this.sioCoreEnvironmentService.config) {
+      this.sioCoreLoggerService.info(`[sioCoreAppComponentState][constructor] Config found loading...`, this.sioCoreEnvironmentService.config);
       this.sioCoreAppComponentState.LoadConfig(
         this.sioCoreEnvironmentService.config.app,
       );
@@ -89,9 +95,9 @@ export class SioCoreAppComponent implements OnInit, OnDestroy {
           platform = 'browser';
           // eslint-disable-next-line no-case-declarations
           const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-          this.sioCoreAppComponentState.dark = prefersDark.matches;
+          this.sioCoreAppComponentState.setDark(prefersDark.matches);
           prefersDark.addEventListener('change', (mediaQuery) =>
-            this.sioCoreAppComponentState.dark = mediaQuery.matches,
+            this.sioCoreAppComponentState.setDark(mediaQuery.matches),
           );
           break;
         case 'hybrid':

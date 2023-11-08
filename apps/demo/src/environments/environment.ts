@@ -29,6 +29,11 @@ export const environment: SioCoreEnvironmentInterface = {
       default: 'it',
       fallback: 'en',
     },
+    layout: {
+      left_panel: {
+        menu: 'main'
+      }
+    },
     menu: {
       main: {
         id: 'main',

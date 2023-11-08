@@ -19,7 +19,7 @@ export interface SioCoreAppCompomentInterface {
     };
     tab?: {
       mobile?: 'top' | 'bottom' | 'none';
-      desktop?: 'left' | 'right' | 'bottom' | 'header' | 'none';
+      desktop?: 'top' | 'bottom' | 'none' | 'left' | 'right';
       menu?: string | undefined;
     };
     split?: boolean | undefined;

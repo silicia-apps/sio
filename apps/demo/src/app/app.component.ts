@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { SioCommonModule } from '@silicia/core';
+import { SioCommonModule, SioCoreLoggerService, Loggable } from '@silicia/core';
 
+@Loggable()
 @Component({
   selector: 'sio-root',
   templateUrl: 'app.component.html',
@@ -9,7 +10,9 @@ import { SioCommonModule } from '@silicia/core';
   imports: [SioCommonModule],
 })
 export class AppComponent {
-  constructor() {
-    console.log('test');
+  constructor(
+    private sioCoreLoggerService: SioCoreLoggerService,
+  ) {
+    this.sioCoreLoggerService.debug(`[AppComponent][constructor]`);
   }
 }

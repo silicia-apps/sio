@@ -42,11 +42,11 @@ export class SioCoreDarkModeToggleComponent implements OnInit {
     this.sioCoreLoggerService.debug('[SioCoreDarkModeToggleComponent][onChange] - Switch style');
     if (event.detail.checked) {
       this.sioCoreLoggerService.debug('[SioCoreDarkModeToggleComponent][onChange] - New Style is Dark Mode');
-      this.sioCoreAppComponentState.dark = true;
+      this.sioCoreAppComponentState.setDark(true);
       this.icon = 'moon';
     } else {
       this.sioCoreLoggerService.debug('[SioCoreDarkModeToggleComponent][onChange] - New Style is Light Mode');
-      this.sioCoreAppComponentState.dark = false;
+      this.sioCoreAppComponentState.setDark(false);
       this.icon = 'sunny';
     }
   }

@@ -1,27 +1,32 @@
 <ion-app>
-  <div *ngIf="(this.sioCoreAppComponentState.leftPanelType === 'none' &&  this.sioCoreAppComponentState.rightPanelType === 'none') || this.sioCoreAppComponentState.full; then blank; else split"></div>
-  <ng-template #split> 
-    <ion-split-pane side="start" when="lg" contentId="main-content" (ionSplitPaneVisible)="sioAppSplitPanelVisible($event)">
-      <ion-menu contentId="main-content" [type]="!(this.sioCoreAppComponentState.leftPanelType === 'none' ||  this.sioCoreAppComponentState. === 'toogle')?this.sioCoreAppComponentState.sidemenu:'reveal'" [swipeGesture]="(this.sioCoreAppComponentState.sidemenu !== 'toogle')">
+  <div
+    *ngIf="(this.sioCoreAppComponentState.leftPanelType === 'none' &&  this.sioCoreAppComponentState.rightPanelType === 'none') || this.sioCoreAppComponentState.full; then blank; else split">
+  </div>
+  <ng-template #split>
+    <ion-split-pane side="start" when="lg" contentId="main-content"
+      (ionSplitPaneVisible)="sioAppSplitPanelVisible($event)">
+      <ion-menu contentId="main-content"
+        [type]="!(this.sioCoreAppComponentState.leftPanelType === 'none' ||  this.sioCoreAppComponentState.leftPanelType === 'toogle')?this.sioCoreAppComponentState.leftPanelType: 'reveal'"
+        [swipeGesture]="(this.sioCoreAppComponentState.leftPanelType !== 'toogle')">
         <ion-header class="ion-no-border">
           <ion-toolbar [color]="this.color">
-            <div #side_header>
-              <ng-content select="[slot='side_header']"></ng-content>
+            <div #left_header>
+              <ng-content select="[slot='left_header']"></ng-content>
             </div>
-            <ng-container *ngIf="!side_header.hasChildNodes()">
+            <ng-container *ngIf="!left_header.hasChildNodes()">
               <ion-title>{{
                 (this.sioCoreAppComponentState.state$ | async)?.title
                 }}</ion-title>
             </ng-container>
-          </ion-toolbar> 
+          </ion-toolbar>
         </ion-header>
         <ion-content>
-          <sio-menu *ngIf="this.tab && this.sioCoreAppComponentState.split" id="tab"></sio-menu>
-          <div #side_content>
-            <ng-content select="[slot='side_content']"></ng-content>
+          <sio-menu *ngIf="this.sioCoreAppComponentState.tabMenuID && this.sioCoreAppComponentState.split" id="tab"></sio-menu>
+          <div #left_content>
+            <ng-content select="[slot='left_content']"></ng-content>
           </div>
-          <ng-container *ngIf="!side_content.hasChildNodes()">
-            <sio-menu *ngIf="this.menu" [id]="this.menu"></sio-menu>
+          <ng-container *ngIf="!left_content.hasChildNodes()">
+            <sio-menu *ngIf="this.sioCoreAppComponentState.leftMenuID" [id]="'leftmenu_' + this.sioCoreAppComponentState.leftMenuID"></sio-menu>
           </ng-container>
         </ion-content>
         <ion-footer class="ion-no-border">
@@ -30,7 +35,7 @@
           </div>
           <ng-container *ngIf="!side_footer.hasChildNodes()">
             <ion-toolbar class="ion-no-border" [color]="this.color">
-                <ion-item lines="none" [color]="this.color"><ion-label>powered by Sio</ion-label></ion-item>
+              <ion-item lines="none" [color]="this.color"><ion-label>powered by Sio</ion-label></ion-item>
               <ion-buttons slot="end">
                 <ion-button href="https://github.com/silicia-apps/sio" target="_blank" shape="round" fill="clear">
                   <ion-icon slot="start" name="logo-github"></ion-icon>
@@ -39,7 +44,9 @@
             </ion-toolbar>
           </ng-container>
         </ion-footer>
-      </ion-menu>  <ion-menu *ngIf="false" side="end" contentId="right-content" [type]="!(this.sioCoreAppComponentState.sidemenu === 'none' ||  this.sioCoreAppComponentState.sidemenu === 'toogle')?this.sioCoreAppComponentState.sidemenu:'reveal'" [swipeGesture]="(this.sioCoreAppComponentState.sidemenu !== 'toogle')">
+      </ion-menu> <ion-menu *ngIf="false" side="end" contentId="right-content"
+        [type]="!(this.sioCoreAppComponentState.rightPanelType === 'none' ||  this.sioCoreAppComponentState.rightPanelType === 'toogle')?this.sioCoreAppComponentState.rightPanelType:'reveal'"
+        [swipeGesture]="(this.sioCoreAppComponentState.rightPanelType !== 'toogle')">
         <ion-header class="ion-no-border">
           <ion-toolbar>
             <div #right_header>
@@ -50,7 +57,7 @@
                 (this.sioCoreAppComponentState.state$ | async)?.title
                 }}</ion-title>
             </ng-container>
-          </ion-toolbar> 
+          </ion-toolbar>
         </ion-header>
         <ion-content>
           <div #right_content>
@@ -77,13 +84,14 @@
       </ion-menu>
       <ion-router-outlet id="main-content">
         <ng-content></ng-content>
-        <sio-menu *ngIf="this.tab" id="tab" position="bottom"></sio-menu>
+        <sio-menu *ngIf="this.sioCoreAppComponentState.tabMenuID" id="tab"></sio-menu>
       </ion-router-outlet>
     </ion-split-pane>
   </ng-template>
   <ng-template #blank>
     <ion-router-outlet id="main-content">
-      <sio-menu *ngIf="this.sioCoreAppComponentState.layout?.tab?.menu && this.sioCoreAppComponentState.full" id="tab" [position]="this.sioCoreAppComponentState.layout?.tab?.mobile || 'side'"></sio-menu>
+      <sio-menu *ngIf="this.sioCoreAppComponentState.tabMenuID && this.sioCoreAppComponentState.full" id="tab"
+        position="bottom"></sio-menu>
       <ng-content></ng-content>
     </ion-router-outlet>
   </ng-template>

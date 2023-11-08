@@ -1,10 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Selector, StateToken } from '@ngxs/store';
 import { SioCoreAppComponentStateModel } from './app.model';
-import {
-  SioCoreAppCompomentInterface,
-  SioCoreLayoutInterface,
-} from '../../../interfaces';
+import { SioCoreAppCompomentInterface } from '../../../interfaces';
 
 import { State } from '@ngxs/store';
 import {
@@ -73,11 +70,6 @@ export class SioCoreAppComponentState extends NgxsDataRepository<SioCoreAppCompo
   }
 
   @Computed()
-  get layout(): SioCoreLayoutInterface {
-    return this.snapshot.layout || {};
-  }
-
-  @Computed()
   get split(): boolean {
     return this.snapshot.layout?.split || false;
   }
@@ -95,6 +87,21 @@ export class SioCoreAppComponentState extends NgxsDataRepository<SioCoreAppCompo
   @Computed()
   get leftPanelType(): SioSideMenuType {
     return this.snapshot.layout?.left_panel?.type;
+  }
+
+  @Computed()
+  get leftMenuID(): string | undefined {
+    return this.snapshot.layout?.left_panel?.menu;
+  }
+
+  @Computed()
+  get rightMenuID(): string | undefined {
+    return this.snapshot.layout?.right_panel?.menu;
+  }
+
+  @Computed()
+  get tabMenuID(): string | undefined {
+    return this.snapshot.layout?.tab?.menu;
   }
 
   @Computed()
@@ -131,7 +138,13 @@ export class SioCoreAppComponentState extends NgxsDataRepository<SioCoreAppCompo
 
   @DataAction()
   setLeftPanelType(value: SioSideMenuType) {
-    this.ctx.patchState({ layout: { left_panel: { type: value } } });
+    const layout = this.ctx.getState().layout;
+    if (layout) layout.dark = true;
+    console.error(JSON.stringify(layout));
+    if (layout?.left_panel) { layout.left_panel.type = value }
+   // else if (layout) layout.left_panel = { type : value }
+    console.error('new '+ JSON.stringify(layout));
+    this.ctx.patchState({ layout: layout });
   }
 
   @DataAction()
@@ -154,8 +167,11 @@ export class SioCoreAppComponentState extends NgxsDataRepository<SioCoreAppCompo
   }*/
 
   @DataAction()
-  public set dark(value: boolean) {
-    this.patchState({ layout: { dark: value } });
+  public async setDark(value: boolean) {
+    const layout = this.ctx.getState().layout
+      ? this.ctx.getState().layout
+      : { dark: value };
+    this.patchState({ layout: layout });
   }
 
   @DataAction()
