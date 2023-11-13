@@ -1,8 +1,13 @@
-<ion-header *ngIf="this.toolbar && !this.fullmode" collapse="fade" [translucent]="true" class="ion-no-border">
+<ion-header
+  *ngIf="this.toolbar && !this.fullmode"
+  collapse="fade"
+  [translucent]="true"
+  class="ion-no-border"
+>
   <ion-toolbar [color]="this.color">
     <ion-buttons slot="start">
       <ng-container>
-        <ion-menu-button *ngIf="this.menu" menu="start"></ion-menu-button>
+        <ion-menu-button menu="start"></ion-menu-button>
         <ion-back-button *ngIf="this.back"></ion-back-button>
       </ng-container>
     </ion-buttons>
@@ -10,9 +15,13 @@
     <ion-buttons slot="end">
       <ng-content select="[slot='end']"> </ng-content>
     </ion-buttons>
-    <ion-buttons *ngIf="!this.sioCoreAppComponentState.snapshot.layout!.split" slot="end">
+    <ion-buttons
+      *ngIf="!this.sioCoreAppComponentState.snapshot.layout!.split"
+      slot="end"
+    >
       <ng-content select="[slot='mobile']"></ng-content>
-      <ion-menu-button *ngIf="true" menu="end"></ion-menu-button>  
+
+      <ion-menu-button menu="end"></ion-menu-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -30,8 +39,13 @@
       <h1>{{ 'PAGE_COMPONENT_DEFAULT_1' | translate }}</h1>
       <strong>{{ 'PAGE_COMPONENT_DEFAULT_2' | translate }}</strong>
       <p>
-        {{ 'PAGE_COMPONENT_LINK' | translate }} <a target="_blank" rel="noopener noreferrer"
-          href="https://silicia-apps.gitbook.io/sio-framework/">SIO Framework</a>
+        {{ 'PAGE_COMPONENT_LINK' | translate }}
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://silicia-apps.gitbook.io/sio-framework/"
+          >SIO Framework</a
+        >
       </p>
     </div>
   </ng-container>

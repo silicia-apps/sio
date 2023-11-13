@@ -3,6 +3,6 @@ export type SioSideMenuType =
   | 'overlay' 
   | 'reveal' 
   | 'push' 
-  | 'toogle'
+  | 'toggle'
   | 'tab'
   | undefined;

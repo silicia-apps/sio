@@ -26,14 +26,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "libs/core/jest.config.ts",
-        "passWithNoTests": true
-      },
-      "configurations": {
-        "ci": {
-          "ci": true,
-          "codeCoverage": true
-        }
+        "jestConfig": "libs/core/jest.config.ts"
       }
     },
     "lint": {
@@ -41,6 +34,68 @@
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": ["libs/core/**/*.ts", "libs/core/**/*.html"]
+      }
+    },
+    "storybook": {
+      "executor": "@storybook/angular:start-storybook",
+      "options": {
+        "port": 4400,
+        "configDir": "libs/core/.storybook",
+        "browserTarget": "core:build-storybook",
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "app/demo/src/assets",
+            "output": "assets"
+          },
+          {
+            "glob": "**/*.svg",
+            "input": "node_modules/ionicons/dist/ionicons/svg",
+            "output": "./svg"
+          }
+        ],
+        "styles": ["apps/demo/src/theme/variables.scss", "apps/demo/src/global.scss"],
+        "compodoc": true,
+        "compodocArgs": ["-e", "json", "-d", "libs/core"]
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "build-storybook": {
+      "executor": "@storybook/angular:build-storybook",
+      "outputs": ["{options.outputDir}"],
+      "options": {
+        "outputDir": "dist/storybook/core",
+        "configDir": "libs/core/.storybook",
+        "browserTarget": "core:build-storybook",
+        "compodoc": true,
+        "compodocArgs": ["-e", "json", "-d", "libs/core"]
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "test-storybook": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "test-storybook -c libs/core/.storybook --url=http://localhost:4400"
+      }
+    },
+    "static-storybook": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "core:build-storybook",
+        "staticFilePath": "dist/storybook/core"
+      },
+      "configurations": {
+        "ci": {
+          "buildTarget": "core:build-storybook:ci"
+        }
       }
     }
   }

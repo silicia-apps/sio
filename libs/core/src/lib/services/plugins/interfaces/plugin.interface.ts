@@ -2,7 +2,7 @@
   SioCoreAuthSessionModel,
   SioCoreAuthUserModel,
 } from '../../auth';*/
-import { Observable } from 'rxjs';
+//import { Observable } from 'rxjs';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface SioCorePluginServiceModel {

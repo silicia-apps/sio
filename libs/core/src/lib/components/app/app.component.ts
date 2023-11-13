@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { SioCoreAppComponentState } from './store/app.state';
+import { SioCoreAppComponentState } from '../../store/index';
 
 import { it } from '../../../i18n/it';
 import { en } from '../../../i18n/en';
@@ -17,7 +17,7 @@ import {
   SioCoreLoggerService,
 } from '../../services';
 
-import { SioColorType, SioSideMenuType } from '../../types';
+import type { SioColorType, SioSideMenuType } from '../../types';
 
 @Component({
   selector: 'sio-app',
@@ -27,40 +27,66 @@ import { SioColorType, SioSideMenuType } from '../../types';
 export class SioCoreAppComponent implements OnInit, OnDestroy {
   private ngUnsubscribe = new Subject();
 
+  /**
+   * The App Title
+   */
   @Input()
   set title(value: string) {
     this.sioCoreAppComponentState.SetTitle(value);
   }
 
+  /**
+   * Specifies the behavior of the left sidebar
+   */
   @Input()
   set leftPanelType(value: SioSideMenuType) {
     this.sioCoreAppComponentState.setLeftPanelType(value);
   }
 
+  
+  /**
+   * Specifies the behavior of the Right sidebar
+   */
   @Input()
   set rightPanelType(value: SioSideMenuType) {
     this.sioCoreAppComponentState.setRightPanelType(value);
   }
 
+  /**
+   * menu id code to use in the left sidebar. will be displayed as the default component if no content is inserted into the left_content slot
+   */
   @Input()
   set leftPanelMenuID(value: string) {
     this.sioCoreAppComponentState.setLeftMenuID(value);
   }
 
+  /**
+   * menu id code to use in the right sidebar. will be displayed as the default component if no content is inserted into the right_content slot
+   */
   @Input()
   set rightPanelMenuID(value: string) {
     this.sioCoreAppComponentState.setRightMenuID(value);
   }
+
+  /**
+   * menu id code to use in the tabbar.
+   */
   @Input()
   set tabMenuID(value: string) {
     this.sioCoreAppComponentState.setTabMenuID(value);
   }
 
+  /**
+   * How display tabbar in desktop mode
+   */
   @Input()
   set tabDesktopPosition(value: string) {
     this.sioCoreAppComponentState.setTabDesktop(value);
   }
 
+  /**
+   * How display tabbar in mobile mode
+   */
   @Input()
   set tabMobilePosition(value: string) {
     this.sioCoreAppComponentState.setTabMobile(value);

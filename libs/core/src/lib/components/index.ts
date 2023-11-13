@@ -1,6 +1,6 @@
 import { SioCoreAppComponent } from './app';
 import { SioCoreCardComponent } from './card';
-import { SioCoreDarkModeToggleComponent } from './dark-mode-toogle';
+import { SioCoreDarkModeToggleComponent } from './dark-mode-toggle';
 import { SioCoreFormComponent } from './form';
 import { SioCoreIconComponent } from './icon';
 import { SioCoreInputComponent } from './input';
@@ -19,7 +19,7 @@ import { SioCoreLanguageSelectorComponent } from './language-selector/language-s
 export { SioCoreAppComponent } from './app';
 export { SioCoreLanguageSelectorComponent } from './language-selector/language-selector.component';
 export { SioCoreCardComponent } from './card';
-export { SioCoreDarkModeToggleComponent } from './dark-mode-toogle';
+export { SioCoreDarkModeToggleComponent } from './dark-mode-toggle';
 export { SioCoreFormComponent } from './form';
 export { SioCoreIconComponent } from './icon';
 export { SioCoreInputComponent } from './input';

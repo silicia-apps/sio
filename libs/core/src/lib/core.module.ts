@@ -1,18 +1,19 @@
 import {
+  CUSTOM_ELEMENTS_SCHEMA,
   ErrorHandler,
   ModuleWithProviders,
   NgModule,
   Optional,
   SkipSelf,
 } from '@angular/core';
+
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import { IonicModule } from '@ionic/angular';
-import { TranslateModule, TranslateLoader, TranslateParser } from '@ngx-translate/core';
-import { NgxTranslateDebugParser } from 'ngx-translate-debug';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { sioCoreStates } from '../store';
+import { sioCoreStates } from './store';
 
 /* ngxs */
 import { NgxsDataPluginModule } from '@angular-ru/ngxs';
@@ -20,16 +21,18 @@ import { NgxsModule, NoopNgxsExecutionStrategy } from '@ngxs/store';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { NgxsFormPluginModule } from '@ngxs/form-plugin';
-import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { SioCoreComponents } from './components';
 
 import {
   SioCoreEnvironmentConfig,
   SioCoreEnvironmentInterface,
-} from '../services';
+} from './services';
 
-import { SioCoreErrorHandlerService } from '../shared/error.handle';
+import { SioCoreErrorHandlerService } from './shared/error.handle';
 import { LoggerModule } from '@angular-ru/cdk/logger';
+import { RouterModule } from '@angular/router';
 
 export class EnsureModuleLoadedOnceGuard {
   constructor(targetModule: NgModule) {
@@ -43,6 +46,68 @@ export class EnsureModuleLoadedOnceGuard {
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http);
+}
+
+@NgModule({
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  declarations: [...SioCoreComponents],
+  imports: [
+    HttpClientModule,
+    CommonModule,
+    FormsModule,
+    RouterModule,
+    ReactiveFormsModule,
+    IonicModule,
+    TranslateModule.forChild({
+      extend: true,
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient],
+      },
+    }),
+    NgxsFormPluginModule,
+  ],
+  exports: [...SioCoreComponents, IonicModule, TranslateModule],
+})
+export class SioCommonModule {
+  static forChild(scope = ''): ModuleWithProviders<SioCommonModule> {
+    return {
+      ngModule: SioCommonModule,
+      providers: [],
+    };
+  }
+}
+
+@NgModule({
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  declarations: [],
+  imports: [
+    HttpClientModule,
+    CommonModule,
+    FormsModule,
+    RouterModule,
+    ReactiveFormsModule,
+    IonicModule,
+    TranslateModule.forChild({
+      extend: true,
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient],
+      },
+    }),
+    NgxsFormPluginModule,
+  ],
+  exports: [IonicModule, TranslateModule],
+})
+export class SioMinimalModule {
+  static forChild(scope = ''): ModuleWithProviders<SioCommonModule> {
+    return {
+      ngModule: SioCommonModule,
+      providers: [],
+    };
+  }
 }
 
 @NgModule({
@@ -64,7 +129,7 @@ export function createTranslateLoader(http: HttpClient) {
     NgxsFormPluginModule.forRoot(),
   ],
   providers: [],
-  exports: [ TranslateModule ],
+  exports: [TranslateModule],
 })
 export class SioCoreModule extends EnsureModuleLoadedOnceGuard {
   constructor(@Optional() @SkipSelf() parentModule: SioCoreModule) {
@@ -78,7 +143,7 @@ export class SioCoreModule extends EnsureModuleLoadedOnceGuard {
       ngModule: SioCoreModule,
       providers: [
         { provide: SioCoreEnvironmentConfig, useValue: config },
-       // { provide: ErrorHandler, useClass: SioCoreErrorHandlerService },
+        { provide: ErrorHandler, useClass: SioCoreErrorHandlerService },
       ],
     };
   }

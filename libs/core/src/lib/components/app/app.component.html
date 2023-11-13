@@ -13,16 +13,15 @@
       when="lg"
       contentId="main-content"
       (ionSplitPaneVisible)="sioAppSplitPanelVisible($event)"
-      [disabled]="this.sioCoreAppComponentState.leftPanelType === 'none'"
     >
       <ion-menu
-        *ngIf="this.sioCoreAppComponentState.leftPanelType !== 'none'"
         contentId="main-content"
         side="start"
-        [type]="this.sioCoreAppComponentState.leftPanelType"
+        [type]="(this.sioCoreAppComponentState.leftPanelType!=='toggle')?this.sioCoreAppComponentState.leftPanelType:'push'"
         [swipeGesture]="
-          this.sioCoreAppComponentState.leftPanelType !== 'toogle'
+          this.sioCoreAppComponentState.leftPanelType !== 'toggle'
         "
+        [disabled]="this.sioCoreAppComponentState.leftPanelType === 'none'"
       >
         <ion-header class="ion-no-border">
           <ion-toolbar [color]="this.color">
@@ -36,7 +35,7 @@
             </ng-container>
           </ion-toolbar>
         </ion-header>
-        <ion-content>
+        <ion-content [color]="this.color">
           <sio-menu
             *ngIf="
               this.sioCoreAppComponentState.tabMenuID &&
@@ -44,7 +43,9 @@
               this.sioCoreAppComponentState.split
             "
             id="tab"
-          ></sio-menu>
+            [color] = "this.color"
+          >
+          </sio-menu>
           <div #left_content>
             <ng-content select="[slot='left_content']"></ng-content>
           </div>
@@ -52,6 +53,7 @@
             <sio-menu
               *ngIf="this.sioCoreAppComponentState.leftMenuID"
               [menuID]="this.sioCoreAppComponentState.leftMenuID"
+              [color] = "this.color"
             ></sio-menu>
           </ng-container>
         </ion-content>
@@ -79,12 +81,12 @@
         </ion-footer>
       </ion-menu>
       <ion-menu
-        *ngIf="this.sioCoreAppComponentState.rightPanelType !== 'none'"
+        [disabled]="this.sioCoreAppComponentState.leftPanelType === 'none'"
         contentId="main-content"
         side="end"
         [type]="this.sioCoreAppComponentState.rightPanelType"
         [swipeGesture]="
-          this.sioCoreAppComponentState.rightPanelType !== 'toogle'
+          this.sioCoreAppComponentState.rightPanelType !== 'toggle'
         "
       >
         <ion-header class="ion-no-border">
@@ -99,7 +101,7 @@
             </ng-container>
           </ion-toolbar>
         </ion-header>
-        <ion-content>
+        <ion-content  [color] = "this.color">
           <sio-menu
             *ngIf="
               this.sioCoreAppComponentState.tabMenuID &&
@@ -107,6 +109,7 @@
               this.sioCoreAppComponentState.split
             "
             id="tab"
+            [color] = "this.color"
           ></sio-menu>
           <div #right_content>
             <ng-content select="[slot='right_content']"></ng-content>
@@ -115,6 +118,7 @@
             <sio-menu
               *ngIf="this.sioCoreAppComponentState.rightMenuID"
               [menuID]="this.sioCoreAppComponentState.rightMenuID"
+              [color] = "this.color"
             ></sio-menu>
           </ng-container>
         </ion-content>
@@ -124,26 +128,14 @@
           </div>
           <ng-container *ngIf="!right_footer.hasChildNodes()">
             <ion-toolbar class="ion-no-border" [color]="this.color">
-              <ion-item lines="none" [color]="this.color"
-                ><ion-label>Writed with love</ion-label></ion-item
-              >
-              <ion-buttons slot="end">
-                <ion-button
-                  href="https://github.com/silicia-apps/sio"
-                  target="_blank"
-                  shape="round"
-                  fill="clear"
-                >
-                  <ion-icon slot="start" name="home"></ion-icon>
-                </ion-button>
-              </ion-buttons>
+              <sio-dark-mode-toggle></sio-dark-mode-toggle>              
             </ion-toolbar>
           </ng-container>
         </ion-footer>
       </ion-menu>
       <ion-router-outlet id="main-content">
         <ng-content></ng-content>
-        <sio-tab
+        <sio-tab 
           *ngIf="this.sioCoreAppComponentState.tabMenuID"
           [tabID]="this.sioCoreAppComponentState.tabMenuID"
           [position]="this.sioCoreAppComponentState.split ? this.sioCoreAppComponentState.tabDesktopPosition : this.sioCoreAppComponentState.tabMobilePosition"
@@ -161,6 +153,7 @@
         "
         menuID="tab"
         position="bottom"
+        [color] = "this.color"
       ></sio-menu>
       <ng-content></ng-content>
     </ion-router-outlet>

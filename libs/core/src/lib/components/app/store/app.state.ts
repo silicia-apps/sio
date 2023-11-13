@@ -145,7 +145,7 @@ export class SioCoreAppComponentState extends NgxsDataRepository<SioCoreAppCompo
 
   @DataAction()
   setLeftPanelType(value: SioSideMenuType) {
-    this.ctx.setState((state) => {
+    this.ctx.setState((state: SioCoreAppComponentStateModel) => {
       return {
         ...state,
         layout: {
@@ -158,7 +158,7 @@ export class SioCoreAppComponentState extends NgxsDataRepository<SioCoreAppCompo
 
   @DataAction()
   setRightPanelType(value: SioSideMenuType) {
-    this.ctx.setState((state) => {
+    this.ctx.setState((state: SioCoreAppComponentStateModel) => {
       return {
         ...state,
         layout: {
@@ -171,7 +171,7 @@ export class SioCoreAppComponentState extends NgxsDataRepository<SioCoreAppCompo
 
   @DataAction()
   setTabDesktop(value: any) {
-    this.ctx.setState((state) => {
+    this.ctx.setState((state: SioCoreAppComponentStateModel) => {
       return {
         ...state,
         layout: {
@@ -184,7 +184,7 @@ export class SioCoreAppComponentState extends NgxsDataRepository<SioCoreAppCompo
 
   @DataAction()
   setTabMobile(value: any) {
-    this.ctx.setState((state) => {
+    this.ctx.setState((state: SioCoreAppComponentStateModel) => {
       return {
         ...state,
         layout: {
@@ -197,7 +197,7 @@ export class SioCoreAppComponentState extends NgxsDataRepository<SioCoreAppCompo
 
   @DataAction()
   setLeftMenuID(value: string) {
-    this.ctx.setState((state) => {
+    this.ctx.setState((state: SioCoreAppComponentStateModel) => {
       return {
         ...state,
         layout: {
@@ -211,7 +211,7 @@ export class SioCoreAppComponentState extends NgxsDataRepository<SioCoreAppCompo
   @DataAction()
   setRightMenuID(value: string) {
     console.log(value);
-    this.ctx.setState((state) => {
+    this.ctx.setState((state: SioCoreAppComponentStateModel) => {
       return {
         ...state,
         layout: {
@@ -225,7 +225,7 @@ export class SioCoreAppComponentState extends NgxsDataRepository<SioCoreAppCompo
   @DataAction()
   setTabMenuID(value: string) {
     console.log(value);
-    this.ctx.setState((state) => {
+    this.ctx.setState((state: SioCoreAppComponentStateModel) => {
       return {
         ...state,
         layout: {
