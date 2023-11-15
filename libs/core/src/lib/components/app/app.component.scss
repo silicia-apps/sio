@@ -22,7 +22,7 @@
     --side-width: 300px;
     --side-max-width: 300px;
     --border: 0px 0px 0px 0px;
-
+    
     ion-menu[side='start'] {
       --background: var(--sio-left-menu-content-color);
       ion-header {
@@ -31,6 +31,7 @@
           --background: var(--sio-left-menu-header-color);
         }
       }
+      
       ion-content {
         --background: var(--sio-left-menu-content-color);
       }

@@ -36,7 +36,7 @@
   </div>
   <ng-container *ngIf="!content.hasChildNodes()">
     <div id="container">
-      <h1>{{ 'PAGE_COMPONENT_DEFAULT_1' | translate }}</h1>
+      <h1>{{ 'PAGE_COMPONENT_DEFAULT_1' | translate }} {{ this.title | translate }}</h1>
       <strong>{{ 'PAGE_COMPONENT_DEFAULT_2' | translate }}</strong>
       <p>
         {{ 'PAGE_COMPONENT_LINK' | translate }}

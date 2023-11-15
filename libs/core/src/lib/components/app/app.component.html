@@ -58,10 +58,10 @@
           </ng-container>
         </ion-content>
         <ion-footer class="ion-no-border">
-          <div #side_footer>
-            <ng-content select="[slot='side_footer']"></ng-content>
+          <div #left_footer>
+            <ng-content select="[slot='left_footer']"></ng-content>
           </div>
-          <ng-container *ngIf="!side_footer.hasChildNodes()">
+          <ng-container *ngIf="!left_footer.hasChildNodes()">
             <ion-toolbar class="ion-no-border" [color]="this.color">
               <ion-item lines="none" [color]="this.color"
                 ><ion-label>powered by Sio</ion-label></ion-item

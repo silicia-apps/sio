@@ -9,6 +9,9 @@ import { SioCommonModule } from '@silicia/core';
   imports: [SioCommonModule],
 })
 export class HomePageComponent {
+  public html: string;
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  constructor() {}
+  constructor() {
+    this.html =  '<sio-app></sio-app>';
+  }
 }
