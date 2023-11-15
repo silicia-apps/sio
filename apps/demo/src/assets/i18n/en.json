@@ -1,5 +1,6 @@
 {
     "M_HOME": "Home",
     "M_ABOUT": "About",
-    "M_SETTINGS": "Settings"
+    "M_SETTINGS": "Settings",
+    "LABEL_APP_TITLE" : "Titolo App"
 }

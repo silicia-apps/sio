@@ -24,7 +24,6 @@ export class SioCoreDarkModeToggleComponent implements OnInit {
 
   @ViewChild('darkmode_toggle', { static: true }) ionToggle!: IonToggle;
 
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   constructor(
     private sioCoreLoggerService: SioCoreLoggerService,
     public sioCoreAppComponentState: SioCoreAppComponentState
@@ -35,6 +34,7 @@ export class SioCoreDarkModeToggleComponent implements OnInit {
       document.body.classList.toggle('dark', value);
       this.ionToggle.checked = value;
       this.label = this.caption + ((value)?'_ON':'_OFF');   
+      this.icon = (value)?'moon':'sunny'; 
     });
   }
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -43,11 +43,9 @@ export class SioCoreDarkModeToggleComponent implements OnInit {
     if (event.detail.checked) {
       this.sioCoreLoggerService.debug('[SioCoreDarkModeToggleComponent][onChange] - New Style is Dark Mode');
       this.sioCoreAppComponentState.setDark(true);
-      this.icon = 'moon';
     } else {
       this.sioCoreLoggerService.debug('[SioCoreDarkModeToggleComponent][onChange] - New Style is Light Mode');
       this.sioCoreAppComponentState.setDark(false);
-      this.icon = 'sunny';
     }
   }
 }

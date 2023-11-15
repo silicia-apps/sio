@@ -1,7 +1,5 @@
-<ion-list inset="true">
-  <ion-item lines="none" button>
-    <sio-icon [name]="this.icon" slot="start"></sio-icon>
-    <ion-toggle #darkmode_toggle (ionChange)="this.onChange($event)" slot="end"></ion-toggle>
-    <label>{{ this.label | translate }}</label>
-  </ion-item>
-</ion-list>
+<ion-item lines="none" button color="primary">
+  <sio-icon [name]="this.icon" slot="start"></sio-icon>
+  <ion-toggle #darkmode_toggle (ionChange)="this.onChange($event)" slot="end" color="warning"></ion-toggle>
+  <label>{{ this.label | translate }}</label>
+</ion-item>

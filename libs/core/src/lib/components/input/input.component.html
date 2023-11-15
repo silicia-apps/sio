@@ -1,11 +1,7 @@
-  <ion-item
-    [class.invalid]="this.invalid"
-    [color]="this.color"
-  >
-    <ion-input
+  <ion-input
       label = "{{ this.label | translate }}"
       [labelPlacement] = "this.position"
-      fill="outline"
+      [fill]="this.fill"
       [(ngModel)]="this.valueInput"
       [autocapitalize]="this.autocapitalize"
       [autocomplete]="this.autocomplete"
@@ -20,4 +16,3 @@
       [errorText]="this.error"
       [helperText]="this.label"
     ></ion-input>
-  </ion-item>
