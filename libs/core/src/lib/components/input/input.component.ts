@@ -38,8 +38,8 @@ export class SioCoreInputComponent implements OnInit {
   }
 
   @Input() public set name(value: string) {
-    if (!this.label) {
-      this._label = `auth.L_${value?.toUpperCase()}`;
+    if (this.label !== '') {
+      this._label = `LABEL_${value?.toUpperCase()}`;
     }
     this._name = value;
   }
@@ -49,6 +49,7 @@ export class SioCoreInputComponent implements OnInit {
   }
 
   @Input() public position: 'stacked' | 'fixed' | 'floating' = 'floating';
+  @Input() public fill: 'outline' | 'solid' | 'none' = 'outline';
   @Input() public autocapitalize: 'on' | 'off' = 'off';
   @Input() public autocomplete: 'on' | 'off' = 'off';
   @Input() public autocorrect: 'on' | 'off' = 'off';
