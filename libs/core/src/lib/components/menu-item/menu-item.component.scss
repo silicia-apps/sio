@@ -1,17 +1,14 @@
-:host {
-  --silicia-color-selected: rgba(var(--ion-color-primary-rgb), 0.14);
-  --silicia-border-radius: 50px;
-
-  ion-item.custom {
-    border-radius: var(--silicia-border-radius);
-  }
-
+:host[color=primary]{
+  --sio-color-menu-item: var(--ion-color-primary); 
+  --sio-color-menu-item-selected: var(--ion-color-primary-tint);
+  --sio-color-menu-item-badge: var(--ion-color-warning);
+  
   ion-item.rounded {
     border-radius: 0 50px 50px 0;
   }
 
   ion-item.default {
-    border-radius: 4px;
+    border-radius: 10px;
   }
 
   ion-item.md {
@@ -19,8 +16,12 @@
     --padding-end: 10px;
   }
 
-  ion-item.md silicia-icon {
-    color: #616e7e;
+  ion-item sio-icon {
+    color: var(--ion-color-primary-contrast);
+  }
+
+  ion-item ion-label {
+    color: var(--ion-color-primary-contrast);
   }
 
   ion-item.md ion-label {
@@ -33,22 +34,19 @@
     --min-height: 50px;
   }
 
-  ion-item.ios silicia-icon {
+  ion-item.ios sio-icon {
     font-size: 24px;
-    color: #73849a;
+  }
+
+  ion-item {
+    --background: var(--sio-color-menu-item);
   }
 
   ion-item.selected {
-    --background: var(--silicia-color-selected);
+    --background: var(--sio-color-menu-item-selected); 
   }
 
   ion-badge {
-    --background: var(--ion-color-warning);
-  }
-
-  ion-item.selected silicia-icon {
-    color: var(--ion-color-primary);
-  }
-
-  
+    --background: var(--sio-color-menu-item-badge);
+  }  
 }

@@ -252,10 +252,16 @@ export class SioCoreAppComponentState extends NgxsDataRepository<SioCoreAppCompo
 
   @DataAction()
   public async setDark(value: boolean) {
-    const layout = this.ctx.getState().layout
-      ? this.ctx.getState().layout
-      : { dark: value };
-    this.patchState({ layout: layout });
+    console.log(value);
+    this.ctx.setState((state: SioCoreAppComponentStateModel) => {
+      return {
+        ...state,
+        layout: {
+          ...state.layout,
+          dark: value,
+        },
+      };
+    });
   }
 
   @DataAction()

@@ -1,29 +1,49 @@
-<ion-accordion-group *ngIf="this.sioCoreMenuState.caption" [expand]="this.shape">
-  <ion-accordion [value]="this.sioCoreMenuState.caption" [toggleIconSlot]="this.toggleIconSlot"
-    [toggleIcon]="this.toggleIcon">
+<ion-accordion-group
+  *ngIf="this.sioCoreMenuState.caption"
+  [expand]="this.shape"
+>
+  <ion-accordion
+    [value]="this.sioCoreMenuState.caption"
+    [toggleIconSlot]="this.toggleIconSlot"
+    [toggleIcon]="this.toggleIcon"
+  >
     <ion-item slot="header" [color]="this.color">
       <ion-label>{{ this.sioCoreMenuState.caption | translate }}</ion-label>
     </ion-item>
     <ion-list slot="content" inset="true">
-      <sio-menu-item *ngFor="
+      <sio-menu-item
+        *ngFor="
           let item of sioCoreMenuState.items | keyvalue;
           trackBy: trackItems
-        " [color]="this.color" [icon]="item.value.icon" [caption]="item.value.caption" [lines]="this.lines"
-        [style]="this.style">
+        "
+        [color]="this.color"
+        [icon]="item.value.icon"
+        [caption]="item.value.caption"
+        [lines]="this.lines"
+        [style]="this.style"
+      >
       </sio-menu-item>
     </ion-list>
   </ion-accordion>
 </ion-accordion-group>
 <div *ngIf="!this.sioCoreMenuState.caption">
-  <ion-list inset="true">
-    <ion-menu-toggle auto-hide="false">
-      <ion-item>ciao</ion-item>
-      <sio-menu-item *ngFor="
+  <ion-menu-toggle auto-hide="false">
+    <ion-list [inset]="true">
+      <sio-menu-item
+        *ngFor="
           let item of this.sioCoreMenuState.items | keyvalue;
           trackBy: trackItems
-        " [color]="this.color" [icon]="item.value.icon" [caption]="item.value.caption" [lines]="this.lines"
-        [url]="item.value.url" [style]="this.style" [tabbed]="false" [badge]="item.value.badge!">
+        "
+        [icon]="item.value.icon"
+        [caption]="item.value.caption"
+        [lines]="this.lines"
+        [url]="item.value.url"
+        [style]="this.style"
+        [tabbed]="false"
+        [badge]="item.value.badge!"
+        color="primary"
+      >
       </sio-menu-item>
-    </ion-menu-toggle>
-  </ion-list>
+    </ion-list>
+  </ion-menu-toggle>
 </div>

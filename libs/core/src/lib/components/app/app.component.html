@@ -35,7 +35,7 @@
             </ng-container>
           </ion-toolbar>
         </ion-header>
-        <ion-content [color]="this.color">
+        <ion-content>
           <sio-menu
             *ngIf="
               this.sioCoreAppComponentState.tabMenuID &&
@@ -81,7 +81,7 @@
         </ion-footer>
       </ion-menu>
       <ion-menu
-        [disabled]="this.sioCoreAppComponentState.leftPanelType === 'none'"
+        [disabled]="this.sioCoreAppComponentState.rightPanelType === 'none'"
         contentId="main-content"
         side="end"
         [type]="this.sioCoreAppComponentState.rightPanelType"

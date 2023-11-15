@@ -6,7 +6,7 @@
 </ng-template>
 <ng-template #menu>
   <ion-item button [routerLink]="(this.type === 'navigate')?this.url:null" routerDirection="forward" [lines]="this.lines" detail="false"
-    routerLinkActive="selected" [class]="this.style" (click)="this.Click()">
+    routerLinkActive="selected" [class]="this.style" (click)="this.Click()" >
     <div #start>
       <ng-content slot="start" select="[slot='start']"></ng-content>
     </div>

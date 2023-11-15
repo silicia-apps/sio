@@ -1,0 +1,7 @@
+:host {
+    --silicia-icon-color : var(--ion-color-primary-contrast);
+
+    ion-icon {
+        color: --silicia-icon-color;
+    }
+}
