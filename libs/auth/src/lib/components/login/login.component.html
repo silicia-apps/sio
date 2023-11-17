@@ -1,34 +1,26 @@
-<sio-card title="auth.LOGIN_COMPONENT_TITLE" [color]="this.color">
+<sio-card title="auth.LOGIN_COMPONENT_TITLE" [color]="this.color" shape="inset" value="open">
     <sio-form
       [state]="this.sioAuthLoginComponentState"
       [color]="this.color"
       (send)="this.login()"
     >
     </sio-form>
-    {{ this.color }}
     <p>&nbsp;</p>
     <p *ngIf="this.mode === 'signin'" [innerHTML]="'auth.LOGIN_COMPONENT_DO_NOT_HAVE_ACCOUNT' | translate"></p>
 </sio-card>
-<sio-card color="light" *ngIf="this.social">
-  <ion-card-header>
-    <ion-card-subtitle>{{
-      'auth.TITLE_SOCIAL_LOGIN' | translate
-    }}</ion-card-subtitle>
-  </ion-card-header>
-  <ion-card-content>
+<sio-card [color]="this.color" *ngIf="this.social" title="auth.TITLE_SOCIAL_LOGIN" shape="inset" >
     <ion-button
       expand="block"
       color="primary"
       (click)="this.oAuth2Login('facebook')"
       ><sio-icon name="logo-facebook" slot="start"></sio-icon
-      >{{ 'auth.BUTTON_FACEBOOK_LOGIN' | translate }}</ion-button
+      > {{ 'auth.BUTTON_FACEBOOK_LOGIN' | translate }}</ion-button
     >
     <ion-button
       expand="block"
       color="danger"
       (click)="this.oAuth2Login('google')"
       ><sio-icon name="logo-google" slot="start"></sio-icon
-      >{{ 'auth.BUTTON_GOOGLE_LOGIN' | translate }}</ion-button
+      > {{ 'auth.BUTTON_GOOGLE_LOGIN' | translate }}</ion-button
     >
-  </ion-card-content>
 </sio-card>

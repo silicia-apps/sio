@@ -5,8 +5,17 @@
   </ion-item-divider>
 </ng-template>
 <ng-template #menu>
-  <ion-item button [routerLink]="(this.type === 'navigate')?this.url:null" routerDirection="forward" [lines]="this.lines" detail="false"
-    routerLinkActive="selected" [class]="this.style" (click)="this.Click()" >
+  <ion-item
+    button
+    [color]="this.color"
+    [routerLink]="this.type === 'navigate' ? this.url : null"
+    routerDirection="forward"
+    [lines]="this.lines"
+    detail="false"
+    routerLinkActive="selected"
+    [class]="this.style"
+    (click)="this.Click()"
+  >
     <div #start>
       <ng-content slot="start" select="[slot='start']"></ng-content>
     </div>
@@ -18,9 +27,7 @@
       <ng-content slot="end" select="[slot='end']"></ng-content>
     </div>
     <ng-container *ngIf="!end.hasChildNodes()">
-      <ion-badge *ngIf="this.badge! > 0" slot="end">{{
-        this.badge
-        }}</ion-badge>
+      <ion-badge *ngIf="this.badge! > 0" slot="end">{{ this.badge }}</ion-badge>
     </ng-container>
   </ion-item>
 </ng-template>

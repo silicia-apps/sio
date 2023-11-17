@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SioAuthModule } from '@silicia/auth';
 import { SioCommonModule } from '@silicia/core';
 
 @Component({
@@ -6,7 +7,7 @@ import { SioCommonModule } from '@silicia/core';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [SioCommonModule],
+  imports: [SioCommonModule, SioAuthModule],
 })
 export class HomePageComponent {
   public html: string;

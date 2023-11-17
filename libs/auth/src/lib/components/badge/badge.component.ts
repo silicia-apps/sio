@@ -23,12 +23,11 @@ export class SioAuthBadgeComponent {
   @Input() public urlNeedLogin = 'auth/403';
   @Input() public position: 'left' | 'right' = 'left';
   @Input() public shape: 'inset' | 'compact' = 'compact';
-  @Input() public color = '';
+  @Input() public color = 'none';
   @Input() public icon = 'log-in';
   @Input() public detailIcon = 'chevron-down-outline';
   @Input() public text = 'LOGIN';
-  @Input() public size: 'small' | 'large' = 'small';
-
+  @Input() public size: 'small' | 'large' = 'small'; 
   @Select(SioAuthState)
   public user$!: Observable<SioAuthUserInterface>;
 

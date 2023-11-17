@@ -2,8 +2,8 @@
 import { Component, OnInit } from '@angular/core';
 import {
   SioCoreAppComponentState,
-  SioCoreLoggerService,
   Loggable } from '@silicia/core';
+
 
 @Loggable()
 @Component({
@@ -15,7 +15,9 @@ export class SioAuthLoginPage implements OnInit {
   constructor(
     public sioCoreAppComponentState: SioCoreAppComponentState,
     //private sioCoreLoggerService: SioCoreLoggerService
-  ) {}
+  ) {
+    
+  }
 
   // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
   ngOnInit() {

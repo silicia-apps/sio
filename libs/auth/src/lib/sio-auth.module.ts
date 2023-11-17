@@ -10,7 +10,7 @@ import { SioAuthComponents } from './components';
 import { SioCommonModule } from '@silicia/core';
 import { SioAuthLoginComponentState } from './components/login/store/login.state';
 
-import { sioAuthRoutes } from './lib.routes';
+//import { sioAuthRoutes } from './lib.routes';
 
 import { SioAuthState } from './store';
 
@@ -18,7 +18,7 @@ import { SioAuthState } from './store';
   declarations: [...SioAuthComponents],
   imports: [
     CommonModule,
-    RouterModule.forChild(sioAuthRoutes),
+    //RouterModule.forChild(sioAuthRoutes),
     FormsModule,
     SioCommonModule,
     ReactiveFormsModule,

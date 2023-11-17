@@ -11,7 +11,7 @@ export class SioCoreMenuItemComponent implements OnInit {
   @Input() public caption: string | undefined = undefined;
   @Input() public style: 'default' | 'rounded' | 'custom' | 'tab' = 'rounded';
   @Input() public lines: 'full' | 'inset' | 'none' = 'none';
-  @Input() public color: SioColorType;
+  @Input() public color: SioColorType = 'none';
   @Input() public icon: string | undefined = undefined;
   @Input() public url: string | undefined = undefined;
   @Input() public layout:

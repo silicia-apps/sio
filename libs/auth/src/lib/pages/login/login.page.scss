@@ -1,6 +1,5 @@
 :host {
   sio-page {
-    ion-content {
-    --background: url('https://clickrace.it/assets/images/bg.jpg') no-repeat;
-  }}
+    --sio-page-background: url('/assets/bg/bg.jpg') no-repeat;
+  }
 }

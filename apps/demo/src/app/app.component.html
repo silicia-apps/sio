@@ -1,4 +1,4 @@
-<sio-app
+<sio-app [environmentInjector]="environmentInjector"
   title="Demo"
   leftPanelType="push"
   righPanelType="none"
@@ -7,6 +7,6 @@
   tabMobilePosition="bottom"
   color="primary"
 >
+  <sio-auth-badge slot="left_header" color="secondary"></sio-auth-badge>
   <sio-darkmode-toggle slot="left_footer"></sio-darkmode-toggle>
-  
 </sio-app>

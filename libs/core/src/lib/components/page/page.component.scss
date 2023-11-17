@@ -1,5 +1,11 @@
 :host {
 
+  --sio-page-background: var(--ion-background-color);
+
+  ion-content {
+    --background: var(--sio-page-background);
+  }
+
   #container {
     text-align: center;
 

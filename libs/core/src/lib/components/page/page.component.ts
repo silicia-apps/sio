@@ -48,6 +48,7 @@ export class SioCorePageComponent implements OnInit {
     public sioCoreAppComponentState: SioCoreAppComponentState,
     public sioCorePageComponentState: SioCorePageComponentState,
   ) {
+    //this.sioCoreAppComponentState.SetFullmode(false);
     this.toolbar = true;
     this.title = 'PAGE_TITLE';
     this.menu = false;

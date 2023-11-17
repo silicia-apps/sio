@@ -17,7 +17,11 @@
       <ion-menu
         contentId="main-content"
         side="start"
-        [type]="(this.sioCoreAppComponentState.leftPanelType!=='toggle')?this.sioCoreAppComponentState.leftPanelType:'push'"
+        [type]="
+          this.sioCoreAppComponentState.leftPanelType !== 'toggle'
+            ? this.sioCoreAppComponentState.leftPanelType
+            : 'push'
+        "
         [swipeGesture]="
           this.sioCoreAppComponentState.leftPanelType !== 'toggle'
         "
@@ -43,7 +47,7 @@
               this.sioCoreAppComponentState.split
             "
             id="tab"
-            [color] = "this.color"
+            [color]="this.color"
           >
           </sio-menu>
           <div #left_content>
@@ -53,7 +57,7 @@
             <sio-menu
               *ngIf="this.sioCoreAppComponentState.leftMenuID"
               [menuID]="this.sioCoreAppComponentState.leftMenuID"
-              [color] = "this.color"
+              [color]="this.color"
             ></sio-menu>
           </ng-container>
         </ion-content>
@@ -101,7 +105,7 @@
             </ng-container>
           </ion-toolbar>
         </ion-header>
-        <ion-content  [color] = "this.color">
+        <ion-content [color]="this.color">
           <sio-menu
             *ngIf="
               this.sioCoreAppComponentState.tabMenuID &&
@@ -109,7 +113,7 @@
               this.sioCoreAppComponentState.split
             "
             id="tab"
-            [color] = "this.color"
+            [color]="this.color"
           ></sio-menu>
           <div #right_content>
             <ng-content select="[slot='right_content']"></ng-content>
@@ -118,7 +122,7 @@
             <sio-menu
               *ngIf="this.sioCoreAppComponentState.rightMenuID"
               [menuID]="this.sioCoreAppComponentState.rightMenuID"
-              [color] = "this.color"
+              [color]="this.color"
             ></sio-menu>
           </ng-container>
         </ion-content>
@@ -128,24 +132,28 @@
           </div>
           <ng-container *ngIf="!right_footer.hasChildNodes()">
             <ion-toolbar class="ion-no-border" [color]="this.color">
-              <sio-dark-mode-toggle></sio-dark-mode-toggle>              
+              <sio-dark-mode-toggle></sio-dark-mode-toggle>
             </ion-toolbar>
           </ng-container>
         </ion-footer>
       </ion-menu>
-      <ion-router-outlet id="main-content">
+      <ion-router-outlet [environmentInjector]="this.environmentInjector" id="main-content">
         <ng-content></ng-content>
-        <sio-tab 
+        <sio-tab
           *ngIf="this.sioCoreAppComponentState.tabMenuID"
           [tabID]="this.sioCoreAppComponentState.tabMenuID"
-          [position]="this.sioCoreAppComponentState.split ? this.sioCoreAppComponentState.tabDesktopPosition : this.sioCoreAppComponentState.tabMobilePosition"
-          [color] = "this.color"
+          [position]="
+            this.sioCoreAppComponentState.split
+              ? this.sioCoreAppComponentState.tabDesktopPosition
+              : this.sioCoreAppComponentState.tabMobilePosition
+          "
+          [color]="this.color"
         ></sio-tab>
       </ion-router-outlet>
     </ion-split-pane>
   </ng-template>
   <ng-template #blank>
-    <ion-router-outlet id="main-content">
+    <ion-router-outlet [environmentInjector]="environmentInjector" id="main-content">
       <sio-menu
         *ngIf="
           this.sioCoreAppComponentState.tabMenuID &&
@@ -153,7 +161,7 @@
         "
         menuID="tab"
         position="bottom"
-        [color] = "this.color"
+        [color]="this.color"
       ></sio-menu>
       <ng-content></ng-content>
     </ion-router-outlet>

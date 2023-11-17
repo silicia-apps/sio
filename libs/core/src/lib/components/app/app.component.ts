@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, ViewChild, EnvironmentInjector } from '@angular/core';
 import { SioCoreAppComponentState } from '../../store/index';
 
 import { it } from '../../../i18n/it';
@@ -75,6 +75,9 @@ export class SioCoreAppComponent implements OnInit, OnDestroy {
   set tabMenuID(value: string) {
     this.sioCoreAppComponentState.setTabMenuID(value);
   }
+
+  @Input()
+  environmentInjector : EnvironmentInjector | undefined;
 
   /**
    * How display tabbar in desktop mode

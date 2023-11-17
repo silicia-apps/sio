@@ -9,21 +9,24 @@
 <ng-template #logged2>
   <a (click)="this.goPage(this.urlProfilePage)">
     <ion-avatar [class]="this.size">
-      <ion-img
-        [src]="this.sioAuthState.user?.details?.photoURL"
-      ></ion-img>
+      <ion-img [src]="this.sioAuthState.user?.details?.photoURL"></ion-img>
     </ion-avatar>
   </a>
 </ng-template>
 <ng-template #default>
   <div content *ngIf="!this.sioAuthState.isAutenticated; else logged">
     <ng-content id="message"></ng-content>
-    <ion-item button (click)="(this.urlLoginPage)">
-      <sio-icon [name]="this.icon" [slot]="this.position"></sio-icon>
-      <ion-label>
-        {{ this.text | translate }}
-      </ion-label>
-    </ion-item>
+    <ion-menu-toggle auto-hide="false">
+      <ion-list inset="true">
+        <sio-menu-item
+          [color]="this.color"
+          icon="person"
+          [url]="this.urlLoginPage"
+          [caption]="this.text"
+        >
+        </sio-menu-item
+      ></ion-list>
+    </ion-menu-toggle>
   </div>
   <ng-template #logged>
     <ion-accordion-group [expand]="this.shape">
