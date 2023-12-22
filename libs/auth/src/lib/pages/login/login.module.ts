@@ -4,7 +4,7 @@ import { SioCommonModule } from '@silicia/core';
 
 import { Routes, RouterModule } from '@angular/router';
 import { SioAuthLoginPage } from './login.page';
-import { SioAuthModule } from '../../../index';
+import { SioAuthModule } from '../../sio-auth.module';
 
 const routes: Routes = [
   {
@@ -16,7 +16,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    SioCommonModule.forChild(),
+    SioCommonModule,
     SioAuthModule,
     RouterModule.forChild(routes),
   ],

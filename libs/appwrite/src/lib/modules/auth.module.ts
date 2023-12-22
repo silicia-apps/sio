@@ -33,7 +33,7 @@ export class AppwriteAuthModule {
         {
           provide: SioAuthPluginServiceToken,
           useFactory: appwriteUserFactory,
-          deps: [SioAuthPluginServiceConfigToken, SioCoreLoggerService],
+          deps: [SioAuthPluginServiceConfigToken, SioCoreLoggerService, SioAppwriteClientService],
           multi: true,
         },
         SioAppwriteClientService,

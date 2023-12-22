@@ -65,6 +65,7 @@ export class SioAuthState
       '[SioAuthState][isAuthenticated] check if user is authenticated',
       this.snapshot.user?.status
     );
+    if (!this.snapshot.user) this.checkSession();
     return this.snapshot.user?.status === 'user';
   }
 
@@ -108,6 +109,7 @@ export class SioAuthState
         this.patchState({ user: user });
         this.sioAuthPluginService
           .socket(data.id, data.userId)
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           .subscribe((data:any) => {
             this.sioCoreLoggerService.debug(
               '[SioAuthState][storeSession] - get new data',

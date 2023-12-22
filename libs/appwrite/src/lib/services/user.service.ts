@@ -30,6 +30,7 @@ export class SioAppwriteUserService implements SioAuthPluginServiceInterface {
     private loggerService: SioCoreLoggerService,
     private sioAppwriteClientService: SioAppwriteClientService,
   ) {
+    this.loggerService.info('test');
     this.sioAppwriteClientService.Connect(this.config.apiEndpoint as string, this.config.projectID as string);
     this.account = new Account(this.sioAppwriteClientService.client);
     this.avatars = new Avatars(this.sioAppwriteClientService.client);
@@ -204,6 +205,7 @@ export class SioAppwriteUserService implements SioAuthPluginServiceInterface {
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   async signup(email: string, password: string, name: string): Promise<any> {
     try {
       this.loggerService.info(
@@ -222,6 +224,7 @@ export class SioAppwriteUserService implements SioAuthPluginServiceInterface {
       this.loggerService.debug(
         `[SiliciaAppwriteBackendService][signup] - account: ${account}`
       );
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (e: any) {
       this.loggerService.error(
         `[SiliciaAppwriteBackendService][signup] - Error creating Account`

@@ -16,7 +16,7 @@ export const sioAuthRoutes: Route[] = [
     path: 'auth/profile',
     loadChildren: () =>
       import('./pages/profile').then((m) => m.SioAuthProfilePageModule),
-    canActivate: [SioAuthGuard],
+      canActivate: [SioAuthGuard],
   },
   {
     path: 'auth/403',

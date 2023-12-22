@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { SioAuthSignupPage } from './signup.page';
 import { SioCommonModule } from '@silicia/core';
-import { SioAuthModule } from "../../sio-auth.module";
+import { SioAuthModule } from '../../sio-auth.module';
 
 const routes: Routes = [
   {
@@ -16,7 +16,7 @@ const routes: Routes = [
     declarations: [SioAuthSignupPage],
     imports: [
         CommonModule,
-        SioCommonModule.forChild(),
+        SioCommonModule,
         SioAuthModule,
         RouterModule.forChild(routes),
     ]

@@ -31,10 +31,7 @@
     },
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": ["libs/core/**/*.ts", "libs/core/**/*.html"]
-      }
+      "outputs": ["{options.outputFile}"]
     },
     "storybook": {
       "executor": "@storybook/angular:start-storybook",
@@ -54,7 +51,10 @@
             "output": "./svg"
           }
         ],
-        "styles": ["apps/demo/src/theme/variables.scss", "apps/demo/src/global.scss"],
+        "styles": [
+          "apps/demo/src/theme/variables.scss",
+          "apps/demo/src/global.scss"
+        ],
         "compodoc": true,
         "compodocArgs": ["-e", "json", "-d", "libs/core"]
       },

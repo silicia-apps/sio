@@ -13,4 +13,8 @@ export const it = {
   'BACKEND_RATE_LIMIT': 'Troppi tentativi riprovare tra qualche minuto',
   'BACKEND_AUTH_NO_GUEST_ACCESS': 'Per accedere a questa pagina occorre loggarsi',
   'BACKEND_AUTH_INVALID_CREDENTIALS': 'Nome Utente o Password non validi',
+  "USERNAME-ERROR-TEXT": "Non hai inserito una email valida",
+  "USERNAME-HELPER-TEXT": "Inserisci la tua email",
+  "PASSWORD-ERROR-TEXT": "Devi inserire una password",
+  "PASSWORD-HELPER-TEXT": "Inserisci la Tua Password",
 };

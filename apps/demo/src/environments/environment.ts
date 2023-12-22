@@ -10,7 +10,7 @@ import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import {
   SioCoreEnvironmentInterface,
-  SioCorePluginServiceConfigModel,
+  //SioCorePluginServiceConfigModel,
 } from '@silicia/core';
 //import { LOGGER_OPTIONS } from '@angular-ru/cdk/logger';
 
@@ -21,7 +21,10 @@ export const environment: SioCoreEnvironmentInterface = {
     NgxsLoggerPluginModule.forRoot(),
     NgxsReduxDevtoolsPluginModule.forRoot(),
   ],
-  backend: {},
+  backend: {
+    apiEndpoint: 'https://cloud.appwrite.io/v1',
+    projectID: '6557f73331ab50cb50b6'
+  },
   app: {
     title: 'Demo App',
     language: {

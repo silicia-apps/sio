@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { SioAuthState } from '../../store';
-import { SioCoreLoggerService, SioCoreFormComponentInputInterface, SioCommonModule } from '@silicia/core';
+import { SioCoreLoggerService, SioCoreFormComponentInputInterface } from '@silicia/core';
 import { SioAuthLoginComponentState } from './store/login.state';
 import { Navigate } from '@ngxs/router-plugin';
 import { Loggable } from '@silicia/core';

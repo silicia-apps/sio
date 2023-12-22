@@ -13,6 +13,7 @@
       [debounce]="this.debounce"
       [disabled]="this.disabled"
       [type]="this._type"
-      [errorText]="this.error"
-      [helperText]="this.label"
+      errorText="{{ (this.name.toUpperCase() + '-ERROR-TEXT') | translate }}"
+      helperText="{{ (this.name.toUpperCase() + '-HELPER-TEXT') | translate }}"
+      [class]="(this.invalid && this.dirty)?'ng-invalid ng-touched':''"
     ></ion-input>

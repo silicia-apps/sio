@@ -22,6 +22,7 @@ import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { NgxsFormPluginModule } from '@ngxs/form-plugin';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MaskitoModule } from '@maskito/angular';
 
 import { SioCoreComponents } from './components';
 
@@ -56,6 +57,7 @@ export function createTranslateLoader(http: HttpClient) {
     CommonModule,
     FormsModule,
     RouterModule,
+    MaskitoModule,
     ReactiveFormsModule,
     IonicModule,
     TranslateModule.forChild({
@@ -71,12 +73,7 @@ export function createTranslateLoader(http: HttpClient) {
   exports: [...SioCoreComponents, IonicModule, TranslateModule],
 })
 export class SioCommonModule {
-  static forChild(scope = ''): ModuleWithProviders<SioCommonModule> {
-    return {
-      ngModule: SioCommonModule,
-      providers: [],
-    };
-  }
+  
 }
 
 @NgModule({
@@ -102,12 +99,7 @@ export class SioCommonModule {
   exports: [IonicModule, TranslateModule],
 })
 export class SioMinimalModule {
-  static forChild(scope = ''): ModuleWithProviders<SioCommonModule> {
-    return {
-      ngModule: SioCommonModule,
-      providers: [],
-    };
-  }
+  
 }
 
 @NgModule({

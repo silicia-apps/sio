@@ -18,7 +18,6 @@ import { Observable } from 'rxjs';
 export class SioCorePageComponent implements OnInit {
   
   @Input() title: string;
-  
   @Input() color: SioColorType;
 
   @AttributeBoolean() @Input() set toolbar(value: InputBoolean) {

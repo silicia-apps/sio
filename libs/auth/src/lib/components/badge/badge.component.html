@@ -29,20 +29,16 @@
     </ion-menu-toggle>
   </div>
   <ng-template #logged>
-    <ion-accordion-group [expand]="this.shape">
-      <ion-accordion>
-        <ion-item slot="header" [color]="this.color">
-          <ion-avatar slot="start">
-            <img [src]="this.sioAuthState.user?.details?.photoURL" />
-          </ion-avatar>
-          <ion-label>
-            <h1>{{ this.sioAuthState.user?.displayName }}</h1>
-            <p>{{ this.sioAuthState.user?.email?.address }}</p>
-          </ion-label>
-        </ion-item>
-        <div slot="content">
-          <sio-menu id="logged"></sio-menu>
-        </div> </ion-accordion
-    ></ion-accordion-group>
+    <sio-card
+      [color]="this.color"
+      [title]="this.sioAuthState.user!.displayName"
+      [subtitle]="this.sioAuthState.user!.email!.address!"
+      [shape]="this.shape"
+      
+
+    >
+      
+      <sio-menu menuID="logged"></sio-menu>
+    </sio-card>
   </ng-template>
 </ng-template>
