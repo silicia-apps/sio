@@ -164,6 +164,7 @@ export class SioAppwriteUserService implements SioAuthPluginServiceInterface {
       );
       return this.sioAuthSession(session);
     } catch (e: unknown) {
+      console.error(e);
       throw this.throwError(e as Error);
     }
   }
@@ -180,6 +181,7 @@ export class SioAppwriteUserService implements SioAuthPluginServiceInterface {
       );
       return this.sioAuthUser(user);
     } catch (e: unknown) {
+      console.error('xxx'+ e);
       throw this.throwError(e as Error);
     }
   }

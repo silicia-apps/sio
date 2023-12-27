@@ -1,92 +1,78 @@
-import { Injectable } from '@angular/core';
+import { inject } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
+  CanActivateFn,
   Router,
-  UrlTree,
+  //RouterStateSnapshot,
 } from '@angular/router';
-import { Loggable, SioCoreLoggerService } from '@silicia/core';
+import { SioCoreLoggerService } from '@silicia/core';
 import { SioAuthUserStatusType } from '../types';
 import { SioAuthState } from '../store';
 
-@Loggable()
-@Injectable({
-  providedIn: 'root',
-})
-export class SioAuthGuard {
-  constructor(
-    private router: Router,
-    private sioCoreLoggerService: SioCoreLoggerService,
-    private sioAuthState: SioAuthState
-  ) {}
+export const SioAuthGuard: CanActivateFn = async (
+  route: ActivatedRouteSnapshot,
+  //state: RouterStateSnapshot,
+) => {
+  const sioCoreLoggerService = inject(SioCoreLoggerService);
+  const sioAuthState = inject(SioAuthState);
+  const router = inject(Router);
 
-  async canActivate(route: ActivatedRouteSnapshot): Promise<boolean | UrlTree> {
-    try {
-      this.sioCoreLoggerService.debug(
-        '[SioAuthGuard][canActivate] test level',
-        route.data
+  sioCoreLoggerService.debug('[SioAuthGuard][canActivate] start');
+  try {
+    sioCoreLoggerService.debug(
+      '[SioAuthGuard][canActivate] test level',
+      route.data,
+    );
+    const level = route.data['level'] as SioAuthUserStatusType;
+    sioCoreLoggerService.info(
+      '[sioAuthGuard][canActivate] - check if user is authenticated',
+      sioAuthState.isAutenticated,
+    );
+    if (sioAuthState.isAutenticated || (await sioAuthState.checkSession())) {
+      sioCoreLoggerService.info(
+        '[sioAuthGuard][canActivate] - user is authenticated',
       );
-      const level = route.data['level'] as SioAuthUserStatusType;
-      this.sioCoreLoggerService.info(
-        '[sioCoreAuthGuard][canActivate] - check if user is authenticated',
-        this.sioAuthState.isAutenticated
+      sioCoreLoggerService.debug(
+        '[sioAuthGuard][canActivate] - check type of user',
       );
-      if (
-        this.sioAuthState.isAutenticated ||
-        (await this.sioAuthState.checkSession())
-      ) {
-        this.sioCoreLoggerService.info(
-          '[sioCoreAuthGuard][canActivate] - user is authenticated'
+      if (sioAuthState.isAutenticated) {
+        sioCoreLoggerService.debug(
+          '[sioAuthGuard][canActivate] - User Registered',
         );
-        this.sioCoreLoggerService.debug(
-          '[sioCoreAuthGuard][canActivate] - check type of user'
-        );
-        if (this.sioAuthState.isAutenticated) {
-          this.sioCoreLoggerService.debug(
-            '[sioCoreAuthGuard][canActivate] - User Registered'
-          );
-          return true;
-        } else {
-          if (
-            this.sioAuthState.isAnonymous &&
-            level === 'anonymous'
-          ) {
-            this.sioCoreLoggerService.debug(
-              '[sioCoreAuthGuard][canActivate] - access granted for anonymous user'
-            );
-            return true;
-          } else {
-            this.sioAuthState.setRedirectTo(route.url);
-            return this.router.parseUrl(
-              this.sioAuthState.snapshot.routes.login
-            );
-          }
-        }
+        return true;
       } else {
-        this.sioCoreLoggerService.info(
-          '[SiliciaCoreAuthGuard][canActivate] - check level anonymous',
-          level
-        );
-        if (level === 'anonymous') {
-          this.sioCoreLoggerService.debug(
-            '[SiliciaCoreAuthGuard][canActivate] - create and grant access for anonymous user'
+        if (sioAuthState.isAnonymous && level === 'anonymous') {
+          sioCoreLoggerService.debug(
+            '[sioAuthGuard][canActivate] - access granted for anonymous user',
           );
-          await this.sioAuthState.anonymousLogin();
           return true;
         } else {
-          this.sioCoreLoggerService.info(
-            '[SiliciaCoreAuthGuard][canActivate] - access denied'
-          );
-          this.sioAuthState.setRedirectTo(route.url);
-          return this.router.parseUrl(
-            this.sioAuthState.snapshot.routes.login
-          );
+          sioAuthState.setRedirectTo(route.url);
+          return router.parseUrl(sioAuthState.snapshot.routes.login);
         }
       }
-    } catch (e) {
-      return this.router.parseUrl(
-        this.sioAuthState.snapshot.routes.login
+    } else {
+      sioCoreLoggerService.info(
+        '[sioAuthGuard][canActivate] - check level anonymous',
+        level,
       );
+      if (level === 'anonymous') {
+        sioCoreLoggerService.debug(
+          '[sioAuthGuard][canActivate] - create and grant access for anonymous user',
+        );
+        await sioAuthState.anonymousLogin();
+        return true;
+      } else {
+        sioCoreLoggerService.info(
+          '[sioAuthGuard][canActivate] - access denied',
+        );
+        sioAuthState.setRedirectTo(route.url);
+        return router.parseUrl(
+          sioAuthState.snapshot.routes.login
+        );
+      }
     }
-    return false;
+  } catch (e) {
+    return router.parseUrl(sioAuthState.snapshot.routes.login);
   }
-}
+};

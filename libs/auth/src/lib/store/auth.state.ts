@@ -97,6 +97,7 @@ export class SioAuthState
         redirectTo: `/${value[0].path}`,
       },
     });
+    this.sioCoreLoggerService.debug('[SioAuthState][setRedirectTo] Set redirect url to ' + value, this.snapshot.routes.redirectTo);
   }
 
   public async storeSession(

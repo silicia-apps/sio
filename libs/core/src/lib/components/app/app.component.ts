@@ -43,7 +43,6 @@ export class SioCoreAppComponent implements OnInit, OnDestroy {
     this.sioCoreAppComponentState.setLeftPanelType(value);
   }
 
-  
   /**
    * Specifies the behavior of the Right sidebar
    */

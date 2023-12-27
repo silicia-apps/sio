@@ -8,7 +8,7 @@ import {
 import { CommonModule } from '@angular/common';
 import {
   PreloadAllModules,
-  RouterModule,
+  //RouterModule,
   provideRouter,
   withPreloading,
 } from '@angular/router';
