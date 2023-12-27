@@ -4,9 +4,10 @@
     ngxsForm="{{ this.state.name }}.data"
     [formGroup]="this.form"
     (ngSubmit)="this.onSubmit()"
-  >
-    <sio-input
-      *ngFor="let item of (this.state.state$ | async)?.layout"
+  > 
+  <div   *ngFor="let item of (this.state.state$ | async)?.layout">
+  <sio-input
+      
       [label]="item.label"
       [name]="item.name"
       [type]="item.type"
@@ -14,6 +15,7 @@
       [color]="this.color"
     ></sio-input>
     <br />
+    </div>
     <ion-button
       size="large"
       expand="block"

@@ -1,8 +1,8 @@
-import { SiliciaCoreAuthSessionModel } from './session.interface';
-import { SiliciaCoreAuthUserModel } from './user.interface';
+import { SioAuthSessionInterface } from './session.interface';
+import { SioAuthUserInterface } from './user.interface';
 export interface SiliciaCoreAuthStateModel {
-  session: SiliciaCoreAuthSessionModel | null;
-  user: SiliciaCoreAuthUserModel | null;
+  session: SioAuthSessionInterface | null;
+  user: SioAuthUserInterface | null;
   routes: {
     home: string;
     login: string;

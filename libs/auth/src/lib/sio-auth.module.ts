@@ -1,8 +1,8 @@
 import {
   ModuleWithProviders,
   NgModule,
-  Optional,
-  SkipSelf,
+  //Optional,
+  //SkipSelf,
 } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
@@ -38,7 +38,6 @@ export class EnsureModuleLoadedOnceGuard {
   declarations: [...SioAuthComponents],
   imports: [
     CommonModule,
-    //RouterModule.forChild(sioAuthRoutes),
     FormsModule,
     SioCommonModule,
     ReactiveFormsModule,
@@ -47,9 +46,10 @@ export class EnsureModuleLoadedOnceGuard {
   ],
   exports: [...SioAuthComponents],
 })
-export class SioAuthModule extends EnsureModuleLoadedOnceGuard {
-  constructor(@Optional() @SkipSelf() parentModule: SioAuthModule) {
-    super(parentModule);
+export class SioAuthModule {
+  constructor() {
+    //@Optional() @SkipSelf() parentModule: SioAuthModule) {
+    //super(parentModule);
   }
 
   static forRoot(): ModuleWithProviders<SioAuthModule> {

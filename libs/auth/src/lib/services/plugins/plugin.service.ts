@@ -4,12 +4,12 @@ import {
   SioAuthSessionInterface,
   SioAuthUserInterface,
 } from '../../interfaces';
-import { Loggable, SioCoreAppComponentState } from '@silicia/core';
+import { SioCoreAppComponentState, SioCoreLoggerService } from '@silicia/core';
 import { SioAuthPluginServiceInterface } from './interfaces';
 import { SioAuthPluginServiceToken } from './tokens';
+import { it } from './i18n/it';
 import { TranslateService } from '@ngx-translate/core';
 
-@Loggable()
 @Injectable({ providedIn: 'root' })
 export class SioAuthPluginService implements SioAuthPluginServiceInterface {
   private readonly plugins: SioAuthPluginServiceInterface[];
@@ -19,10 +19,14 @@ export class SioAuthPluginService implements SioAuthPluginServiceInterface {
     @Inject(SioAuthPluginServiceToken)
     plugins: SioAuthPluginServiceInterface[],
     private sioCoreAppComponentState: SioCoreAppComponentState,
+    private sioCoreLoggerService: SioCoreLoggerService,
     private translateService: TranslateService
   ) {
     plugins = plugins || [];
     this.plugins = Array.isArray(plugins) ? plugins : [plugins];
+    this.sioCoreLoggerService.debug(`[SioAuthPluginService][constructor] Load Translations`);
+    this.translateService.setTranslation('it', it, true);
+    this.sioCoreLoggerService.debug('',this.translateService)
   }
 
   async getUser(): Promise<SioAuthUserInterface | null> {
@@ -41,7 +45,10 @@ export class SioAuthPluginService implements SioAuthPluginServiceInterface {
 
   async getSession(): Promise<SioAuthSessionInterface | null> {
     try {
-      return this.plugins[0].getSession();
+      this.sioCoreLoggerService.info(
+        '[SioAuthPluginService][getSession] - Check session'
+      );
+      return await this.plugins[0].getSession();
     } catch (e) {
       const error = e as Error;
       if (error.name === 'sio-error')
@@ -63,8 +70,8 @@ export class SioAuthPluginService implements SioAuthPluginServiceInterface {
       const error = e as Error;
       if (error.name === 'sio-error')
         this.sioCoreAppComponentState.throwError(
-          'auth.'+error.message,
-          'auth.AUTH_ERROR'
+          error.message,
+          'AUTH_ERROR'
         );
       return null;
     }
@@ -77,7 +84,7 @@ export class SioAuthPluginService implements SioAuthPluginServiceInterface {
       const error = e as Error;
       if (error.name === 'sio-error')
         this.sioCoreAppComponentState.throwError(
-          'auth.'+error.message,
+          error.message,
           'AUTH_ERROR'
         );
       return null;

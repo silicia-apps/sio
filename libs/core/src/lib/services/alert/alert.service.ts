@@ -12,11 +12,13 @@ export class SioCoreAlertService {
     name = 'error',
     message: string,
     // eslint-disable-next-line @typescript-eslint/ban-types
-    action: Function
+    action: Function, 
+    cancel: boolean = false,
+
   ): Promise<unknown> {
     const buttons = [];
 
-    buttons.push({
+    if (cancel) buttons.push({
       text: 'CANCEL',
       role: 'cancel',
       handler: () => {

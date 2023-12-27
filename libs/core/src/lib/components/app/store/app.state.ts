@@ -4,6 +4,7 @@ import { SioCoreAppComponentStateModel } from './app.model';
 import { SioCoreAppCompomentInterface } from '../../../interfaces';
 
 import { State } from '@ngxs/store';
+import { TranslateService } from '@ngx-translate/core';
 import {
   Computed,
   DataAction,
@@ -54,6 +55,10 @@ const APP_STATE_TOKEN = new StateToken<SioCoreAppComponentStateModel>('app');
 })
 @Injectable()
 export class SioCoreAppComponentState extends NgxsDataRepository<SioCoreAppComponentStateModel> {
+  constructor(private translateService: TranslateService) {
+    super();
+
+  }
   @Selector()
   static loading(state: SioCoreAppComponentStateModel) {
     return state.loading;
@@ -170,6 +175,7 @@ export class SioCoreAppComponentState extends NgxsDataRepository<SioCoreAppCompo
   }
 
   @DataAction()
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   setTabDesktop(value: any) {
     this.ctx.setState((state: SioCoreAppComponentStateModel) => {
       return {
@@ -183,6 +189,7 @@ export class SioCoreAppComponentState extends NgxsDataRepository<SioCoreAppCompo
   }
 
   @DataAction()
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   setTabMobile(value: any) {
     this.ctx.setState((state: SioCoreAppComponentStateModel) => {
       return {
@@ -289,8 +296,8 @@ export class SioCoreAppComponentState extends NgxsDataRepository<SioCoreAppCompo
   ): Promise<void> {
     this.patchState({
       errors: {
-        name: name,
-        message: message,
+        name: this.translateService.instant(name),
+        message: this.translateService.instant(message),
         action: action,
       },
     });

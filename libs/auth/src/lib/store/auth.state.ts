@@ -65,7 +65,7 @@ export class SioAuthState
       '[SioAuthState][isAuthenticated] check if user is authenticated',
       this.snapshot.user?.status
     );
-    if (!this.snapshot.user) this.checkSession();
+    if (!this.snapshot.user) async () => { await this.checkSession() };
     return this.snapshot.user?.status === 'user';
   }
 

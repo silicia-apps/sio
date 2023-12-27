@@ -1,4 +1,5 @@
 import { Component, EnvironmentInjector } from '@angular/core';
+import { SioAuthModule } from '@silicia/auth';
 import { SioCommonModule, SioCoreLoggerService, Loggable } from '@silicia/core';
 
 @Loggable()
@@ -7,7 +8,7 @@ import { SioCommonModule, SioCoreLoggerService, Loggable } from '@silicia/core';
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
   standalone: true,
-  imports: [ SioCommonModule ],
+  imports: [ SioCommonModule, SioAuthModule ],
 })
 export class AppComponent {
   constructor(

@@ -9,14 +9,12 @@ import {
 } from '@silicia/auth';
 
 import {
-  Loggable,
   SioCoreLoggerService,
   SioCorePluginServiceConfigModel,
   sioCorePluginServiceConfigToken,
 } from '@silicia/core';
 import { Observable } from 'rxjs';
 
-@Loggable()
 @Injectable()
 export class SioAppwriteUserService implements SioAuthPluginServiceInterface {
   private readonly account: Account;
@@ -107,7 +105,7 @@ export class SioAppwriteUserService implements SioAuthPluginServiceInterface {
 
   async createAnonymousSession(): Promise<SioAuthSessionInterface | null> {
     try {
-      this.loggerService.debug(
+      this.loggerService.info(
         '[SioAppwriteUserService][createAnonymousSession] - try to create anonymous session'
       );
       const session = await this.account.createAnonymousSession();
@@ -156,7 +154,6 @@ export class SioAppwriteUserService implements SioAuthPluginServiceInterface {
       this.loggerService.info(
         '[SioAppwriteUserService][getSession] - request session to backend'
       );
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const session: Models.Session = await this.account.getSession('current');
       this.loggerService.debug(
         '[SioAppwriteUserService][getSession] - session data:',
@@ -164,7 +161,6 @@ export class SioAppwriteUserService implements SioAuthPluginServiceInterface {
       );
       return this.sioAuthSession(session);
     } catch (e: unknown) {
-      console.error(e);
       throw this.throwError(e as Error);
     }
   }
@@ -181,7 +177,6 @@ export class SioAppwriteUserService implements SioAuthPluginServiceInterface {
       );
       return this.sioAuthUser(user);
     } catch (e: unknown) {
-      console.error('xxx'+ e);
       throw this.throwError(e as Error);
     }
   }

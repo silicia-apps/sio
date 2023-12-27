@@ -28,7 +28,7 @@ export const SioAuthGuard: CanActivateFn = async (
       '[sioAuthGuard][canActivate] - check if user is authenticated',
       sioAuthState.isAutenticated,
     );
-    if (sioAuthState.isAutenticated || (await sioAuthState.checkSession())) {
+    if (sioAuthState.isAutenticated) {
       sioCoreLoggerService.info(
         '[sioAuthGuard][canActivate] - user is authenticated',
       );
@@ -48,7 +48,11 @@ export const SioAuthGuard: CanActivateFn = async (
           return true;
         } else {
           sioAuthState.setRedirectTo(route.url);
-          return router.parseUrl(sioAuthState.snapshot.routes.login);
+          sioCoreLoggerService.info(`Redirect to login page ${sioAuthState.snapshot.routes.login}`);
+          return router.parseUrl(
+            '/info'
+            //sioAuthState.snapshot.routes.login
+          );
         }
       }
     } else {
@@ -67,12 +71,16 @@ export const SioAuthGuard: CanActivateFn = async (
           '[sioAuthGuard][canActivate] - access denied',
         );
         sioAuthState.setRedirectTo(route.url);
+        sioCoreLoggerService.info(`Redirect to login page ${sioAuthState.snapshot.routes.login}`);
         return router.parseUrl(
           sioAuthState.snapshot.routes.login
         );
       }
     }
   } catch (e) {
-    return router.parseUrl(sioAuthState.snapshot.routes.login);
+    sioCoreLoggerService.info(`Redirect to login page ${sioAuthState.snapshot.routes.login}`);
+    return router.parseUrl(
+      sioAuthState.snapshot.routes.login
+    );
   }
 };

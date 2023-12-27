@@ -1,9 +1,9 @@
 {
   "name": "sio",
-  "version": "0.0.0",
+  "version": "0.0.1-alpha",
   "license": "MIT",
   "scripts": {},
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular-ru/cdk": "14.11.2",
     "@angular-ru/ngxs": "14.2.2",
@@ -19,6 +19,7 @@
     "@capacitor/core": "^5.4.2",
     "@ionic/angular": "^7.4.3",
     "@maskito/angular": "^1.9.0",
+    "@maskito/core": "^1.9.0",
     "@ngx-translate/core": "^15.0.0",
     "@ngx-translate/http-loader": "^8.0.0",
     "@ngxs/form-plugin": "^3.8.1",
@@ -88,4 +89,3 @@
     "typescript": "5.2.2"
   }
 }
-

@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import { Client, Databases } from 'appwrite';
+import { Databases } from 'appwrite';
 
 import { SioDatabasePluginServiceInterface } from '@silicia/database';
 
