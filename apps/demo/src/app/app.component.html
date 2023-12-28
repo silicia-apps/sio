@@ -1,13 +1,5 @@
-<sio-app
-  [environmentInjector]="environmentInjector"
-  title="Demo"
-  leftPanelType="push"
-  righPanelType="none"
-  tabMenuID="main"
-  tabDesktopPosition="left"
-  tabMobilePosition="bottom"
-  color="primary"
->
-  <sio-auth-badge slot="left_header"></sio-auth-badge>
+<sio-app [environmentInjector]="environmentInjector" title="Demo" leftPanelType="push" righPanelType="none"
+  tabMenuID="main" tabDesktopPosition="left" tabMobilePosition="bottom" color="primary">
+  <sio-auth-badge slot="left_header" size="large"></sio-auth-badge>
   <sio-darkmode-toggle slot="left_footer"></sio-darkmode-toggle>
 </sio-app>

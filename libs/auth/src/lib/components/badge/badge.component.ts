@@ -1,13 +1,17 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 import { Store, Select } from '@ngxs/store';
 
 import { Navigate } from '@ngxs/router-plugin';
 
 import { SioAuthState } from '../../store';
+import { SioCoreMenuState } from '@silicia/core';
 import { SioAuthUserInterface } from '../../interfaces';
 
 import { Observable } from 'rxjs';
+
+import { TranslateService } from '@ngx-translate/core';
+import { languages } from './i18n';
 
 @Component({
   // tslint:disable-next-line: component-selector
@@ -15,7 +19,7 @@ import { Observable } from 'rxjs';
   templateUrl: './badge.component.html',
   styleUrls: ['./badge.component.scss'],
 })
-export class SioAuthBadgeComponent {
+export class SioAuthBadgeComponent implements OnChanges {
   @Input() public type: 'default' | 'button' = 'default';
   @Input() public menu = 'user';
   @Input() public urlLoginPage = 'auth/login';
@@ -27,14 +31,35 @@ export class SioAuthBadgeComponent {
   @Input() public icon = 'log-in';
   @Input() public detailIcon = 'chevron-down-outline';
   @Input() public text = 'LOGIN';
-  @Input() public size: 'small' | 'large' = 'small'; 
+  @Input() public size: 'small' | 'large' = 'small';
+
   @Select(SioAuthState)
   public user$!: Observable<SioAuthUserInterface>;
 
   constructor(
     private store: Store,
     public sioAuthState: SioAuthState,
-  ) {}
+    private translateService: TranslateService,
+    private sioCoreMenuState: SioCoreMenuState,
+  ) {
+    languages.forEach((lang) => {
+      this.translateService.setTranslation(lang.key, lang.value, true);
+    });
+    
+    console.error(this.sioCoreMenuState);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.sioCoreMenuState.addOne({
+      id: 'badge',
+      items: {
+        1: { id: 1, icon: 'profile', url: '/auth/profile' },
+        2: { id: 2, icon: 'exit', url: '/auth/logout' },
+      },
+    });     
+  }
+    
+  
 
   logOut() {
     this.sioAuthState.logout();

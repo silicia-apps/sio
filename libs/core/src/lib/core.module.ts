@@ -21,6 +21,7 @@ import { NgxsModule, NoopNgxsExecutionStrategy } from '@ngxs/store';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { NgxsFormPluginModule } from '@ngxs/form-plugin';
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaskitoModule } from '@maskito/angular';
 
@@ -115,10 +116,12 @@ export class SioMinimalModule {
       developmentMode: true,
       executionStrategy: NoopNgxsExecutionStrategy,
     }),
+    NgxsLoggerPluginModule.forRoot(),
     NgxsDataPluginModule.forRoot(),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NgxsRouterPluginModule.forRoot(),
     NgxsFormPluginModule.forRoot(),
+  
   ],
   providers: [],
   exports: [TranslateModule],

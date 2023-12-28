@@ -28,7 +28,7 @@ export const SioAuthGuard: CanActivateFn = async (
       '[sioAuthGuard][canActivate] - check if user is authenticated',
       sioAuthState.isAutenticated,
     );
-    if (sioAuthState.isAutenticated) {
+    if (sioAuthState.isAutenticated || await sioAuthState.checkSession()) {
       sioCoreLoggerService.info(
         '[sioAuthGuard][canActivate] - user is authenticated',
       );

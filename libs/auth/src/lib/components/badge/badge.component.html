@@ -1,8 +1,5 @@
 <div *ngIf="this.type === 'button'; else default">
-  <a
-    (click)="this.goPage(this.urlNeedLogin)"
-    *ngIf="!this.sioAuthState.isAutenticated; else logged2"
-  >
+  <a (click)="this.goPage(this.urlNeedLogin)" *ngIf="!this.sioAuthState.isAutenticated; else logged2">
     <sio-icon name="person"></sio-icon>
   </a>
 </div>
@@ -18,27 +15,25 @@
     <ng-content id="message"></ng-content>
     <ion-menu-toggle auto-hide="false">
       <ion-list inset="true">
-        <sio-menu-item
-          [color]="this.color"
-          icon="person"
-          [url]="this.urlLoginPage"
-          [caption]="this.text"
-        >
-        </sio-menu-item
-      ></ion-list>
+        <sio-menu-item [color]="this.color" icon="person" [url]="this.urlLoginPage" [caption]="this.text">
+        </sio-menu-item></ion-list>
     </ion-menu-toggle>
   </div>
-  <ng-template #logged>
-    <sio-card
-      [color]="this.color"
-      [title]="this.sioAuthState.user!.displayName"
-      [subtitle]="this.sioAuthState.user!.email!.address!"
-      [shape]="this.shape"
-      
-
-    >
-      
-      <sio-menu menuID="logged"></sio-menu>
-    </sio-card>
+  <ng-template #logged><ion-accordion-group>
+      <ion-accordion value="badge">
+        <ion-item slot="header" [color]="this.color">
+          <ion-avatar [class]="this.size" slot="start">
+            <ion-img [src]="this.sioAuthState.user?.details?.photoURL"></ion-img>
+          </ion-avatar>
+          <ion-label>
+            <h2>{{this.sioAuthState.user!.displayName}}</h2>
+          </ion-label>
+        </ion-item>
+        <div class="ion-padding" slot="content">
+          <sio-menu menuID="logged"></sio-menu>
+          <sio-menu menuID="badge"></sio-menu>
+        </div>
+      </ion-accordion>
+    </ion-accordion-group>
   </ng-template>
 </ng-template>
