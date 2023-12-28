@@ -3,5 +3,8 @@
     "M_INFO": "Info",
     "M_SETTINGS": "Opzioni",
     "L_LANGUAGE": "test",
-    "LABEL_APP_TITLE" : "Titolo App"
+    "LABEL_APP_TITLE" : "Titolo App",
+    "INVOICES": "Tipo 1",
+    "REMINDER": "Tipo 2",
+    "MARKETING": "Tipo 3"
 }
