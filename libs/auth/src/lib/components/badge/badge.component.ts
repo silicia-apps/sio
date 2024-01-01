@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { Store, Select } from '@ngxs/store';
 
@@ -19,7 +19,7 @@ import { languages } from './i18n';
   templateUrl: './badge.component.html',
   styleUrls: ['./badge.component.scss'],
 })
-export class SioAuthBadgeComponent implements OnChanges {
+export class SioAuthBadgeComponent {
   @Input() public type: 'default' | 'button' = 'default';
   @Input() public menu = 'user';
   @Input() public urlLoginPage = 'auth/login';
@@ -49,23 +49,21 @@ export class SioAuthBadgeComponent implements OnChanges {
     console.error(this.sioCoreMenuState);
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    this.sioCoreMenuState.addOne({
-      id: 'badge',
-      items: {
-        1: { id: 1, icon: 'profile', url: '/auth/profile' },
-        2: { id: 2, icon: 'exit', url: '/auth/logout' },
-      },
-    });     
-  }
-    
-  
-
   logOut() {
     this.sioAuthState.logout();
   }
 
   goPage(url: string) {
     this.store.dispatch(new Navigate([url]));
+  }
+
+  async test() {
+      this.sioCoreMenuState.addOne({
+        id: 'badge',
+        items: {
+          1: { id: 1, icon: 'profile', url: '/auth/profile' },
+          2: { id: 2, icon: 'exit', url: '/auth/logout' },
+        },
+      });
   }
 }

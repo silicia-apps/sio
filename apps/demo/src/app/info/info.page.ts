@@ -11,4 +11,8 @@ import { SioCommonModule } from '@silicia/core';
 export class InfoPageComponent {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   constructor() {}
+
+  uploadImage(test: string) {
+    console.log(test);
+  }
 }

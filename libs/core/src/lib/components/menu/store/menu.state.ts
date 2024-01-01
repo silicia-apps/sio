@@ -12,8 +12,7 @@ import { SioCoreMenuInterface } from '../../../interfaces';
   defaults: createEntityCollections(),
 })
 @Injectable()
-export class SioCoreMenuState extends NgxsDataEntityCollectionsRepository<SioCoreMenuInterface, string> {
-  public override primaryKey: string = 'id';
+export class SioCoreMenuState extends NgxsDataEntityCollectionsRepository<SioCoreMenuInterface> {
   
   @DataAction()
   public go(url: string) {
