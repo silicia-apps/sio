@@ -1,29 +1,3 @@
 <sio-page title="info">
-    
-        <ion-card class="ion-text-center" >
-            <ion-card-header>
-              <ion-card-title>Choose Images to Upload</ion-card-title>
-            </ion-card-header>
-            <ion-card-content>
-              <ion-button color="primary" size="medium">
-                <input type="file"  />
-              </ion-button>
-            </ion-card-content>
-          </ion-card>
-          <!-- File upload progress bar -->
-          <div >
-            Progress: {{ 10 }}%
-            <ion-progress-bar value="{{ 10 / 100 }}"></ion-progress-bar>
-          </div>
-          <div >
-            File size: {{ 100  }} Data transfered: {{
-            1000}}
-          </div>
-   
-    <sio-card title="REMINDER" color="warning" value="open">
-        <ion-button>Invio</ion-button>
-    </sio-card>
-    <sio-card title="MARKETING" color="danger" value="open">
-        <ion-button>Invio</ion-button>
-    </sio-card>
+  <sio-input caption="file da inviare" type="file">Invio</sio-input>
 </sio-page>

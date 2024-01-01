@@ -5,6 +5,8 @@ import { Component, OnInit, Input, Optional } from '@angular/core';
 import { NgControl } from '@angular/forms';
 import { SioCoreFormComponentState } from '../form/store/form.state';
 
+import { FilePicker } from '@capawesome/capacitor-file-picker';
+import { SioCoreLoggerService } from '../../services';
 
 @Component({
   selector: 'sio-input',
@@ -26,6 +28,7 @@ export class SioCoreInputComponent implements OnInit {
     | 'time'
     | 'url'
     | 'week'
+    | 'file'
     | undefined;
   private _name = '';
   private _label = '';
@@ -69,6 +72,7 @@ export class SioCoreInputComponent implements OnInit {
     | 'search'
     | 'tel'
     | 'text'
+    | 'file'
     | 'url'
     | undefined;
 
@@ -98,8 +102,9 @@ export class SioCoreInputComponent implements OnInit {
       | 'text'
       | 'time'
       | 'url'
+      | 'file'
       | 'week'
-      | undefined
+      | undefined,
   ) {
     if (!this.inputMode) {
       switch (value) {
@@ -149,7 +154,8 @@ export class SioCoreInputComponent implements OnInit {
 
   constructor(
     public SioCoreFormComponentState: SioCoreFormComponentState,
-    @Optional() private control: NgControl
+    private sioCoreLoggerService: SioCoreLoggerService,
+    @Optional() private control: NgControl,
   ) {
     this.label = 'LABEL_';
     if (this.control) {
@@ -178,5 +184,10 @@ export class SioCoreInputComponent implements OnInit {
 
   registerOnTouched(fn: any): void {
     this.onTouchedCallback = fn;
+  }
+
+  async pickFile() {
+    const { files } = await FilePicker.pickFiles({ readData: true });
+    this.pValue = files[0].data;
   }
 }

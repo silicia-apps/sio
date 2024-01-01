@@ -16,6 +16,7 @@ export interface SioCoreFormComponentInputInterface {
     | 'tel'
     | 'text'
     | 'time'
+    | 'file'
     | 'url'
     | 'week';
   options?: { key: string; value: string }[];

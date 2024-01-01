@@ -28,6 +28,7 @@ export class SioCoreFormComponent implements OnInit {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const group: any = {};
     if (this.state.layout) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       this.state.layout.forEach((field:any) => {
         const validator = [];
         if (field.required) validator.push(Validators.required);
