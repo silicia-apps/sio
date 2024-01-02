@@ -14,7 +14,7 @@ import { SioCoreLoggerService } from '../../services';
   styleUrls: ['./input.component.scss'],
 })
 export class SioCoreInputComponent implements OnInit {
-  private pValue: string | number | undefined;
+  private pValue: any | string | number | boolean | File[] | null | undefined;
   public _type:
     | 'date'
     | 'datetime-local'
@@ -134,11 +134,11 @@ export class SioCoreInputComponent implements OnInit {
     this._type = value;
   }
 
-  get valueInput(): string | number {
+  get valueInput(): string | number | boolean | File[] | null {
     return <string>this.pValue;
   }
 
-  set valueInput(newValue: string | number) {
+  set valueInput(newValue: string | number | boolean | File[] | null) {
     if (newValue !== this.pValue) {
       this.pValue = newValue;
       if (this.onChangeCallback) {
@@ -188,6 +188,7 @@ export class SioCoreInputComponent implements OnInit {
 
   async pickFile() {
     const { files } = await FilePicker.pickFiles({ readData: true });
-    this.pValue = files[0].data;
+    this.label = files[0].name;
+    this.pValue = files;
   }
 }

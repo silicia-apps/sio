@@ -18,7 +18,8 @@
       "@silicia/appwrite": ["libs/appwrite/src/index.ts"],
       "@silicia/auth": ["libs/auth/src/index.ts"],
       "@silicia/core": ["libs/core/src/index.ts"],
-      "@silicia/database": ["libs/database/src/index.ts"]
+      "@silicia/database": ["libs/database/src/index.ts"],
+      "@silicia/storage": ["libs/storage/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

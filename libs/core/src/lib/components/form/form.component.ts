@@ -22,14 +22,18 @@ export class SioCoreFormComponent implements OnInit {
 
   public form!: UntypedFormGroup;
 
-  constructor(private sioCoreLoggerService: SioCoreLoggerService) {}
+  constructor(private sioCoreLoggerService: SioCoreLoggerService) {
+    this.sioCoreLoggerService.debug(`[SioCoreFormComponent][constructor]`);
+  }
 
   ngOnInit(): void {
+    this.sioCoreLoggerService.debug(`[SioCoreFormComponent][ngOnInit]`);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const group: any = {};
     if (this.state.layout) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       this.state.layout.forEach((field:any) => {
+        this.sioCoreLoggerService.debug(`[SioCoreFormComponent][ngOnInit] add field`);
         const validator = [];
         if (field.required) validator.push(Validators.required);
         if (field.type === 'email') validator.push(Validators.email); //SioEmailValidator);

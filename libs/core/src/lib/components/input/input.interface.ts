@@ -1,6 +1,6 @@
 export interface SioCoreFormComponentInputInterface {
   name: string;
-  value?: string | number | boolean | null;
+  value?: string | number | boolean | File[] | null;
   label?: string | null;
   required?: boolean | null;
   order?: number | null;

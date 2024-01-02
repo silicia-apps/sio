@@ -8,6 +8,7 @@ import { Directive } from '@angular/core';
 
 export function sioEmailValidator(): ValidatorFn {
   const regexp = new RegExp('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$');
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return (control: AbstractControl): { [key: string]: any } | null =>
     regexp.test(control.value) ? null : { error: 'NOT_IS_EMAIL' };
 }

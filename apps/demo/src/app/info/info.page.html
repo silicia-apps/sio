@@ -1,3 +1,4 @@
 <sio-page title="info">
-  <sio-input caption="file da inviare" type="file">Invio</sio-input>
+  <sio-form [state]="this.siliciaInfoFormState" (send)="this.uploadImage()">
+  </sio-form>
 </sio-page>
