@@ -7,7 +7,7 @@ import { SioCoreFormComponentState } from '../form/store/form.state';
 
 import { FilePicker } from '@capawesome/capacitor-file-picker';
 import { SioCoreLoggerService } from '../../services';
-import { sioStorageFileInterface } from '@silicia/storage';
+import { sioStorageFileInterface } from '../../interfaces';
 
 @Component({
   selector: 'sio-input',
@@ -43,7 +43,7 @@ export class SioCoreInputComponent implements OnInit {
   }
 
   @Input() public set name(value: string) {
-    if (this.label !== '') {
+    if (this.label === '') {
       this._label = `LABEL_${value?.toUpperCase()}`;
     }
     this._name = value;
@@ -190,7 +190,6 @@ export class SioCoreInputComponent implements OnInit {
   async pickFile() {
     const { files } = await FilePicker.pickFiles({ readData: true });
     this.label = files[0].name;
-    console.error(JSON.stringify(files))
     this.valueInput = files;
   }
 }

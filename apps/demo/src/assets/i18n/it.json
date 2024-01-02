@@ -4,7 +4,7 @@
     "M_SETTINGS": "Opzioni",
     "L_LANGUAGE": "test",
     "LABEL_APP_TITLE" : "Titolo App",
-    "INVOICES": "Tipo 1",
-    "REMINDER": "Tipo 2",
-    "MARKETING": "Tipo 3"
+    "LABEL_FILE_1": "Tipo 1",
+    "LABEL_FILE_2": "Tipo 2",
+    "LABEL_FILE_3": "Tipo 3"
 }

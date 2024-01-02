@@ -42,9 +42,11 @@ export class SioDatabasePluginService
   }
 
   async List(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     query: Array<any>,
     collection: string,
     database?: string 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ): Promise<Array<any> | boolean> {
     try {
       return this.plugins[0].List(query, collection, database);

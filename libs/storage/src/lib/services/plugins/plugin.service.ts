@@ -1,11 +1,10 @@
 import { Inject, Injectable, Optional } from '@angular/core';
-import { Loggable, SioCoreAppComponentState } from '@silicia/core';
 import { SioStoragePluginServiceInterface } from './interfaces';
 import { SioStoragePluginServiceToken } from './tokens';
 import { TranslateService } from '@ngx-translate/core';
 import { sioStorageFileInterface } from '../../interfaces';
+import { SioCoreAppComponentState } from '@silicia/core';
 
-@Loggable()
 @Injectable({ providedIn: 'root' })
 export class SioStoragePluginService
   implements SioStoragePluginServiceInterface

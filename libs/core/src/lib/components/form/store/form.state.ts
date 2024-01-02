@@ -7,10 +7,11 @@ import type {
   SioCoreFormInterface,
   SioCoreFormComponentStateModel,
 } from '..';
-import { Selector, State } from '@ngxs/store';
+import { Selector, State, Store } from '@ngxs/store';
 import { NgxsDataRepository } from '@angular-ru/ngxs/repositories';
 import { SioCoreFormComponentInputInterface } from '../../input/input.interface';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
+import { ResetForm } from '@ngxs/form-plugin';
 
 @StateRepository()
 @State({
@@ -21,6 +22,7 @@ export class SioCoreFormComponentState
   extends NgxsDataRepository<SioCoreFormComponentStateModel>
   implements SioCoreFormInterface
 {
+  private store = inject(Store);
   @Selector([SioCoreFormComponentState])
   static getData(state: SioCoreFormComponentStateModel) {
     return state.data?.model;
@@ -42,7 +44,7 @@ export class SioCoreFormComponentState
 
   @DataAction()
   public resetForm(): void {
-    //this.dispatch(new ResetForm({ path: `${this.name}.data` }));
+    this.store.dispatch(new ResetForm({ path: `${this.name}.data` }));
   }
 
   @DataAction()

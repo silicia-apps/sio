@@ -12,11 +12,7 @@ export const routes: Routes = [
     path: 'info',
     loadComponent: () =>
       import('./info/info.page').then((m) => m.InfoPageComponent),
-  },
-  {
-    path: 'settings',
-    loadComponent: () =>
-      import('./settings/settings.page').then((m) => m.SettingsPageComponent),
+      canActivate: [SioAuthGuard],
   },
   {
     path: '',

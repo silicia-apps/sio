@@ -32,13 +32,13 @@ export class SioAppwriteStorageService
   async Upload(bucket: string, file: string, document: sioStorageFileInterface): Promise<boolean> {
     try {
       const blob = [];
-      if (document.data) blob.push(document.data);
+      if (document.data) blob.push(atob(document.data));
       await this.storage.createFile(
-        bucket as string, file as string, new File(blob, document.name)
+        bucket as string, file as string, new File(blob, document.name, { 'type': document.mimeType, 'lastModified': document.modifiedAt })
       );
       return true;
     } catch (e) {
-      console.log(e);
+      throw this.throwError(e as Error);
     }
     return false;  
   }
@@ -50,8 +50,21 @@ export class SioAppwriteStorageService
       );
       return true;
     } catch (e) {
-      console.log(e);
+      throw this.throwError(e as Error);
     }
     return false;  
+  }
+
+  private throwError(e: Error): Error {
+    const error = new Error();
+    switch (e.message) {
+      case 'A storage file with the requested ID already exists.':
+        error.message = 'BACKEND_STORAGE_FILE_ALREADY_EXISTS';
+        break;
+      default:
+        error.message = e.message;
+    }
+    error.name = 'sio-error';
+    return error;
   }
 }

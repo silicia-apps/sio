@@ -1,4 +1,24 @@
 <sio-page title="info">
-  <sio-form [state]="this.siliciaInfoFormState" (send)="this.uploadImage()">
+  <sio-form [state]="this.siliciaInfoFormState1" (send)="this.uploadFile1()" [cancel]="true">
   </sio-form>
+  <sio-form [state]="this.siliciaInfoFormState2" (send)="this.uploadFile2()" [cancel]="true">
+  </sio-form>
+  <sio-form [state]="this.siliciaInfoFormState3" (send)="this.uploadFile3()" [cancel]="true">
+  </sio-form>
+  <ion-fab slot="footer" vertical="bottom" horizontal="end">
+    <ion-fab-button mini color="danger">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button>
+        <ion-icon name="logo-euro"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button>
+        <ion-icon name="notifications"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button>
+        <ion-icon name="car"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
 </sio-page>

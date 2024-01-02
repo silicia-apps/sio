@@ -7,8 +7,6 @@ import { AttributeBoolean } from '@angular-ru/cdk/decorators';
 import { InputBoolean } from '@angular-ru/cdk/typings';
 
 import { SioColorType } from '../../types';
-import { Select } from '@ngxs/store';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'sio-page',

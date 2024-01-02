@@ -50,3 +50,10 @@
     </div>
   </ng-container>
 </ion-content>
+<ion-footer>
+  <div #footer>
+  <ng-content select="[slot='footer']"> </ng-content>
+  </div>
+  <ng-container *ngIf="!footer.hasChildNodes()">
+  </ng-container>
+</ion-footer>

@@ -21,7 +21,7 @@
     type="submit"
     [disabled]="!this.state.valid"
   >
-    {{ 'auth.SUBMIT' | translate }}
+    {{ 'SUBMIT' | translate }}
   </ion-button>
   <ion-button
     *ngIf="this.cancel"
@@ -29,6 +29,6 @@
     color="danger"
     (click)="this.state.resetForm()"
   >
-    {{ 'auth.RESET' | translate }}
+    {{ 'RESET' | translate }}
   </ion-button>
 </form>
