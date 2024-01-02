@@ -17,9 +17,8 @@ export class InfoPageComponent {
     private sioStoragePluginService: SioStoragePluginService,
   ) {}
 
-  public uploadImage() {
+  public async uploadImage() {
     console.log('special opne');
-    console.log(JSON.stringify(this.siliciaInfoFormState.file));
-    this.sioStoragePluginService.Upload('test','uno', this.siliciaInfoFormState.file); 
+    this.sioStoragePluginService.Upload('test','uno', this.siliciaInfoFormState.file[0]); 
   }
 }

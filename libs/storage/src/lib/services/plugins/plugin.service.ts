@@ -3,6 +3,7 @@ import { Loggable, SioCoreAppComponentState } from '@silicia/core';
 import { SioStoragePluginServiceInterface } from './interfaces';
 import { SioStoragePluginServiceToken } from './tokens';
 import { TranslateService } from '@ngx-translate/core';
+import { sioStorageFileInterface } from '../../interfaces';
 
 @Loggable()
 @Injectable({ providedIn: 'root' })
@@ -25,7 +26,7 @@ export class SioStoragePluginService
   async Upload(
     bucket: string,
     file: string,
-    document: File[],
+    document: sioStorageFileInterface,
   ): Promise<boolean> {
     try {
       return this.plugins[0].Upload(bucket, file, document);

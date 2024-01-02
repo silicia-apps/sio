@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { Storage } from 'appwrite';
 
-import { SioStoragePluginServiceInterface } from '@silicia/storage';
+import { SioStoragePluginServiceInterface, sioStorageFileInterface } from '@silicia/storage';
 
 import {
   Loggable,
@@ -29,10 +29,12 @@ export class SioAppwriteStorageService
     this.storage = new Storage(this.sioAppwriteClientService.client);
   }
 
-  async Upload(bucket: string, file: string, document: File[]): Promise<boolean> {
+  async Upload(bucket: string, file: string, document: sioStorageFileInterface): Promise<boolean> {
     try {
+      const blob = [];
+      if (document.data) blob.push(document.data);
       await this.storage.createFile(
-        bucket as string, file as string, document[0]
+        bucket as string, file as string, new File(blob, document.name)
       );
       return true;
     } catch (e) {

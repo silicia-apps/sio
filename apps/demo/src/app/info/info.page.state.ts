@@ -5,6 +5,7 @@ import {
   SioCoreFormComponentState,
   SioCoreFormComponentStateModel,
 } from '@silicia/core';
+import { sioStorageFileInterface } from '@silicia/storage';
 
 @StateRepository()
 @State<SioCoreFormComponentStateModel>({
@@ -26,7 +27,7 @@ export class SiliciaInfoFormState extends SioCoreFormComponentState {
   }
 
   @Computed()
-  public get file(): File[] {
+  public get file(): sioStorageFileInterface[] {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const data: any = this.snapshot.data?.model;
     return data.file;
