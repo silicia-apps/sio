@@ -6,5 +6,6 @@
     "LABEL_APP_TITLE" : "Titolo App",
     "LABEL_FILE_1": "Tipo 1",
     "LABEL_FILE_2": "Tipo 2",
-    "LABEL_FILE_3": "Tipo 3"
+    "LABEL_FILE_3": "Tipo 3",
+    "MENU_LOGGED_PROFILE": "Profilo"
 }

@@ -1,0 +1,23 @@
+<div *ngIf="this.type === 'fab'; then fab; else default"></div>
+<ng-template #default>
+  <ion-button
+    [color]="this.color"
+    [disabled]="this.disabled"
+    [shape]="this.round ? 'round' : undefined"
+    [expand]="this.full ? 'full' : this.block ? 'block' : undefined"
+    [size]="this.size"
+    (click)="onClick()"
+  >
+    <ion-icon
+      *ngIf="this.icon"
+      [name]="this.icon"
+      [slot]="(this.display_icon === 'left')?'start':(this.display_icon === 'right')?'end':(this.display_icon === 'only')?'icon-only':'left'"
+    ></ion-icon>
+    <ng-content *ngIf="this.display_icon !== 'only'"></ng-content>
+  </ion-button>
+</ng-template>
+<ng-template #fab>
+  <ion-fab-button [color]="this.color" [disabled]="this.disabled" [size]="this.size" (click)="onClick()">
+    <ion-icon [name]="this.icon"></ion-icon>
+  </ion-fab-button>
+</ng-template>

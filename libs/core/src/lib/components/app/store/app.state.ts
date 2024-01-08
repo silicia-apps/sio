@@ -49,6 +49,7 @@ const APP_STATE_TOKEN = new StateToken<SioCoreAppComponentStateModel>('app');
       login: '/auth/login',
       redirectTo: '/',
     },
+    data: [],
     loading: { show: false, message: '' },
   } as SioCoreAppComponentStateModel,
   children: [SioCoreMenuState, SioCoreTabsState, SioCorePageComponentState],

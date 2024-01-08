@@ -9,6 +9,7 @@ import { SioCoreLoggerService } from '../../services/logger';
 })
 export class SioCoreIconComponent {
   @Input() public color: SioColorType;
+  @Input() public slot : 'start' | 'end' | undefined;
   @Input() public name: string | undefined = undefined;
   @Input() public url: string | undefined = undefined;
   @Input() public size: 'small' | 'large' | undefined = undefined;

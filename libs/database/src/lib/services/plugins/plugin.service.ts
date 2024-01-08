@@ -1,8 +1,9 @@
 import { Inject, Injectable, Optional } from '@angular/core';
-import { Loggable, SioCoreAppComponentState } from '@silicia/core';
+import { Loggable, SioCoreAppComponentState, SioCoreDocumentInterface, SioCoreDocumentsInterface } from '@silicia/core';
 import { SioDatabasePluginServiceInterface } from './interfaces';
 import { SioDatabasePluginServiceToken } from './tokens';
 import { TranslateService } from '@ngx-translate/core';
+import { Observable } from 'rxjs';
 
 @Loggable()
 @Injectable({ providedIn: 'root' })
@@ -41,15 +42,17 @@ export class SioDatabasePluginService
     return false;
   }
 
+  socket(channels: string | string[]): Observable<string[]> {
+    return this.plugins[0].socket(channels);
+  }
+
   async List(
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    query: Array<any>,
     collection: string,
-    database?: string 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  ): Promise<Array<any> | boolean> {
+    query: string[] | undefined,
+    database: string | undefined 
+  ): Promise<SioCoreDocumentsInterface<SioCoreDocumentInterface>> {
     try {
-      return this.plugins[0].List(query, collection, database);
+      return this.plugins[0].List(collection, query, database);
     } catch (e) {
       const error = e as Error;
       if (error.name === 'sio-error')
@@ -57,8 +60,8 @@ export class SioDatabasePluginService
           error.message,
           'DATABASE_ERROR'
         );
+      throw error;
     }
-    return false;
   }
 
   async Get(

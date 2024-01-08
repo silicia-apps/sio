@@ -1,19 +1,43 @@
 <ion-card [disabled]="this.disabled">
   <ion-img *ngIf="this.img" [alt]="this.altImg" [src]="this.img" />
-  <ion-accordion-group [value]="this.value" (ionChange)="this.test()">
-    <ion-accordion value="open" [toggleIcon]="this.toggleIcon" [toggleIconSlot]="this.toggleIconSlot">
-      <ion-item [color]="this.color" slot="header">
-        <ion-card-header [color]="this.color">
-          <div #header><ng-content select="[slot='header']"></ng-content></div>
-          <ng-container *ngIf="!header.hasChildNodes()">
-            <ion-card-title>{{ this.title | translate }}</ion-card-title>
-            <ion-card-subtitle>{{ this.subtitle | translate }}</ion-card-subtitle>
-          </ng-container>
-        </ion-card-header>
-      </ion-item>
-      <ion-card-content class="ion-padding" slot="content">
-        <ng-content></ng-content>
-      </ion-card-content>
-    </ion-accordion>
-  </ion-accordion-group>
+  <div *ngIf="this.type === 'accordion'; then accordion; else default"></div>
+  <ng-template #accordion>
+    <ion-accordion-group [value]="this.value" (ionChange)="this.test()">
+      <ion-accordion
+        *ngIf="this.accordion"
+        value="open"
+        [toggleIcon]="this.toggleIcon"
+        [toggleIconSlot]="this.toggleIconSlot"
+      >
+        <ion-item [color]="this.color" slot="header">
+          <ion-card-header [color]="this.color">
+            <div #header>
+              <ng-content select="[slot='header']"></ng-content>
+            </div>
+            <ng-container *ngIf="!header.hasChildNodes()">
+              <ion-card-title>{{ this.title | translate }}</ion-card-title>
+              <ion-card-subtitle>{{
+                this.subtitle | translate
+              }}</ion-card-subtitle>
+            </ng-container>
+          </ion-card-header>
+        </ion-item>
+        <ion-card-content class="ion-padding" slot="content">
+          <ng-content></ng-content>
+        </ion-card-content>
+      </ion-accordion>
+    </ion-accordion-group>
+  </ng-template>
+  <ng-template #default>
+    <ion-card-header [color]="this.color">
+      <div #header><ng-content select="[slot='header']"></ng-content></div>
+      <ng-container *ngIf="!header.hasChildNodes()">
+        <ion-card-title>{{ this.title | translate }}</ion-card-title>
+        <ion-card-subtitle>{{ this.subtitle | translate }}</ion-card-subtitle>
+      </ng-container>
+    </ion-card-header>
+    <ion-card-content class="ion-padding">
+      <ng-content></ng-content>
+    </ion-card-content>
+  </ng-template>
 </ion-card>

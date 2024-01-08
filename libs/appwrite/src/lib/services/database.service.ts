@@ -8,8 +8,11 @@ import {
   SioCoreLoggerService,
   SioCorePluginServiceConfigModel,
   sioCorePluginServiceConfigToken,
+  SioCoreDocumentInterface,
+  SioCoreDocumentsInterface,
 } from '@silicia/core';
 import { SioAppwriteClientService } from './client.service';
+import { Observable } from 'rxjs';
 
 @Loggable()
 @Injectable()
@@ -62,19 +65,13 @@ export class SioAppwriteDatabaseService
   }
 
   async List(
-    query: [],
     collection: string,
-    database?: string | undefined
-  ): Promise<boolean | []> {
+    query: string[] | undefined = undefined,
+    database: string | undefined = undefined
+  ): Promise<SioCoreDocumentsInterface<SioCoreDocumentInterface>> {
     try {
-      const items = await this.databases.listDocuments(database as string, collection,query);
-      console.log(JSON.stringify(items));
-      this.databases.client.subscribe("*", (value) => {
-        console.error(value);
-      })
-      return [];
-    } catch (e) { console.log(e); }
-    return [];
+      return await this.databases.listDocuments(database!, collection, query);
+    } catch (e) { throw e as Error; }
   }
 
   async Delete(id: string, collection: string, database?: string | undefined): Promise<boolean> {
@@ -84,5 +81,18 @@ export class SioAppwriteDatabaseService
       return true;
     } catch (e) { console.log(e); }
     return false;
+  }
+
+  socket(channels: string | string[]): Observable<string[]> {
+    return new Observable((observer) => {
+      this.sioAppwriteClientService.client.subscribe('databases.' + channels, (data) => {
+        this.loggerService.debug(
+          `[SioDatabasesService][socket] Detected Database changes`,
+          data
+        );
+        observer.next(data.events);
+      });
+    });
+      
   }
 }
