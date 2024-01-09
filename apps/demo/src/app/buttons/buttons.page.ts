@@ -3,13 +3,13 @@ import { SioCommonModule } from '@silicia/core';
 
 
 @Component({
-  selector: 'sio-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: 'sio-buttons',
+  templateUrl: 'buttons.page.html',
+  styleUrls: ['buttons.page.scss'],
   standalone: true,
   imports: [SioCommonModule],
 })
-export class HomePageComponent {
+export class ButtonsPageComponent {
   
   
 }

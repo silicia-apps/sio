@@ -14,7 +14,6 @@ import { environment } from '../environments/environment';
 import { routes } from './app.routes';
 import { NgxsModule } from '@ngxs/store';
 import { SiliciaInfoFormState1, SiliciaInfoFormState2, SiliciaInfoFormState3 } from './info/info.page.state';
-import { SiliciaHomePageState } from './home/store/home.store';
 export const appConfig: ApplicationConfig = {
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
@@ -23,7 +22,7 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(AppwriteStorageModule.forRoot(environment.backend)),
     importProvidersFrom(AppwriteAuthModule.forRoot(environment.backend)),
     importProvidersFrom(AppwriteDatabaseModule.forRoot(environment.backend)),
-    importProvidersFrom(NgxsModule.forFeature([SiliciaInfoFormState1, SiliciaInfoFormState2, SiliciaInfoFormState3, SiliciaHomePageState])),
+    importProvidersFrom(NgxsModule.forFeature([SiliciaInfoFormState1, SiliciaInfoFormState2, SiliciaInfoFormState3])),
     provideRouter(
       routes,
       withPreloading(PreloadAllModules),

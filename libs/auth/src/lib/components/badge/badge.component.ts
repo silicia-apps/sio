@@ -45,8 +45,6 @@ export class SioAuthBadgeComponent {
     languages.forEach((lang) => {
       this.translateService.setTranslation(lang.key, lang.value, true);
     });
-    
-    console.error(this.sioCoreMenuState);
   }
 
   logOut() {

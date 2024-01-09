@@ -1,7 +1,4 @@
-<div *ngIf="this._type === 'file'
-  then file;
-  else default
-"></div>
+<div *ngIf="this._type === 'file'; then file; else default"></div>
 <ng-template #file>
   <ion-item>
     <ion-label>
@@ -11,10 +8,23 @@
   </ion-item>
 </ng-template>
 <ng-template #default>
-  <ion-input label="{{ this.label | translate }}" [labelPlacement]="this.position" [fill]="this.fill"
-    [(ngModel)]="this.valueInput" [autocapitalize]="this.autocapitalize" [autocomplete]="this.autocomplete"
-    [autocorrect]="this.autocorrect" [autofocus]="this.autofocus" [clearInput]="this.clearInput"
-    [clearOnEdit]="this.clearOnEdit" [name]="this.name" [debounce]="this.debounce" [disabled]="this.disabled"
-    [type]="this._type" errorText="{{ (this.name.toUpperCase() + '-ERROR-TEXT') | translate }}"
-    helperText="{{ (this.name.toUpperCase() + '-HELPER-TEXT') | translate }}"
-    [class]="(this.invalid && this.dirty)?'ng-invalid ng-touched':''"></ion-input>
+  <ion-input
+    label="{{ this.label | translate }}"
+    [labelPlacement]="this.position"
+    [fill]="this.fill"
+    [(ngModel)]="this.valueInput"
+    [autocapitalize]="this.autocapitalize"
+    [autocomplete]="this.autocomplete"
+    [autocorrect]="this.autocorrect"
+    [autofocus]="this.autofocus"
+    [clearInput]="this.clearInput"
+    [clearOnEdit]="this.clearOnEdit"
+    [name]="this.name"
+    [debounce]="this.debounce"
+    [disabled]="this.disabled"
+    [type]="this._type"
+    errorText="{{ this.name.toUpperCase() + '-ERROR-TEXT' | translate }}"
+    helperText="{{ this.name.toUpperCase() + '-HELPER-TEXT' | translate }}"
+    [class]="this.invalid && this.dirty ? 'ng-invalid ng-touched' : ''"
+  ></ion-input
+></ng-template>

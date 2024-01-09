@@ -9,6 +9,11 @@ export const routes: Routes = [
     canActivate: [SioAuthGuard],
   },
   {
+    path: 'buttons',
+    loadComponent: () =>
+      import('./buttons/buttons.page').then((m) => m.ButtonsPageComponent)
+  },
+  {
     path: 'info',
     loadComponent: () =>
       import('./info/info.page').then((m) => m.InfoPageComponent),

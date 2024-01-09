@@ -38,12 +38,12 @@ export class SioCoreInputComponent implements OnInit {
     this._label = <string>value;
   }
 
-  get label(): string {
+  public get label(): string {
     return this._label;
   }
 
   @Input() public set name(value: string) {
-    if (this.label === '') {
+    if (this.label === undefined) {
       this._label = `LABEL_${value?.toUpperCase()}`;
     }
     this._name = value;

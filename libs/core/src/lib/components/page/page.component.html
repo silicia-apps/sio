@@ -50,10 +50,19 @@
     </div>
   </ng-container>
 </ion-content>
+
 <ion-footer>
   <div #footer>
-  <ng-content select="[slot='footer']"> </ng-content>
+  <ng-content select="[slot='footer']"></ng-content>
   </div>
   <ng-container *ngIf="!footer.hasChildNodes()">
+    <ion-fab slot="footer" vertical="bottom" horizontal="end">
+      <sio-button type="fab" icon="add"></sio-button>
+      <ion-fab-list side="top">
+        <sio-button type="fab" icon="logo-euro" size="small" upload ></sio-button>
+        <!--// <sio-button type="fab" icon="notifications" size="small"></sio-button> //-->
+        <sio-button type="fab" icon="car" size="small" upload ></sio-button>
+      </ion-fab-list>
+    </ion-fab>
   </ng-container>
 </ion-footer>
