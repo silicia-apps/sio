@@ -22,6 +22,20 @@ export class SioStoragePluginService
     this.plugins = Array.isArray(plugins) ? plugins : [plugins];
   }
 
+  async check(bucket: string, file: string): Promise<boolean> {
+    try {
+      return this.plugins[0].check(bucket, file);
+    } catch (e) {
+      const error = e as Error;
+      if (error.name === 'sio-error')
+        this.sioCoreAppComponentState.throwError(
+          error.message,
+          'STORAGE_ERROR',
+        );
+    }
+    return false;
+  }
+
   async Upload(
     bucket: string,
     file: string,

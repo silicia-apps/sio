@@ -10,6 +10,13 @@ import { SioCommonModule } from '@silicia/core';
   imports: [SioCommonModule],
 })
 export class HomePageComponent {
-  
+  constructor(
+    
+  ) {
+   
+    
+  }
+
+ 
   
 }

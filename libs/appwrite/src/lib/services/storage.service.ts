@@ -55,6 +55,22 @@ export class SioAppwriteStorageService
     return false;  
   }
 
+  async check(bucket: string, file: string): Promise<boolean> {
+    try {
+      return await this.storage.getFile(bucket, file)?true:false;
+    } catch (e) {
+      switch((e as Error).message) {
+        case 'The requested file could not be found.': {
+          return false;
+          break;
+        }
+        default: {
+          throw this.throwError(e as Error);
+      }}
+      
+    }  
+  }
+
   private throwError(e: Error): Error {
     const error = new Error();
     switch (e.message) {
