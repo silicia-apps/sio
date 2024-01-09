@@ -1,6 +1,6 @@
 {
   "name": "@silicia/auth",
-  "version": "0.0.2",
+  "version": "0.0.1-alpha",
   "peerDependencies": {
     "@angular/common": "^15.2.0",
     "@angular/core": "^15.2.0"
