@@ -1,7 +1,11 @@
 import { Injectable, Inject } from '@angular/core';
-import { Storage } from 'appwrite';
+import { Storage, ID } from 'appwrite';
 
-import { SioStoragePluginServiceInterface, sioStorageFileInterface } from '@silicia/storage';
+import {
+  SioStorageServiceInterface,
+  SioStorageFileInterface,
+  SioStorageFileListInterface,
+} from '@silicia/storage';
 
 import {
   Loggable,
@@ -9,50 +13,81 @@ import {
   SioCorePluginServiceConfigModel,
   sioCorePluginServiceConfigToken,
 } from '@silicia/core';
+
 import { SioAppwriteClientService } from './client.service';
+import { Observable } from 'rxjs';
 
 @Loggable()
 @Injectable()
-export class SioAppwriteStorageService
-  implements SioStoragePluginServiceInterface
-{
+export class SioAppwriteStorageService implements SioStorageServiceInterface {
   private readonly storage: Storage;
 
   constructor(
     @Inject(sioCorePluginServiceConfigToken)
     readonly config: SioCorePluginServiceConfigModel,
     @Inject(SioCoreLoggerService)
-    private loggerService: SioCoreLoggerService,
+    private sioCoreLoggerService: SioCoreLoggerService,
     private sioAppwriteClientService: SioAppwriteClientService,
   ) {
-    this.sioAppwriteClientService.Connect(this.config.apiEndpoint as string, this.config.projectID as string);
+    this.sioAppwriteClientService.Connect(
+      this.config.apiEndpoint as string,
+      this.config.projectID as string,
+    );
     this.storage = new Storage(this.sioAppwriteClientService.client);
   }
 
-  async Upload(bucket: string, file: string, document: sioStorageFileInterface): Promise<boolean> {
+  async Upload(
+    bucketId: string,
+    document: SioStorageFileInterface,
+    fileId?: string,
+  ): Promise<boolean> {
     try {
       const blob = [];
+      if (!fileId) fileId = ID.unique();
       if (document.data) blob.push(atob(document.data));
       await this.storage.createFile(
-        bucket as string, file as string, new File(blob, document.name, { 'type': document.mimeType, 'lastModified': document.modifiedAt })
+        bucketId as string,
+        fileId as string,
+        new File(blob, document.name, {
+          type: document.mimeType,
+          lastModified: document.modifiedAt,
+        }),
       );
       return true;
     } catch (e) {
       throw this.throwError(e as Error);
     }
-    return false;  
   }
 
-  async Delete(bucket: string, file: string): Promise<boolean> {
+  async Delete(bucketId: string, fileId: string): Promise<boolean> {
     try {
-      await this.storage.deleteFile(
-        bucket as string, file as string
-      );
+      await this.storage.deleteFile(bucketId, fileId);
       return true;
     } catch (e) {
       throw this.throwError(e as Error);
     }
-    return false;  
+  }
+
+  async List(
+    bucketId: string,
+    query?: string[],
+    search?: string,
+  ): Promise<SioStorageFileListInterface | undefined> {
+    try {
+      this.sioCoreLoggerService.debug(`[SioAppwriteStorageService][List]`);
+      return await this.storage.listFiles(bucketId, query, search);
+    } catch (e) {
+      return undefined;
+    }
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  SubscribeEvents(): Observable<any> {
+    return new Observable((observer) => {
+      this.sioAppwriteClientService.client.subscribe('files', (data) => {
+        observer.next(data);
+      });
+    });
   }
 
   async check(bucket: string, file: string): Promise<boolean> {

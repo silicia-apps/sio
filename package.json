@@ -28,7 +28,7 @@
     "@ngxs/router-plugin": "^3.8.1",
     "@ngxs/store": "^3.8.1",
     "@nx/angular": "17.2.8",
-    "appwrite": "^13.0.0",
+    "appwrite": "^13.0.1",
     "ngx-translate-debug": "^0.1.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

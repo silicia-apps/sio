@@ -1,9 +1,10 @@
-export interface sioStorageFileInterface {
+export interface SioStorageFileInterface {
     /**
      * The Blob instance of the file.
      *
      * Only available on Web.
      */
+    $id: string;
     blob?: Blob;
     /**
      * The Base64 string representation of the data contained in the file.
@@ -50,7 +51,7 @@ export interface sioStorageFileInterface {
     /**
      * The size of the file in bytes.
      */
-    size: number;
+    size?: number;
     /**
      * The width of the image or video in pixels.
      *

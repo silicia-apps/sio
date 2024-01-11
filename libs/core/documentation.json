@@ -9,7 +9,7 @@
     "components": [
         {
             "name": "SioCoreAppComponent",
-            "id": "component-SioCoreAppComponent-4ff3e94fc2aed7d2624fe08a3f026507588c884fa683b7fce2ab20472121fff6e583d66c4bf4b10e87318cb7bec60dd8cc108b7b97c0a609b64da6aec6d37544",
+            "id": "component-SioCoreAppComponent-d749a317d2976575ec2f24a2a892a2a975e290bee39be2d81861ebc9e6e4ec5c2e5dfb996c451c203fe6fa6dd0b1fb8caf6131b6ec921dc7d3cf26d7431caf1b",
             "file": "libs/core/src/lib/components/app/app.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -31,7 +31,7 @@
                     "name": "color",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 98,
+                    "line": 97,
                     "type": "SioColorType",
                     "decorators": []
                 },
@@ -39,7 +39,7 @@
                     "name": "environmentInjector",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 80,
+                    "line": 79,
                     "type": "EnvironmentInjector | undefined",
                     "decorators": []
                 },
@@ -49,7 +49,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nmenu id code to use in the left sidebar. will be displayed as the default component if no content is inserted into the left_content slot\n",
                     "description": "<p>menu id code to use in the left sidebar. will be displayed as the default component if no content is inserted into the left_content slot</p>\n",
-                    "line": 59,
+                    "line": 58,
                     "type": "string",
                     "decorators": []
                 },
@@ -69,7 +69,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nmenu id code to use in the right sidebar. will be displayed as the default component if no content is inserted into the right_content slot\n",
                     "description": "<p>menu id code to use in the right sidebar. will be displayed as the default component if no content is inserted into the right_content slot</p>\n",
-                    "line": 67,
+                    "line": 66,
                     "type": "string",
                     "decorators": []
                 },
@@ -79,7 +79,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nSpecifies the behavior of the Right sidebar\n",
                     "description": "<p>Specifies the behavior of the Right sidebar</p>\n",
-                    "line": 51,
+                    "line": 50,
                     "type": "SioSideMenuType",
                     "decorators": []
                 },
@@ -89,7 +89,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nHow display tabbar in desktop mode\n",
                     "description": "<p>How display tabbar in desktop mode</p>\n",
-                    "line": 86,
+                    "line": 85,
                     "type": "string",
                     "decorators": []
                 },
@@ -99,7 +99,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nmenu id code to use in the tabbar.\n",
                     "description": "<p>menu id code to use in the tabbar.</p>\n",
-                    "line": 75,
+                    "line": 74,
                     "type": "string",
                     "decorators": []
                 },
@@ -109,7 +109,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nHow display tabbar in mobile mode\n",
                     "description": "<p>How display tabbar in mobile mode</p>\n",
-                    "line": 94,
+                    "line": 93,
                     "type": "string",
                     "decorators": []
                 },
@@ -133,7 +133,7 @@
                     "type": "Observable<literal type>",
                     "optional": false,
                     "description": "",
-                    "line": 106,
+                    "line": 105,
                     "decorators": [
                         {
                             "name": "Select",
@@ -151,7 +151,7 @@
                     "type": "IonRouterOutlet",
                     "optional": false,
                     "description": "",
-                    "line": 108,
+                    "line": 107,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -169,7 +169,7 @@
                     "type": "Observable<literal type>",
                     "optional": false,
                     "description": "",
-                    "line": 101,
+                    "line": 100,
                     "decorators": [
                         {
                             "name": "Select",
@@ -200,7 +200,7 @@
                     "type": "SioCoreAppComponentState",
                     "optional": false,
                     "description": "",
-                    "line": 111,
+                    "line": 110,
                     "modifierKind": [
                         125
                     ]
@@ -213,7 +213,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 255,
+                    "line": 254,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -223,7 +223,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 142,
+                    "line": 141,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -240,7 +240,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 247,
+                    "line": 246,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -265,7 +265,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, OnDestroy, OnInit, ViewChild, EnvironmentInjector } from '@angular/core';\nimport { SioCoreAppComponentState } from '../../store/index';\n\nimport { it } from '../../../i18n/it';\nimport { en } from '../../../i18n/en';\n\nimport { Select } from '@ngxs/store';\nimport { Observable, Subject } from 'rxjs';\nimport { TranslateService } from '@ngx-translate/core';\n\nimport { Platform, IonRouterOutlet } from '@ionic/angular';\nimport { App } from '@capacitor/app';\nimport {\n  SioCoreEnvironmentService,\n  SioCoreLoadingService,\n  SioCoreAlertService,\n  SioCoreLoggerService,\n} from '../../services';\n\nimport type { SioColorType, SioSideMenuType } from '../../types';\n\n@Component({\n  selector: 'sio-app',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss'],\n})\nexport class SioCoreAppComponent implements OnInit, OnDestroy {\n  private ngUnsubscribe = new Subject();\n\n  /**\n   * The App Title\n   */\n  @Input()\n  set title(value: string) {\n    this.sioCoreAppComponentState.SetTitle(value);\n  }\n\n  /**\n   * Specifies the behavior of the left sidebar\n   */\n  @Input()\n  set leftPanelType(value: SioSideMenuType) {\n    this.sioCoreAppComponentState.setLeftPanelType(value);\n  }\n\n  \n  /**\n   * Specifies the behavior of the Right sidebar\n   */\n  @Input()\n  set rightPanelType(value: SioSideMenuType) {\n    this.sioCoreAppComponentState.setRightPanelType(value);\n  }\n\n  /**\n   * menu id code to use in the left sidebar. will be displayed as the default component if no content is inserted into the left_content slot\n   */\n  @Input()\n  set leftPanelMenuID(value: string) {\n    this.sioCoreAppComponentState.setLeftMenuID(value);\n  }\n\n  /**\n   * menu id code to use in the right sidebar. will be displayed as the default component if no content is inserted into the right_content slot\n   */\n  @Input()\n  set rightPanelMenuID(value: string) {\n    this.sioCoreAppComponentState.setRightMenuID(value);\n  }\n\n  /**\n   * menu id code to use in the tabbar.\n   */\n  @Input()\n  set tabMenuID(value: string) {\n    this.sioCoreAppComponentState.setTabMenuID(value);\n  }\n\n  @Input()\n  environmentInjector : EnvironmentInjector | undefined;\n\n  /**\n   * How display tabbar in desktop mode\n   */\n  @Input()\n  set tabDesktopPosition(value: string) {\n    this.sioCoreAppComponentState.setTabDesktop(value);\n  }\n\n  /**\n   * How display tabbar in mobile mode\n   */\n  @Input()\n  set tabMobilePosition(value: string) {\n    this.sioCoreAppComponentState.setTabMobile(value);\n  }\n\n  @Input() color: SioColorType;\n\n  @Select(SioCoreAppComponentState.loading)\n  loading$!: Observable<{ show: boolean; message: string }>;\n\n  @Select(SioCoreAppComponentState.error)\n\n  // eslint-disable-next-line @typescript-eslint/ban-types\n  error$!: Observable<{ name: string; message: string; action: Function }>;\n  @ViewChild(IonRouterOutlet, { static: true })\n  ionRouterOutlet!: IonRouterOutlet;\n\n  constructor(\n    public sioCoreAppComponentState: SioCoreAppComponentState,\n    private platform: Platform,\n    private sioCoreLoadingService: SioCoreLoadingService,\n    private sioCoreAlertService: SioCoreAlertService,\n    private sioCoreEnvironmentService: SioCoreEnvironmentService,\n    private sioCoreLoggerService: SioCoreLoggerService,\n    private translateService: TranslateService,\n  ) {\n    this.sioCoreLoggerService.info(\n      `[sioCoreAppComponentState][constructor] Check config...`,\n    );\n    if (this.sioCoreEnvironmentService.config) {\n      this.sioCoreLoggerService.info(\n        `[sioCoreAppComponentState][constructor] Config found loading...`,\n        this.sioCoreEnvironmentService.config,\n      );\n      this.sioCoreAppComponentState.LoadConfig(\n        this.sioCoreEnvironmentService.config.app,\n      );\n    } else {\n      this.sioCoreLoggerService.warn(\n        '[sioCoreAppComponent][Constructor] No config in environment file',\n      );\n    }\n    //this.translateService.setTranslation('it', it, true);\n    //this.translateService.setTranslation('en', en, true);\n  }\n\n  //@Select(SioCoreAppComponentState.split)\n  //split$!: Observable<boolean>;\n\n  ngOnInit(): void {\n    (async () => {\n      this.sioCoreLoggerService.info('await for platform avaible...');\n      let platform = await this.platform.ready();\n\n      this.translateService.setTranslation('it', it, true);\n      this.translateService.setTranslation('en', en, true);\n\n      this.translateService.addLangs(\n        this.sioCoreEnvironmentService.config.app.language?.avaibles || [],\n      );\n      this.translateService.use(\n        this.sioCoreEnvironmentService.config.app.language?.default || 'en',\n      );\n      this.sioCoreLoggerService.info('Check platform...');\n      switch (platform) {\n        case 'dom':\n          platform = 'browser';\n          // eslint-disable-next-line no-case-declarations\n          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');\n          this.sioCoreAppComponentState.setDark(prefersDark.matches);\n          prefersDark.addEventListener('change', (mediaQuery) =>\n            this.sioCoreAppComponentState.setDark(mediaQuery.matches),\n          );\n          break;\n        case 'hybrid':\n        case 'cordova':\n          this.platform.backButton.subscribeWithPriority(-1, () => {\n            if (!this.ionRouterOutlet.canGoBack()) {\n              App.exitApp();\n            }\n            // eslint-disable-next-line @typescript-eslint/no-explicit-any\n            this.platform.keyboardDidShow.subscribe((ev: any) => {\n              const { keyboardHeight } = ev;\n              this.sioCoreLoggerService.debug(\n                '[sioCoreAppComponent][ngOnInit] raise keyboardDidShow event',\n                keyboardHeight,\n              );\n              // Do something with the keyboard height such as translating an input above the keyboard.\n            });\n\n            this.platform.keyboardDidHide.subscribe(() => {\n              this.sioCoreLoggerService.debug(\n                '[sioCoreAppComponent][ngOnInit] raise keyboardDidHide event',\n              );\n              // Move input back to original location\n            });\n          });\n          break;\n        default:\n          this.sioCoreAppComponentState.throwError(\n            'sio',\n            'UNKNOW_PLATFORM : ' + platform,\n          );\n      }\n      this.sioCoreLoggerService.debug(\n        `[sioCoreAppComponent][ngOnInit] - Platform ${platform} detected`,\n      );\n      await this.sioCoreLoadingService.create();\n      this.platform.pause.subscribe(async () => {\n        this.sioCoreLoggerService.debug(\n          '[sioCoreAppComponent][ngOnInit] - Pause event detected',\n        );\n      });\n      this.platform.resize.subscribe(async () => {\n        this.sioCoreLoggerService.debug(\n          '[sioCoreAppComponent][ngOnInit] - Resize event detected',\n        );\n      });\n      this.platform.resume.subscribe(async () => {\n        this.sioCoreLoggerService.debug(\n          '[sioCoreAppComponent][ngOnInit] - Resume event detected',\n        );\n      });\n      this.sioCoreLoggerService.debug(\n        '[sioCoreAppComponent][ngOnInit] - Subscribe for Errors',\n      );\n      this.error$.subscribe(async (value) => {\n        if (value && value.message) {\n          const alert: unknown = await this.sioCoreAlertService.show(\n            value.name,\n            value.message,\n            value.action,\n          );\n          this.sioCoreLoggerService.debug(\n            '[sioCoreAppComponent][ngOnInit] - Show Alert',\n            alert,\n          );\n        }\n      });\n      this.sioCoreLoggerService.debug(\n        '[sioCoreAppComponent][ngOnInit] - Subscribe for Loader',\n      );\n      this.loading$.subscribe((value) => {\n        if (value.show) this.sioCoreLoadingService.show(value.message);\n        else this.sioCoreLoadingService.hide();\n      });\n      this.sioCoreLoggerService.debug(\n        '[sioCoreAppComponent][ngOnInit] - Platform Ready',\n        this.platform,\n      );\n    })();\n  }\n\n  // eslint-disable-next-line @typescript-eslint/no-explicit-any\n  sioAppSplitPanelVisible(e: any) {\n    this.sioCoreLoggerService.debug(\n      '[sioAppCoreComponent][sioAppSPlitPanleVisible] - Split Panel State Changed',\n      e.detail.visible,\n    );\n    this.sioCoreAppComponentState.setSplit(e.detail.visible);\n  }\n\n  ngOnDestroy(): void {\n    this.ngUnsubscribe.next(null);\n    this.ngUnsubscribe.complete();\n  }\n}\n",
+            "sourceCode": "import { Component, Input, OnDestroy, OnInit, ViewChild, EnvironmentInjector } from '@angular/core';\nimport { SioCoreAppComponentState } from '../../store/index';\n\nimport { it } from '../../../i18n/it';\nimport { en } from '../../../i18n/en';\n\nimport { Select } from '@ngxs/store';\nimport { Observable, Subject } from 'rxjs';\nimport { TranslateService } from '@ngx-translate/core';\n\nimport { Platform, IonRouterOutlet } from '@ionic/angular';\nimport { App } from '@capacitor/app';\nimport {\n  SioCoreEnvironmentService,\n  SioCoreLoadingService,\n  SioCoreAlertService,\n  SioCoreLoggerService,\n} from '../../services';\n\nimport type { SioColorType, SioSideMenuType } from '../../types';\n\n@Component({\n  selector: 'sio-app',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss'],\n})\nexport class SioCoreAppComponent implements OnInit, OnDestroy {\n  private ngUnsubscribe = new Subject();\n\n  /**\n   * The App Title\n   */\n  @Input()\n  set title(value: string) {\n    this.sioCoreAppComponentState.SetTitle(value);\n  }\n\n  /**\n   * Specifies the behavior of the left sidebar\n   */\n  @Input()\n  set leftPanelType(value: SioSideMenuType) {\n    this.sioCoreAppComponentState.setLeftPanelType(value);\n  }\n\n  /**\n   * Specifies the behavior of the Right sidebar\n   */\n  @Input()\n  set rightPanelType(value: SioSideMenuType) {\n    this.sioCoreAppComponentState.setRightPanelType(value);\n  }\n\n  /**\n   * menu id code to use in the left sidebar. will be displayed as the default component if no content is inserted into the left_content slot\n   */\n  @Input()\n  set leftPanelMenuID(value: string) {\n    this.sioCoreAppComponentState.setLeftMenuID(value);\n  }\n\n  /**\n   * menu id code to use in the right sidebar. will be displayed as the default component if no content is inserted into the right_content slot\n   */\n  @Input()\n  set rightPanelMenuID(value: string) {\n    this.sioCoreAppComponentState.setRightMenuID(value);\n  }\n\n  /**\n   * menu id code to use in the tabbar.\n   */\n  @Input()\n  set tabMenuID(value: string) {\n    this.sioCoreAppComponentState.setTabMenuID(value);\n  }\n\n  @Input()\n  environmentInjector : EnvironmentInjector | undefined;\n\n  /**\n   * How display tabbar in desktop mode\n   */\n  @Input()\n  set tabDesktopPosition(value: string) {\n    this.sioCoreAppComponentState.setTabDesktop(value);\n  }\n\n  /**\n   * How display tabbar in mobile mode\n   */\n  @Input()\n  set tabMobilePosition(value: string) {\n    this.sioCoreAppComponentState.setTabMobile(value);\n  }\n\n  @Input() color: SioColorType;\n\n  @Select(SioCoreAppComponentState.loading)\n  loading$!: Observable<{ show: boolean; message: string }>;\n\n  @Select(SioCoreAppComponentState.error)\n\n  // eslint-disable-next-line @typescript-eslint/ban-types\n  error$!: Observable<{ name: string; message: string; action: Function }>;\n  @ViewChild(IonRouterOutlet, { static: true })\n  ionRouterOutlet!: IonRouterOutlet;\n\n  constructor(\n    public sioCoreAppComponentState: SioCoreAppComponentState,\n    private platform: Platform,\n    private sioCoreLoadingService: SioCoreLoadingService,\n    private sioCoreAlertService: SioCoreAlertService,\n    private sioCoreEnvironmentService: SioCoreEnvironmentService,\n    private sioCoreLoggerService: SioCoreLoggerService,\n    private translateService: TranslateService,\n  ) {\n    this.sioCoreLoggerService.info(\n      `[sioCoreAppComponentState][constructor] Check config...`,\n    );\n    if (this.sioCoreEnvironmentService.config) {\n      this.sioCoreLoggerService.info(\n        `[sioCoreAppComponentState][constructor] Config found loading...`,\n        this.sioCoreEnvironmentService.config,\n      );\n      this.sioCoreAppComponentState.LoadConfig(\n        this.sioCoreEnvironmentService.config.app,\n      );\n    } else {\n      this.sioCoreLoggerService.warn(\n        '[sioCoreAppComponent][Constructor] No config in environment file',\n      );\n    }\n    //this.translateService.setTranslation('it', it, true);\n    //this.translateService.setTranslation('en', en, true);\n  }\n\n  //@Select(SioCoreAppComponentState.split)\n  //split$!: Observable<boolean>;\n\n  ngOnInit(): void {\n    (async () => {\n      this.sioCoreLoggerService.info('await for platform avaible...');\n      let platform = await this.platform.ready();\n\n      this.translateService.setTranslation('it', it, true);\n      this.translateService.setTranslation('en', en, true);\n\n      this.translateService.addLangs(\n        this.sioCoreEnvironmentService.config.app.language?.avaibles || [],\n      );\n      this.translateService.use(\n        this.sioCoreEnvironmentService.config.app.language?.default || 'en',\n      );\n      this.sioCoreLoggerService.info('Check platform...');\n      switch (platform) {\n        case 'dom':\n          platform = 'browser';\n          // eslint-disable-next-line no-case-declarations\n          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');\n          this.sioCoreAppComponentState.setDark(prefersDark.matches);\n          prefersDark.addEventListener('change', (mediaQuery) =>\n            this.sioCoreAppComponentState.setDark(mediaQuery.matches),\n          );\n          break;\n        case 'hybrid':\n        case 'cordova':\n          this.platform.backButton.subscribeWithPriority(-1, () => {\n            if (!this.ionRouterOutlet.canGoBack()) {\n              App.exitApp();\n            }\n            // eslint-disable-next-line @typescript-eslint/no-explicit-any\n            this.platform.keyboardDidShow.subscribe((ev: any) => {\n              const { keyboardHeight } = ev;\n              this.sioCoreLoggerService.debug(\n                '[sioCoreAppComponent][ngOnInit] raise keyboardDidShow event',\n                keyboardHeight,\n              );\n              // Do something with the keyboard height such as translating an input above the keyboard.\n            });\n\n            this.platform.keyboardDidHide.subscribe(() => {\n              this.sioCoreLoggerService.debug(\n                '[sioCoreAppComponent][ngOnInit] raise keyboardDidHide event',\n              );\n              // Move input back to original location\n            });\n          });\n          break;\n        default:\n          this.sioCoreAppComponentState.throwError(\n            'sio',\n            'UNKNOW_PLATFORM : ' + platform,\n          );\n      }\n      this.sioCoreLoggerService.debug(\n        `[sioCoreAppComponent][ngOnInit] - Platform ${platform} detected`,\n      );\n      await this.sioCoreLoadingService.create();\n      this.platform.pause.subscribe(async () => {\n        this.sioCoreLoggerService.debug(\n          '[sioCoreAppComponent][ngOnInit] - Pause event detected',\n        );\n      });\n      this.platform.resize.subscribe(async () => {\n        this.sioCoreLoggerService.debug(\n          '[sioCoreAppComponent][ngOnInit] - Resize event detected',\n        );\n      });\n      this.platform.resume.subscribe(async () => {\n        this.sioCoreLoggerService.debug(\n          '[sioCoreAppComponent][ngOnInit] - Resume event detected',\n        );\n      });\n      this.sioCoreLoggerService.debug(\n        '[sioCoreAppComponent][ngOnInit] - Subscribe for Errors',\n      );\n      this.error$.subscribe(async (value) => {\n        if (value && value.message) {\n          const alert: unknown = await this.sioCoreAlertService.show(\n            value.name,\n            value.message,\n            value.action,\n          );\n          this.sioCoreLoggerService.debug(\n            '[sioCoreAppComponent][ngOnInit] - Show Alert',\n            alert,\n          );\n        }\n      });\n      this.sioCoreLoggerService.debug(\n        '[sioCoreAppComponent][ngOnInit] - Subscribe for Loader',\n      );\n      this.loading$.subscribe((value) => {\n        if (value.show) this.sioCoreLoadingService.show(value.message);\n        else this.sioCoreLoadingService.hide();\n      });\n      this.sioCoreLoggerService.debug(\n        '[sioCoreAppComponent][ngOnInit] - Platform Ready',\n        this.platform,\n      );\n    })();\n  }\n\n  // eslint-disable-next-line @typescript-eslint/no-explicit-any\n  sioAppSplitPanelVisible(e: any) {\n    this.sioCoreLoggerService.debug(\n      '[sioAppCoreComponent][sioAppSPlitPanleVisible] - Split Panel State Changed',\n      e.detail.visible,\n    );\n    this.sioCoreAppComponentState.setSplit(e.detail.visible);\n  }\n\n  ngOnDestroy(): void {\n    this.ngUnsubscribe.next(null);\n    this.ngUnsubscribe.complete();\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -323,7 +323,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 108,
+                "line": 107,
                 "jsdoctags": [
                     {
                         "name": "sioCoreAppComponentState",
@@ -476,7 +476,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 51,
+                        "line": 50,
                         "rawdescription": "\n\nSpecifies the behavior of the Right sidebar\n",
                         "description": "<p>Specifies the behavior of the Right sidebar</p>\n",
                         "jsdoctags": [
@@ -508,7 +508,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 59,
+                        "line": 58,
                         "rawdescription": "\n\nmenu id code to use in the left sidebar. will be displayed as the default component if no content is inserted into the left_content slot\n",
                         "description": "<p>menu id code to use in the left sidebar. will be displayed as the default component if no content is inserted into the left_content slot</p>\n",
                         "jsdoctags": [
@@ -540,7 +540,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 67,
+                        "line": 66,
                         "rawdescription": "\n\nmenu id code to use in the right sidebar. will be displayed as the default component if no content is inserted into the right_content slot\n",
                         "description": "<p>menu id code to use in the right sidebar. will be displayed as the default component if no content is inserted into the right_content slot</p>\n",
                         "jsdoctags": [
@@ -572,7 +572,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 75,
+                        "line": 74,
                         "rawdescription": "\n\nmenu id code to use in the tabbar.\n",
                         "description": "<p>menu id code to use in the tabbar.</p>\n",
                         "jsdoctags": [
@@ -604,7 +604,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 86,
+                        "line": 85,
                         "rawdescription": "\n\nHow display tabbar in desktop mode\n",
                         "description": "<p>How display tabbar in desktop mode</p>\n",
                         "jsdoctags": [
@@ -636,7 +636,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 94,
+                        "line": 93,
                         "rawdescription": "\n\nHow display tabbar in mobile mode\n",
                         "description": "<p>How display tabbar in mobile mode</p>\n",
                         "jsdoctags": [
@@ -656,8 +656,215 @@
             "templateData": "<ion-app>\n  <div\n    *ngIf=\"\n      (this.sioCoreAppComponentState.leftPanelType === 'none' &&\n        this.sioCoreAppComponentState.rightPanelType === 'none') ||\n        this.sioCoreAppComponentState.full;\n      then blank;\n      else split\n    \"\n  ></div>\n  <ng-template #split>\n    <ion-split-pane\n      when=\"lg\"\n      contentId=\"main-content\"\n      (ionSplitPaneVisible)=\"sioAppSplitPanelVisible($event)\"\n    >\n      <ion-menu\n        contentId=\"main-content\"\n        side=\"start\"\n        [type]=\"\n          this.sioCoreAppComponentState.leftPanelType !== 'toggle'\n            ? this.sioCoreAppComponentState.leftPanelType\n            : 'push'\n        \"\n        [swipeGesture]=\"\n          this.sioCoreAppComponentState.leftPanelType !== 'toggle'\n        \"\n        [disabled]=\"this.sioCoreAppComponentState.leftPanelType === 'none'\"\n      >\n        <ion-header class=\"ion-no-border\">\n          <ion-toolbar [color]=\"this.color\">\n            <div #left_header>\n              <ng-content select=\"[slot='left_header']\"></ng-content>\n            </div>\n            <ng-container *ngIf=\"!left_header.hasChildNodes()\">\n              <ion-title>{{\n                (this.sioCoreAppComponentState.state$ | async)?.title\n              }}</ion-title>\n            </ng-container>\n          </ion-toolbar>\n        </ion-header>\n        <ion-content>\n          <sio-menu\n            *ngIf=\"\n              this.sioCoreAppComponentState.tabMenuID &&\n              this.sioCoreAppComponentState.tabDesktopPosition === 'left' &&\n              this.sioCoreAppComponentState.split\n            \"\n            id=\"tab\"\n            [color]=\"this.color\"\n          >\n          </sio-menu>\n          <div #left_content>\n            <ng-content select=\"[slot='left_content']\"></ng-content>\n          </div>\n          <ng-container *ngIf=\"!left_content.hasChildNodes()\">\n            <sio-menu\n              *ngIf=\"this.sioCoreAppComponentState.leftMenuID\"\n              [menuID]=\"this.sioCoreAppComponentState.leftMenuID\"\n              [color]=\"this.color\"\n            ></sio-menu>\n          </ng-container>\n        </ion-content>\n        <ion-footer class=\"ion-no-border\">\n          <div #left_footer>\n            <ng-content select=\"[slot='left_footer']\"></ng-content>\n          </div>\n          <ng-container *ngIf=\"!left_footer.hasChildNodes()\">\n            <ion-toolbar class=\"ion-no-border\" [color]=\"this.color\">\n              <ion-item lines=\"none\" [color]=\"this.color\"\n                ><ion-label>powered by Sio</ion-label></ion-item\n              >\n              <ion-buttons slot=\"end\">\n                <ion-button\n                  href=\"https://github.com/silicia-apps/sio\"\n                  target=\"_blank\"\n                  shape=\"round\"\n                  fill=\"clear\"\n                >\n                  <ion-icon slot=\"start\" name=\"logo-github\"></ion-icon>\n                </ion-button>\n              </ion-buttons>\n            </ion-toolbar>\n          </ng-container>\n        </ion-footer>\n      </ion-menu>\n      <ion-menu\n        [disabled]=\"this.sioCoreAppComponentState.rightPanelType === 'none'\"\n        contentId=\"main-content\"\n        side=\"end\"\n        [type]=\"this.sioCoreAppComponentState.rightPanelType\"\n        [swipeGesture]=\"\n          this.sioCoreAppComponentState.rightPanelType !== 'toggle'\n        \"\n      >\n        <ion-header class=\"ion-no-border\">\n          <ion-toolbar [color]=\"this.color\">\n            <div #right_header>\n              <ng-content select=\"[slot='right_header']\"></ng-content>\n            </div>\n            <ng-container *ngIf=\"!right_header.hasChildNodes()\">\n              <ion-title>{{\n                (this.sioCoreAppComponentState.state$ | async)?.title\n              }}</ion-title>\n            </ng-container>\n          </ion-toolbar>\n        </ion-header>\n        <ion-content [color]=\"this.color\">\n          <sio-menu\n            *ngIf=\"\n              this.sioCoreAppComponentState.tabMenuID &&\n              this.sioCoreAppComponentState.tabDesktopPosition === 'right' &&\n              this.sioCoreAppComponentState.split\n            \"\n            id=\"tab\"\n            [color]=\"this.color\"\n          ></sio-menu>\n          <div #right_content>\n            <ng-content select=\"[slot='right_content']\"></ng-content>\n          </div>\n          <ng-container *ngIf=\"!right_content.hasChildNodes()\">\n            <sio-menu\n              *ngIf=\"this.sioCoreAppComponentState.rightMenuID\"\n              [menuID]=\"this.sioCoreAppComponentState.rightMenuID\"\n              [color]=\"this.color\"\n            ></sio-menu>\n          </ng-container>\n        </ion-content>\n        <ion-footer class=\"ion-no-border\">\n          <div #right_footer>\n            <ng-content select=\"[slot='right_footer']\"></ng-content>\n          </div>\n          <ng-container *ngIf=\"!right_footer.hasChildNodes()\">\n            <ion-toolbar class=\"ion-no-border\" [color]=\"this.color\">\n              <sio-dark-mode-toggle></sio-dark-mode-toggle>\n            </ion-toolbar>\n          </ng-container>\n        </ion-footer>\n      </ion-menu>\n      <ion-router-outlet [environmentInjector]=\"this.environmentInjector\" id=\"main-content\">\n        <ng-content></ng-content>\n        <sio-tab\n          *ngIf=\"this.sioCoreAppComponentState.tabMenuID\"\n          [tabID]=\"this.sioCoreAppComponentState.tabMenuID\"\n          [position]=\"\n            this.sioCoreAppComponentState.split\n              ? this.sioCoreAppComponentState.tabDesktopPosition\n              : this.sioCoreAppComponentState.tabMobilePosition\n          \"\n          [color]=\"this.color\"\n        ></sio-tab>\n      </ion-router-outlet>\n    </ion-split-pane>\n  </ng-template>\n  <ng-template #blank>\n    <ion-router-outlet [environmentInjector]=\"environmentInjector\" id=\"main-content\">\n      <sio-menu\n        *ngIf=\"\n          this.sioCoreAppComponentState.tabMenuID &&\n          this.sioCoreAppComponentState.full\n        \"\n        menuID=\"tab\"\n        position=\"bottom\"\n        [color]=\"this.color\"\n      ></sio-menu>\n      <ng-content></ng-content>\n    </ion-router-outlet>\n  </ng-template>\n</ion-app>\n"
         },
         {
+            "name": "SioCoreButtonComponent",
+            "id": "component-SioCoreButtonComponent-ad4145be51c5553fad9c68abf8031987a978e99690086a8a245d3013e145bf74efa192c4571c45728b6a1de8eab0d4a6540f9e5426da5bfce5116b45b5f72d9b",
+            "file": "libs/core/src/lib/components/button/button.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "sio-button",
+            "styleUrls": [
+                "./button.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./button.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "block",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 40,
+                    "type": "InputBoolean",
+                    "decorators": [
+                        {
+                            "name": "AttributeBoolean",
+                            "stringifiedArguments": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "color",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "SioColorType",
+                    "decorators": []
+                },
+                {
+                    "name": "disabled",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 44,
+                    "type": "InputBoolean",
+                    "decorators": [
+                        {
+                            "name": "AttributeBoolean",
+                            "stringifiedArguments": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "display_icon",
+                    "defaultValue": "'left'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 30,
+                    "type": "\"left\" | \"right\" | \"only\"",
+                    "decorators": []
+                },
+                {
+                    "name": "full",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 36,
+                    "type": "InputBoolean",
+                    "decorators": [
+                        {
+                            "name": "AttributeBoolean",
+                            "stringifiedArguments": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "icon",
+                    "defaultValue": "undefined",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 32,
+                    "type": "string | undefined",
+                    "decorators": []
+                },
+                {
+                    "name": "round",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 22,
+                    "type": "InputBoolean",
+                    "decorators": [
+                        {
+                            "name": "AttributeBoolean",
+                            "stringifiedArguments": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "size",
+                    "defaultValue": "undefined",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 28,
+                    "type": "\"default\" | \"large\" | \"small\" | undefined",
+                    "decorators": []
+                },
+                {
+                    "name": "type",
+                    "defaultValue": "'button'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "\"button\" | \"fab\"",
+                    "decorators": []
+                },
+                {
+                    "name": "upload",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 26,
+                    "type": "InputBoolean",
+                    "decorators": [
+                        {
+                            "name": "AttributeBoolean",
+                            "stringifiedArguments": ""
+                        }
+                    ]
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "Click",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 46,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "onClick",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 52,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        134
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { SioColorType } from '../../types';\nimport { InputBoolean } from '@angular-ru/cdk/typings';\nimport { AttributeBoolean } from '@angular-ru/cdk/decorators';\nimport { SioCoreLoggerService } from '../../services';\n\nimport { FilePicker } from '@capawesome/capacitor-file-picker';\n\n@Component({\n  selector: 'sio-button',\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss'],\n  standalone: false,\n})\nexport class SioCoreButtonComponent {\n  @Input() public color: SioColorType;\n\n  @Input() public type: 'button' | 'fab' = 'button';\n\n  @AttributeBoolean()\n  @Input()\n  public round: InputBoolean;\n\n  @AttributeBoolean()\n  @Input()\n  public upload: InputBoolean = false;\n\n  @Input() public size: 'default' | 'large' | 'small' | undefined = undefined;\n\n  @Input() public display_icon: 'left' | 'right' | 'only' = 'left';\n\n  @Input() public icon: string | undefined = undefined;\n\n  @AttributeBoolean()\n  @Input()\n  public full: InputBoolean = false;\n\n  @AttributeBoolean()\n  @Input()\n  public block: InputBoolean = false;\n\n  @AttributeBoolean()\n  @Input()\n  public disabled: InputBoolean = false;\n\n  @Output() Click = new EventEmitter();\n\n  constructor(private sioCoreLoggerService: SioCoreLoggerService) {\n    this.sioCoreLoggerService.debug('[SioCoreButtonComponent][constructor]');\n  }\n\n  async onClick() {\n    if (this.upload) {\n      const { files } = await FilePicker.pickFiles({ readData: true });\n      if (files) this.Click.emit(files);\n    } else {\n      this.Click.emit([]);\n    }\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./button.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "sioCoreLoggerService",
+                        "type": "SioCoreLoggerService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 46,
+                "jsdoctags": [
+                    {
+                        "name": "sioCoreLoggerService",
+                        "type": "SioCoreLoggerService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "templateData": "<div *ngIf=\"this.type === 'fab'; then fab; else default\"></div>\n<ng-template #default>\n  <ion-button\n    [color]=\"this.color\"\n    [disabled]=\"this.disabled\"\n    [shape]=\"this.round ? 'round' : undefined\"\n    [expand]=\"this.full ? 'full' : this.block ? 'block' : undefined\"\n    [size]=\"this.size\"\n    (click)=\"onClick()\"\n  >\n    <ion-icon\n      *ngIf=\"this.icon\"\n      [name]=\"this.icon\"\n      [slot]=\"(this.display_icon === 'left')?'start':(this.display_icon === 'right')?'end':(this.display_icon === 'only')?'icon-only':'left'\"\n    ></ion-icon>\n    <ng-content *ngIf=\"this.display_icon !== 'only'\"></ng-content>\n  </ion-button>\n</ng-template>\n<ng-template #fab>\n  <ion-fab-button [color]=\"this.color\" [disabled]=\"this.disabled\" [size]=\"this.size\" (click)=\"onClick()\">\n    <ion-icon [name]=\"this.icon\"></ion-icon>\n  </ion-fab-button>\n</ng-template>\n"
+        },
+        {
             "name": "SioCoreCardComponent",
-            "id": "component-SioCoreCardComponent-a9492b80656bf6f69f2cdf165982c4c1d5d318042c6b842dfa0dc53637058e5f31e011eeb025916616209c03d888c9ea6eef4ce236238a5e669934da0b261e41",
+            "id": "component-SioCoreCardComponent-ecd2072c791a4280b315e702471d674d7559a97c9b561d1f7f73f57a7121b2b64c0efc14e63f8a65840c2e1a560adecb941cd16ed46566d2c6e3514238282091",
             "file": "libs/core/src/lib/components/card/card.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -676,11 +883,25 @@
             "hostDirectives": [],
             "inputsClass": [
                 {
+                    "name": "accordion",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "InputBoolean",
+                    "decorators": [
+                        {
+                            "name": "AttributeBoolean",
+                            "stringifiedArguments": ""
+                        }
+                    ]
+                },
+                {
                     "name": "altImg",
                     "defaultValue": "'Alternative Text for image'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 22,
+                    "line": 27,
                     "type": "string",
                     "decorators": []
                 },
@@ -688,7 +909,7 @@
                     "name": "color",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 15,
+                    "line": 20,
                     "type": "SioColorType",
                     "decorators": []
                 },
@@ -697,7 +918,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 10,
+                    "line": 12,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -706,7 +927,7 @@
                     "defaultValue": "null",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 21,
+                    "line": 26,
                     "type": "string | null",
                     "decorators": []
                 },
@@ -715,7 +936,7 @@
                     "defaultValue": "'none'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 11,
+                    "line": 16,
                     "type": "\"full\" | \"inset\" | \"none\"",
                     "decorators": []
                 },
@@ -724,7 +945,7 @@
                     "defaultValue": "'left'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 14,
+                    "line": 19,
                     "type": "\"left\" | \"right\"",
                     "decorators": []
                 },
@@ -733,7 +954,7 @@
                     "defaultValue": "'compact'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 18,
+                    "line": 23,
                     "type": "\"compact\" | \"inset\"",
                     "decorators": []
                 },
@@ -742,7 +963,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 20,
+                    "line": 25,
                     "type": "string",
                     "decorators": []
                 },
@@ -751,7 +972,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 19,
+                    "line": 24,
                     "type": "string",
                     "decorators": []
                 },
@@ -760,7 +981,7 @@
                     "defaultValue": "'chevron-down-outline'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 17,
+                    "line": 22,
                     "type": "string",
                     "decorators": []
                 },
@@ -769,7 +990,7 @@
                     "defaultValue": "'end'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 16,
+                    "line": 21,
                     "type": "\"start\" | \"end\"",
                     "decorators": []
                 },
@@ -778,7 +999,7 @@
                     "defaultValue": "'standard'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 23,
+                    "line": 28,
                     "type": "\"standard\" | \"media\" | \"accordion\"",
                     "decorators": []
                 },
@@ -787,7 +1008,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 12,
+                    "line": 17,
                     "type": "string",
                     "decorators": []
                 }
@@ -801,7 +1022,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 25,
+                    "line": 30,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -815,7 +1036,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { SioColorType } from '../../types';\n\n@Component({\n  selector: 'sio-card',\n  templateUrl: './card.component.html',\n  styleUrls: ['./card.component.scss'],\n})\nexport class SioCoreCardComponent {\n  @Input() public disabled = false;\n  @Input() public lines: 'full' | 'inset' | 'none' = 'none';\n  @Input() public value = '';\n  //@Input() public shape: 'line' | 'dot' | 'rounded' = 'line';\n  @Input() public position: 'left' | 'right' = 'left';\n  @Input() public color: SioColorType;\n  @Input() public toggleIconSlot: 'start' | 'end' = 'end';\n  @Input() public toggleIcon = 'chevron-down-outline';\n  @Input() public shape: 'compact' | 'inset' = 'compact';\n  @Input() public title = '';\n  @Input() public subtitle = '';\n  @Input() public img : string | null = null;\n  @Input() public altImg = 'Alternative Text for image';\n  @Input() public type: 'standard' | 'media' | 'accordion' = 'standard';\n\n  test() {\n    console.log('test');\n  }\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { SioColorType } from '../../types';\nimport { AttributeBoolean } from '@angular-ru/cdk/decorators';\nimport { InputBoolean } from '@angular-ru/cdk/typings';\n\n@Component({\n  selector: 'sio-card',\n  templateUrl: './card.component.html',\n  styleUrls: ['./card.component.scss'],\n})\nexport class SioCoreCardComponent {\n  @Input() public disabled = false;\n\n  @AttributeBoolean()\n  @Input() public accordion: InputBoolean = false;\n  @Input() public lines: 'full' | 'inset' | 'none' = 'none';\n  @Input() public value = '';\n  //@Input() public shape: 'line' | 'dot' | 'rounded' = 'line';\n  @Input() public position: 'left' | 'right' = 'left';\n  @Input() public color: SioColorType;\n  @Input() public toggleIconSlot: 'start' | 'end' = 'end';\n  @Input() public toggleIcon = 'chevron-down-outline';\n  @Input() public shape: 'compact' | 'inset' = 'compact';\n  @Input() public title = '';\n  @Input() public subtitle = '';\n  @Input() public img: string | null = null;\n  @Input() public altImg = 'Alternative Text for image';\n  @Input() public type: 'standard' | 'media' | 'accordion' = 'standard';\n\n  test() {\n    console.log('test');\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -825,7 +1046,7 @@
             ],
             "stylesData": "",
             "extends": [],
-            "templateData": "<ion-card [disabled]=\"this.disabled\">\n  <ion-img *ngIf=\"this.img\" [alt]=\"this.altImg\" [src]=\"this.img\" />\n  <ion-accordion-group [value]=\"this.value\" (ionChange)=\"this.test()\">\n    <ion-accordion value=\"open\" [toggleIcon]=\"this.toggleIcon\" [toggleIconSlot]=\"this.toggleIconSlot\">\n      <ion-item [color]=\"this.color\" slot=\"header\">\n        <ion-card-header [color]=\"this.color\">\n          <div #header><ng-content select=\"[slot='header']\"></ng-content></div>\n          <ng-container *ngIf=\"!header.hasChildNodes()\">\n            <ion-card-title>{{ this.title | translate }}</ion-card-title>\n            <ion-card-subtitle>{{ this.subtitle | translate }}</ion-card-subtitle>\n          </ng-container>\n        </ion-card-header>\n      </ion-item>\n      <ion-card-content class=\"ion-padding\" slot=\"content\">\n        <ng-content></ng-content>\n      </ion-card-content>\n    </ion-accordion>\n  </ion-accordion-group>\n</ion-card>"
+            "templateData": "<ion-card [disabled]=\"this.disabled\">\n  <ion-img *ngIf=\"this.img\" [alt]=\"this.altImg\" [src]=\"this.img\" />\n  <div *ngIf=\"this.type === 'accordion'; then accordion; else default\"></div>\n  <ng-template #accordion>\n    <ion-accordion-group [value]=\"this.value\" (ionChange)=\"this.test()\">\n      <ion-accordion\n        *ngIf=\"this.accordion\"\n        value=\"open\"\n        [toggleIcon]=\"this.toggleIcon\"\n        [toggleIconSlot]=\"this.toggleIconSlot\"\n      >\n        <ion-item [color]=\"this.color\" slot=\"header\">\n          <ion-card-header [color]=\"this.color\">\n            <div #header>\n              <ng-content select=\"[slot='header']\"></ng-content>\n            </div>\n            <ng-container *ngIf=\"!header.hasChildNodes()\">\n              <ion-card-title>{{ this.title | translate }}</ion-card-title>\n              <ion-card-subtitle>{{\n                this.subtitle | translate\n              }}</ion-card-subtitle>\n            </ng-container>\n          </ion-card-header>\n        </ion-item>\n        <ion-card-content class=\"ion-padding\" slot=\"content\">\n          <ng-content></ng-content>\n        </ion-card-content>\n      </ion-accordion>\n    </ion-accordion-group>\n  </ng-template>\n  <ng-template #default>\n    <ion-card-header [color]=\"this.color\">\n      <div #header><ng-content select=\"[slot='header']\"></ng-content></div>\n      <ng-container *ngIf=\"!header.hasChildNodes()\">\n        <ion-card-title>{{ this.title | translate }}</ion-card-title>\n        <ion-card-subtitle>{{ this.subtitle | translate }}</ion-card-subtitle>\n      </ng-container>\n    </ion-card-header>\n    <ion-card-content class=\"ion-padding\">\n      <ng-content></ng-content>\n    </ion-card-content>\n  </ng-template>\n</ion-card>\n"
         },
         {
             "name": "SioCoreDarkModeToggleComponent",
@@ -1057,7 +1278,7 @@
         },
         {
             "name": "SioCoreFormComponent",
-            "id": "component-SioCoreFormComponent-b45396c69508639c9469db82b0b9147407dd77bea2cc315b2185d190cca987fbc8647fcf416798da84fea79becf714a7638ea4a0293a172f2c8c5dd897c959ab",
+            "id": "component-SioCoreFormComponent-87e00110a313711907dc66c39d9600fe88a36c5d6510554279c9f45cdfbbd06c20ce506faea69cd7c164f80d7a22c46afc68ec26e636dcfaefacffa5ec678d13",
             "file": "libs/core/src/lib/components/form/form.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1131,7 +1352,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 27,
+                    "line": 29,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -1141,7 +1362,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 43,
+                    "line": 48,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -1159,7 +1380,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';\nimport { Loggable, SioCoreLoggerService } from '../../services/logger';\nimport {\n  UntypedFormControl,\n  UntypedFormGroup,\n  Validators,\n} from '@angular/forms';\nimport { SioCoreFormComponentState } from './store/form.state';\nimport { SioColorType } from '../../types';\n\n@Loggable()\n@Component({\n  selector: 'sio-form',\n  templateUrl: './form.component.html',\n})\nexport class SioCoreFormComponent implements OnInit {\n  @Input() public cancel = false;\n  @Input() public state!: SioCoreFormComponentState;\n  @Input() public color: SioColorType = 'dark';\n\n  @Output() send = new EventEmitter();\n\n  public form!: UntypedFormGroup;\n\n  constructor(private sioCoreLoggerService: SioCoreLoggerService) {}\n\n  ngOnInit(): void {\n    // eslint-disable-next-line @typescript-eslint/no-explicit-any\n    const group: any = {};\n    if (this.state.layout) {\n      this.state.layout.forEach((field:any) => {\n        const validator = [];\n        if (field.required) validator.push(Validators.required);\n        if (field.type === 'email') validator.push(Validators.email); //SioEmailValidator);\n        if (field.type === 'tel')\n          validator.push(Validators.pattern('^[0-9]+$'));\n        group[field.name] = new UntypedFormControl(field.value, validator);\n      });\n      this.form = new UntypedFormGroup(group);\n    }\n  }\n\n  public async onSubmit() {\n    this.sioCoreLoggerService.info(\n      '[SioCoreFormComponent][onSubmit] - form submitted'\n    );\n    this.send.emit();\n  }\n}\n",
+            "sourceCode": "import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';\nimport { Loggable, SioCoreLoggerService } from '../../services/logger';\nimport {\n  UntypedFormControl,\n  UntypedFormGroup,\n  Validators,\n} from '@angular/forms';\nimport { SioCoreFormComponentState } from './store/form.state';\nimport { SioColorType } from '../../types';\n\n@Loggable()\n@Component({\n  selector: 'sio-form',\n  templateUrl: './form.component.html',\n})\nexport class SioCoreFormComponent implements OnInit {\n  @Input() public cancel = false;\n  @Input() public state!: SioCoreFormComponentState;\n  @Input() public color: SioColorType = 'dark';\n\n  @Output() send = new EventEmitter();\n\n  public form!: UntypedFormGroup;\n\n  constructor(private sioCoreLoggerService: SioCoreLoggerService) {\n    this.sioCoreLoggerService.debug(`[SioCoreFormComponent][constructor]`);\n  }\n\n  ngOnInit(): void {\n    this.sioCoreLoggerService.debug(`[SioCoreFormComponent][ngOnInit]`);\n    // eslint-disable-next-line @typescript-eslint/no-explicit-any\n    const group: any = {};\n    if (this.state.layout) {\n      // eslint-disable-next-line @typescript-eslint/no-explicit-any\n      this.state.layout.forEach((field:any) => {\n        this.sioCoreLoggerService.debug(`[SioCoreFormComponent][ngOnInit] add field`);\n        const validator = [];\n        if (field.required) validator.push(Validators.required);\n        if (field.type === 'email') validator.push(Validators.email); //SioEmailValidator);\n        if (field.type === 'tel')\n          validator.push(Validators.pattern('^[0-9]+$'));\n        group[field.name] = new UntypedFormControl(field.value, validator);\n      });\n      this.form = new UntypedFormGroup(group);\n    }\n  }\n\n  public async onSubmit() {\n    this.sioCoreLoggerService.info(\n      '[SioCoreFormComponent][onSubmit] - form submitted'\n    );\n    this.send.emit();\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -1193,7 +1414,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "\n  <form\n    *ngIf=\"(this.state.state$ | async)?.layout\"\n    ngxsForm=\"{{ this.state.name }}.data\"\n    [formGroup]=\"this.form\"\n    (ngSubmit)=\"this.onSubmit()\"\n  >\n    <sio-input\n      *ngFor=\"let item of (this.state.state$ | async)?.layout\"\n      [label]=\"item.label\"\n      [name]=\"item.name\"\n      [type]=\"item.type\"\n      [formControlName]=\"item.name\"\n      [color]=\"this.color\"\n    ></sio-input>\n    <br />\n    <ion-button\n      size=\"large\"\n      expand=\"block\"\n      color=\"primary\"\n      type=\"submit\"\n      [disabled]=\"!this.state.valid\"\n    >\n      {{ 'auth.SUBMIT' | translate }}\n    </ion-button>\n    <ion-button\n      *ngIf=\"this.cancel\"\n      expand=\"block\"\n      color=\"danger\"\n      (click)=\"this.state.resetForm()\"\n    >\n      {{ 'auth.RESET' | translate }}\n    </ion-button>\n  </form>\n\n"
+            "templateData": "<form\n  *ngIf=\"(this.state.state$ | async)?.layout\"\n  ngxsForm=\"{{ this.state.name }}.data\"\n  [formGroup]=\"this.form\"\n  (ngSubmit)=\"this.onSubmit()\"\n>\n  <div *ngFor=\"let item of (this.state.state$ | async)?.layout\">\n    <sio-input\n      [label]=\"item.label\"\n      [name]=\"item.name\"\n      [type]=\"item.type\"\n      [formControlName]=\"item.name\"\n      [color]=\"this.color\"\n    ></sio-input>\n    <br />\n  </div>\n  <ion-button\n    size=\"large\"\n    expand=\"block\"\n    color=\"primary\"\n    type=\"submit\"\n    [disabled]=\"!this.state.valid\"\n  >\n    {{ 'SUBMIT' | translate }}\n  </ion-button>\n  <ion-button\n    *ngIf=\"this.cancel\"\n    expand=\"block\"\n    color=\"danger\"\n    (click)=\"this.state.resetForm()\"\n  >\n    {{ 'RESET' | translate }}\n  </ion-button>\n</form>\n"
         },
         {
             "name": "SioCoreHeaderComponent",
@@ -1378,7 +1599,7 @@
         },
         {
             "name": "SioCoreIconComponent",
-            "id": "component-SioCoreIconComponent-34bb3653a87c4b7e2991f6fa9ab28bfb67433937d29f75e9bd9a210f573d47fd3e0d810c9e5f083037828c22b5b0cd7b3d6ecee298fcdc0bb43bc4299da03868",
+            "id": "component-SioCoreIconComponent-119cef19b6100c7b06bec98935c89fffb856dd3824070f59059d7d8227963e5493e37b7dc2f52ac6bcc1ba46ba1245dffa866c94a2d566901c5b9ca0c1db95c8",
             "file": "libs/core/src/lib/components/icon/icon.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1409,7 +1630,7 @@
                     "defaultValue": "undefined",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 12,
+                    "line": 13,
                     "type": "string | undefined",
                     "decorators": []
                 },
@@ -1418,7 +1639,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 15,
+                    "line": 16,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -1427,8 +1648,16 @@
                     "defaultValue": "undefined",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 14,
+                    "line": 15,
                     "type": "\"small\" | \"large\" | undefined",
+                    "decorators": []
+                },
+                {
+                    "name": "slot",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 12,
+                    "type": "\"start\" | \"end\" | undefined",
                     "decorators": []
                 },
                 {
@@ -1436,7 +1665,7 @@
                     "defaultValue": "undefined",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 13,
+                    "line": 14,
                     "type": "string | undefined",
                     "decorators": []
                 }
@@ -1453,7 +1682,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { SioColorType } from '../../types';\nimport { SioCoreLoggerService } from '../../services/logger';\n\n@Component({\n  selector: 'sio-icon',\n  templateUrl: './icon.component.html',\n  styleUrls: ['./icon.component.scss'],\n})\nexport class SioCoreIconComponent {\n  @Input() public color: SioColorType;\n  @Input() public name: string | undefined = undefined;\n  @Input() public url: string | undefined = undefined;\n  @Input() public size: 'small' | 'large' | undefined = undefined;\n  @Input() public only = false;\n\n  // eslint-disable-next-line @typescript-eslint/no-empty-function\n  constructor(\n    private sioLoggerService: SioCoreLoggerService,\n  ) {\n    this.sioLoggerService.debug('[SioCoreIconComponent] Create Icon' + this.name, this.name);\n  }\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { SioColorType } from '../../types';\nimport { SioCoreLoggerService } from '../../services/logger';\n\n@Component({\n  selector: 'sio-icon',\n  templateUrl: './icon.component.html',\n  styleUrls: ['./icon.component.scss'],\n})\nexport class SioCoreIconComponent {\n  @Input() public color: SioColorType;\n  @Input() public slot : 'start' | 'end' | undefined;\n  @Input() public name: string | undefined = undefined;\n  @Input() public url: string | undefined = undefined;\n  @Input() public size: 'small' | 'large' | undefined = undefined;\n  @Input() public only = false;\n\n  // eslint-disable-next-line @typescript-eslint/no-empty-function\n  constructor(\n    private sioLoggerService: SioCoreLoggerService,\n  ) {\n    this.sioLoggerService.debug('[SioCoreIconComponent] Create Icon' + this.name, this.name);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1475,7 +1704,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 15,
+                "line": 16,
                 "jsdoctags": [
                     {
                         "name": "sioLoggerService",
@@ -1489,11 +1718,11 @@
                 ]
             },
             "extends": [],
-            "templateData": "<ion-icon [name]=\"this.name\" [ios]=\"this.name+ '-outline'\" [md]=\"this.name+ '-sharp'\" [color]=\"this.color\" [size]=\"this.size\"></ion-icon>"
+            "templateData": "<ion-icon *ngIf=\"this.slot === 'start'\" slot=\"start\" [name]=\"this.name\" [ios]=\"this.name+ '-outline'\" [md]=\"this.name+ '-sharp'\" [color]=\"this.color\" [size]=\"this.size\"></ion-icon>\n<ion-icon *ngIf=\"this.slot === 'end'\" slot=\"end\" [name]=\"this.name\" [ios]=\"this.name+ '-outline'\" [md]=\"this.name+ '-sharp'\" [color]=\"this.color\" [size]=\"this.size\"></ion-icon>"
         },
         {
             "name": "SioCoreInputComponent",
-            "id": "component-SioCoreInputComponent-0e4cc99fea6a81fc1aaab121e42e6e0666d67899ec9d7fce20db90fceebcc8fc6763a1d25a78395f518df1f57a13a4637d56443f638d21f97acd3bf732fa53bd",
+            "id": "component-SioCoreInputComponent-e0d82a291f4651b3e3a18b37f1581c97668a5285c5321a1e929ae7bac374718637df016136f54b6762b57815860e7f54185e61f014e411be3fbfef52336bc651",
             "file": "libs/core/src/lib/components/input/input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1516,7 +1745,7 @@
                     "defaultValue": "'off'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 54,
+                    "line": 58,
                     "type": "\"on\" | \"off\"",
                     "decorators": []
                 },
@@ -1525,7 +1754,7 @@
                     "defaultValue": "'off'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 55,
+                    "line": 59,
                     "type": "\"on\" | \"off\"",
                     "decorators": []
                 },
@@ -1534,7 +1763,7 @@
                     "defaultValue": "'off'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 56,
+                    "line": 60,
                     "type": "\"on\" | \"off\"",
                     "decorators": []
                 },
@@ -1543,7 +1772,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 57,
+                    "line": 61,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -1552,7 +1781,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 58,
+                    "line": 62,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -1561,7 +1790,7 @@
                     "defaultValue": "undefined",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 59,
+                    "line": 63,
                     "type": "boolean | undefined",
                     "decorators": []
                 },
@@ -1570,7 +1799,7 @@
                     "defaultValue": "undefined",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 60,
+                    "line": 64,
                     "type": "string | undefined",
                     "decorators": []
                 },
@@ -1579,7 +1808,7 @@
                     "defaultValue": "0",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 61,
+                    "line": 65,
                     "type": "number",
                     "decorators": []
                 },
@@ -1588,7 +1817,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 62,
+                    "line": 66,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -1597,7 +1826,7 @@
                     "defaultValue": "'outline'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 53,
+                    "line": 57,
                     "type": "\"outline\" | \"solid\" | \"none\"",
                     "decorators": []
                 },
@@ -1605,15 +1834,15 @@
                     "name": "inputMode",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 64,
-                    "type": "\"decimal\" | \"email\" | \"none\" | \"numeric\" | \"search\" | \"tel\" | \"text\" | \"url\" | undefined",
+                    "line": 68,
+                    "type": "\"decimal\" | \"email\" | \"none\" | \"numeric\" | \"search\" | \"tel\" | \"text\" | \"file\" | \"url\" | undefined",
                     "decorators": []
                 },
                 {
                     "name": "label",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 33,
+                    "line": 37,
                     "type": "string | null | undefined",
                     "decorators": []
                 },
@@ -1622,7 +1851,7 @@
                     "defaultValue": "'full'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 63,
+                    "line": 67,
                     "type": "\"full\" | \"inset\" | \"none\"",
                     "decorators": []
                 },
@@ -1630,7 +1859,7 @@
                     "name": "name",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 41,
+                    "line": 45,
                     "type": "string",
                     "decorators": []
                 },
@@ -1639,7 +1868,7 @@
                     "defaultValue": "'floating'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 52,
+                    "line": 56,
                     "type": "\"stacked\" | \"fixed\" | \"floating\"",
                     "decorators": []
                 },
@@ -1647,8 +1876,8 @@
                     "name": "type",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 88,
-                    "type": "\"date\" | \"datetime-local\" | \"email\" | \"month\" | \"number\" | \"password\" | \"search\" | \"tel\" | \"text\" | \"time\" | \"url\" | \"week\" | undefined",
+                    "line": 93,
+                    "type": "\"date\" | \"datetime-local\" | \"email\" | \"month\" | \"number\" | \"password\" | \"search\" | \"tel\" | \"text\" | \"time\" | \"url\" | \"file\" | \"week\" | undefined",
                     "decorators": []
                 }
             ],
@@ -1662,7 +1891,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 31,
+                    "line": 35,
                     "modifierKind": [
                         123
                     ]
@@ -1675,7 +1904,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 30,
+                    "line": 34,
                     "modifierKind": [
                         123
                     ]
@@ -1684,10 +1913,10 @@
                     "name": "_type",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "\"date\" | \"datetime-local\" | \"email\" | \"month\" | \"number\" | \"password\" | \"search\" | \"tel\" | \"text\" | \"time\" | \"url\" | \"week\" | undefined",
+                    "type": "\"date\" | \"datetime-local\" | \"email\" | \"month\" | \"number\" | \"password\" | \"search\" | \"tel\" | \"text\" | \"time\" | \"url\" | \"week\" | \"file\" | undefined",
                     "optional": false,
                     "description": "",
-                    "line": 16,
+                    "line": 19,
                     "modifierKind": [
                         125
                     ]
@@ -1700,7 +1929,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 148,
+                    "line": 154,
                     "modifierKind": [
                         123
                     ]
@@ -1712,7 +1941,7 @@
                     "type": " | undefined",
                     "optional": false,
                     "description": "",
-                    "line": 146,
+                    "line": 152,
                     "modifierKind": [
                         123
                     ]
@@ -1721,10 +1950,10 @@
                     "name": "pValue",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "string | number | undefined",
+                    "type": "string | number | boolean | sioStorageFileInterface[] | null | undefined",
                     "optional": false,
                     "description": "",
-                    "line": 15,
+                    "line": 18,
                     "modifierKind": [
                         123
                     ]
@@ -1736,7 +1965,7 @@
                     "type": "SioCoreFormComponentState",
                     "optional": false,
                     "description": "",
-                    "line": 151,
+                    "line": 157,
                     "modifierKind": [
                         125
                     ]
@@ -1749,7 +1978,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 169,
+                    "line": 176,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -1759,9 +1988,22 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 161,
+                    "line": 168,
                     "deprecated": false,
                     "deprecationMessage": ""
+                },
+                {
+                    "name": "pickFile",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 190,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        134
+                    ]
                 },
                 {
                     "name": "registerOnChange",
@@ -1776,7 +2018,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 175,
+                    "line": 182,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1804,7 +2046,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 179,
+                    "line": 186,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1832,7 +2074,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 163,
+                    "line": 170,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1857,7 +2099,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, OnInit, Input, Optional } from '@angular/core';\n\nimport { NgControl } from '@angular/forms';\nimport { SioCoreFormComponentState } from '../form/store/form.state';\n\n\n@Component({\n  selector: 'sio-input',\n  templateUrl: './input.component.html',\n  styleUrls: ['./input.component.scss'],\n})\nexport class SioCoreInputComponent implements OnInit {\n  private pValue: string | number | undefined;\n  public _type:\n    | 'date'\n    | 'datetime-local'\n    | 'email'\n    | 'month'\n    | 'number'\n    | 'password'\n    | 'search'\n    | 'tel'\n    | 'text'\n    | 'time'\n    | 'url'\n    | 'week'\n    | undefined;\n  private _name = '';\n  private _label = '';\n\n  @Input() set label(value: string | null | undefined) {\n    this._label = <string>value;\n  }\n\n  get label(): string {\n    return this._label;\n  }\n\n  @Input() public set name(value: string) {\n    if (this.label !== '') {\n      this._label = `LABEL_${value?.toUpperCase()}`;\n    }\n    this._name = value;\n  }\n\n  get name(): string {\n    return this._name;\n  }\n\n  @Input() public position: 'stacked' | 'fixed' | 'floating' = 'floating';\n  @Input() public fill: 'outline' | 'solid' | 'none' = 'outline';\n  @Input() public autocapitalize: 'on' | 'off' = 'off';\n  @Input() public autocomplete: 'on' | 'off' = 'off';\n  @Input() public autocorrect: 'on' | 'off' = 'off';\n  @Input() public autofocus = false;\n  @Input() public clearInput = false;\n  @Input() public clearOnEdit: boolean | undefined = undefined;\n  @Input() public color: string | undefined = undefined;\n  @Input() public debounce = 0;\n  @Input() public disabled = false;\n  @Input() public lines: 'full' | 'inset' | 'none' = 'full';\n  @Input() public inputMode:\n    | 'decimal'\n    | 'email'\n    | 'none'\n    | 'numeric'\n    | 'search'\n    | 'tel'\n    | 'text'\n    | 'url'\n    | undefined;\n\n  public get invalid(): boolean {\n    return this.control ? <boolean>this.control.invalid : false;\n  }\n\n  public get dirty(): boolean {\n    return this.control ? <boolean>this.control.dirty : false;\n  }\n\n  public get error(): unknown {\n    return this.control.errors;\n  }\n\n  @Input()\n  public set type(\n    value:\n      | 'date'\n      | 'datetime-local'\n      | 'email'\n      | 'month'\n      | 'number'\n      | 'password'\n      | 'search'\n      | 'tel'\n      | 'text'\n      | 'time'\n      | 'url'\n      | 'week'\n      | undefined\n  ) {\n    if (!this.inputMode) {\n      switch (value) {\n        case 'number':\n          this.inputMode = 'numeric';\n          break;\n        case 'email':\n          this.inputMode = 'email';\n          break;\n        case 'tel':\n          this.inputMode = 'tel';\n          break;\n        case 'search':\n          this.inputMode = 'search';\n          break;\n        case 'url':\n          this.inputMode = 'url';\n          break;\n        case 'text':\n        case 'password':\n          this.inputMode = 'text';\n          break;\n        default:\n          this.inputMode = 'none';\n      }\n    }\n    this._type = value;\n  }\n\n  get valueInput(): string | number {\n    return <string>this.pValue;\n  }\n\n  set valueInput(newValue: string | number) {\n    if (newValue !== this.pValue) {\n      this.pValue = newValue;\n      if (this.onChangeCallback) {\n        this.onChangeCallback(this.pValue);\n      }\n    }\n  }\n\n  // eslint-disable-next-line @typescript-eslint/ban-types\n  private onTouchedCallback: (() => {}) | undefined;\n  // eslint-disable-next-line @typescript-eslint/no-unused-vars\n  private onChangeCallback = (_: any) => {};\n\n  constructor(\n    public SioCoreFormComponentState: SioCoreFormComponentState,\n    @Optional() private control: NgControl\n  ) {\n    this.label = 'LABEL_';\n    if (this.control) {\n      this.control.valueAccessor = this;\n    }\n  }\n\n  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method\n  ngOnInit() {}\n\n  writeValue(newVal: any): void {\n    if (newVal !== undefined && newVal !== this.pValue) {\n      this.pValue = newVal;\n    }\n  }\n\n  blur() {\n    if (this.onTouchedCallback) {\n      this.onTouchedCallback();\n    }\n  }\n\n  registerOnChange(fn: any): void {\n    this.onChangeCallback = fn;\n  }\n\n  registerOnTouched(fn: any): void {\n    this.onTouchedCallback = fn;\n  }\n}\n",
+            "sourceCode": "import { Component, OnInit, Input, Optional } from '@angular/core';\n\nimport { NgControl } from '@angular/forms';\nimport { SioCoreFormComponentState } from '../form/store/form.state';\n\nimport { FilePicker } from '@capawesome/capacitor-file-picker';\nimport { SioCoreLoggerService } from '../../services';\nimport { sioStorageFileInterface } from '../../interfaces';\n\n@Component({\n  selector: 'sio-input',\n  templateUrl: './input.component.html',\n  styleUrls: ['./input.component.scss'],\n})\nexport class SioCoreInputComponent implements OnInit {\n  private pValue: string | number | boolean | sioStorageFileInterface[] | null | undefined;\n  public _type:\n    | 'date'\n    | 'datetime-local'\n    | 'email'\n    | 'month'\n    | 'number'\n    | 'password'\n    | 'search'\n    | 'tel'\n    | 'text'\n    | 'time'\n    | 'url'\n    | 'week'\n    | 'file'\n    | undefined;\n  private _name = '';\n  private _label = '';\n\n  @Input() set label(value: string | null | undefined) {\n    this._label = <string>value;\n  }\n\n  public get label(): string {\n    return this._label;\n  }\n\n  @Input() public set name(value: string) {\n    if (this.label === undefined) {\n      this._label = `LABEL_${value?.toUpperCase()}`;\n    }\n    this._name = value;\n  }\n\n  get name(): string {\n    return this._name;\n  }\n\n  @Input() public position: 'stacked' | 'fixed' | 'floating' = 'floating';\n  @Input() public fill: 'outline' | 'solid' | 'none' = 'outline';\n  @Input() public autocapitalize: 'on' | 'off' = 'off';\n  @Input() public autocomplete: 'on' | 'off' = 'off';\n  @Input() public autocorrect: 'on' | 'off' = 'off';\n  @Input() public autofocus = false;\n  @Input() public clearInput = false;\n  @Input() public clearOnEdit: boolean | undefined = undefined;\n  @Input() public color: string | undefined = undefined;\n  @Input() public debounce = 0;\n  @Input() public disabled = false;\n  @Input() public lines: 'full' | 'inset' | 'none' = 'full';\n  @Input() public inputMode:\n    | 'decimal'\n    | 'email'\n    | 'none'\n    | 'numeric'\n    | 'search'\n    | 'tel'\n    | 'text'\n    | 'file'\n    | 'url'\n    | undefined;\n\n  public get invalid(): boolean {\n    return this.control ? <boolean>this.control.invalid : false;\n  }\n\n  public get dirty(): boolean {\n    return this.control ? <boolean>this.control.dirty : false;\n  }\n\n  public get error(): unknown {\n    return this.control.errors;\n  }\n\n  @Input()\n  public set type(\n    value:\n      | 'date'\n      | 'datetime-local'\n      | 'email'\n      | 'month'\n      | 'number'\n      | 'password'\n      | 'search'\n      | 'tel'\n      | 'text'\n      | 'time'\n      | 'url'\n      | 'file'\n      | 'week'\n      | undefined,\n  ) {\n    if (!this.inputMode) {\n      switch (value) {\n        case 'number':\n          this.inputMode = 'numeric';\n          break;\n        case 'email':\n          this.inputMode = 'email';\n          break;\n        case 'tel':\n          this.inputMode = 'tel';\n          break;\n        case 'search':\n          this.inputMode = 'search';\n          break;\n        case 'url':\n          this.inputMode = 'url';\n          break;\n        case 'text':\n        case 'password':\n          this.inputMode = 'text';\n          break;\n        default:\n          this.inputMode = 'none';\n      }\n    }\n    this._type = value;\n  }\n\n  get valueInput(): string | number | boolean | sioStorageFileInterface[] | null | undefined {\n    return this.pValue;\n  }\n\n  set valueInput(newValue: string | number | boolean | sioStorageFileInterface[] | null) {\n    if (newValue !== this.pValue) {\n      this.pValue = newValue;\n      if (this.onChangeCallback) {\n        this.onChangeCallback(this.pValue);\n      }\n    }\n  }\n\n  // eslint-disable-next-line @typescript-eslint/ban-types\n  private onTouchedCallback: (() => {}) | undefined;\n  // eslint-disable-next-line @typescript-eslint/no-unused-vars\n  private onChangeCallback = (_: any) => {};\n\n  constructor(\n    public SioCoreFormComponentState: SioCoreFormComponentState,\n    private sioCoreLoggerService: SioCoreLoggerService,\n    @Optional() private control: NgControl,\n  ) {\n    this.label = 'LABEL_';\n    if (this.control) {\n      this.control.valueAccessor = this;\n    }\n  }\n\n  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method\n  ngOnInit() {}\n\n  writeValue(newVal: any): void {\n    if (newVal !== undefined && newVal !== this.pValue) {\n      this.pValue = newVal;\n    }\n  }\n\n  blur() {\n    if (this.onTouchedCallback) {\n      this.onTouchedCallback();\n    }\n  }\n\n  registerOnChange(fn: any): void {\n    this.onChangeCallback = fn;\n  }\n\n  registerOnTouched(fn: any): void {\n    this.onTouchedCallback = fn;\n  }\n\n  async pickFile() {\n    const { files } = await FilePicker.pickFiles({ readData: true });\n    this.label = files[0].name;\n    this.valueInput = files;\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1879,17 +2121,32 @@
                         "deprecationMessage": ""
                     },
                     {
+                        "name": "sioCoreLoggerService",
+                        "type": "SioCoreLoggerService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
                         "name": "control",
                         "type": "NgControl",
                         "deprecated": false,
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 148,
+                "line": 154,
                 "jsdoctags": [
                     {
                         "name": "SioCoreFormComponentState",
                         "type": "SioCoreFormComponentState",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "sioCoreLoggerService",
+                        "type": "SioCoreLoggerService",
                         "deprecated": false,
                         "deprecationMessage": "",
                         "tagName": {
@@ -1928,7 +2185,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 33,
+                        "line": 37,
                         "jsdoctags": [
                             {
                                 "name": "value",
@@ -1945,7 +2202,7 @@
                         "name": "label",
                         "type": "string",
                         "returnType": "string",
-                        "line": 37
+                        "line": 41
                     }
                 },
                 "name": {
@@ -1964,7 +2221,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 41,
+                        "line": 45,
                         "jsdoctags": [
                             {
                                 "name": "value",
@@ -1981,7 +2238,7 @@
                         "name": "name",
                         "type": "string",
                         "returnType": "string",
-                        "line": 48
+                        "line": 52
                     }
                 },
                 "invalid": {
@@ -1990,7 +2247,7 @@
                         "name": "invalid",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 75
+                        "line": 80
                     }
                 },
                 "dirty": {
@@ -1999,7 +2256,7 @@
                         "name": "dirty",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 79
+                        "line": 84
                     }
                 },
                 "error": {
@@ -2008,7 +2265,7 @@
                         "name": "error",
                         "type": "",
                         "returnType": "",
-                        "line": 83
+                        "line": 88
                     }
                 },
                 "type": {
@@ -2021,17 +2278,17 @@
                         "args": [
                             {
                                 "name": "value",
-                                "type": "\"date\" | \"datetime-local\" | \"email\" | \"month\" | \"number\" | \"password\" | \"search\" | \"tel\" | \"text\" | \"time\" | \"url\" | \"week\" | undefined",
+                                "type": "\"date\" | \"datetime-local\" | \"email\" | \"month\" | \"number\" | \"password\" | \"search\" | \"tel\" | \"text\" | \"time\" | \"url\" | \"file\" | \"week\" | undefined",
                                 "deprecated": false,
                                 "deprecationMessage": ""
                             }
                         ],
                         "returnType": "void",
-                        "line": 88,
+                        "line": 93,
                         "jsdoctags": [
                             {
                                 "name": "value",
-                                "type": "\"date\" | \"datetime-local\" | \"email\" | \"month\" | \"number\" | \"password\" | \"search\" | \"tel\" | \"text\" | \"time\" | \"url\" | \"week\" | undefined",
+                                "type": "\"date\" | \"datetime-local\" | \"email\" | \"month\" | \"number\" | \"password\" | \"search\" | \"tel\" | \"text\" | \"time\" | \"url\" | \"file\" | \"week\" | undefined",
                                 "deprecated": false,
                                 "deprecationMessage": "",
                                 "tagName": {
@@ -2051,17 +2308,17 @@
                         "args": [
                             {
                                 "name": "newValue",
-                                "type": "string | number",
+                                "type": "string | number | boolean | sioStorageFileInterface[] | null",
                                 "deprecated": false,
                                 "deprecationMessage": ""
                             }
                         ],
                         "returnType": "void",
-                        "line": 136,
+                        "line": 142,
                         "jsdoctags": [
                             {
                                 "name": "newValue",
-                                "type": "string | number",
+                                "type": "string | number | boolean | sioStorageFileInterface[] | null",
                                 "deprecated": false,
                                 "deprecationMessage": "",
                                 "tagName": {
@@ -2073,12 +2330,12 @@
                     "getSignature": {
                         "name": "valueInput",
                         "type": "",
-                        "returnType": "string | number",
-                        "line": 132
+                        "returnType": "string | number | boolean | [] | null | undefined",
+                        "line": 138
                     }
                 }
             },
-            "templateData": "  <ion-input\n      label = \"{{ this.label | translate }}\"\n      [labelPlacement] = \"this.position\"\n      [fill]=\"this.fill\"\n      [(ngModel)]=\"this.valueInput\"\n      [autocapitalize]=\"this.autocapitalize\"\n      [autocomplete]=\"this.autocomplete\"\n      [autocorrect]=\"this.autocorrect\"\n      [autofocus]=\"this.autofocus\"\n      [clearInput]=\"this.clearInput\"\n      [clearOnEdit]=\"this.clearOnEdit\"\n      [name]=\"this.name\"\n      [debounce]=\"this.debounce\"\n      [disabled]=\"this.disabled\"\n      [type]=\"this._type\"\n      errorText=\"{{ (this.name.toUpperCase() + '-ERROR-TEXT') | translate }}\"\n      helperText=\"{{ (this.name.toUpperCase() + '-HELPER-TEXT') | translate }}\"\n      [class]=\"(this.invalid && this.dirty)?'ng-invalid ng-touched':''\"\n    ></ion-input>\n"
+            "templateData": "<div *ngIf=\"this._type === 'file'; then file; else default\"></div>\n<ng-template #file>\n  <ion-item>\n    <ion-label>\n      {{ this.label | translate }}\n    </ion-label>\n    <ion-button (click)=\"pickFile()\" slot=\"end\">UPLOAD</ion-button>\n  </ion-item>\n</ng-template>\n<ng-template #default>\n  <ion-input\n    label=\"{{ this.label | translate }}\"\n    [labelPlacement]=\"this.position\"\n    [fill]=\"this.fill\"\n    [(ngModel)]=\"this.valueInput\"\n    [autocapitalize]=\"this.autocapitalize\"\n    [autocomplete]=\"this.autocomplete\"\n    [autocorrect]=\"this.autocorrect\"\n    [autofocus]=\"this.autofocus\"\n    [clearInput]=\"this.clearInput\"\n    [clearOnEdit]=\"this.clearOnEdit\"\n    [name]=\"this.name\"\n    [debounce]=\"this.debounce\"\n    [disabled]=\"this.disabled\"\n    [type]=\"this._type\"\n    errorText=\"{{ this.name.toUpperCase() + '-ERROR-TEXT' | translate }}\"\n    helperText=\"{{ this.name.toUpperCase() + '-HELPER-TEXT' | translate }}\"\n    [class]=\"this.invalid && this.dirty ? 'ng-invalid ng-touched' : ''\"\n  ></ion-input\n></ng-template>\n"
         },
         {
             "name": "SioCoreItemComponent",
@@ -3656,7 +3913,7 @@
         },
         {
             "name": "SioCorePageComponent",
-            "id": "component-SioCorePageComponent-6f23acccf2126576b29a1c05040a637e05ce399d80eb4434a252f127a642506687b7f15dd2295fdacf624e349ea5848b838f54b8677d919e8dc8268377ce2cfb",
+            "id": "component-SioCorePageComponent-686a09b6fef8455f175a1e10b589eca167cbf3eccb4b7c4f4575bab4b1f4bc50c7208a3e28a485e461c61d0a1c62d42d35591959db8b5e87ca7d9905bae505a0",
             "file": "libs/core/src/lib/components/page/page.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -3678,7 +3935,7 @@
                     "name": "back",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 32,
+                    "line": 29,
                     "type": "InputBoolean",
                     "decorators": [
                         {
@@ -3691,7 +3948,7 @@
                     "name": "color",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 22,
+                    "line": 19,
                     "type": "SioColorType",
                     "decorators": []
                 },
@@ -3699,7 +3956,7 @@
                     "name": "fullmode",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 39,
+                    "line": 36,
                     "type": "InputBoolean",
                     "decorators": [
                         {
@@ -3712,7 +3969,7 @@
                     "name": "menu",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 28,
+                    "line": 25,
                     "type": "InputBoolean",
                     "decorators": [
                         {
@@ -3725,7 +3982,7 @@
                     "name": "search",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 35,
+                    "line": 32,
                     "type": "InputBoolean",
                     "decorators": [
                         {
@@ -3738,7 +3995,7 @@
                     "name": "title",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 20,
+                    "line": 18,
                     "type": "string",
                     "decorators": []
                 },
@@ -3746,7 +4003,7 @@
                     "name": "toolbar",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 24,
+                    "line": 21,
                     "type": "InputBoolean",
                     "decorators": [
                         {
@@ -3765,7 +4022,7 @@
                     "type": "SioCoreAppComponentState",
                     "optional": false,
                     "description": "",
-                    "line": 48,
+                    "line": 45,
                     "modifierKind": [
                         125
                     ]
@@ -3777,7 +4034,7 @@
                     "type": "SioCorePageComponentState",
                     "optional": false,
                     "description": "",
-                    "line": 49,
+                    "line": 46,
                     "modifierKind": [
                         125
                     ]
@@ -3789,7 +4046,7 @@
                     "type": "boolean",
                     "optional": false,
                     "description": "",
-                    "line": 43,
+                    "line": 40,
                     "modifierKind": [
                         125
                     ]
@@ -3802,7 +4059,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 64,
+                    "line": 61,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -3816,7 +4073,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ElementRef, Input, OnInit } from '@angular/core';\nimport { SioCoreLoggerService } from '../../services';\nimport { SioCorePageComponentState } from './store';\nimport { SioCoreAppComponentState } from '../app/store';\n\nimport { AttributeBoolean } from '@angular-ru/cdk/decorators';\nimport { InputBoolean } from '@angular-ru/cdk/typings';\n\nimport { SioColorType } from '../../types';\nimport { Select } from '@ngxs/store';\nimport { Observable } from 'rxjs';\n\n@Component({\n  selector: 'sio-page',\n  templateUrl: './page.component.html',\n  styleUrls: ['./page.component.scss'],\n})\nexport class SioCorePageComponent implements OnInit {\n  \n  @Input() title: string;\n  \n  @Input() color: SioColorType;\n\n  @AttributeBoolean() @Input() set toolbar(value: InputBoolean) {\n    this.sioCorePageComponentState.setToolbar(value as boolean);\n  }\n\n  @AttributeBoolean() @Input() set menu(value: InputBoolean) {\n    this.sioCorePageComponentState.setMenu(value as boolean);\n  }\n  \n  @AttributeBoolean() @Input() set back(value: InputBoolean) {\n    this.sioCorePageComponentState.setBack(value as boolean);\n  }\n  @AttributeBoolean() @Input() set search(value: InputBoolean) {\n    this.sioCorePageComponentState.setSearch(value as boolean);\n  }\n\n  @AttributeBoolean() @Input() set fullmode(value: InputBoolean) {\n    this.sioCoreAppComponentState.SetFullmode(value as boolean);\n  }\n\n  public split : boolean;\n\n  constructor(\n    private elementRef: ElementRef, \n    private sioLoggerService: SioCoreLoggerService,\n    public sioCoreAppComponentState: SioCoreAppComponentState,\n    public sioCorePageComponentState: SioCorePageComponentState,\n  ) {\n    //this.sioCoreAppComponentState.SetFullmode(false);\n    this.toolbar = true;\n    this.title = 'PAGE_TITLE';\n    this.menu = false;\n    this.back = false;\n    this.search = false;\n    this.split = false;\n    this.elementRef.nativeElement.classList.add('ion-page');\n    //this.sioCoreAppComponentState.setSidemenu('pricetags');\n  }\n\n  //@Select(SioCoreAppComponentState.split) split$!: Observable<boolean>; \n\n  ngOnInit(): void {\n    this.sioLoggerService.debug(`[sioCorePageComponentState][ngOnInit]`);\n    //this.split$.subscribe((value) => { this.split = value});\n  }\n}",
+            "sourceCode": "import { Component, ElementRef, Input, OnInit } from '@angular/core';\nimport { SioCoreLoggerService } from '../../services';\nimport { SioCorePageComponentState } from './store';\nimport { SioCoreAppComponentState } from '../app/store';\n\nimport { AttributeBoolean } from '@angular-ru/cdk/decorators';\nimport { InputBoolean } from '@angular-ru/cdk/typings';\n\nimport { SioColorType } from '../../types';\n\n@Component({\n  selector: 'sio-page',\n  templateUrl: './page.component.html',\n  styleUrls: ['./page.component.scss'],\n})\nexport class SioCorePageComponent implements OnInit {\n  \n  @Input() title: string;\n  @Input() color: SioColorType;\n\n  @AttributeBoolean() @Input() set toolbar(value: InputBoolean) {\n    this.sioCorePageComponentState.setToolbar(value as boolean);\n  }\n\n  @AttributeBoolean() @Input() set menu(value: InputBoolean) {\n    this.sioCorePageComponentState.setMenu(value as boolean);\n  }\n  \n  @AttributeBoolean() @Input() set back(value: InputBoolean) {\n    this.sioCorePageComponentState.setBack(value as boolean);\n  }\n  @AttributeBoolean() @Input() set search(value: InputBoolean) {\n    this.sioCorePageComponentState.setSearch(value as boolean);\n  }\n\n  @AttributeBoolean() @Input() set fullmode(value: InputBoolean) {\n    this.sioCoreAppComponentState.SetFullmode(value as boolean);\n  }\n\n  public split : boolean;\n\n  constructor(\n    private elementRef: ElementRef, \n    private sioLoggerService: SioCoreLoggerService,\n    public sioCoreAppComponentState: SioCoreAppComponentState,\n    public sioCorePageComponentState: SioCorePageComponentState,\n  ) {\n    //this.sioCoreAppComponentState.SetFullmode(false);\n    this.toolbar = true;\n    this.title = 'PAGE_TITLE';\n    this.menu = false;\n    this.back = false;\n    this.search = false;\n    this.split = false;\n    this.elementRef.nativeElement.classList.add('ion-page');\n    //this.sioCoreAppComponentState.setSidemenu('pricetags');\n  }\n\n  //@Select(SioCoreAppComponentState.split) split$!: Observable<boolean>; \n\n  ngOnInit(): void {\n    this.sioLoggerService.debug(`[sioCorePageComponentState][ngOnInit]`);\n    //this.split$.subscribe((value) => { this.split = value});\n  }\n}",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -3856,7 +4113,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 43,
+                "line": 40,
                 "jsdoctags": [
                     {
                         "name": "elementRef",
@@ -3917,7 +4174,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 24,
+                        "line": 21,
                         "jsdoctags": [
                             {
                                 "name": "value",
@@ -3947,7 +4204,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 28,
+                        "line": 25,
                         "jsdoctags": [
                             {
                                 "name": "value",
@@ -3977,7 +4234,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 32,
+                        "line": 29,
                         "jsdoctags": [
                             {
                                 "name": "value",
@@ -4007,7 +4264,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 35,
+                        "line": 32,
                         "jsdoctags": [
                             {
                                 "name": "value",
@@ -4037,7 +4294,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 39,
+                        "line": 36,
                         "jsdoctags": [
                             {
                                 "name": "value",
@@ -4052,7 +4309,7 @@
                     }
                 }
             },
-            "templateData": "<ion-header\n  *ngIf=\"this.toolbar && !this.fullmode\"\n  collapse=\"fade\"\n  [translucent]=\"true\"\n  class=\"ion-no-border\"\n>\n  <ion-toolbar [color]=\"this.color\">\n    <ion-buttons slot=\"start\">\n      <ng-container>\n        <ion-menu-button menu=\"start\"></ion-menu-button>\n        <ion-back-button *ngIf=\"this.back\"></ion-back-button>\n      </ng-container>\n    </ion-buttons>\n    <ion-title>{{ this.title | translate }}</ion-title>\n    <ion-buttons slot=\"end\">\n      <ng-content select=\"[slot='end']\"> </ng-content>\n    </ion-buttons>\n    <ion-buttons\n      *ngIf=\"!this.sioCoreAppComponentState.snapshot.layout!.split\"\n      slot=\"end\"\n    >\n      <ng-content select=\"[slot='mobile']\"></ng-content>\n\n      <ion-menu-button menu=\"end\"></ion-menu-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n<ion-content [fullscreen]=\"true\" class=\"ion-padding\">\n  <ion-header *ngIf=\"this.toolbar && !this.fullmode\" collapse=\"condense\">\n    <ion-toolbar>\n      <ion-title size=\"large\">{{ this.title | translate }}</ion-title>\n    </ion-toolbar>\n  </ion-header>\n  <div #content>\n    <ng-content></ng-content>\n  </div>\n  <ng-container *ngIf=\"!content.hasChildNodes()\">\n    <div id=\"container\">\n      <h1>{{ 'PAGE_COMPONENT_DEFAULT_1' | translate }} {{ this.title | translate }}</h1>\n      <strong>{{ 'PAGE_COMPONENT_DEFAULT_2' | translate }}</strong>\n      <p>\n        {{ 'PAGE_COMPONENT_LINK' | translate }}\n        <a\n          target=\"_blank\"\n          rel=\"noopener noreferrer\"\n          href=\"https://silicia-apps.gitbook.io/sio-framework/\"\n          >SIO Framework</a\n        >\n      </p>\n    </div>\n  </ng-container>\n</ion-content>\n"
+            "templateData": "<ion-header\n  *ngIf=\"this.toolbar && !this.fullmode\"\n  collapse=\"fade\"\n  [translucent]=\"true\"\n  class=\"ion-no-border\"\n>\n  <ion-toolbar [color]=\"this.color\">\n    <ion-buttons slot=\"start\">\n      <ng-container>\n        <ion-menu-button menu=\"start\"></ion-menu-button>\n        <ion-back-button *ngIf=\"this.back\"></ion-back-button>\n      </ng-container>\n    </ion-buttons>\n    <ion-title>{{ this.title | translate }}</ion-title>\n    <ion-buttons slot=\"end\">\n      <ng-content select=\"[slot='end']\"> </ng-content>\n    </ion-buttons>\n    <ion-buttons\n      *ngIf=\"!this.sioCoreAppComponentState.snapshot.layout!.split\"\n      slot=\"end\"\n    >\n      <ng-content select=\"[slot='mobile']\"></ng-content>\n\n      <ion-menu-button menu=\"end\"></ion-menu-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n<ion-content [fullscreen]=\"true\" class=\"ion-padding\">\n  <ion-header *ngIf=\"this.toolbar && !this.fullmode\" collapse=\"condense\">\n    <ion-toolbar>\n      <ion-title size=\"large\">{{ this.title | translate }}</ion-title>\n    </ion-toolbar>\n  </ion-header>\n  <div #content>\n    <ng-content></ng-content>\n  </div>\n  <ng-container *ngIf=\"!content.hasChildNodes()\">\n    <div id=\"container\">\n      <h1>{{ 'PAGE_COMPONENT_DEFAULT_1' | translate }} {{ this.title | translate }}</h1>\n      <strong>{{ 'PAGE_COMPONENT_DEFAULT_2' | translate }}</strong>\n      <p>\n        {{ 'PAGE_COMPONENT_LINK' | translate }}\n        <a\n          target=\"_blank\"\n          rel=\"noopener noreferrer\"\n          href=\"https://silicia-apps.gitbook.io/sio-framework/\"\n          >SIO Framework</a\n        >\n      </p>\n    </div>\n  </ng-container>\n</ion-content>\n\n<ion-footer>\n  <div #footer>\n  <ng-content select=\"[slot='footer']\"></ng-content>\n  </div>\n  <ng-container *ngIf=\"!footer.hasChildNodes()\">\n    <ion-fab slot=\"footer\" vertical=\"bottom\" horizontal=\"end\">\n      <sio-button type=\"fab\" icon=\"add\"></sio-button>\n      <ion-fab-list side=\"top\">\n        <sio-button type=\"fab\" icon=\"logo-euro\" size=\"small\" upload ></sio-button>\n        <!--// <sio-button type=\"fab\" icon=\"notifications\" size=\"small\"></sio-button> //-->\n        <sio-button type=\"fab\" icon=\"car\" size=\"small\" upload ></sio-button>\n      </ion-fab-list>\n    </ion-fab>\n  </ng-container>\n</ion-footer>\n"
         },
         {
             "name": "SioCoreSlideComponent",
@@ -6163,6 +6420,15 @@
                 "status": "medium"
             },
             {
+                "filePath": "libs/core/src/lib/components/button/button.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "SioCoreButtonComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/14",
+                "status": "low"
+            },
+            {
                 "filePath": "libs/core/src/lib/components/card/card.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
@@ -6198,7 +6464,7 @@
                 "linktype": "component",
                 "name": "SioCoreCardComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/15",
+                "coverageCount": "0/16",
                 "status": "low"
             },
             {
@@ -6354,7 +6620,7 @@
                 "linktype": "component",
                 "name": "SioCoreIconComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/7",
+                "coverageCount": "0/8",
                 "status": "low"
             },
             {
@@ -6393,7 +6659,7 @@
                 "linktype": "component",
                 "name": "SioCoreInputComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/30",
+                "coverageCount": "0/31",
                 "status": "low"
             },
             {

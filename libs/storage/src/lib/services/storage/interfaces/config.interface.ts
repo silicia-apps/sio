@@ -1,4 +1,4 @@
-export interface SioStoragePluginServiceConfigInterface {
+export interface SioStorageServiceConfigInterface {
   apiEndpoint?: string;
   projectID?: string;
   collectionID?: string;

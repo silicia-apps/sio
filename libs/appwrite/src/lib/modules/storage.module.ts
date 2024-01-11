@@ -1,19 +1,17 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
 import { SioAppwriteStorageService } from '../services/storage.service';
 
 import {
-  SioStoragePluginServiceConfigInterface,
-  SioStoragePluginServiceConfigToken,
-  SioStoragePluginServiceToken,
+  SioStorageServiceConfigInterface,
+  SioStorageServiceConfigToken,
+  SioStorageServiceToken,
 } from '@silicia/storage';
 
 import { SioCoreLoggerService } from '@silicia/core';
 import { SioAppwriteClientService } from '../services/client.service';
 
 export function appwriteStorageFactory(
-  config: SioStoragePluginServiceConfigInterface,
+  config: SioStorageServiceConfigInterface,
   sioCoreLoggerService: SioCoreLoggerService,
   sioAppwriteClientService: SioAppwriteClientService,
 ): SioAppwriteStorageService {
@@ -22,16 +20,16 @@ export function appwriteStorageFactory(
 @NgModule({})
 export class AppwriteStorageModule {
   static forRoot(
-    config: SioStoragePluginServiceConfigInterface
+    config: SioStorageServiceConfigInterface
   ): ModuleWithProviders<AppwriteStorageModule> {
     return {
       ngModule: AppwriteStorageModule,
       providers: [
-        { provide: SioStoragePluginServiceConfigToken, useValue: config },
+        { provide: SioStorageServiceConfigToken, useValue: config },
         {
-          provide: SioStoragePluginServiceToken,
+          provide: SioStorageServiceToken,
           useFactory: appwriteStorageFactory,
-          deps: [SioStoragePluginServiceConfigToken, SioCoreLoggerService, SioAppwriteClientService],
+          deps: [SioStorageServiceConfigToken, SioCoreLoggerService, SioAppwriteClientService],
           multi: true,
         },
         SioAppwriteClientService,
