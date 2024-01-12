@@ -4,17 +4,17 @@ import {
   SioStorageFileListInterface,
 } from '../../../interfaces';
 export interface SioStorageServiceInterface {
-  Upload(
+  upload(
     bucketId: string,
     document: SioStorageFileInterface,
     fileId?: string,
   ): Promise<boolean>;
-  Delete(fileId: string, bucketId: string): Promise<boolean>;
-  List(
+  delete(bucketId: string, fileId: string): Promise<boolean>;
+  list(
     bucketId: string,
     queries?: string[],
     search?: string,
   ): Promise<SioStorageFileListInterface | undefined>;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  SubscribeEvents(): Observable<any>;
+  subscribeEvents(): Observable<any>;
 }

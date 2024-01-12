@@ -23,17 +23,17 @@ export class SioStorageService implements SioStorageServiceInterface {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  SubscribeEvents(): Observable<any> {
-    return this.plugins[0].SubscribeEvents();
+  public subscribeEvents(): Observable<any> {
+    return this.plugins[0].subscribeEvents();
   }
 
-  async Upload(
+  public async upload(
     bucketId: string,
     document: SioStorageFileInterface,
     fileId?: string,
   ): Promise<boolean> {
     try {
-      return this.plugins[0].Upload(bucketId, document, fileId);
+      return this.plugins[0].upload(bucketId, document, fileId);
     } catch (e) {
       const error = e as Error;
       if (error.name === 'sio-error')
@@ -45,9 +45,10 @@ export class SioStorageService implements SioStorageServiceInterface {
     return false;
   }
 
-  async Delete(fileId: string, bucket: string): Promise<boolean> {
+  public async delete(bucket: string, fileId: string): Promise<boolean> {
     try {
-      return this.plugins[0].Delete(bucket, fileId);
+      this.sioCoreLoggerService.info('[SioStorageService][delete] try to delete file '+fileId);
+      return this.plugins[0].delete(bucket, fileId);
     } catch (e) {
       const error = e as Error;
       if (error.name === 'sio-error')
@@ -59,7 +60,7 @@ export class SioStorageService implements SioStorageServiceInterface {
     return false;
   }
 
-  async List(
+  public async list(
     bucketId: string,
     queries?: string[],
     search?: string,
@@ -68,7 +69,7 @@ export class SioStorageService implements SioStorageServiceInterface {
       this.sioCoreLoggerService.debug(
       `[sioStorageService][List] execute plugins`,
       );
-      return (await this.plugins[0].List(bucketId, queries, search));
+      return (await this.plugins[0].list(bucketId, queries, search));
     } catch (e) {
       const error = e as Error;
       if (error.name === 'sio-error')

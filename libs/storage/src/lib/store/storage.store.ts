@@ -15,7 +15,7 @@ import {
 //SIO STORAGE
 import { SioStorageStateModel } from './storage.model';
 import { SioStorageService } from '../services';
-import { SioStorageFileListInterface } from '../interfaces';
+import { SioStorageFileInterface, SioStorageFileListInterface } from '../interfaces';
 
 @StateRepository()
 @State<SioStorageStateModel>({
@@ -39,12 +39,17 @@ export class SioStorageState
   }
 
   override ngxsAfterBootstrap(): void {
-      this.sioStorageService.SubscribeEvents().subscribe((event) => {
-        this.sioCoreLoggerService.debug(`[SioStorageState][ngxAfterBootstrap] received events`);
-        this.sioCoreLoggerService.trace(`[SioStorageState][ngxAfterBootstrap]`,event);
-        console.log(event);
-        if (event.payload.bucketId === this.snapshot.bucket) this.query() 
-      });
+    this.sioStorageService.subscribeEvents().subscribe((event) => {
+      this.sioCoreLoggerService.debug(
+        `[SioStorageState][ngxAfterBootstrap] received events`,
+      );
+      this.sioCoreLoggerService.trace(
+        `[SioStorageState][ngxAfterBootstrap]`,
+        event,
+      );
+      console.log(event);
+      if (event.payload.bucketId === this.snapshot.bucket) this.query();
+    });
   }
 
   @Computed()
@@ -54,20 +59,69 @@ export class SioStorageState
 
   @DataAction()
   public setBucket(value: string) {
-    this.patchState({ bucket : value });
+    this.patchState({ bucket: value });
   }
-  
+
   @DataAction()
   public async query(query?: string[], search?: string) {
     try {
-      if (query) { this.ctx.patchState({ query: query})}
+      if (query) {
+        this.ctx.patchState({ query: query });
+      }
       const files: SioStorageFileListInterface | undefined =
-        await this.sioStorageService.List(this.snapshot.bucket, this.snapshot.query, search);
+        await this.sioStorageService.list(
+          this.snapshot.bucket,
+          this.snapshot.query,
+          search,
+        );
       if (files) {
         this.patchState({ files: files });
       }
     } catch (e) {
       this.sioCoreLoggerService.error((e as Error).message);
+    }
+  }
+
+  @Computed() 
+  get files(): SioStorageFileInterface[] {
+    return this.snapshot.files.files
+  }
+
+  public async remove(scope: string[] | string) {
+    try {
+      let fileListId: string[] = [];
+      if(scope === 'all') {
+        this.sioCoreLoggerService.debug('[SioStorageState][remove] delete all files');
+        fileListId = fileListId.concat((this.snapshot.files.files.map((file: SioStorageFileInterface) => { return file.$id }))); 
+      } else {
+        if((typeof scope) === 'string') fileListId.push(scope as string);
+      }
+      this.sioCoreLoggerService.trace('[SioStorageState][upload] list of Files', fileListId);
+      fileListId.forEach((fileId) => { console.log('invio');this.sioStorageService.delete(this.snapshot.bucket, fileId)});
+    } catch(e) {
+      console.error((e as Error).message);
+    }
+  }
+
+  @DataAction()
+  public async upload(fileList: SioStorageFileInterface[], fileId?: string) {
+    try {
+      this.sioCoreLoggerService.debug('[SioStorageState][upload] try to upload');
+      this.sioCoreLoggerService.trace('[SioStorageState][upload] fileList =',fileList );
+      this.sioCoreLoggerService.trace('[SioStorageState][upload] fileId =',fileId );
+      if (fileId) {
+        this.sioStorageService.upload(
+          this.snapshot.bucket,
+          fileList[0],
+          fileId,
+        );
+      } else {
+        fileList.forEach((data) =>
+          this.sioStorageService.upload(this.snapshot.bucket, data),
+        );
+      }
+    } catch (e) {
+      console.error((e as Error).message);
     }
   }
 }

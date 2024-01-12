@@ -36,7 +36,7 @@ export class SioAppwriteStorageService implements SioStorageServiceInterface {
     this.storage = new Storage(this.sioAppwriteClientService.client);
   }
 
-  async Upload(
+  async upload(
     bucketId: string,
     document: SioStorageFileInterface,
     fileId?: string,
@@ -59,7 +59,7 @@ export class SioAppwriteStorageService implements SioStorageServiceInterface {
     }
   }
 
-  async Delete(bucketId: string, fileId: string): Promise<boolean> {
+  async delete(bucketId: string, fileId: string): Promise<boolean> {
     try {
       await this.storage.deleteFile(bucketId, fileId);
       return true;
@@ -68,7 +68,7 @@ export class SioAppwriteStorageService implements SioStorageServiceInterface {
     }
   }
 
-  async List(
+  async list(
     bucketId: string,
     query?: string[],
     search?: string,
@@ -82,28 +82,12 @@ export class SioAppwriteStorageService implements SioStorageServiceInterface {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  SubscribeEvents(): Observable<any> {
+  subscribeEvents(): Observable<any> {
     return new Observable((observer) => {
       this.sioAppwriteClientService.client.subscribe('files', (data) => {
         observer.next(data);
       });
     });
-  }
-
-  async check(bucket: string, file: string): Promise<boolean> {
-    try {
-      return await this.storage.getFile(bucket, file)?true:false;
-    } catch (e) {
-      switch((e as Error).message) {
-        case 'The requested file could not be found.': {
-          return false;
-          break;
-        }
-        default: {
-          throw this.throwError(e as Error);
-      }}
-      
-    }  
   }
 
   private throwError(e: Error): Error {
