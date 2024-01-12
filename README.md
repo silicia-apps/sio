@@ -8,8 +8,8 @@ Silicia Ionic Framework (SIO) is a library for developing open-source hybrid app
 
 * state integration with ngxs and angular-ru/ngxs libraries
 * multilingual support integration via ngx-translate library
-* plugin support for various types of backends (currently appwrite)
-* wrapping core Ionic components into new components with state and other functionality (such as dynamic forms and menus)
+* plugin support for various types of backends (currently appwrite, next firebase)
+* wrapping core Ionic components into new components with state and other functionality included (such as dynamic forms and menus)
 
 The library is in a pre-alpha state. If you want to test to participate in the development, even if only as a tester or to send suggestions
 
@@ -39,6 +39,9 @@ import {} from '@silicia/core';
     ...
     SioCoreModule.forRoot(environment),
     SioCommonModule,
+    SioAppwriteAuth(environment), //optional if you want add authentication features
+    SioAppwriteDatabase(environment), //optional if you want add Database features
+    SioAppwriteStorage(environment), //optional if you want add Storage features
     ...
   ],
   ...
@@ -50,6 +53,6 @@ the SioCoreModule module must be imported only in the main module of your applic
 
 app.component.html
 
-Once this is done, it is necessary to modify the app.component.html file by inserting the main component of SIO or the sio-app component
+Once this is done, it is necessary to modify the app.component.html file by inserting the main component of SIO or the sio-app component for bootstrap framework
 
 <sio-app></sio-app>
