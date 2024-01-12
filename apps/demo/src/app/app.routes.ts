@@ -14,9 +14,9 @@ export const routes: Routes = [
       import('./buttons/buttons.page').then((m) => m.ButtonsPageComponent)
   },
   {
-    path: 'info',
+    path: 'storage',
     loadComponent: () =>
-      import('./info/info.page').then((m) => m.InfoPageComponent),
+      import('./storage/storage.page').then((m) => m.StoragePageComponent),
       canActivate: [SioAuthGuard],
   },
   {

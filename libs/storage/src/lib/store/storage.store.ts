@@ -23,7 +23,7 @@ import { SioStorageFileInterface, SioStorageFileListInterface } from '../interfa
   defaults: {
     bucket: '',
     query: [],
-    files: { total: 0, files: [] },
+    data: { total: 0, files: [] },
   },
 })
 @Injectable()
@@ -54,7 +54,7 @@ export class SioStorageState
 
   @Computed()
   public get totals(): number | null {
-    return this.snapshot.files.total;
+    return this.snapshot.data.total;
   }
 
   @DataAction()
@@ -75,7 +75,7 @@ export class SioStorageState
           search,
         );
       if (files) {
-        this.patchState({ files: files });
+        this.patchState({ data: files });
       }
     } catch (e) {
       this.sioCoreLoggerService.error((e as Error).message);
@@ -83,8 +83,8 @@ export class SioStorageState
   }
 
   @Computed() 
-  get files(): SioStorageFileInterface[] {
-    return this.snapshot.files.files
+  get data(): SioStorageFileInterface[] {
+    return this.snapshot.data.files
   }
 
   public async remove(scope: string[] | string) {
@@ -92,7 +92,7 @@ export class SioStorageState
       let fileListId: string[] = [];
       if(scope === 'all') {
         this.sioCoreLoggerService.debug('[SioStorageState][remove] delete all files');
-        fileListId = fileListId.concat((this.snapshot.files.files.map((file: SioStorageFileInterface) => { return file.$id }))); 
+        fileListId = fileListId.concat((this.snapshot.data.files.map((file: SioStorageFileInterface) => { return file.$id }))); 
       } else {
         if((typeof scope) === 'string') fileListId.push(scope as string);
       }

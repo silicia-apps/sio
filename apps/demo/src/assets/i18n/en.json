@@ -1,6 +1,8 @@
 {
     "M_HOME": "Home",
-    "M_ABOUT": "About",
+    "M_INFO": "Info",
     "M_SETTINGS": "Settings",
-    "LABEL_APP_TITLE" : "Titolo App"
+    "MENU_LOGGED_PROFILE": "Profile",
+    "M_STORAGE": "Files",
+    "M_BUTTONS": "Buttons"
 }

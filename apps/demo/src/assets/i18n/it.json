@@ -2,10 +2,7 @@
     "M_HOME": "Home",
     "M_INFO": "Info",
     "M_SETTINGS": "Opzioni",
-    "L_LANGUAGE": "test",
-    "LABEL_APP_TITLE" : "Titolo App",
-    "LABEL_FILE_1": "Tipo 1",
-    "LABEL_FILE_2": "Tipo 2",
-    "LABEL_FILE_3": "Tipo 3",
-    "MENU_LOGGED_PROFILE": "Profilo"
+    "MENU_LOGGED_PROFILE": "Profilo",
+    "M_STORAGE": "Files",
+    "M_BUTTONS": "Bottoni"
 }

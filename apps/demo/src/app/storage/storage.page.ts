@@ -5,17 +5,16 @@ import { SioStorageFileInterface, SioStorageState } from '@silicia/storage';
 import { Query } from 'appwrite';
 
 @Component({
-  selector: 'sio-info',
-  templateUrl: 'info.page.html',
-  styleUrls: ['info.page.scss'],
+  selector: 'sio-storage',
+  templateUrl: 'storage.page.html',
+  styleUrls: ['storage.page.scss'],
   standalone: true,
   imports: [SioCommonModule, NgFor],
 })
-export class InfoPageComponent {
+export class StoragePageComponent {
   constructor(
     public sioStorageState: SioStorageState,
   ) {
-    
     this.sioStorageState.setBucket('test');
     this.sioStorageState.query([Query.equal('$id', ['mkt', 'promo', 'test'])]);
   }
