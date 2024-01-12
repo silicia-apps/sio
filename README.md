@@ -2,11 +2,13 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/62d58ded-4eea-433b-ba6e-160b8ce1b70d/deploy-status)](https://app.netlify.com/sites/sio-demo/deploys)
 [![compile](https://github.com/silicia-apps/sio/actions/workflows/compile.yml/badge.svg)](https://github.com/silicia-apps/sio/actions/workflows/compile.yml)
 
+```ts
 DEMO ON NETLIFY (https://sio-demo.netlify.com) 
 user: demo@silicia.it
 password: 12345678
-Very early stage.. in this moment you can preview app, menu, darkmode, badge component and storage functionality.
+Very early stage.. At this moment you can preview app (check in all screenmode), menu, darkmode, badge component and storage functionality.
 Please refresh page after the authentication (there is a bug in page state)
+```
 
 Silicia Ionic Framework (SIO) is a library for developing open-source hybrid applications released under the MIT license. This library was created with the aim of eliminating all the redundant code necessary for development in ionic or angular and with the purpose of inserting the most used libraries. Here are the features of the library:
 
