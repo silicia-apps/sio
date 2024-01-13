@@ -1,6 +1,6 @@
 {
   "name": "@silicia/database",
-  "version": "0.0.1-alpha",
+  "version": "0.0.2-alpha",
   "peerDependencies": {
     "@angular/common": "^15.2.0",
     "@angular/core": "^15.2.0"

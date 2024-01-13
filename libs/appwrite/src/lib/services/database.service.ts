@@ -1,15 +1,13 @@
 import { Injectable, Inject } from '@angular/core';
 import { Databases } from 'appwrite';
 
-import { SioDatabasePluginServiceInterface } from '@silicia/database';
+import { SioDatabaseServiceInterface, SioDatabaseDocumentInterface, SioDatabaseDocumentListInterface } from '@silicia/database';
 
 import {
   Loggable,
   SioCoreLoggerService,
   SioCorePluginServiceConfigModel,
   sioCorePluginServiceConfigToken,
-  SioCoreDocumentInterface,
-  SioCoreDocumentsInterface,
 } from '@silicia/core';
 import { SioAppwriteClientService } from './client.service';
 import { Observable } from 'rxjs';
@@ -17,7 +15,7 @@ import { Observable } from 'rxjs';
 @Loggable()
 @Injectable()
 export class SioAppwriteDatabaseService
-  implements SioDatabasePluginServiceInterface
+  implements SioDatabaseServiceInterface
 {
   private readonly databases: Databases;
 
@@ -33,7 +31,7 @@ export class SioAppwriteDatabaseService
     this.databases = new Databases(this.sioAppwriteClientService.client);
   }
 
-  async Create(value: object, collection: string, database?: string | undefined, document?: string | undefined): Promise<boolean> {
+  async create(value: object, collection: string, database?: string | undefined, document?: string | undefined): Promise<boolean> {
     try {
       const product = await this.databases.createDocument(
         database as string, collection, document as string, value
@@ -45,7 +43,7 @@ export class SioAppwriteDatabaseService
     }
     return false;  
   }
-  async Get(
+  async get(
     id: string,
     collection: string,
     database?: string | undefined
@@ -64,17 +62,17 @@ export class SioAppwriteDatabaseService
     return false;
   }
 
-  async List(
+  async query(
+    database : string,
     collection: string,
-    query: string[] | undefined = undefined,
-    database: string | undefined = undefined
-  ): Promise<SioCoreDocumentsInterface<SioCoreDocumentInterface>> {
+    queries: string[] | undefined = undefined,
+  ): Promise<SioDatabaseDocumentListInterface<SioDatabaseDocumentInterface>> {
     try {
-      return await this.databases.listDocuments(database!, collection, query);
+      return (await this.databases.listDocuments(database, collection, queries));
     } catch (e) { throw e as Error; }
   }
 
-  async Delete(id: string, collection: string, database?: string | undefined): Promise<boolean> {
+  async delete(id: string, collection: string, database?: string | undefined): Promise<boolean> {
     try {
       const items = await this.databases.deleteDocument(database as string,collection, id);
       console.log(JSON.stringify(items));
@@ -83,16 +81,12 @@ export class SioAppwriteDatabaseService
     return false;
   }
 
-  socket(channels: string | string[]): Observable<string[]> {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  subscribe(): Observable<any> {
     return new Observable((observer) => {
-      this.sioAppwriteClientService.client.subscribe('databases.' + channels, (data) => {
-        this.loggerService.debug(
-          `[SioDatabasesService][socket] Detected Database changes`,
-          data
-        );
-        observer.next(data.events);
+      this.sioAppwriteClientService.client.subscribe('documents', (data) => {
+        observer.next(data);
       });
     });
-      
   }
 }

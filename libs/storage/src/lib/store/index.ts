@@ -1,1 +1,1 @@
-export * from './storage.store';
+export * from './storage.state';

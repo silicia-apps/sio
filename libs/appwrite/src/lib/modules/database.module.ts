@@ -4,16 +4,16 @@ import { CommonModule } from '@angular/common';
 import { SioAppwriteDatabaseService } from '../services/database.service';
 
 import {
-  SioDatabasePluginServiceConfigInterface,
-  SioDatabasePluginServiceConfigToken,
-  SioDatabasePluginServiceToken,
+  SioDatabaseConfigInterface,
+  SioDatabaseConfigToken,
+  SioDatabaseToken,
 } from '@silicia/database';
 
 import { SioCoreLoggerService } from '@silicia/core';
 import { SioAppwriteClientService } from '../services/client.service';
 
 export function appwriteDatabaseFactory(
-  config: SioDatabasePluginServiceConfigInterface,
+  config: SioDatabaseConfigInterface,
   sioCoreLoggerService: SioCoreLoggerService,
   sioAppwriteClientService: SioAppwriteClientService,
 ): SioAppwriteDatabaseService {
@@ -25,16 +25,16 @@ export function appwriteDatabaseFactory(
 })
 export class AppwriteDatabaseModule {
   static forRoot(
-    config: SioDatabasePluginServiceConfigInterface
+    config: SioDatabaseConfigInterface
   ): ModuleWithProviders<AppwriteDatabaseModule> {
     return {
       ngModule: AppwriteDatabaseModule,
       providers: [
-        { provide: SioDatabasePluginServiceConfigToken, useValue: config },
+        { provide: SioDatabaseConfigToken, useValue: config },
         {
-          provide: SioDatabasePluginServiceToken,
+          provide: SioDatabaseToken,
           useFactory: appwriteDatabaseFactory,
-          deps: [SioDatabasePluginServiceConfigToken, SioCoreLoggerService, SioAppwriteClientService],
+          deps: [SioDatabaseConfigToken, SioCoreLoggerService, SioAppwriteClientService],
           multi: true,
         },
       ],

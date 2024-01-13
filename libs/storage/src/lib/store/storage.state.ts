@@ -45,7 +45,7 @@ export class SioStorageState
       );
       this.sioCoreLoggerService.trace(
         `[SioStorageState][ngxAfterBootstrap]`,
-        event,
+        event, 
       );
       console.log(event);
       if (event.payload.bucketId === this.snapshot.bucket) this.query();

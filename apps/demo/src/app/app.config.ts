@@ -14,6 +14,7 @@ import { environment } from '../environments/environment';
 import { routes } from './app.routes';
 import { NgxsModule } from '@ngxs/store';
 import { SioStorageState } from '@silicia/storage';
+import { TaskState } from './database/task.state';
 export const appConfig: ApplicationConfig = {
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
@@ -22,7 +23,7 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(AppwriteStorageModule.forRoot(environment.backend)),
     importProvidersFrom(AppwriteAuthModule.forRoot(environment.backend)),
     importProvidersFrom(AppwriteDatabaseModule.forRoot(environment.backend)),
-    importProvidersFrom(NgxsModule.forFeature([SioStorageState])),
+    importProvidersFrom(NgxsModule.forFeature([SioStorageState, TaskState])),
     provideRouter(
       routes,
       withPreloading(PreloadAllModules),

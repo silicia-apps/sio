@@ -1,6 +1,6 @@
 {
   "name": "@silicia/storage",
-  "version": "0.0.3-alpha",
+  "version": "0.0.4-alpha",
   "peerDependencies": {
     "@angular/common": "^15.2.0",
     "@angular/core": "^15.2.0"

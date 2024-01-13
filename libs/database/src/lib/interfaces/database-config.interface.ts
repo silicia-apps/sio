@@ -1,4 +1,4 @@
-export interface SioDatabasePluginServiceConfigInterface {
+export interface SioDatabaseConfigInterface {
   apiEndpoint?: string;
   projectID?: string;
   collectionID?: string;

@@ -1,0 +1,15 @@
+<sio-page title="Database Apprite Plugin Test Page">
+  <sio-button (Click)="this.create()">NEW</sio-button>
+  <sio-button color="danger" (Click)="this.deleteAll()" [disabled]="!this.taskState.localTotals">DELETE
+    ALL</sio-button>
+  <h1>Total Task : {{ this.taskState.localTotals }} loaded /{{ this.taskState.remoteTotals }} on server</h1>
+
+  <ion-list>
+    @for (file of taskState.selectAll(); track file) {
+    <ion-item>
+      <ion-label>{{ $any(file).name }}</ion-label>
+      <ion-note>{{ $any(file).description }}</ion-note>
+    </ion-item>
+    }
+  </ion-list>
+</sio-page>
