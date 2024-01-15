@@ -81,6 +81,27 @@ export class SioDatabaseService implements SioDatabaseServiceInterface {
     }
     return false;
   }
+
+  async set(
+    id: string,
+    data: SioDatabaseDocumentInterface,
+    collectionId: string,
+    databaseId: string,
+  ): Promise<boolean> {
+    try {
+      return this.plugins[0].set(id, data, collectionId, databaseId);
+    } catch (e) {
+      const error = e as Error;
+      if (error.name === 'sio-error')
+        this.sioCoreAppComponentState.throwError(
+          error.message,
+          'DATABASE_ERROR',
+        );
+    }
+    return false;
+  }
+
+  
   async delete(
     id: string,
     collection: string,

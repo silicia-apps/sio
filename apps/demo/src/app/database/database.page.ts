@@ -20,7 +20,7 @@ export class DatabasePageComponent {
     this.taskState.load();
   }
 
-  public create() {
+  public async create() {
     const test = {
       $id : 'ijijiiij',
       $collectionId : '',
@@ -32,6 +32,11 @@ export class DatabasePageComponent {
       description : 'test descrption'
     }
     this.taskState.addOne(test);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any, prefer-const
+    let { $id, name, description } = this.taskState.selectOne('65a29bfd53f6ff5f0af8') as any;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    name = 'task two';
+    this.taskState.setOne({$id: $id, name: name, description: description});
   }
   public deleteAll() {
     

@@ -10,7 +10,13 @@ import { SioCoreLoggerService } from '@silicia/core';
 export abstract class SioDatabaseState extends NgxsDataEntityCollectionsRepository<
   SioDatabaseDocumentInterface,
   EntityIdType,
-  { remoteTotals: number, localTotals: number, databaseId: string; collectionId: string; queries: string[] }
+  {
+    remoteTotals: number;
+    localTotals: number;
+    databaseId: string;
+    collectionId: string;
+    queries: string[];
+  }
 > {
   public override primaryKey: string = '$id';
 
@@ -92,7 +98,12 @@ export abstract class SioDatabaseState extends NgxsDataEntityCollectionsReposito
 
   @Computed()
   get remoteTotals(): number {
-    return this.snapshot.remoteTotals
+    return this.snapshot.remoteTotals;
+  }
+
+  override setOne(entity: SioDatabaseDocumentInterface): void {
+    super.setOne(entity);
+    this.sioDatabaseService.set(entity.$id as string,entity,this.snapshot.collectionId, this.snapshot.databaseId)
   }
 
   @Computed()

@@ -1,7 +1,11 @@
 import { Injectable, Inject } from '@angular/core';
 import { Databases } from 'appwrite';
 
-import { SioDatabaseServiceInterface, SioDatabaseDocumentInterface, SioDatabaseDocumentListInterface } from '@silicia/database';
+import {
+  SioDatabaseServiceInterface,
+  SioDatabaseDocumentInterface,
+  SioDatabaseDocumentListInterface,
+} from '@silicia/database';
 
 import {
   Loggable,
@@ -14,9 +18,7 @@ import { Observable } from 'rxjs';
 
 @Loggable()
 @Injectable()
-export class SioAppwriteDatabaseService
-  implements SioDatabaseServiceInterface
-{
+export class SioAppwriteDatabaseService implements SioDatabaseServiceInterface {
   private readonly databases: Databases;
 
   // constructor(@Inject(siliciaCoreBackendPluginConfigToken) readonly config: SiliciaCoreBackendPluginConfigInterface) {
@@ -27,32 +29,43 @@ export class SioAppwriteDatabaseService
     private loggerService: SioCoreLoggerService,
     private sioAppwriteClientService: SioAppwriteClientService,
   ) {
-    this.sioAppwriteClientService.Connect(this.config.apiEndpoint as string, this.config.projectID as string);
+    this.sioAppwriteClientService.Connect(
+      this.config.apiEndpoint as string,
+      this.config.projectID as string,
+    );
     this.databases = new Databases(this.sioAppwriteClientService.client);
   }
 
-  async create(value: object, collection: string, database?: string | undefined, document?: string | undefined): Promise<boolean> {
+  async create(
+    value: object,
+    collection: string,
+    database?: string | undefined,
+    document?: string | undefined,
+  ): Promise<boolean> {
     try {
       const product = await this.databases.createDocument(
-        database as string, collection, document as string, value
+        database as string,
+        collection,
+        document as string,
+        value,
       );
       console.error(JSON.stringify(product));
       return true;
     } catch (e) {
       console.log(e);
     }
-    return false;  
+    return false;
   }
   async get(
     id: string,
     collection: string,
-    database?: string | undefined
+    database?: string | undefined,
   ): Promise<boolean> {
     try {
       const product = await this.databases.getDocument(
         database as string,
         collection,
-        id
+        id,
       );
       console.error(JSON.stringify(product));
       return true;
@@ -62,22 +75,56 @@ export class SioAppwriteDatabaseService
     return false;
   }
 
+  async set(
+    id: string,
+    data: SioDatabaseDocumentInterface,
+    collectionId: string,
+    databaseId: string | undefined,
+  ): Promise<boolean> {
+    try {
+      console.log('id:'+id);
+      const document = await this.databases.updateDocument(
+        databaseId as string,
+        collectionId,
+        id,
+        data,
+      );
+      console.error(JSON.stringify(document));
+      return true;
+    } catch (e) {
+      console.log(e);
+    }
+    return false;
+  }
+
   async query(
-    database : string,
+    database: string,
     collection: string,
     queries: string[] | undefined = undefined,
   ): Promise<SioDatabaseDocumentListInterface<SioDatabaseDocumentInterface>> {
     try {
-      return (await this.databases.listDocuments(database, collection, queries));
-    } catch (e) { throw e as Error; }
+      return await this.databases.listDocuments(database, collection, queries);
+    } catch (e) {
+      throw e as Error;
+    }
   }
 
-  async delete(id: string, collection: string, database?: string | undefined): Promise<boolean> {
+  async delete(
+    id: string,
+    collection: string,
+    database?: string | undefined,
+  ): Promise<boolean> {
     try {
-      const items = await this.databases.deleteDocument(database as string,collection, id);
+      const items = await this.databases.deleteDocument(
+        database as string,
+        collection,
+        id,
+      );
       console.log(JSON.stringify(items));
       return true;
-    } catch (e) { console.log(e); }
+    } catch (e) {
+      console.log(e);
+    }
     return false;
   }
 
