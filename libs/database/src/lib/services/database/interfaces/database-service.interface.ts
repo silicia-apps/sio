@@ -17,7 +17,12 @@ export interface SioDatabaseServiceInterface {
     queries: string[] | undefined,
   ): Promise<SioDatabaseDocumentListInterface<SioDatabaseDocumentInterface>>;
   get(id: string, collection: string, database?: string): Promise<boolean>;
-  set(id: string, data: SioDatabaseDocumentInterface, collectionId: string, databaseId: string): Promise<boolean>;
+  set(
+    id: string,
+    data: SioDatabaseDocumentInterface,
+    collectionId: string,
+    databaseId: string,
+  ): Promise<boolean>;
   delete(id: string, collection: string, database?: string): Promise<boolean>;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   subscribe(): Observable<any>;

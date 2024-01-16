@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { SioCommonModule, SioCoreLoggerService } from '@silicia/core';
 import { TaskState } from './task.state';
+import { taskInterface } from './task.interface';
 
 
 @Component({
@@ -32,11 +33,9 @@ export class DatabasePageComponent {
       description : 'test descrption'
     }
     this.taskState.addOne(test);
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any, prefer-const
-    let { $id, name, description } = this.taskState.selectOne('65a29bfd53f6ff5f0af8') as any;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    name = 'task two';
-    this.taskState.setOne({$id: $id, name: name, description: description});
+    const task = {...this.taskState.selectOne('65a29bfd53f6ff5f0af8')}
+    task.name = 'task ciao';
+    this.taskState.setOne(<taskInterface>task);
   }
   public deleteAll() {
     

@@ -5,7 +5,7 @@ export * from './item.interface';
 export * from './menu-item.interface';
 export * from './file.interface';
 export * from './document.interface';
-export * from './documents.interfaces';
+export * from './document-list.interfaces';
 
 export * from '../services/environment/environment.interface';
 export * from '../services/plugins/interfaces';

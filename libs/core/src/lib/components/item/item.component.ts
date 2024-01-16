@@ -27,9 +27,7 @@ export class SioCoreItemComponent implements OnInit {
     return this._color;
   }
 
-  @Input() public set header(value: string) {
-    this.header = value;
-  }
+  @Input() public header: string;
 
   @AttributeBoolean()
   @Input() public button: InputBoolean;  
@@ -60,6 +58,7 @@ export class SioCoreItemComponent implements OnInit {
     this.avatar = false;
     this.thumbnail = false;
     this.label = 'no label';
+    this.header = 'no header';
     this.image = 'https://ionicframework.com/docs/img/demos/thumbnail.svg';
     console.log(this.label)
   }

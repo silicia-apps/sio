@@ -1,7 +1,10 @@
 import { Inject, Injectable, Optional } from '@angular/core';
 import { Loggable, SioCoreAppComponentState } from '@silicia/core';
 import { SioDatabaseServiceInterface } from './interfaces';
-import { SioDatabaseDocumentInterface, SioDatabaseDocumentListInterface } from '../../interfaces';
+import {
+  SioDatabaseDocumentInterface,
+  SioDatabaseDocumentListInterface,
+} from '../../interfaces';
 import { SioDatabaseToken } from '../../tokens';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
@@ -101,7 +104,6 @@ export class SioDatabaseService implements SioDatabaseServiceInterface {
     return false;
   }
 
-  
   async delete(
     id: string,
     collection: string,

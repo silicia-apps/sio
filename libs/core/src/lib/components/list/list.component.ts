@@ -1,7 +1,5 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { SioColorType } from '../../types';
-import { SioCoreListInterface } from './store/list.interface';
-import { SioCoreListState } from './store/list.state';
 import { SioCoreLoggerService } from '../../services/logger';
 
 @Component({
@@ -21,24 +19,31 @@ export class SioCoreListComponent implements OnInit {
   @Input() public style: 'default' | 'rounded' | 'custom' = 'default';
   @Input() public desktop = false;
 
+  @Input() public header: string = 'name';
+  @Input() public label: string = 'description';
+  @Input() public avatar: string | undefined;
+  @Input() public thumbnail: string | undefined;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  @Input() public data: any[] | undefined;
+
   // @Output() public sioCoreMenuDidChange = new EventEmitter();
-  
-  public sioCoreListState!: SioCoreListInterface;
+
+  //public sioCoreListState!: SioCoreListInterface;
 
   constructor(
     private sioCoreLoggerService: SioCoreLoggerService,
-    private _sioCoreListState: SioCoreListState
-  ) { }
+    //private _sioCoreListState: SioCoreListState
+  ) {}
 
   ngOnInit(): void {
     this.sioCoreLoggerService.debug('[sioCoreListComponent][ngOnInit]');
-    this.sioCoreListState = this._sioCoreListState.snapshot[this.id];
-    this.sioCoreLoggerService.debug('[sioCoreListComponent][ngOnInit]', this.sioCoreListState);
+    //this.sioCoreListState = this._sioCoreListState.snapshot[this.id];
+    //this.sioCoreLoggerService.debug('[sioCoreListComponent][ngOnInit]', this.sioCoreListState);
   }
 
-  public clic(url: string) {
-    this._sioCoreListState.go(url);
-  }
+  /*public clic(url: string) {
+    //this._sioCoreListState.go(url); 
+  }*/
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   //ionMenuDidChange(value: any) {

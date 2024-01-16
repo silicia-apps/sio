@@ -82,12 +82,13 @@ export class SioAppwriteDatabaseService implements SioDatabaseServiceInterface {
     databaseId: string | undefined,
   ): Promise<boolean> {
     try {
-      console.log('id:'+id);
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { $collectionId, $databaseId, $createdAt, $permissions, $id, $updatedAt, ...newData } = data;
       const document = await this.databases.updateDocument(
         databaseId as string,
         collectionId,
         id,
-        data,
+        newData,
       );
       console.error(JSON.stringify(document));
       return true;

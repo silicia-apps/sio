@@ -5,10 +5,13 @@ import { Injectable } from '@angular/core';
 import { SioDatabaseDocumentInterface } from '../models';
 import { SioDatabaseService } from '../services';
 import { SioCoreLoggerService } from '@silicia/core';
+import { SioDatabaseDocumentListInterface } from '../interfaces';
 
 @Injectable()
-export abstract class SioDatabaseState extends NgxsDataEntityCollectionsRepository<
-  SioDatabaseDocumentInterface,
+export abstract class SioDatabaseState<
+  T extends SioDatabaseDocumentInterface,
+> extends NgxsDataEntityCollectionsRepository<
+  T,
   EntityIdType,
   {
     remoteTotals: number;
@@ -66,10 +69,12 @@ export abstract class SioDatabaseState extends NgxsDataEntityCollectionsReposito
       if (collectionId) this.setCollectionId(collectionId);
       if (queries) this.setQueries(queries);
       if (this.snapshot.databaseId && this.snapshot.collectionId) {
-        const documents = await this.sioDatabaseService.query(
-          this.snapshot.databaseId,
-          this.snapshot.collectionId,
-          this.snapshot.queries,
+        const documents = <SioDatabaseDocumentListInterface<T>>(
+          await this.sioDatabaseService.query(
+            this.snapshot.databaseId,
+            this.snapshot.collectionId,
+            this.snapshot.queries,
+          )
         );
         this.setEntitiesMany(documents.documents);
         this.setRemoteTotals(documents.total);
@@ -101,9 +106,14 @@ export abstract class SioDatabaseState extends NgxsDataEntityCollectionsReposito
     return this.snapshot.remoteTotals;
   }
 
-  override setOne(entity: SioDatabaseDocumentInterface): void {
+  override setOne(entity: T): void {
     super.setOne(entity);
-    this.sioDatabaseService.set(entity.$id as string,entity,this.snapshot.collectionId, this.snapshot.databaseId)
+    this.sioDatabaseService.set(
+      entity.$id as string,
+      entity,
+      this.snapshot.collectionId,
+      this.snapshot.databaseId,
+    );
   }
 
   @Computed()

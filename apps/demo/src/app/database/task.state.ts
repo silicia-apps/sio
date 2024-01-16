@@ -5,6 +5,7 @@ import { State } from '@ngxs/store';
 import {
   SioDatabaseState,
 } from '@silicia/database';
+import { taskInterface } from './task.interface';
 
 @StateRepository()
 @State({
@@ -12,6 +13,6 @@ import {
   defaults: createEntityCollections()
 })
 @Injectable()
-export class TaskState extends SioDatabaseState {
+export class TaskState extends SioDatabaseState<taskInterface> {
   
 }
