@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import { Databases } from 'appwrite';
+import { Databases, ID } from 'appwrite';
 
 import {
   SioDatabaseServiceInterface,
@@ -9,6 +9,7 @@ import {
 
 import {
   Loggable,
+  SioCoreDocumentInterface,
   SioCoreLoggerService,
   SioCorePluginServiceConfigModel,
   sioCorePluginServiceConfigToken,
@@ -36,17 +37,18 @@ export class SioAppwriteDatabaseService implements SioDatabaseServiceInterface {
     this.databases = new Databases(this.sioAppwriteClientService.client);
   }
 
-  async create(
-    value: object,
-    collection: string,
-    database?: string | undefined,
-    document?: string | undefined,
+  async add(
+    value: SioCoreDocumentInterface,
+    collectionId?: string,
+    databaseId?: string,
+    documentId?: string,
   ): Promise<boolean> {
     try {
+      if (!documentId) documentId = ID.unique();
       const product = await this.databases.createDocument(
-        database as string,
-        collection,
-        document as string,
+        databaseId as string,
+        collectionId as string,
+        documentId as string,
         value,
       );
       console.error(JSON.stringify(product));
@@ -111,15 +113,15 @@ export class SioAppwriteDatabaseService implements SioDatabaseServiceInterface {
   }
 
   async delete(
-    id: string,
-    collection: string,
-    database?: string | undefined,
+    documentId: string | number,
+    collectionId?: string,
+    databaseId?: string,
   ): Promise<boolean> {
     try {
       const items = await this.databases.deleteDocument(
-        database as string,
-        collection,
-        id,
+        databaseId as string,
+        collectionId as string,
+        documentId as string,
       );
       console.log(JSON.stringify(items));
       return true;

@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { SioCommonModule, SioCoreLoggerService } from '@silicia/core';
-import { TaskState } from './task.state';
-import { taskInterface } from './task.interface';
-
+import { TaskState } from './store/task.state';
+import { taskInterface } from './store/task.interface';
 
 @Component({
   selector: 'sio-database',
@@ -22,22 +21,21 @@ export class DatabasePageComponent {
   }
 
   public async create() {
-    const test = {
-      $id : 'ijijiiij',
-      $collectionId : '',
-      $createdAt : '',
-      $databaseId : '',
-      $updatedAt : '',
+    const test: taskInterface = {
       name : 'test',
-      $permissions : [],
       description : 'test descrption'
     }
     this.taskState.addOne(test);
-    const task = {...this.taskState.selectOne('65a29bfd53f6ff5f0af8')}
+    const task = {...this.taskState.selectOne('65a841c4577a8c033b25')!}
     task.name = 'task ciao';
-    this.taskState.setOne(<taskInterface>task);
+    this.taskState.setOne(task);
   }
   public deleteAll() {
-    
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  public delete(event: any) {
+    console.error (JSON.stringify(event));
+    //this.taskState.removeByEntity()
   }
 }

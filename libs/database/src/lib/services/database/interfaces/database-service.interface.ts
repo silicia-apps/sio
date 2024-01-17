@@ -5,11 +5,11 @@ import {
 } from '../../../interfaces';
 
 export interface SioDatabaseServiceInterface {
-  create(
-    value: object,
-    collection: string,
-    database?: string,
-    document?: string,
+  add(
+    value: SioDatabaseDocumentInterface,
+    collectionId?: string,
+    databaseId?: string,
+    documentId?: string | number,
   ): Promise<boolean>;
   query(
     databaseId: string,
@@ -23,7 +23,7 @@ export interface SioDatabaseServiceInterface {
     collectionId: string,
     databaseId: string,
   ): Promise<boolean>;
-  delete(id: string, collection: string, database?: string): Promise<boolean>;
+  delete(documentId: string | number, collectionId?: string, databaseId?: string): Promise<boolean>;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   subscribe(): Observable<any>;
 }

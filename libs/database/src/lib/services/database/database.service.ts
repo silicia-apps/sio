@@ -25,14 +25,14 @@ export class SioDatabaseService implements SioDatabaseServiceInterface {
     this.plugins = Array.isArray(plugins) ? plugins : [plugins];
   }
 
-  async create(
-    value: object,
-    collection: string,
-    database?: string,
-    document?: string,
+  async add(
+    value: SioDatabaseDocumentInterface,
+    collectionId?: string,
+    databaseId?: string,
+    documentId?: string,
   ): Promise<boolean> {
     try {
-      return this.plugins[0].create(value, collection, database, document);
+      return this.plugins[0].add(value, collectionId, databaseId, documentId);
     } catch (e) {
       const error = e as Error;
       if (error.name === 'sio-error')
@@ -105,12 +105,12 @@ export class SioDatabaseService implements SioDatabaseServiceInterface {
   }
 
   async delete(
-    id: string,
-    collection: string,
-    database?: string,
+    documentId: string | number,
+    collectionId?: string,
+    databaseId?: string,
   ): Promise<boolean> {
     try {
-      return this.plugins[0].delete(id, collection, database);
+      return this.plugins[0].delete(documentId, collectionId, databaseId);
     } catch (e) {
       const error = e as Error;
       if (error.name === 'sio-error')

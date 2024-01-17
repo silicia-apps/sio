@@ -13,11 +13,7 @@ export class SioCoreItemComponent implements OnInit {
 
   private _color : SioColorType = undefined;
   
-  @Input() public label: string;
-  
-  @Input() public image: string;
-
-  @Input() public set color(value: string) {
+  @Input() public set color(value: SioColorType) {
     //console.error(value);
     this._color = value?value:'none';
   }
@@ -27,25 +23,24 @@ export class SioCoreItemComponent implements OnInit {
     return this._color;
   }
 
-  @Input() public header: string;
+  @Input() public header: string = 'NO_HEADER';
+  @Input() public label: string = 'NO_LABEL';
 
   @AttributeBoolean()
-  @Input() public button: InputBoolean;  
+  @Input() public button: InputBoolean = false;  
 
   @AttributeBoolean()
-  @Input() public disabled: InputBoolean;  
+  @Input() public disabled: InputBoolean = false;  
+  
+  @Input() public thumbnail: string | undefined = undefined;
+  @Input() public avatar: string | undefined = undefined;
+  @Input() public icon: string | undefined = undefined;
+
+  @AttributeBoolean()
+  @Input() public doLeftSwipe: InputBoolean = false;
   
   @AttributeBoolean()
-  @Input() public thumbnail: InputBoolean;
-
-  @AttributeBoolean()
-  @Input() public avatar: InputBoolean;
-
-  @AttributeBoolean()
-  @Input() public doLeftSwipe: InputBoolean;
-  
-  @AttributeBoolean()
-  @Input() public doRightSwipe: InputBoolean;
+  @Input() public doRightSwipe: InputBoolean = false;
   
   @Input() public alt : string | undefined = undefined;
   
@@ -54,13 +49,7 @@ export class SioCoreItemComponent implements OnInit {
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   constructor(private sioCoreLoggerService: SioCoreLoggerService) {
-    this.disabled = false;
-    this.avatar = false;
-    this.thumbnail = false;
-    this.label = 'no label';
-    this.header = 'no header';
-    this.image = 'https://ionicframework.com/docs/img/demos/thumbnail.svg';
-    console.log(this.label)
+    
   }
 
   ngOnInit(): void {

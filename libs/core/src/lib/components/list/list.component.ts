@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SioColorType } from '../../types';
 import { SioCoreLoggerService } from '../../services/logger';
+import { AttributeBoolean } from '@angular-ru/cdk/decorators';
+import { InputBoolean } from '@angular-ru/cdk/typings';
 
 @Component({
   selector: 'sio-list',
@@ -19,8 +21,15 @@ export class SioCoreListComponent implements OnInit {
   @Input() public style: 'default' | 'rounded' | 'custom' = 'default';
   @Input() public desktop = false;
 
+  @AttributeBoolean()
+  @Input() public doLeftSwipe: InputBoolean;
+  
+  @AttributeBoolean()
+  @Input() public doRightSwipe: InputBoolean;
+  
   @Input() public header: string = 'name';
   @Input() public label: string = 'description';
+  @Input() public icon: string | undefined;
   @Input() public avatar: string | undefined;
   @Input() public thumbnail: string | undefined;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

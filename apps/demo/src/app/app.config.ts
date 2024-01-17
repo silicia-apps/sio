@@ -14,7 +14,7 @@ import { environment } from '../environments/environment';
 import { routes } from './app.routes';
 import { NgxsModule } from '@ngxs/store';
 import { SioStorageState } from '@silicia/storage';
-import { TaskState } from './database/task.state';
+import { TaskState } from './database/store/task.state';
 export const appConfig: ApplicationConfig = {
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

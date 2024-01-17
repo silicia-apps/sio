@@ -1,6 +1,12 @@
-  <ion-list>
-    <sio-item *ngFor="
-    let item of this.data;
-    trackBy: trackItems
-  " [header]="item[this.header]" [label] = "item[this.label]" [thumbnail]="this.thumbnail" [image]="(this.avatar)?item[this.avatar]:(this.thumbnail)?item[this.thumbnail]:''"></sio-item>
-  </ion-list> 
+<ion-list>
+  <sio-item
+    *ngFor="let item of this.data; trackBy: trackItems"
+    [header]="item[this.header]"
+    [label]="item[this.label]"
+    [thumbnail]="(this.thumbnail)?item[this.thumbnail]:undefined"
+    [avatar]="(this.avatar)?item[this.avatar]:undefined"
+    [icon]="(this.icon)?item[this.icon]:undefined"
+    [doLeftSwipe]="this.doLeftSwipe"
+    [doRightSwipe]="this.doRightSwipe"
+  ></sio-item>
+</ion-list>
