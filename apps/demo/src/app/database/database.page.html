@@ -1,7 +1,30 @@
 <sio-page title="Database Apprite Plugin Test Page">
-  <sio-button (Click)="this.create()">NEW</sio-button>
-  <sio-button color="danger" (Click)="this.deleteAll()" [disabled]="!this.taskState.localTotals">DELETE
-    ALL</sio-button>
-  <h1>Total Task : {{ this.taskState.localTotals }} loaded /{{ this.taskState.remoteTotals }} on server</h1>
-  <sio-list doLeftSwipe header="name" label="description" [data]="this.taskState.selectAll()" avatar="avatar" thumbnail="thumbnail" (sioCoreItemSwipe)="this.delete($event)"></sio-list>
+  <sio-button
+    color="danger"
+    (Click)="this.deleteAll()"
+    [disabled]="!this.taskState.localTotals"
+    >DELETE ALL</sio-button
+  >
+  <h1>
+    Total Task : {{ this.taskState.localTotals }} loaded /{{
+    this.taskState.remoteTotals }} on server
+  </h1> 
+  <sio-list
+    header="name"
+    label="description"
+    [data]="this.taskState.selectAll()"
+    avatar="avatar"
+    thumbnail="thumbnail"
+    LeftSwipe
+    (sioCoreListItemLeftSwipe)="this.archive($event)"
+    (sioCoreListItemRightSwipe)="this.delete($event)"
+  ></sio-list>
+  <ion-fab slot="footer" vertical="bottom" horizontal="end">
+    <sio-button
+      (Click)="this.create()"
+      type="fab"
+      icon="add"
+      color="danger"
+    ></sio-button>
+  </ion-fab>
 </sio-page>

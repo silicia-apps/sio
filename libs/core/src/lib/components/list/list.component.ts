@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { SioColorType } from '../../types';
 import { SioCoreLoggerService } from '../../services/logger';
 import { AttributeBoolean } from '@angular-ru/cdk/decorators';
@@ -22,10 +22,10 @@ export class SioCoreListComponent implements OnInit {
   @Input() public desktop = false;
 
   @AttributeBoolean()
-  @Input() public doLeftSwipe: InputBoolean;
+  @Input() public LeftSwipe: InputBoolean;
   
   @AttributeBoolean()
-  @Input() public doRightSwipe: InputBoolean;
+  @Input() public RightSwipe: InputBoolean = true;
   
   @Input() public header: string = 'name';
   @Input() public label: string = 'description';
@@ -35,6 +35,10 @@ export class SioCoreListComponent implements OnInit {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @Input() public data: any[] | undefined;
 
+  @Output() sioCoreListItemClick = new EventEmitter();
+  @Output() sioCoreListItemLeftSwipe  = new EventEmitter();
+  @Output() sioCoreListItemRightSwipe = new EventEmitter();
+  
   // @Output() public sioCoreMenuDidChange = new EventEmitter();
 
   //public sioCoreListState!: SioCoreListInterface;
@@ -63,4 +67,14 @@ export class SioCoreListComponent implements OnInit {
   trackItems(index: number, itemObject: any) {
     return itemObject.id;
   }
+
+  public receiveListLeftSwipe(data: any) {
+    this.sioCoreLoggerService.debug('[sioCoreListItemComponent][receiveListLeftSwipe]', data);
+    this.sioCoreListItemLeftSwipe.emit(data);
+  }
+  public receiveListRighSwipe(data: any) {
+    this.sioCoreLoggerService.debug('[sioCoreListItemComponent][receiveListRightSwipe]', data);
+    this.sioCoreListItemRightSwipe.emit(data);
+  }
+
 }

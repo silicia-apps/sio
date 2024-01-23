@@ -118,6 +118,7 @@ export class SioAppwriteDatabaseService implements SioDatabaseServiceInterface {
     databaseId?: string,
   ): Promise<boolean> {
     try {
+      console.log('try to delete '+documentId);
       const items = await this.databases.deleteDocument(
         databaseId as string,
         collectionId as string,

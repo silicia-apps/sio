@@ -109,6 +109,7 @@ export class SioDatabaseService implements SioDatabaseServiceInterface {
     collectionId?: string,
     databaseId?: string,
   ): Promise<boolean> {
+    
     try {
       return this.plugins[0].delete(documentId, collectionId, databaseId);
     } catch (e) {

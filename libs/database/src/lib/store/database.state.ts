@@ -106,8 +106,10 @@ export abstract class SioDatabaseState<
     return this.snapshot.remoteTotals;
   }
 
-  override removeByEntity(entity: T): void {
-      this.sioDatabaseService.delete(entity.$id!, this.snapshot.collectionId, this.snapshot.databaseId);
+  override removeOne(id: string | number): void {
+      this.sioCoreLoggerService.debug('[SioDatabaseState][removeByEntity]', id)
+      this.sioDatabaseService.delete(id, this.snapshot.collectionId, this.snapshot.databaseId);
+      super.removeOne(id);
   }
 
   override addOne(entity: T): void {

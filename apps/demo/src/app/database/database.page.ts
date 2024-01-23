@@ -35,7 +35,12 @@ export class DatabasePageComponent {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public delete(event: any) {
-    console.error (JSON.stringify(event));
-    //this.taskState.removeByEntity()
+    this.sioCoreLoggerService.debug('[DatabasePageComponent][delete]', event.id);
+    this.taskState.removeOne(event.id);
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
+  public archive(event: any) {
+    this.sioCoreLoggerService.log('you have right swiped ');
   }
 }
