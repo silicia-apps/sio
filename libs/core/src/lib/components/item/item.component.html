@@ -1,10 +1,10 @@
-<ion-item-sliding [disabled]="this.disabled">
-  <ion-item-options *ngIf="this.RightSwipe" side="start" (ionSwipe)="this.doRightSwipe($event)">
+<ion-item-sliding [disabled]="this.disabled" #slidingItem>
+  <ion-item-options *ngIf="this.RightSwipe" side="start" (ionSwipe)="this.doRightSwipe(slidingItem)">
     <ion-item-option color="success" expandable>
       <sio-icon slot="icon-only" name="archive"></sio-icon> 
     </ion-item-option>
   </ion-item-options>
-  <ion-item button="this.button" color="none">
+  <ion-item button="this.button" [color]="this.color">
     <sio-icon *ngIf="this.icon" name="this.icon" slot="start"></sio-icon>
     <ion-avatar *ngIf="this.avatar" slot="start">
       <ion-img [alt]="this.alt" [src]="this.avatar" />
@@ -15,8 +15,8 @@
     <ion-label><h2>{{ this.header | translate }}</h2><p>{{ this.label | translate }}</p></ion-label>
     <div slot="end"></div>
   </ion-item>
-  <ion-item-options *ngIf="this.LeftSwipe" side="end" (ionSwipe)="this.doLeftSwipe($event)">
+  <ion-item-options *ngIf="this.LeftSwipe" side="end" (ionSwipe)="this.doLeftSwipe(slidingItem)">
     <ion-item-option color="danger" expandable>
-      <sio-icon slot="icon-only" name="trash"></sio-icon>
+      <sio-button slot="icon-only" name="trash" (Click)="this.doLeftSwipe(slidingItem)"></sio-button>
     </ion-item-option>
   </ion-item-options>

@@ -24,6 +24,7 @@ import { NgxsFormPluginModule } from '@ngxs/form-plugin';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaskitoModule } from '@maskito/angular';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 import { SioCoreComponents } from './components';
 
@@ -61,6 +62,7 @@ export function createTranslateLoader(http: HttpClient) {
     MaskitoModule,
     ReactiveFormsModule,
     IonicModule,
+    ScrollingModule,
     TranslateModule.forChild({
       extend: true,
       loader: {

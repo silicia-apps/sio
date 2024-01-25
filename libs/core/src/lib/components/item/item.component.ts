@@ -1,8 +1,10 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { IonItemSliding } from '@ionic/angular';
 import { SioCoreLoggerService } from '../../services/logger';
 import { AttributeBoolean } from '@angular-ru/cdk/decorators';
 import { InputBoolean } from '@angular-ru/cdk/typings';
 import { SioColorType } from '../../types';
+
 
 @Component({
   selector: 'sio-item',
@@ -58,14 +60,14 @@ export class SioCoreItemComponent implements OnInit {
     this.sioCoreLoggerService.debug('[SioCoreItemComponent][ngOnInit]');
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
-  public async doRightSwipe(event: any): Promise<void> {
+  public async doRightSwipe(slidingItem: IonItemSliding): Promise<void> {
+    await slidingItem.closeOpened();
     this.sioCoreLoggerService.debug('[SioCoreItemComponent][doLeftSwipe] You have left swiped', this.$id);
     this.sioCoreItemRightSwipe.emit({id: this.$id});
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
-  public async doLeftSwipe(event: any): Promise<void> {
+  public async doLeftSwipe(slidingItem: IonItemSliding): Promise<void> {
+    await slidingItem.closeOpened();
     this.sioCoreLoggerService.debug('[SioCoreItemComponent][doLeftSwipe] You have left swiped', this.$id);
     this.sioCoreItemLeftSwipe.emit({ id: this.$id}); 
   }
