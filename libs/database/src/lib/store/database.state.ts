@@ -6,6 +6,7 @@ import { SioDatabaseDocumentInterface } from '../models';
 import { SioDatabaseService } from '../services';
 import { SioCoreLoggerService } from '@silicia/core';
 import { SioDatabaseDocumentListInterface } from '../interfaces';
+import { Query } from '../helpers';
 
 @Injectable()
 export abstract class SioDatabaseState<
@@ -18,6 +19,7 @@ export abstract class SioDatabaseState<
     localTotals: number;
     databaseId: string;
     collectionId: string;
+    remoteIndex: string | number;
     queries: string[];
   }
 > {
@@ -69,16 +71,31 @@ export abstract class SioDatabaseState<
       if (collectionId) this.setCollectionId(collectionId);
       if (queries) this.setQueries(queries);
       if (this.snapshot.databaseId && this.snapshot.collectionId) {
+        let queries: string[] = [];
+        if (this.snapshot.queries) {
+          const { ...get_queries } = this.snapshot.queries;
+          queries = get_queries;
+          if (this.snapshot.remoteIndex)
+            queries.push(
+              Query.cursorAfter(this.snapshot.remoteIndex as string),
+            );
+        }
         const documents = <SioDatabaseDocumentListInterface<T>>(
           await this.sioDatabaseService.query(
             this.snapshot.databaseId,
             this.snapshot.collectionId,
-            this.snapshot.queries,
+            queries,
           )
         );
-        this.setEntitiesMany(documents.documents);
+        if (this.snapshot.remoteIndex) {
+          console.error(documents.documents)
+          this.addEntitiesMany(documents.documents);
+        } else {
+          this.setEntitiesMany(documents.documents);
+        }
         this.setRemoteTotals(documents.total);
         this.setLocalTotals(this.snapshot.ids.length);
+        this.setRemoteIndex(documents.documents.pop()!.$id!);
       }
       return true;
     } catch (e) {
@@ -89,6 +106,11 @@ export abstract class SioDatabaseState<
       );
       return false;
     }
+  }
+
+  @DataAction()
+  public setRemoteIndex(value: string | number) {
+    this.patchState({ remoteIndex: value });
   }
 
   @DataAction()
@@ -106,17 +128,35 @@ export abstract class SioDatabaseState<
     return this.snapshot.remoteTotals;
   }
 
+  @Computed()
+  get queries(): string[] {
+    return this.snapshot.queries;
+  }
+
+  @Computed()
+  get remoteIndex(): string | number {
+    return this.snapshot.remoteIndex;
+  }
+
   override removeOne(id: string | number): void {
-      this.sioCoreLoggerService.debug('[SioDatabaseState][removeByEntity]', id)
-      this.sioDatabaseService.delete(id, this.snapshot.collectionId, this.snapshot.databaseId);
-      super.removeOne(id);
+    this.sioCoreLoggerService.debug('[SioDatabaseState][removeByEntity]', id);
+    this.sioDatabaseService.delete(
+      id,
+      this.snapshot.collectionId,
+      this.snapshot.databaseId,
+    );
+    super.removeOne(id);
   }
 
   override addOne(entity: T): void {
-      //super.addOne(entity);
-      this.sioDatabaseService.add(entity, this.snapshot.collectionId, this.snapshot.databaseId);
+    //super.addOne(entity);
+    this.sioDatabaseService.add(
+      entity,
+      this.snapshot.collectionId,
+      this.snapshot.databaseId,
+    );
   }
-  
+
   override setOne(entity: T): void {
     //super.setOne(entity);
     this.sioDatabaseService.set(

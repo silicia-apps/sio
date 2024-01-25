@@ -3,6 +3,7 @@ import { SioColorType } from '../../types';
 import { SioCoreLoggerService } from '../../services/logger';
 import { AttributeBoolean } from '@angular-ru/cdk/decorators';
 import { InputBoolean } from '@angular-ru/cdk/typings';
+import { InfiniteScrollCustomEvent } from '@ionic/angular';
 
 @Component({
   selector: 'sio-list',
@@ -35,9 +36,10 @@ export class SioCoreListComponent implements OnInit {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @Input() public data: any[] | undefined;
 
-  @Output() sioCoreListItemClick = new EventEmitter();
-  @Output() sioCoreListItemLeftSwipe  = new EventEmitter();
-  @Output() sioCoreListItemRightSwipe = new EventEmitter();
+  @Output() sioCoreListItemClick = new EventEmitter<Record<string, number | string>>();
+  @Output() sioCoreListItemLeftSwipe  = new EventEmitter<Record<string, number | string>>();
+  @Output() sioCoreListItemRightSwipe = new EventEmitter<Record<string, number | string>>();
+  @Output() sioCoreListInfinite = new EventEmitter<Record<string, number | string>>();
   
   // @Output() public sioCoreMenuDidChange = new EventEmitter();
 
@@ -68,13 +70,20 @@ export class SioCoreListComponent implements OnInit {
     return itemObject.id;
   }
 
-  public receiveListLeftSwipe(data: any) {
+  public receiveListLeftSwipe(data: Record<string, number | string>) {
     this.sioCoreLoggerService.debug('[sioCoreListItemComponent][receiveListLeftSwipe]', data);
     this.sioCoreListItemLeftSwipe.emit(data);
   }
-  public receiveListRighSwipe(data: any) {
+  public receiveListRighSwipe(data: Record<string, number | string>) {
     this.sioCoreLoggerService.debug('[sioCoreListItemComponent][receiveListRightSwipe]', data);
     this.sioCoreListItemRightSwipe.emit(data);
   }
 
+  public onListInfinite(data: Event) {
+    this.sioCoreLoggerService.debug('[sioCoreListItemComponent][receiveListInfinite]', data);
+    this.sioCoreListInfinite.emit({ LastId : this.data!.pop().$id });
+    setTimeout(() => {
+      (data as InfiniteScrollCustomEvent).target.complete();
+    }, 500);
+  }
 }

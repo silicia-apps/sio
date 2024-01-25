@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { SioCommonModule, SioCoreLoggerService } from '@silicia/core';
 import { TaskState } from './store/task.state';
 import { taskInterface } from './store/task.interface';
+import { Query } from '@silicia/database';
 
 @Component({
   selector: 'sio-database',
@@ -17,7 +18,7 @@ export class DatabasePageComponent {
   ) {
     this.taskState.setDatabaseId('demo');
     this.taskState.setCollectionId('tasks');
-    this.taskState.load();
+    this.taskState.load([Query.limit(100)]);
   }
 
   public async create() {
@@ -42,5 +43,10 @@ export class DatabasePageComponent {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
   public archive(event: any) {
     this.sioCoreLoggerService.log('you have right swiped ');
+  }
+
+  public load(event: Record<string, number | string>) {
+    this.sioCoreLoggerService.debug('[DatabasePageComponent][load]', event);
+    this.taskState.load();
   }
 }

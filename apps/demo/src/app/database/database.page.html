@@ -1,8 +1,4 @@
-<sio-page title="DATABASE DEMO">
-  <h1>
-    Total Task : {{ this.taskState.localTotals }} loaded /{{
-    this.taskState.remoteTotals }} on server
-  </h1> 
+<sio-page [title]="'Task ('+this.taskState.localTotals+'/'+this.taskState.remoteTotals+') index' + this.taskState.remoteIndex">
   <sio-list
     header="name"
     label="description"
@@ -12,6 +8,7 @@
     LeftSwipe
     (sioCoreListItemLeftSwipe)="this.archive($event)"
     (sioCoreListItemRightSwipe)="this.delete($event)"
+    (sioCoreListInfinite)="this.load($event)"
   ></sio-list>
   <ion-fab slot="footer" vertical="bottom" horizontal="end">
     <sio-button

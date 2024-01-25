@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IonItemSliding } from '@ionic/angular';
 import { SioCoreLoggerService } from '../../services/logger';
 import { AttributeBoolean } from '@angular-ru/cdk/decorators';
@@ -47,9 +47,9 @@ export class SioCoreItemComponent implements OnInit {
   
   @Input() public alt : string | undefined = undefined;
   
-  @Output() sioCoreItemClick = new EventEmitter();
-  @Output() sioCoreItemLeftSwipe = new EventEmitter();
-  @Output() sioCoreItemRightSwipe = new EventEmitter();
+  @Output() sioCoreItemClick = new EventEmitter<Record<string, number | string>>();
+  @Output() sioCoreItemLeftSwipe = new EventEmitter<Record<string, number | string>>();
+  @Output() sioCoreItemRightSwipe = new EventEmitter<Record<string, number | string>>();
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   constructor(private sioCoreLoggerService: SioCoreLoggerService) {
@@ -63,19 +63,19 @@ export class SioCoreItemComponent implements OnInit {
   public async doRightSwipe(slidingItem: IonItemSliding): Promise<void> {
     await slidingItem.closeOpened();
     this.sioCoreLoggerService.debug('[SioCoreItemComponent][doLeftSwipe] You have left swiped', this.$id);
-    this.sioCoreItemRightSwipe.emit({id: this.$id});
+    this.sioCoreItemRightSwipe.emit({id: this.$id!});
   }
 
   public async doLeftSwipe(slidingItem: IonItemSliding): Promise<void> {
     await slidingItem.closeOpened();
     this.sioCoreLoggerService.debug('[SioCoreItemComponent][doLeftSwipe] You have left swiped', this.$id);
-    this.sioCoreItemLeftSwipe.emit({ id: this.$id}); 
+    this.sioCoreItemLeftSwipe.emit({ id: this.$id!}); 
   }
 
   public async Click(): Promise<void> {
     this.sioCoreLoggerService.info(
       '[SioCoreMenuItemComponent][Click] raise event click'
     );
-    this.sioCoreItemClick.emit(this.$id);
+    this.sioCoreItemClick.emit({ id: this.$id!});
   }
 }

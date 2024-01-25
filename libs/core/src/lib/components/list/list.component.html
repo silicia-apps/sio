@@ -1,17 +1,17 @@
-
-    <ion-list>
-      <sio-item
-        *ngFor="let item of this.data"
-        [$id]="item['$id']"
-        [header]="item[this.header]"
-        [label]="item[this.label]"
-        [thumbnail]="this.thumbnail ? item[this.thumbnail] : undefined"
-        [avatar]="this.avatar ? item[this.avatar] : undefined"
-        [icon]="this.icon ? item[this.icon] : undefined"
-        [LeftSwipe]="this.LeftSwipe"
-        [RightSwipe]="this.RightSwipe"
-        (sioCoreItemLeftSwipe)="this.receiveListRighSwipe($event)"
-        (sioCoreItemRightSwipe)="this.receiveListLeftSwipe($event)"
-      ></sio-item>
-    </ion-list>
-
+<ion-refresher slot="fixed">
+  <ion-refresher-content pullingIcon="chevron-down-circle-outline" pullingText="Pull to refresh"
+    refreshingSpinner="circles" refreshingText="Refreshing...">
+  </ion-refresher-content>
+</ion-refresher>
+<ion-list>
+  <sio-item *ngFor="let item of this.data; trackItem" [$id]="item['$id']" [header]="item[this.header]"
+    [label]="item[this.label]" [thumbnail]="this.thumbnail ? item[this.thumbnail] : undefined"
+    [avatar]="this.avatar ? item[this.avatar] : undefined" [icon]="this.icon ? item[this.icon] : undefined"
+    [LeftSwipe]="this.LeftSwipe" [RightSwipe]="this.RightSwipe"
+    (sioCoreItemLeftSwipe)="this.receiveListRighSwipe($event)"
+    (sioCoreItemRightSwipe)="this.receiveListLeftSwipe($event)"></sio-item>
+</ion-list>
+<ion-infinite-scroll threshold="10%" (ionInfinite)="this.onListInfinite($event)">
+  <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+  </ion-infinite-scroll-content>
+</ion-infinite-scroll>
