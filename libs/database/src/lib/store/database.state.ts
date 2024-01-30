@@ -71,14 +71,8 @@ export abstract class SioDatabaseState<
       if (collectionId) this.setCollectionId(collectionId);
       if (queries) this.setQueries(queries);
       if (this.snapshot.databaseId && this.snapshot.collectionId) {
-        let queries: string[] = [];
         if (this.snapshot.queries) {
-          const { ...get_queries } = this.snapshot.queries;
-          queries = get_queries;
-          if (this.snapshot.remoteIndex)
-            queries.push(
-              Query.cursorAfter(this.snapshot.remoteIndex as string),
-            );
+          if (this.snapshot.remoteIndex) queries= [...this.snapshot.queries,Query.cursorAfter(this.snapshot.remoteIndex as string), ]
         }
         const documents = <SioDatabaseDocumentListInterface<T>>(
           await this.sioDatabaseService.query(
@@ -88,13 +82,13 @@ export abstract class SioDatabaseState<
           )
         );
         if (this.snapshot.remoteIndex) {
-          console.error(documents.documents)
           this.addEntitiesMany(documents.documents);
         } else {
           this.setEntitiesMany(documents.documents);
         }
         this.setRemoteTotals(documents.total);
         this.setLocalTotals(this.snapshot.ids.length);
+        console.error(documents.documents.pop()!.$id!);
         this.setRemoteIndex(documents.documents.pop()!.$id!);
       }
       return true;

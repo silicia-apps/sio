@@ -18,7 +18,7 @@ export class DatabasePageComponent {
   ) {
     this.taskState.setDatabaseId('demo');
     this.taskState.setCollectionId('tasks');
-    this.taskState.load([Query.limit(100)]);
+    this.taskState.load([Query.limit(50)]);
   }
 
   public async create() {
