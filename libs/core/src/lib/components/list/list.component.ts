@@ -21,7 +21,10 @@ export class SioCoreListComponent implements OnInit {
   @Input() public shape: 'compact' | 'inset' = 'compact';
   @Input() public style: 'default' | 'rounded' | 'custom' = 'default';
   @Input() public desktop = false;
-
+  
+  @AttributeBoolean()
+  @Input() public infinite: InputBoolean = false;
+  
   @AttributeBoolean()
   @Input() public LeftSwipe: InputBoolean;
   
