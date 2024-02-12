@@ -26,8 +26,8 @@ export class SioCoreItemComponent implements OnInit {
   }
 
   @Input() public $id: string | number | undefined = undefined;
-  @Input() public header: string = 'NO_HEADER';
-  @Input() public label: string = 'NO_LABEL';
+  @Input() public header = 'NO_HEADER';
+  @Input() public label = 'NO_LABEL';
 
   @AttributeBoolean()
   @Input() public button: InputBoolean = false;  

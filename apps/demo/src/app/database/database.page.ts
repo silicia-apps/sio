@@ -2,14 +2,14 @@ import { Component} from '@angular/core';
 import { SioCommonModule, SioCoreLoggerService } from '@silicia/core';
 import { TaskState } from './store/task.state';
 import { taskInterface } from './store/task.interface';
-import { Query } from '@silicia/database';
+import { Query, SioDatabaseModule } from '@silicia/database';
 
 @Component({
   selector: 'sio-database',
   templateUrl: 'database.page.html',
   styleUrls: ['database.page.scss'],
   standalone: true,
-  imports: [SioCommonModule],
+  imports: [SioCommonModule, SioDatabaseModule],
 })
 export class DatabasePageComponent {
   constructor(
@@ -27,13 +27,11 @@ export class DatabasePageComponent {
       description : 'test descrption'
     }
     this.taskState.addOne(test);
-    const task = {...this.taskState.selectOne('65a841c4577a8c033b25')!}
+    const task = {...this.taskState.selectOne('65a841c4577a8c033b25')}
     task.name = 'task ciao';
-    this.taskState.setOne(task);
+    //this.taskState.setOne(task);
   }
-  public deleteAll() {
-  }
-
+  
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public delete(event: any) {
     this.sioCoreLoggerService.debug('[DatabasePageComponent][delete]', event.id);

@@ -31,8 +31,8 @@ export class SioCoreListComponent implements OnInit {
   @AttributeBoolean()
   @Input() public RightSwipe: InputBoolean = true;
   
-  @Input() public header: string = 'name';
-  @Input() public label: string = 'description';
+  @Input() public header = 'name';
+  @Input() public label = 'description';
   @Input() public icon: string | undefined;
   @Input() public avatar: string | undefined;
   @Input() public thumbnail: string | undefined;
