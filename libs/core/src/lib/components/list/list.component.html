@@ -1,6 +1,6 @@
 <ion-refresher slot="fixed">
-  <ion-refresher-content pullingIcon="chevron-down-circle-outline" pullingText="Pull to refresh"
-    refreshingSpinner="circles" refreshingText="Refreshing...">
+  <ion-refresher-content pullingIcon="chevron-down-circle-outline" pullingText="{{ 'LIST_PULL_TEXT' | translate }}"
+    refreshingSpinner="circles" refreshingText="{{ 'LIST_PULL_WAITING' | translate }}" (ionRefresh)="onRefresh($event)">
   </ion-refresher-content>
 </ion-refresher>
 <ion-list>

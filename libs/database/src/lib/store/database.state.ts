@@ -23,7 +23,7 @@ export abstract class SioDatabaseState<
     queries: string[];
   }
 > {
-  public override primaryKey: string = '$id';
+  public override primaryKey = '$id';
 
   constructor(
     private sioCoreLoggerService: SioCoreLoggerService,
@@ -35,12 +35,16 @@ export abstract class SioDatabaseState<
   override ngxsAfterBootstrap(): void {
     this.sioDatabaseService.subscribe().subscribe((event) => {
       this.sioCoreLoggerService.debug(
-        `[SioStorageState][ngxAfterBootstrap] received events`,
+        `[SioDatabaseState][DataSocket] received events`,
+        event
       );
-      this.sioCoreLoggerService.trace(
-        `[SioStorageState][ngxAfterBootstrap]`,
-        event,
-      );
+      const item = this.selectOne(event.payload.$id);
+      if (item) {
+        console.debug('[SioDatabaseState][DataSocket] items in list, updated');
+        this.setEntityOne(event.payload);
+      } else {
+        console.debug('[SioDatabaseState][DataSocket] items not in list, do anything');
+      }
       this.load();
     });
   }
@@ -88,7 +92,9 @@ export abstract class SioDatabaseState<
         }
         this.setRemoteTotals(documents.total);
         this.setLocalTotals(this.snapshot.ids.length);
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         console.error(documents.documents.pop()!.$id!);
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         this.setRemoteIndex(documents.documents.pop()!.$id!);
       }
       return true;

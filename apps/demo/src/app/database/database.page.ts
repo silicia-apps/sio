@@ -47,4 +47,10 @@ export class DatabasePageComponent {
     this.sioCoreLoggerService.debug('[DatabasePageComponent][load]', event);
     this.taskState.load();
   }
+
+  public refresh(event: Record<string, number | string>){
+    console.log(event)
+    this.taskState.setRemoteIndex('');
+    this.taskState.load();
+  }
 }

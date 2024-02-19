@@ -3,7 +3,7 @@ import { SioColorType } from '../../types';
 import { SioCoreLoggerService } from '../../services/logger';
 import { AttributeBoolean } from '@angular-ru/cdk/decorators';
 import { InputBoolean } from '@angular-ru/cdk/typings';
-import { InfiniteScrollCustomEvent } from '@ionic/angular';
+import { InfiniteScrollCustomEvent, RefresherCustomEvent } from '@ionic/angular';
 
 @Component({
   selector: 'sio-list',
@@ -43,6 +43,7 @@ export class SioCoreListComponent implements OnInit {
   @Output() sioCoreListItemLeftSwipe  = new EventEmitter<Record<string, number | string>>();
   @Output() sioCoreListItemRightSwipe = new EventEmitter<Record<string, number | string>>();
   @Output() sioCoreListInfinite = new EventEmitter<Record<string, number | string>>();
+  @Output() sioCoreRefreshList = new EventEmitter<Record<string, number | string>>();
   
   // @Output() public sioCoreMenuDidChange = new EventEmitter();
 
@@ -80,6 +81,13 @@ export class SioCoreListComponent implements OnInit {
   public receiveListRighSwipe(data: Record<string, number | string>) {
     this.sioCoreLoggerService.debug('[sioCoreListItemComponent][receiveListRightSwipe]', data);
     this.sioCoreListItemRightSwipe.emit(data);
+  }
+
+  public onRefresh(data: Event) {
+    this.sioCoreLoggerService.debug('[sioCoreListItemComponent][onRefresh]', data);
+    setTimeout(() => {
+      (data as RefresherCustomEvent).target.complete();
+    }, 500);
   }
 
   public onListInfinite(data: Event) {
