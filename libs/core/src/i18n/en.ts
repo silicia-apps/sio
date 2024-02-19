@@ -6,4 +6,5 @@ export const en = {
     'PAGE_COMPONENT_LINK' : 'Componet Page of ',
     'LIST_PULL_WAITING': 'Waiting...',
     'LIST_PULL_TEXT': 'Pull To Refresh',
+    'LIST_LOADING': "Loading more data...",
 }

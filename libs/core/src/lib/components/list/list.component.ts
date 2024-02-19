@@ -43,7 +43,7 @@ export class SioCoreListComponent implements OnInit {
   @Output() sioCoreListItemLeftSwipe  = new EventEmitter<Record<string, number | string>>();
   @Output() sioCoreListItemRightSwipe = new EventEmitter<Record<string, number | string>>();
   @Output() sioCoreListInfinite = new EventEmitter<Record<string, number | string>>();
-  @Output() sioCoreRefreshList = new EventEmitter<Record<string, number | string>>();
+  @Output() sioCoreRefreshList = new EventEmitter<void>();
   
   // @Output() public sioCoreMenuDidChange = new EventEmitter();
 
@@ -85,6 +85,7 @@ export class SioCoreListComponent implements OnInit {
 
   public onRefresh(data: Event) {
     this.sioCoreLoggerService.debug('[sioCoreListItemComponent][onRefresh]', data);
+    this.sioCoreRefreshList.emit();
     setTimeout(() => {
       (data as RefresherCustomEvent).target.complete();
     }, 500);

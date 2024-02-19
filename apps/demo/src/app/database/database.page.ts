@@ -43,13 +43,13 @@ export class DatabasePageComponent {
     this.sioCoreLoggerService.log('you have right swiped ');
   }
 
-  public load(event: Record<string, number | string>) {
+  public load(event: Record<string, number | string>):void {
     this.sioCoreLoggerService.debug('[DatabasePageComponent][load]', event);
     this.taskState.load();
   }
 
-  public refresh(event: Record<string, number | string>){
-    console.log(event)
+  public refresh(event: Event): void {
+    this.sioCoreLoggerService.debug('[DatabasePageComponent][refresh]', event);
     this.taskState.setRemoteIndex('');
     this.taskState.load();
   }

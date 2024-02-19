@@ -1,6 +1,6 @@
-<ion-refresher slot="fixed">
+<ion-refresher slot="fixed" (ionRefresh)="onRefresh($event)">
   <ion-refresher-content pullingIcon="chevron-down-circle-outline" pullingText="{{ 'LIST_PULL_TEXT' | translate }}"
-    refreshingSpinner="circles" refreshingText="{{ 'LIST_PULL_WAITING' | translate }}" (ionRefresh)="onRefresh($event)">
+    refreshingSpinner="circles" refreshingText="{{ 'LIST_PULL_WAITING' | translate }}" >
   </ion-refresher-content>
 </ion-refresher>
 <ion-list>
@@ -12,6 +12,6 @@
     (sioCoreItemRightSwipe)="this.receiveListLeftSwipe($event)"></sio-item>
 </ion-list>
 <ion-infinite-scroll *ngIf="this.infinite" threshold="20%" (ionInfinite)="this.onListInfinite($event)">
-  <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+  <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="{{ 'LIST_LOADING' | translate }}">
   </ion-infinite-scroll-content>
 </ion-infinite-scroll>
