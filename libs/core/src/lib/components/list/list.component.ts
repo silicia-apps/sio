@@ -23,13 +23,13 @@ export class SioCoreListComponent implements OnInit {
   @Input() public desktop = false;
   
   @AttributeBoolean()
-  @Input() public infinite: InputBoolean = false;
+  @Input() public enableInfinite: InputBoolean = false;
   
   @AttributeBoolean()
-  @Input() public LeftSwipe: InputBoolean;
+  @Input() public enableLeftSwipe: InputBoolean;
   
   @AttributeBoolean()
-  @Input() public RightSwipe: InputBoolean = true;
+  @Input() public enableRightSwipe: InputBoolean = true;
   
   @Input() public header = 'name';
   @Input() public label = 'description';
@@ -39,11 +39,11 @@ export class SioCoreListComponent implements OnInit {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @Input() public data: any[] | undefined;
 
-  @Output() sioCoreListItemClick = new EventEmitter<Record<string, number | string>>();
-  @Output() sioCoreListItemLeftSwipe  = new EventEmitter<Record<string, number | string>>();
-  @Output() sioCoreListItemRightSwipe = new EventEmitter<Record<string, number | string>>();
-  @Output() sioCoreListInfinite = new EventEmitter<Record<string, number | string>>();
-  @Output() sioCoreRefreshList = new EventEmitter<void>();
+  @Output() clickItem = new EventEmitter<Record<string, number | string>>();
+  @Output() leftSwipe  = new EventEmitter<Record<string, number | string>>();
+  @Output() rightSwipe = new EventEmitter<Record<string, number | string>>();
+  @Output() infinite = new EventEmitter<Record<string, number | string>>();
+  @Output() refresh = new EventEmitter<void>();
   
   // @Output() public sioCoreMenuDidChange = new EventEmitter();
 
@@ -74,26 +74,26 @@ export class SioCoreListComponent implements OnInit {
     return itemObject.id;
   }
 
-  public receiveListLeftSwipe(data: Record<string, number | string>) {
+  public onLeftSwipe(data: Record<string, number | string>) {
     this.sioCoreLoggerService.debug('[sioCoreListItemComponent][receiveListLeftSwipe]', data);
-    this.sioCoreListItemLeftSwipe.emit(data);
+    this.leftSwipe.emit(data);
   }
-  public receiveListRighSwipe(data: Record<string, number | string>) {
+  public onRighSwipe(data: Record<string, number | string>) {
     this.sioCoreLoggerService.debug('[sioCoreListItemComponent][receiveListRightSwipe]', data);
-    this.sioCoreListItemRightSwipe.emit(data);
+    this.rightSwipe.emit(data);
   }
 
   public onRefresh(data: Event) {
     this.sioCoreLoggerService.debug('[sioCoreListItemComponent][onRefresh]', data);
-    this.sioCoreRefreshList.emit();
+    this.refresh.emit();
     setTimeout(() => {
       (data as RefresherCustomEvent).target.complete();
     }, 500);
   }
 
-  public onListInfinite(data: Event) {
+  public onInfinite(data: Event) {
     this.sioCoreLoggerService.debug('[sioCoreListItemComponent][receiveListInfinite]', data);
-    this.sioCoreListInfinite.emit({ LastId : this.data!.pop().$id });
+    this.infinite.emit({ LastId : this.data!.pop().$id });
     setTimeout(() => {
       (data as InfiniteScrollCustomEvent).target.complete();
     }, 500);

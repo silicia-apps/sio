@@ -1,8 +1,7 @@
 <sio-page [title]="'Task ('+this.taskState.localTotals+'/'+this.taskState.remoteTotals+') index' + this.taskState.remoteIndex">
-  <sio-list [sioData]="this.taskState"
+  <sio-datalist [data]="this.taskState"
     header="name"
     label="description"
-    [data]="this.taskState.selectAll()"
     thumbnail="thumbnail"
     LeftSwipe
     [infinite]="this.taskState.localTotals < this.taskState.remoteTotals"
