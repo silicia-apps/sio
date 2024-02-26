@@ -75,15 +75,9 @@ export class SioCoreItemComponent implements OnInit {
 
   @Input() public alt: string | undefined = undefined;
 
-  @Output() sioCoreItemClick = new EventEmitter<
-    Record<string, number | string>
-  >();
-  @Output() sioCoreItemLeftSwipe = new EventEmitter<
-    Record<string, number | string>
-  >();
-  @Output() sioCoreItemRightSwipe = new EventEmitter<
-    Record<string, number | string>
-  >();
+  @Output() sioCoreItemClick = new EventEmitter<Event>();
+  @Output() sioCoreItemLeftSwipe = new EventEmitter<Event>();
+  @Output() sioCoreItemRightSwipe = new EventEmitter<Event>();
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   constructor(private sioCoreLoggerService: SioCoreLoggerService) {}
@@ -98,7 +92,7 @@ export class SioCoreItemComponent implements OnInit {
       '[SioCoreItemComponent][doLeftSwipe] You have left swiped',
       this.$id,
     );
-    this.sioCoreItemRightSwipe.emit({ id: this.$id! });
+    this.sioCoreItemRightSwipe.emit(); //{ id: this.$id ? this.$id : '' });
   }
 
   public async doLeftSwipe(slidingItem: IonItemSliding): Promise<void> {
@@ -107,13 +101,13 @@ export class SioCoreItemComponent implements OnInit {
       '[SioCoreItemComponent][doLeftSwipe] You have left swiped',
       this.$id,
     );
-    this.sioCoreItemLeftSwipe.emit({ id: this.$id! });
+    this.sioCoreItemLeftSwipe.emit(); //{ id: this.$id ? this.$id : '' });
   }
 
   public async Click(): Promise<void> {
     this.sioCoreLoggerService.info(
       '[SioCoreMenuItemComponent][Click] raise event click',
     );
-    this.sioCoreItemClick.emit({ id: this.$id! });
+    this.sioCoreItemClick.emit(); // id: this.$id ? this.$id : '' });
   }
 }

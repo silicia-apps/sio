@@ -26,7 +26,7 @@ export class SioCoreListComponent implements OnInit {
   @Input() public enableInfinite: InputBoolean = false;
   
   @AttributeBoolean()
-  @Input() public enableLeftSwipe: InputBoolean;
+  @Input() public enableLeftSwipe: InputBoolean = false;
   
   @AttributeBoolean()
   @Input() public enableRightSwipe: InputBoolean = true;
@@ -39,11 +39,11 @@ export class SioCoreListComponent implements OnInit {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @Input() public data: any[] | undefined;
 
-  @Output() clickItem = new EventEmitter<Record<string, number | string>>();
-  @Output() leftSwipe  = new EventEmitter<Record<string, number | string>>();
-  @Output() rightSwipe = new EventEmitter<Record<string, number | string>>();
-  @Output() infinite = new EventEmitter<Record<string, number | string>>();
-  @Output() refresh = new EventEmitter<void>();
+  @Output() clickItem = new EventEmitter<Event>();
+  @Output() leftSwipe  = new EventEmitter<Event>();
+  @Output() rightSwipe = new EventEmitter<Event>();
+  @Output() infinite = new EventEmitter<InfiniteScrollCustomEvent>();
+  @Output() refresh = new EventEmitter<RefresherCustomEvent>();
   
   // @Output() public sioCoreMenuDidChange = new EventEmitter();
 
@@ -74,28 +74,27 @@ export class SioCoreListComponent implements OnInit {
     return itemObject.id;
   }
 
-  public onLeftSwipe(data: Record<string, number | string>) {
+  public onLeftSwipe(data: Event) {
     this.sioCoreLoggerService.debug('[sioCoreListItemComponent][receiveListLeftSwipe]', data);
     this.leftSwipe.emit(data);
   }
-  public onRighSwipe(data: Record<string, number | string>) {
+  public onRightSwipe(data: Event) {
     this.sioCoreLoggerService.debug('[sioCoreListItemComponent][receiveListRightSwipe]', data);
     this.rightSwipe.emit(data);
   }
 
-  public onRefresh(data: Event) {
-    this.sioCoreLoggerService.debug('[sioCoreListItemComponent][onRefresh]', data);
-    this.refresh.emit();
+  public onRefresh(event: RefresherCustomEvent) {
+    this.sioCoreLoggerService.debug('[sioCoreListItemComponent][onRefresh]', event);
+    this.refresh.emit(event);
     setTimeout(() => {
-      (data as RefresherCustomEvent).target.complete();
+      event.target.complete();
     }, 500);
   }
 
-  public onInfinite(data: Event) {
-    this.sioCoreLoggerService.debug('[sioCoreListItemComponent][receiveListInfinite]', data);
-    this.infinite.emit({ LastId : this.data!.pop().$id });
+  public onInfinite(event: InfiniteScrollCustomEvent) {
+    this.sioCoreLoggerService.debug('[sioCoreListItemComponent][receiveListInfinite]', event);
     setTimeout(() => {
-      (data as InfiniteScrollCustomEvent).target.complete();
+      event.target.complete();
     }, 500);
   }
 }

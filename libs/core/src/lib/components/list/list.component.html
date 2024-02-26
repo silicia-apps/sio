@@ -7,11 +7,11 @@
   <sio-item *ngFor="let item of this.data; trackItem" [$id]="item['$id']" [header]="item[this.header]"
     [label]="item[this.label]" [thumbnail]="this.thumbnail ? item[this.thumbnail] : undefined"
     [avatar]="this.avatar ? item[this.avatar] : undefined" [icon]="this.icon ? item[this.icon] : undefined"
-    [LeftSwipe]="this.LeftSwipe" [RightSwipe]="this.RightSwipe"
-    (sioCoreItemLeftSwipe)="this.receiveListRighSwipe($event)"
-    (sioCoreItemRightSwipe)="this.receiveListLeftSwipe($event)"></sio-item>
+    [LeftSwipe]="this.leftSwipe !== null" [RightSwipe]="this.rightSwipe !== null"
+    (sioCoreItemLeftSwipe)="this.onLeftSwipe($event)"
+    (sioCoreItemRightSwipe)="this.onRightSwipe($event)"></sio-item>
 </ion-list>
-<ion-infinite-scroll *ngIf="this.infinite" threshold="20%" (ionInfinite)="this.onListInfinite($event)">
+<ion-infinite-scroll *ngIf="this.enableInfinite" threshold="20%" (ionInfinite)="this.onInfinite($event)">
   <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="{{ 'LIST_LOADING' | translate }}">
   </ion-infinite-scroll-content>
 </ion-infinite-scroll>

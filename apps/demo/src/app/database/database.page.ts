@@ -32,18 +32,17 @@ export class DatabasePageComponent {
     //this.taskState.setOne(task);
   }
   
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public delete(event: any) {
     this.sioCoreLoggerService.debug('[DatabasePageComponent][delete]', event.id);
     this.taskState.removeOne(event.id);
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
-  public archive(event: any) {
-    this.sioCoreLoggerService.log('you have right swiped ');
+  public archive(event: Event) {
+    this.sioCoreLoggerService.log('you have right swiped ', event);
   }
 
-  public load(event: Record<string, number | string>):void {
+  public load(event: Event):void {
     this.sioCoreLoggerService.debug('[DatabasePageComponent][load]', event);
   }
 

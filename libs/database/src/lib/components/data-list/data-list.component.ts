@@ -10,12 +10,13 @@ import { SioDatabaseState } from '../../store';
 
 @Component({
   selector: 'sio-datalist',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss'],
+  templateUrl: './data-list.component.html',
+  styleUrls: ['./data-list.component.scss'],
 })
 export class SioDatabaseListComponent implements OnInit {
   // input related to this component
-  @Input() public store: SioDatabaseState<never> | undefined = undefined;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  @Input() public store: SioDatabaseState<any> | undefined = undefined;
 
   // Wrapped input for subcomponents
 
@@ -32,7 +33,7 @@ export class SioDatabaseListComponent implements OnInit {
 
   @AttributeBoolean()
   @Input()
-  public infinite: InputBoolean = false;
+  public enableInfinite: InputBoolean = false;
 
   @AttributeBoolean()
   @Input()
@@ -48,11 +49,11 @@ export class SioDatabaseListComponent implements OnInit {
   @Input() public avatar: string | undefined;
   @Input() public thumbnail: string | undefined;
 
-  @Output() Click = new EventEmitter<Record<string, number | string>>();
-  @Output() LeftSwipe = new EventEmitter<Record<string, number | string>>();
-  @Output() RightSwipe = new EventEmitter<Record<string, number | string>>();
-  @Output() Infinite = new EventEmitter<Record<string, number | string>>();
-  @Output() Refresh = new EventEmitter<Record<string, number | string>>();
+  @Output() Click = new EventEmitter<Event>();
+  @Output() LeftSwipe = new EventEmitter<Event>();
+  @Output() RightSwipe = new EventEmitter<Event>();
+  @Output() infinite = new EventEmitter<Event>();
+  @Output() refresh = new EventEmitter<Event>();
 
   constructor(private sioCoreLoggerService: SioCoreLoggerService) {
     this.sioCoreLoggerService.debug('[SioDatabaseListComponent][constructor]');
@@ -62,30 +63,30 @@ export class SioDatabaseListComponent implements OnInit {
     this.sioCoreLoggerService.debug('[SioDatabaseListComponent][ngOnInit]');
   }
 
-  public onLeftSwipe(data: Record<string, number | string>) {
+  public onLeftSwipe(event: Event) {
     this.sioCoreLoggerService.debug(
       '[SioDatabaseListComponent][onLeftSwipe]',
-      data,
+      event,
     );
-    this.LeftSwipe.emit(data);
+    this.LeftSwipe.emit(event);
   }
-  public onRighSwipe(data: Record<string, number | string>) {
+  public onRightSwipe(event: Event) {
     this.sioCoreLoggerService.debug(
       '[SioDatabaseListComponent][onRightSwipe]',
-      data,
+      event,
     );
-    this.RightSwipe.emit(data);
+    this.RightSwipe.emit(event);
   }
 
-  public onRefresh(data: Event) {
+  public onRefresh(event: RefresherCustomEvent) {
     this.sioCoreLoggerService.debug(
       '[SioDatabaseListComponent][onRefresh]',
-      data,
+      event,
     );
     if (this.store) this.store.load();
-    this.Refresh.emit();
+    this.refresh.emit();
     setTimeout(() => {
-      (data as RefresherCustomEvent).target.complete();
+      (event as RefresherCustomEvent).target.complete();
     }, 500);
   }
 
@@ -94,7 +95,7 @@ export class SioDatabaseListComponent implements OnInit {
       '[sioDatabaseListComponent][onInfinite]',
       data,
     );
-    this.Infinite.emit({ LastId: this.store!.pop().$id });
+    this.infinite.emit(); //{ LastId: this.store.entitiesArray.pop().$id });
     if (this.store) {
       this.store.setRemoteIndex('');
       this.store.load();

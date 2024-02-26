@@ -1,15 +1,15 @@
 <sio-page [title]="'Task ('+this.taskState.localTotals+'/'+this.taskState.remoteTotals+') index' + this.taskState.remoteIndex">
-  <sio-datalist [data]="this.taskState"
+  <sio-datalist [store]="this.taskState"
     header="name"
     label="description"
     thumbnail="thumbnail"
-    LeftSwipe
-    [infinite]="this.taskState.localTotals < this.taskState.remoteTotals"
-    (sioCoreListItemLeftSwipe)="this.archive($event)"
-    (sioCoreListItemRightSwipe)="this.delete($event)"
-    (sioCoreListInfinite)="this.load($event)"
-    (sioRefreshList)="this.refresh($event)"
-  ></sio-list>
+    enableLeftSwipe
+    [enableInfinite]="this.taskState.localTotals < this.taskState.remoteTotals"
+    (leftSwipe)="this.archive($event)"
+    (rightSwipe)="this.delete($event)"
+    (infinite)="this.load($event)"
+    (refresh)="this.refresh($event)"
+  ></sio-datalist>
   <ion-fab slot="footer" vertical="bottom" horizontal="end">
     <sio-button
       (Click)="this.create()"
