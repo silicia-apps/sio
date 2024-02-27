@@ -1,9 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { SioColorType } from '../../types';
 import { SioCoreLoggerService } from '../../services/logger';
-import { AttributeBoolean } from '@angular-ru/cdk/decorators';
-import { InputBoolean } from '@angular-ru/cdk/typings';
-import { InfiniteScrollCustomEvent, RefresherCustomEvent } from '@ionic/angular';
 
 @Component({
   selector: 'sio-list',
@@ -21,16 +18,7 @@ export class SioCoreListComponent implements OnInit {
   @Input() public shape: 'compact' | 'inset' = 'compact';
   @Input() public style: 'default' | 'rounded' | 'custom' = 'default';
   @Input() public desktop = false;
-  
-  @AttributeBoolean()
-  @Input() public enableInfinite: InputBoolean = false;
-  
-  @AttributeBoolean()
-  @Input() public enableLeftSwipe: InputBoolean = false;
-  
-  @AttributeBoolean()
-  @Input() public enableRightSwipe: InputBoolean = true;
-  
+
   @Input() public header = 'name';
   @Input() public label = 'description';
   @Input() public icon: string | undefined;
@@ -39,12 +27,12 @@ export class SioCoreListComponent implements OnInit {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @Input() public data: any[] | undefined;
 
-  @Output() sioOnClickItem = new EventEmitter<Event>();
-  @Output() sioOnLeftSwipe  = new EventEmitter<Event>();
+  @Output() sioOnClickItem = new EventEmitter<CustomEvent>();
+  @Output() sioOnLeftSwipe = new EventEmitter<Event>();
   @Output() sioOnRightSwipe = new EventEmitter<Event>();
-  @Output() sioOnInfinite = new EventEmitter<InfiniteScrollCustomEvent>();
-  @Output() sioOnRefresh = new EventEmitter<RefresherCustomEvent>();
-  
+  @Output() sioOnInfinite = new EventEmitter<CustomEvent>();
+  @Output() sioOnRefresh = new EventEmitter<CustomEvent>();
+
   // @Output() public sioCoreMenuDidChange = new EventEmitter();
 
   //public sioCoreListState!: SioCoreListInterface;
@@ -74,27 +62,18 @@ export class SioCoreListComponent implements OnInit {
     return itemObject.id;
   }
 
-  public leftSwipe(data: Event) {
-    this.sioCoreLoggerService.debug('[sioCoreListItemComponent][receiveListLeftSwipe]', data);
-    this.sioOnLeftSwipe.emit(data);
+  public leftSwipe(event: Event) {
+    this.sioCoreLoggerService.debug(
+      '[sioCoreListItemComponent][leftSwipe]',
+      event,
+    );
+    this.sioOnLeftSwipe.emit(event);
   }
-  public rightSwipe(data: Event) {
-    this.sioCoreLoggerService.debug('[sioCoreListItemComponent][receiveListRightSwipe]', data);
-    this.sioOnRightSwipe.emit(data);
-  }
-
-  public refresh(event: RefresherCustomEvent) {
-    this.sioCoreLoggerService.debug('[sioCoreListItemComponent][onRefresh]', event);
-    this.sioOnRefresh.emit(event);
-    setTimeout(() => {
-      event.target.complete();
-    }, 500);
-  }
-
-  public infinite(event: InfiniteScrollCustomEvent) {
-    this.sioCoreLoggerService.debug('[sioCoreListItemComponent][receiveListInfinite]', event);
-    setTimeout(() => {
-      event.target.complete();
-    }, 500);
+  public rightSwipe(event: Event) {
+    this.sioCoreLoggerService.debug(
+      '[sioCoreListItemComponent][rightSwipe]',
+      event,
+    );
+    this.sioOnRightSwipe.emit(event);
   }
 }

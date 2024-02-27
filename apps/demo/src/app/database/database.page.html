@@ -1,21 +1,12 @@
-<sio-page [title]="'Task ('+this.taskState.localTotals+'/'+this.taskState.remoteTotals+') index' + this.taskState.remoteIndex">
-  <sio-datalist [store]="this.taskState"
-    header="name"
-    label="description"
-    thumbnail="thumbnail"
-    enableLeftSwipe
-    [enableInfinite]="this.taskState.localTotals < this.taskState.remoteTotals"
-    (leftSwipe)="this.archive($event)"
-    (rightSwipe)="this.delete($event)"
-    (infinite)="this.load($event)"
-    (refresh)="this.refresh($event)"
-  ></sio-datalist>
+<sio-page
+  [title]="'Task ('+this.taskState.localTotals+'/'+this.taskState.remoteTotals+') index' + this.taskState.remoteIndex">
+  <sio-datalist [store]="this.taskState" header="name" label="description" thumbnail="thumbnail"
+    [enableInfinite]="this.taskState.localTotals < this.taskState.remoteTotals" (sioOnLeftSwipe)="this.archive($event)"
+    (sioOnRightSwipe)="this.delete($event)" (sioOnInfinite)="this.load($event)" (sioOnRefresh)="this.refresh($event)">
+    <ion-item-option slot="right_options">Favorite</ion-item-option>
+    <ion-item-option slot="right_options" color="danger">Delete</ion-item-option>
+  </sio-datalist>
   <ion-fab slot="footer" vertical="bottom" horizontal="end">
-    <sio-button
-      (Click)="this.create()"
-      type="fab"
-      icon="add"
-      color="danger"
-    ></sio-button>
+    <sio-button (Click)="this.create()" type="fab" icon="add" color="danger"></sio-button>
   </ion-fab>
 </sio-page>

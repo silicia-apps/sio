@@ -1,8 +1,8 @@
 <ion-item-sliding [disabled]="this.disabled" #slidingItem>
   <ion-item-options *ngIf="this.rightSwipe !== null" side="start" (ionSwipe)="this.rightSwipe($event, slidingItem)">
-    <ion-item-option color="success" expandable>
-      <sio-icon slot="icon-only" name="archive"></sio-icon> 
-    </ion-item-option>
+    <div #left_options>
+      <ng-content select="[slot='left_options']"></ng-content>
+    </div>
   </ion-item-options>
   <ion-item button="this.button" [color]="this.color">
     <sio-icon *ngIf="this.icon" name="this.icon" slot="start"></sio-icon>
@@ -12,11 +12,15 @@
     <ion-thumbnail *ngIf="this.thumbnail" slot="start">
       <ion-img [alt]="this.alt" [src]="this.thumbnail" />
     </ion-thumbnail>
-    <ion-label><h2>{{ this.header | translate }}</h2><p>{{ this.label | translate }}</p></ion-label>
+    <ion-label>
+      <h3>{{ this.header | translate }}</h3>
+      <p>{{ this.label | translate }}</p>
+    </ion-label>
     <div slot="end"></div>
   </ion-item>
   <ion-item-options *ngIf="this.leftSwipe !== null" side="end" (ionSwipe)="this.leftSwipe($event, slidingItem)">
-    <ion-item-option color="danger" expandable>
-      <sio-button slot="icon-only" name="trash" (Click)="this.leftSwipe($event, slidingItem)"></sio-button>
-    </ion-item-option>
+    <div #right_options>
+      <ng-content select="[slot='right_options']"></ng-content>
+    </div>
   </ion-item-options>
+</ion-item-sliding>

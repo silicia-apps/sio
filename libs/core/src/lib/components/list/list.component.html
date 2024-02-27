@@ -1,16 +1,12 @@
-<ion-refresher slot="fixed" (ionRefresh)="this.refresh($event)">
-  <ion-refresher-content pullingIcon="chevron-down-circle-outline" pullingText="{{ 'LIST_PULL_TEXT' | translate }}"
-    refreshingSpinner="circles" refreshingText="{{ 'LIST_PULL_WAITING' | translate }}" >
-  </ion-refresher-content>
-</ion-refresher>
 <ion-list>
   <sio-item *ngFor="let item of this.data; trackItem" [$id]="item['$id']" [header]="item[this.header]"
     [label]="item[this.label]" [thumbnail]="this.thumbnail ? item[this.thumbnail] : undefined"
     [avatar]="this.avatar ? item[this.avatar] : undefined" [icon]="this.icon ? item[this.icon] : undefined"
-    (sioOnLeftSwipe)="this.leftSwipe($event)"
-    (sioOnRightSwipe)="this.rightSwipe($event)"></sio-item>
+    (sioOnLeftSwipe)="this.leftSwipe($event)" (sioOnRightSwipe)="this.rightSwipe($event)">
+    <div slot="right_options">
+      <div #right_options>
+        <ng-content select="[slot='right_options']"></ng-content>
+      </div>
+    </div>
+  </sio-item>
 </ion-list>
-<ion-infinite-scroll *ngIf="this.enableInfinite" threshold="20%" (ionInfinite)="this.infinite($event)">
-  <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="{{ 'LIST_LOADING' | translate }}">
-  </ion-infinite-scroll-content>
-</ion-infinite-scroll>

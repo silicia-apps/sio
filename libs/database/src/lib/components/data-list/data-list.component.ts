@@ -49,11 +49,11 @@ export class SioDatabaseListComponent implements OnInit {
   @Input() public avatar: string | undefined;
   @Input() public thumbnail: string | undefined;
 
-  @Output() Click = new EventEmitter<Event>();
-  @Output() LeftSwipe = new EventEmitter<Event>();
-  @Output() RightSwipe = new EventEmitter<Event>();
-  @Output() infinite = new EventEmitter<Event>();
-  @Output() refresh = new EventEmitter<Event>();
+  @Output() sioOnClick = new EventEmitter<Event>();
+  @Output() sioOnLeftSwipe = new EventEmitter<Event>();
+  @Output() sioOnRightSwipe = new EventEmitter<Event>();
+  @Output() sioOnInfinite = new EventEmitter<Event>();
+  @Output() sioOnRefresh = new EventEmitter<Event>();
 
   constructor(private sioCoreLoggerService: SioCoreLoggerService) {
     this.sioCoreLoggerService.debug('[SioDatabaseListComponent][constructor]');
@@ -63,45 +63,47 @@ export class SioDatabaseListComponent implements OnInit {
     this.sioCoreLoggerService.debug('[SioDatabaseListComponent][ngOnInit]');
   }
 
-  public onLeftSwipe(event: Event) {
+  public leftSwipe(event: Event) {
     this.sioCoreLoggerService.debug(
-      '[SioDatabaseListComponent][onLeftSwipe]',
+      '[SioDatabaseListComponent][leftSwipe]',
       event,
     );
-    this.LeftSwipe.emit(event);
+    this.sioOnLeftSwipe.emit(event);
   }
-  public onRightSwipe(event: Event) {
+  public rightSwipe(event: Event) {
     this.sioCoreLoggerService.debug(
-      '[SioDatabaseListComponent][onRightSwipe]',
+      '[SioDatabaseListComponent][rightSwipe]',
       event,
     );
-    this.RightSwipe.emit(event);
+    this.sioOnRightSwipe.emit(event);
   }
 
-  public onRefresh(event: RefresherCustomEvent) {
+  public refresh(event: CustomEvent) {
     this.sioCoreLoggerService.debug(
-      '[SioDatabaseListComponent][onRefresh]',
+      '[SioDatabaseListComponent][refresh]',
       event,
     );
-    if (this.store) this.store.load();
-    this.refresh.emit();
+    if (this.store) {
+      this.store.setRemoteIndex(0);
+      this.store.load();
+    }
+    this.sioOnRefresh.emit();
     setTimeout(() => {
       (event as RefresherCustomEvent).target.complete();
     }, 500);
   }
-
-  public onInfinite(data: Event) {
+  
+  public infinite(event: CustomEvent) {
     this.sioCoreLoggerService.debug(
-      '[sioDatabaseListComponent][onInfinite]',
-      data,
+      '[sioDatabaseListComponent][infinite]',
+      event,
     );
-    this.infinite.emit(); //{ LastId: this.store.entitiesArray.pop().$id });
     if (this.store) {
-      this.store.setRemoteIndex('');
       this.store.load();
     }
+    this.sioOnInfinite.emit(event);
     setTimeout(() => {
-      (data as InfiniteScrollCustomEvent).target.complete();
+      (event as InfiniteScrollCustomEvent).target.complete();
     }, 500);
   }
 }
