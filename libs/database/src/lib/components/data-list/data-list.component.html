@@ -5,8 +5,8 @@
   [thumbnail]="this.thumbnail"
   [enableLeftSwipe]="this.enableLeftSwipe"
   [enableInfinite]="this.enableInfinite"
-  (leftSwipe)="this.onLeftSwipe($event)"
-  (rightSwipe)="this.onRightSwipe($event)"
-  (infinite)="this.onInfinite($event)"
-  (refresh)="this.onRefresh($event)"
+  (sioOnLeftSwipe)="this.onLeftSwipe($event)"
+  (sioOnRightSwipe)="this.onRightSwipe($event)"
+  (sioOnInfinite)="this.onInfinite($event)"
+  (sioOnRefresh)="this.onRefresh($event)"
 ></sio-list>

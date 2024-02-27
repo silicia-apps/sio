@@ -93,7 +93,7 @@ export abstract class SioDatabaseState<
         this.setRemoteTotals(documents.total);
         this.setLocalTotals(this.snapshot.ids.length);
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        console.error(documents.documents.pop()!.$id!);
+        //console.error(documents.documents.pop()!.$id!);
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         this.setRemoteIndex(documents.documents.pop()!.$id!);
       }

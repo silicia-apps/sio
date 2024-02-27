@@ -39,11 +39,11 @@ export class SioCoreListComponent implements OnInit {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @Input() public data: any[] | undefined;
 
-  @Output() clickItem = new EventEmitter<Event>();
-  @Output() leftSwipe  = new EventEmitter<Event>();
-  @Output() rightSwipe = new EventEmitter<Event>();
-  @Output() infinite = new EventEmitter<InfiniteScrollCustomEvent>();
-  @Output() refresh = new EventEmitter<RefresherCustomEvent>();
+  @Output() sioOnClickItem = new EventEmitter<Event>();
+  @Output() sioOnLeftSwipe  = new EventEmitter<Event>();
+  @Output() sioOnRightSwipe = new EventEmitter<Event>();
+  @Output() sioOnInfinite = new EventEmitter<InfiniteScrollCustomEvent>();
+  @Output() sioOnRefresh = new EventEmitter<RefresherCustomEvent>();
   
   // @Output() public sioCoreMenuDidChange = new EventEmitter();
 
@@ -74,24 +74,24 @@ export class SioCoreListComponent implements OnInit {
     return itemObject.id;
   }
 
-  public onLeftSwipe(data: Event) {
+  public leftSwipe(data: Event) {
     this.sioCoreLoggerService.debug('[sioCoreListItemComponent][receiveListLeftSwipe]', data);
-    this.leftSwipe.emit(data);
+    this.sioOnLeftSwipe.emit(data);
   }
-  public onRightSwipe(data: Event) {
+  public rightSwipe(data: Event) {
     this.sioCoreLoggerService.debug('[sioCoreListItemComponent][receiveListRightSwipe]', data);
-    this.rightSwipe.emit(data);
+    this.sioOnRightSwipe.emit(data);
   }
 
-  public onRefresh(event: RefresherCustomEvent) {
+  public refresh(event: RefresherCustomEvent) {
     this.sioCoreLoggerService.debug('[sioCoreListItemComponent][onRefresh]', event);
-    this.refresh.emit(event);
+    this.sioOnRefresh.emit(event);
     setTimeout(() => {
       event.target.complete();
     }, 500);
   }
 
-  public onInfinite(event: InfiniteScrollCustomEvent) {
+  public infinite(event: InfiniteScrollCustomEvent) {
     this.sioCoreLoggerService.debug('[sioCoreListItemComponent][receiveListInfinite]', event);
     setTimeout(() => {
       event.target.complete();

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { IonItemSliding } from '@ionic/angular';
+import { IonItemSliding, ItemSlidingCustomEvent } from '@ionic/angular';
 import { SioCoreLoggerService } from '../../services/logger';
 import { AttributeBoolean } from '@angular-ru/cdk/decorators';
 import { InputBoolean } from '@angular-ru/cdk/typings';
@@ -42,7 +42,6 @@ export class SioCoreItemComponent implements OnInit {
 
   @Input() public set label(value: string) {
     if (Date.parse(value)) {
-      console.log('test' + value);
       this._label = new Date(value).toLocaleString();
     } else {
       this._label = value;
@@ -65,19 +64,11 @@ export class SioCoreItemComponent implements OnInit {
   @Input() public avatar: string | undefined = undefined;
   @Input() public icon: string | undefined = undefined;
 
-  @AttributeBoolean()
-  @Input()
-  public LeftSwipe: InputBoolean = false;
-
-  @AttributeBoolean()
-  @Input()
-  public RightSwipe: InputBoolean = false;
-
   @Input() public alt: string | undefined = undefined;
 
-  @Output() sioCoreItemClick = new EventEmitter<Event>();
-  @Output() sioCoreItemLeftSwipe = new EventEmitter<Event>();
-  @Output() sioCoreItemRightSwipe = new EventEmitter<Event>();
+  @Output() sioOnClick = new EventEmitter<Event>();
+  @Output() sioOnLeftSwipe = new EventEmitter<Event>();
+  @Output() sioOnRightSwipe = new EventEmitter<Event>();
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   constructor(private sioCoreLoggerService: SioCoreLoggerService) {}
@@ -86,28 +77,38 @@ export class SioCoreItemComponent implements OnInit {
     this.sioCoreLoggerService.debug('[SioCoreItemComponent][ngOnInit]');
   }
 
-  public async doRightSwipe(slidingItem: IonItemSliding): Promise<void> {
+  public async rightSwipe(
+    event: CustomEvent,
+    slidingItem: IonItemSliding,
+  ): Promise<void> {
     await slidingItem.closeOpened();
+    event.detail.id = this.$id;
     this.sioCoreLoggerService.debug(
-      '[SioCoreItemComponent][doLeftSwipe] You have left swiped',
-      this.$id,
+      '[SioCoreItemComponent][rightSwipe] You have left swiped',
+      event,
     );
-    this.sioCoreItemRightSwipe.emit(); //{ id: this.$id ? this.$id : '' });
+    this.sioOnRightSwipe.emit(event);
   }
 
-  public async doLeftSwipe(slidingItem: IonItemSliding): Promise<void> {
+  public async leftSwipe(
+    event: CustomEvent,
+    slidingItem: IonItemSliding,
+  ): Promise<void> {
     await slidingItem.closeOpened();
+    event.detail.id = this.$id;
     this.sioCoreLoggerService.debug(
-      '[SioCoreItemComponent][doLeftSwipe] You have left swiped',
-      this.$id,
+      '[SioCoreItemComponent][leftSwipe] You have left swiped',
+      event,
     );
-    this.sioCoreItemLeftSwipe.emit(); //{ id: this.$id ? this.$id : '' });
+    this.sioOnLeftSwipe.emit(event);
   }
 
-  public async Click(): Promise<void> {
+  public async click(event: CustomEvent): Promise<void> {
+    event.detail.id = this.$id;
     this.sioCoreLoggerService.info(
-      '[SioCoreMenuItemComponent][Click] raise event click',
+      '[SioCoreItemComponent][click] raise event click',
+      event,
     );
-    this.sioCoreItemClick.emit(); // id: this.$id ? this.$id : '' });
+    this.sioOnClick.emit(event);
   }
 }
