@@ -52,6 +52,25 @@ export const environment: SioCoreEnvironmentInterface = {
           },
         },
       },
+      right_items: {
+        id: 'right_items',
+        items: {
+          1: {
+            id: 1,
+            caption: 'trash',
+            icon: 'trash',
+            color: 'danger',
+            url: '/'
+          },
+          2: {
+            id: 2,
+            caption: 'archive',
+            icon: 'archive',
+            color: 'success',
+            url: '/'
+          }
+        }
+      }
     },
   },
 };

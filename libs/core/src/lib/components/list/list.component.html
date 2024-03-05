@@ -1,12 +1,14 @@
 <ion-list>
-  <sio-item *ngFor="let item of this.data; trackItem" [$id]="item['$id']" [header]="item[this.header]"
-    [label]="item[this.label]" [thumbnail]="this.thumbnail ? item[this.thumbnail] : undefined"
-    [avatar]="this.avatar ? item[this.avatar] : undefined" [icon]="this.icon ? item[this.icon] : undefined"
-    (sioOnLeftSwipe)="this.leftSwipe($event)" (sioOnRightSwipe)="this.rightSwipe($event)">
-    <div slot="right_options">
-      <div #right_options>
-        <ng-content select="[slot='right_options']"></ng-content>
-      </div>
-    </div>
+  <sio-item
+    *ngFor="let item of this.data; trackItem"
+    [$id]="item['$id']"
+    [header]="item[this.header]"
+    [label]="item[this.label]"
+    [thumbnail]="this.thumbnail ? item[this.thumbnail] : undefined"
+    [avatar]="this.avatar ? item[this.avatar] : undefined"
+    [icon]="this.icon ? item[this.icon] : undefined"
+    [rightMenuId]="this.rightMenuId"
+    [leftMenuId]="this.leftMenuId"
+  >
   </sio-item>
 </ion-list>

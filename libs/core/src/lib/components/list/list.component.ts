@@ -19,6 +19,10 @@ export class SioCoreListComponent implements OnInit {
   @Input() public style: 'default' | 'rounded' | 'custom' = 'default';
   @Input() public desktop = false;
 
+  @Input() public leftMenuId: string | undefined = undefined;
+  @Input() public rightMenuId: string | undefined = undefined;
+
+
   @Input() public header = 'name';
   @Input() public label = 'description';
   @Input() public icon: string | undefined;

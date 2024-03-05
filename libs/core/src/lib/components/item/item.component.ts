@@ -4,6 +4,7 @@ import { SioCoreLoggerService } from '../../services/logger';
 import { AttributeBoolean } from '@angular-ru/cdk/decorators';
 import { InputBoolean } from '@angular-ru/cdk/typings';
 import { SioColorType } from '../../types';
+import { SioCoreMenuInterface, SioCoreMenuState } from '../../store';
 
 @Component({
   selector: 'sio-item',
@@ -40,6 +41,11 @@ export class SioCoreItemComponent implements OnInit {
     return this._header;
   }
 
+  @Input()
+  public leftMenuId: string | undefined = undefined;
+  @Input()
+  public rightMenuId: string | undefined = undefined;
+
   @Input() public set label(value: string) {
     if (Date.parse(value)) {
       this._label = new Date(value).toLocaleString();
@@ -70,11 +76,18 @@ export class SioCoreItemComponent implements OnInit {
   @Output() sioOnLeftSwipe = new EventEmitter<Event>();
   @Output() sioOnRightSwipe = new EventEmitter<Event>();
 
+  public sioCoreLeftMenuState: SioCoreMenuInterface;
+
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  constructor(private sioCoreLoggerService: SioCoreLoggerService) {}
+  constructor(
+    private sioCoreLoggerService: SioCoreLoggerService,
+    public sioCoreMenuState: SioCoreMenuState) {
+      this.sioCoreLeftMenuState = this.sioCoreMenuState.snapshot[(this.leftMenuId === undefined)?'main':this.leftMenuId];
+    }
 
   ngOnInit(): void {
     this.sioCoreLoggerService.debug('[SioCoreItemComponent][ngOnInit]');
+    
   }
 
   public async rightSwipe(

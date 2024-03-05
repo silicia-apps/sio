@@ -1,8 +1,15 @@
 <ion-item-sliding [disabled]="this.disabled" #slidingItem>
-  <ion-item-options *ngIf="this.rightSwipe !== null" side="start" (ionSwipe)="this.rightSwipe($event, slidingItem)">
-    <div #left_options>
-      <ng-content select="[slot='left_options']"></ng-content>
-    </div>
+  <ion-item-options *ngIf="this.leftMenuId !== undefined" side="start">
+    <ion-item-options>
+      <ion-item-option
+        *ngFor="
+          let item of this.sioCoreLeftMenuState.items | keyvalue;
+          
+        "
+        [color]="item.value.color"
+        >{{ item.value.caption }}</ion-item-option
+      >
+    </ion-item-options>
   </ion-item-options>
   <ion-item button="this.button" [color]="this.color">
     <sio-icon *ngIf="this.icon" name="this.icon" slot="start"></sio-icon>
@@ -18,9 +25,16 @@
     </ion-label>
     <div slot="end"></div>
   </ion-item>
-  <ion-item-options *ngIf="this.leftSwipe !== null" side="end" (ionSwipe)="this.leftSwipe($event, slidingItem)">
-    <div #right_options>
-      <ng-content select="[slot='right_options']"></ng-content>
-    </div>
+  <ion-item-options *ngIf="this.leftMenuId !== undefined" side="end">
+    <ion-item-options>
+      <ion-item-option
+        *ngFor="
+          let item of this.sioCoreLeftMenuState.items | keyvalue;
+          
+        "
+        [color]="item.value.color"
+        >{{ item.value.caption }}</ion-item-option
+      >
+    </ion-item-options>
   </ion-item-options>
 </ion-item-sliding>

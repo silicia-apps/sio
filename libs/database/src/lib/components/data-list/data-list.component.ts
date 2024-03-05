@@ -35,19 +35,14 @@ export class SioDatabaseListComponent implements OnInit {
   @Input()
   public enableInfinite: InputBoolean = false;
 
-  @AttributeBoolean()
-  @Input()
-  public enableLeftSwipe: InputBoolean;
-
-  @AttributeBoolean()
-  @Input()
-  public enableRightSwipe: InputBoolean = true;
-
   @Input() public header = 'name';
   @Input() public label = 'description';
   @Input() public icon: string | undefined;
   @Input() public avatar: string | undefined;
   @Input() public thumbnail: string | undefined;
+
+  @Input() public leftMenuId: string | undefined = undefined;
+  @Input() public rightMenuId: string | undefined = undefined;
 
   @Output() sioOnClick = new EventEmitter<Event>();
   @Output() sioOnLeftSwipe = new EventEmitter<Event>();

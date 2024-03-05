@@ -140,7 +140,7 @@ export class SioCoreModule extends EnsureModuleLoadedOnceGuard {
       ngModule: SioCoreModule,
       providers: [
         { provide: SioCoreEnvironmentConfig, useValue: config },
-        { provide: ErrorHandler, useClass: SioCoreErrorHandlerService },
+       // { provide: ErrorHandler, useClass: SioCoreErrorHandlerService },
       ],
     };
   }

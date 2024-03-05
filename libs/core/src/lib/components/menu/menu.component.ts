@@ -11,7 +11,7 @@ import { SioCoreAppComponentState } from '../app/store';
   styleUrls: ['./menu.component.scss'],
 })
 export class SioCoreMenuComponent implements OnInit {
-  @Input() public menuID = 'main';
+  @Input() public menuID : string | undefined = undefined;
   @Input() public lines: 'full' | 'inset' | 'none' = 'none';
   //@Input() public shape: 'line' | 'dot' | 'rounded' = 'line';
   @Input() public position: 'side' | 'bottom' | 'top' | 'none' = 'side';
@@ -21,6 +21,7 @@ export class SioCoreMenuComponent implements OnInit {
   @Input() public shape: 'compact' | 'inset' = 'compact';
   @Input() public style: 'default' | 'rounded' | 'custom' = 'default';
   @Input() public desktop = false;
+  @Input() public type : 'default' | 'swipe' = 'default';
 
   @Output() public sioCoreMenuDidChange = new EventEmitter();
   @Output() public sioCoreMenuWillChange = new EventEmitter();
@@ -35,7 +36,7 @@ export class SioCoreMenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.sioCoreLoggerService.debug('[sioCoreMenuComponent][ngOnInit]', this.menuID);
-    this.sioCoreMenuState = this._sioCoreMenuState.snapshot[this.menuID];
+    this.sioCoreMenuState = this._sioCoreMenuState.snapshot[(this.menuID === undefined)?'main':this.menuID];
     this.sioCoreLoggerService.debug('[sioCoreMenuComponent][ngOnInit]', this.sioCoreMenuState);
   }
 

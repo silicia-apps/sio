@@ -5,15 +5,9 @@
 </ion-refresher>
 <sio-list [data]="this.store!.selectAll()" [header]="this.header" [label]="this.label" [thumbnail]="this.thumbnail"
   (sioOnLeftSwipe)="this.leftSwipe($event)" (sioOnRightSwipe)="this.rightSwipe($event)"
-  (sioOnInfinite)="this.infinite($event)" (sioOnRefresh)="this.refresh($event)">
-  <ion-item-option slot="left_options">Favorite</ion-item-option>
-  <ion-item-option slot="left_options" color="danger">Delete</ion-item-option>
-  <div #left_options>
-    <ng-content select="[slot='left_options']"></ng-content>
-  </div>
-  <div #right_options>
-    <ng-content select="[slot='right_options']"></ng-content>
-  </div>
+  (sioOnInfinite)="this.infinite($event)" (sioOnRefresh)="this.refresh($event)"
+  [leftMenuId]="this.leftMenuId"
+  [rightMenuId]="this.rightMenuId">
 </sio-list>
 <ion-infinite-scroll *ngIf="this.infinite !== null && this.store?.localTotals !== this.store?.remoteTotals"
   threshold="20%" (ionInfinite)="this.infinite($event)">
