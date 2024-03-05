@@ -33,6 +33,10 @@ export class SioCoreButtonComponent {
 
   @AttributeBoolean()
   @Input()
+  public clear: InputBoolean = false;
+
+  @AttributeBoolean()
+  @Input()
   public full: InputBoolean = false;
 
   @AttributeBoolean()

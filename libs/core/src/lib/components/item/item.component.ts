@@ -76,18 +76,21 @@ export class SioCoreItemComponent implements OnInit {
   @Output() sioOnLeftSwipe = new EventEmitter<Event>();
   @Output() sioOnRightSwipe = new EventEmitter<Event>();
 
-  public sioCoreLeftMenuState: SioCoreMenuInterface;
+  public sioCoreLeftMenuState: SioCoreMenuInterface | undefined = undefined;
+  public sioCoreRightMenuState: SioCoreMenuInterface | undefined = undefined;
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   constructor(
     private sioCoreLoggerService: SioCoreLoggerService,
     public sioCoreMenuState: SioCoreMenuState) {
-      this.sioCoreLeftMenuState = this.sioCoreMenuState.snapshot[(this.leftMenuId === undefined)?'main':this.leftMenuId];
+      
+      
     }
 
   ngOnInit(): void {
     this.sioCoreLoggerService.debug('[SioCoreItemComponent][ngOnInit]');
-    
+    this.sioCoreLeftMenuState = this.sioCoreMenuState.snapshot[(this.leftMenuId === undefined)?'main':this.leftMenuId];
+    this.sioCoreRightMenuState = this.sioCoreMenuState.snapshot[(this.rightMenuId === undefined)?'main':this.rightMenuId];
   }
 
   public async rightSwipe(

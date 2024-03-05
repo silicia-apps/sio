@@ -3,7 +3,7 @@
   <sio-datalist [store]="this.taskState" header="name" label="description" thumbnail="thumbnail"
     [enableInfinite]="this.taskState.localTotals < this.taskState.remoteTotals"
     (sioOnInfinite)="this.load($event)" (sioOnRefresh)="this.refresh($event)"
-    rightMenuId="right_items"
+    rightMenuId="left_items"
     leftMenuId="right_items"
   >
   </sio-datalist>

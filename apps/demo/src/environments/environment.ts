@@ -23,7 +23,7 @@ export const environment: SioCoreEnvironmentInterface = {
   ],
   backend: {
     apiEndpoint: 'https://cloud.appwrite.io/v1',
-    projectID: '6557f73331ab50cb50b6'
+    projectID: '6557f73331ab50cb50b6',
   },
   app: {
     title: 'Demo App',
@@ -38,7 +38,7 @@ export const environment: SioCoreEnvironmentInterface = {
         items: {
           1: { id: 1, icon: 'home', url: 'home' },
           2: { id: 2, icon: 'folder', url: 'storage' },
-          3: { id: 3, icon: 'archive', url: 'database' }
+          3: { id: 3, icon: 'archive', url: 'database' },
         },
       },
       logged: {
@@ -52,25 +52,30 @@ export const environment: SioCoreEnvironmentInterface = {
           },
         },
       },
-      right_items: {
-        id: 'right_items',
+      left_items: {
+        id: 'left_items',
         items: {
           1: {
             id: 1,
             caption: 'trash',
             icon: 'trash',
             color: 'danger',
-            url: '/'
+            url: '/',
           },
-          2: {
-            id: 2,
+        },
+      },
+      right_items: {
+        id: 'right_items',
+        items: {
+          1: {
+            id: 1,
             caption: 'archive',
-            icon: 'archive',
+            icon: 'checkmark',
             color: 'success',
-            url: '/'
-          }
-        }
-      }
+            url: '/',
+          },
+        },
+      },
     },
   },
 };
