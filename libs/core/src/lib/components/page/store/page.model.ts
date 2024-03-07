@@ -1,7 +1,9 @@
+import { InputBoolean } from '@angular-ru/cdk/typings';
+
 export interface SioCorePageComponentInterface {
-  toolbar?: boolean;
+  toolbar?: InputBoolean;
   title?: string;
-  back?: boolean;
-  menu?: boolean;
-  search?: boolean;
+  back?: InputBoolean;
+  menu?: InputBoolean;
+  search?: InputBoolean;
 }
