@@ -13,7 +13,7 @@ import {
 import { NgxsDataRepository } from '@angular-ru/ngxs/repositories';
 import { SioCoreMenuState } from '../../menu/store/menu.state';
 import { SioCoreTabsState } from '../../tab/store/tabs.state';
-import { SioCorePageComponentState } from '../../page';
+import { SioCorePagesComponentState } from '../../page';
 import { SioSideMenuType } from '../../../types';
 
 const APP_STATE_TOKEN = new StateToken<SioCoreAppComponentStateModel>('app');
@@ -52,13 +52,12 @@ const APP_STATE_TOKEN = new StateToken<SioCoreAppComponentStateModel>('app');
     data: [],
     loading: { show: false, message: '' },
   } as SioCoreAppComponentStateModel,
-  children: [SioCoreMenuState, SioCoreTabsState, SioCorePageComponentState],
+  children: [SioCoreMenuState, SioCoreTabsState, SioCorePagesComponentState],
 })
 @Injectable()
 export class SioCoreAppComponentState extends NgxsDataRepository<SioCoreAppComponentStateModel> {
   constructor(private translateService: TranslateService) {
     super();
-
   }
   @Selector()
   static loading(state: SioCoreAppComponentStateModel) {

@@ -19,6 +19,9 @@ import { SioColorType } from '../../types';
 export class SioCorePageComponent implements OnInit {
   @Input() title: string;
   @Input() color: SioColorType;
+  @Input() pageId: string | undefined;
+
+  public page: SioCorePageComponentInterface | null = null;
 
   @AttributeBoolean() @Input() set toolbar(value: InputBoolean) {
     if (this.page) {
@@ -47,7 +50,6 @@ export class SioCorePageComponent implements OnInit {
     this.sioCoreAppComponentState.SetFullmode(value as boolean);
   }
 
-  
   public split: boolean;
 
   constructor(
@@ -71,7 +73,8 @@ export class SioCorePageComponent implements OnInit {
 
   ngOnInit(): void {
     this.sioLoggerService.debug(`[sioCorePageComponentState][ngOnInit]`);
-    this.page = this.sioCorePagesComponentState.selectOne('pageId');
+    if (this.pageId)
+      this.page = this.sioCorePagesComponentState.selectOne(this.pageId);
     //this.split$.subscribe((value) => { this.split = value});
   }
 }
