@@ -13,7 +13,6 @@ import { SioCoreMenuInterface } from '../../../interfaces';
 })
 @Injectable()
 export class SioCoreMenuState extends NgxsDataEntityCollectionsRepository<SioCoreMenuInterface> {
-  
   @DataAction()
   public go(url: string) {
     this.dispatch(new Navigate([url]) as unknown as ActionType);

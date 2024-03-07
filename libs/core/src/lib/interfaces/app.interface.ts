@@ -9,7 +9,7 @@ export interface SioCoreAppCompomentInterface {
     avaibles?: string[];
   };
   layout?: {
-    left_panel?: { 
+    left_panel?: {
       type?: SioSideMenuType;
       menu?: string | undefined;
     };
