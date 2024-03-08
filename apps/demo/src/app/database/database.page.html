@@ -1,4 +1,5 @@
 <sio-page
+  id="database"
   [title]="'Task ('+this.taskState.localTotals+'/'+this.taskState.remoteTotals+') index' + this.taskState.remoteIndex">
   <sio-datalist [store]="this.taskState" header="name" label="description" thumbnail="thumbnail"
     [enableInfinite]="this.taskState.localTotals < this.taskState.remoteTotals"

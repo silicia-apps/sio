@@ -17,9 +17,9 @@ import { SioColorType } from '../../types';
   styleUrls: ['./page.component.scss'],
 })
 export class SioCorePageComponent implements OnInit {
-  @Input() title: string;
+  @Input() title;
   @Input() color: SioColorType;
-  @Input() pageId: string | undefined;
+  @Input() id: string | undefined;
 
   public page: SioCorePageComponentInterface | null = null;
 
@@ -58,9 +58,10 @@ export class SioCorePageComponent implements OnInit {
     public sioCoreAppComponentState: SioCoreAppComponentState,
     public sioCorePagesComponentState: SioCorePagesComponentState,
   ) {
-    //this.sioCoreAppComponentState.SetFullmode(false);
     this.toolbar = true;
-    this.title = 'PAGE_TITLE';
+    if (this.id) {
+      this.title = this.id;
+    }
     this.menu = false;
     this.back = false;
     this.search = false;
@@ -73,8 +74,21 @@ export class SioCorePageComponent implements OnInit {
 
   ngOnInit(): void {
     this.sioLoggerService.debug(`[sioCorePageComponentState][ngOnInit]`);
-    if (this.pageId)
-      this.page = this.sioCorePagesComponentState.selectOne(this.pageId);
-    //this.split$.subscribe((value) => { this.split = value});
+    if (this.id) this.page = this.sioCorePagesComponentState.selectOne(this.id);
+    if (!this.page) {
+      this.page = {
+        id: this.id as string,
+        title: this.title,
+        color: this.color,
+        toolbar: this.toolbar,
+        menu: this.menu,
+        back: this.back,
+        search: this.search,
+      };
+      this.sioCorePagesComponentState.addOne(
+        this.page as SioCorePageComponentInterface,
+      );
+    }
+    // this.split$.subscribe((value) => { this.split = value});
   }
 }

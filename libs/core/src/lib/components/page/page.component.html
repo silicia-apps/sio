@@ -4,14 +4,14 @@
   [translucent]="true"
   class="ion-no-border"
 >
-  <ion-toolbar [color]="this.color">
+  <ion-toolbar [color]="this.page?.color!">
     <ion-buttons slot="start">
       <ng-container>
         <ion-menu-button menu="start"></ion-menu-button>
         <ion-back-button *ngIf="this.back"></ion-back-button>
       </ng-container>
     </ion-buttons>
-    <ion-title>{{ this.title | translate }}</ion-title>
+    <ion-title>{{ this.page?.title! | translate }}</ion-title>
     <ion-buttons slot="end">
       <ng-content select="[slot='end']"> </ng-content>
     </ion-buttons>
@@ -26,9 +26,9 @@
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true" class="ion-padding">
-  <ion-header *ngIf="this.toolbar && !this.fullmode" collapse="condense">
+  <ion-header *ngIf="this.page?.toolbar!" collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">{{ this.title | translate }}</ion-title>
+      <ion-title size="large">{{ this.page?.title! | translate }}</ion-title>
     </ion-toolbar>
   </ion-header>
   <div #content>
@@ -36,7 +36,7 @@
   </div>
   <ng-container *ngIf="!content.hasChildNodes()">
     <div id="container">
-      <h1>{{ 'PAGE_COMPONENT_DEFAULT_1' | translate }} {{ this.title | translate }}</h1>
+      <h1>{{ 'PAGE_COMPONENT_DEFAULT_1' | translate }} {{ this.page?.title! | translate }}</h1>
       <strong>{{ 'PAGE_COMPONENT_DEFAULT_2' | translate }}</strong>
       <p>
         {{ 'PAGE_COMPONENT_LINK' | translate }}
