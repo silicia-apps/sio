@@ -12,6 +12,7 @@
     <ion-icon
       *ngIf="this.icon"
       [name]="this.icon"
+      [size]="this.size"
       [slot]="(this.display_icon === 'left')?'start':(this.display_icon === 'right')?'end':(this.display_icon === 'only')?'icon-only':'left'"
     ></ion-icon>
     <ng-content *ngIf="this.display_icon !== 'only'"></ng-content>
