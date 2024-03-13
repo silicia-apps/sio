@@ -17,11 +17,22 @@ import { SioColorType } from '../../types';
   styleUrls: ['./page.component.scss'],
 })
 export class SioCorePageComponent implements OnInit {
-  @Input() title;
   @Input() color: SioColorType;
   @Input() id: string | undefined;
 
   public page: SioCorePageComponentInterface | null = null;
+
+  @Input() set title(value: string) {
+    this.sioCorePagesComponentState.updateOne({
+      id: this.id as string,
+      changes: { title: value },
+    });
+  }
+
+  get title(): string | undefined {
+    return this.sioCorePagesComponentState.selectOne(this.page?.id as string)
+      ?.title;
+  }
 
   @AttributeBoolean() @Input() set toolbar(value: InputBoolean) {
     if (this.page) {
