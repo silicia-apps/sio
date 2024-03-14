@@ -20,8 +20,8 @@
       <h3>{{ this.header | translate }}</h3>
       <p>{{ this.label | translate }}</p>
     </ion-label>
-    <div slot="end">
-      <sio-button clear icon="ellipsis-vertical" display_icon="only"></sio-button>
+    <div class="metadata-end-wrapper" slot="end">
+      <sio-button clear round display_icon="only" size="small" icon="ellipsis-vertical"></sio-button>
     </div>
   </ion-item>
   @if(this.rightMenuId) {
