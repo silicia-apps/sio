@@ -1,8 +1,8 @@
 import { Injectable, Inject } from '@angular/core';
 import { SioAppwriteClientService } from './client.service';
-import { Account, Avatars, Models } from 'appwrite';
+import { Account, Avatars, Models, OAuthProvider } from 'appwrite';
 
-import { 
+import {
   SioAuthUserInterface,
   SioAuthSessionInterface,
   SioAuthPluginServiceInterface,
@@ -29,14 +29,17 @@ export class SioAppwriteUserService implements SioAuthPluginServiceInterface {
     private sioAppwriteClientService: SioAppwriteClientService,
   ) {
     this.loggerService.info('test');
-    this.sioAppwriteClientService.Connect(this.config.apiEndpoint as string, this.config.projectID as string);
+    this.sioAppwriteClientService.Connect(
+      this.config.apiEndpoint as string,
+      this.config.projectID as string,
+    );
     this.account = new Account(this.sioAppwriteClientService.client);
     this.avatars = new Avatars(this.sioAppwriteClientService.client);
   }
 
   private sioAuthUser(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    data: Models.User<any>
+    data: Models.User<any>,
   ): SioAuthUserInterface {
     return {
       uid: data.$id,
@@ -62,9 +65,7 @@ export class SioAppwriteUserService implements SioAuthPluginServiceInterface {
     };
   }
 
-  private sioAuthSession(
-    data: Models.Session
-  ): SioAuthSessionInterface {
+  private sioAuthSession(data: Models.Session): SioAuthSessionInterface {
     return {
       id: data.$id,
       createdAt: data.$createdAt,
@@ -106,18 +107,18 @@ export class SioAppwriteUserService implements SioAuthPluginServiceInterface {
   async createAnonymousSession(): Promise<SioAuthSessionInterface | null> {
     try {
       this.loggerService.info(
-        '[SioAppwriteUserService][createAnonymousSession] - try to create anonymous session'
+        '[SioAppwriteUserService][createAnonymousSession] - try to create anonymous session',
       );
       const session = await this.account.createAnonymousSession();
       this.loggerService.debug(
         '[SioAppwriteUserService][createAnonymousSession] - anonymous session created',
-        session
+        session,
       );
       return this.sioAuthSession(session);
     } catch (e) {
       this.loggerService.error(
         '[SioAppwriteUserService][createAnonymousSession] - Get Error on Create anonymous session',
-        e as Error
+        e as Error,
       );
     }
     return null;
@@ -125,24 +126,24 @@ export class SioAppwriteUserService implements SioAuthPluginServiceInterface {
 
   public socket(
     session: string,
-    user: string
+    user: string,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ): Observable<any> {
     this.loggerService.info(
       `[SioAppwriteUserService][socket] subscribe socket for account.${user} channel`,
       session,
-      user
+      user,
     );
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     return new Observable((observer) => {
       this.sioAppwriteClientService.client.subscribe('account', (data) => {
         this.loggerService.debug(
           `[SioAppwriteUserService][socket] Detected Session change`,
-          data
+          data,
         );
         if (data.events.includes(`users.${user}.sessions.${session}.delete`)) {
           this.loggerService.info(
-            `[SioAppwriteUserService][session] Session ${session} deleted of user ${user}`
+            `[SioAppwriteUserService][session] Session ${session} deleted of user ${user}`,
           );
           observer.next({ channel: 'authentication', value: 'logout' });
         }
@@ -153,12 +154,12 @@ export class SioAppwriteUserService implements SioAuthPluginServiceInterface {
   async getSession(): Promise<SioAuthSessionInterface> {
     try {
       this.loggerService.info(
-        '[SioAppwriteUserService][getSession] - request session to backend'
+        '[SioAppwriteUserService][getSession] - request session to backend',
       );
       const session: Models.Session = await this.account.getSession('current');
       this.loggerService.debug(
         '[SioAppwriteUserService][getSession] - session data:',
-        session
+        session,
       );
       return this.sioAuthSession(session);
     } catch (e: unknown) {
@@ -168,13 +169,13 @@ export class SioAppwriteUserService implements SioAuthPluginServiceInterface {
   async getUser(): Promise<SioAuthUserInterface> {
     try {
       this.loggerService.info(
-        '[SioAppwriteUserService][getUser] - request account to backend'
+        '[SioAppwriteUserService][getUser] - request account to backend',
       );
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const user: Models.User<any> = await this.account.get();
       this.loggerService.debug(
         '[SioAppwriteUserService][getUser] - user data:',
-        user
+        user,
       );
       return this.sioAuthUser(user);
     } catch (e: unknown) {
@@ -184,20 +185,20 @@ export class SioAppwriteUserService implements SioAuthPluginServiceInterface {
 
   async createSessionWithCredentials(
     username: string,
-    password: string
+    password: string,
   ): Promise<SioAuthSessionInterface | null> {
     try {
       this.loggerService.info(
-        `[SioAppwriteUserService][createSessionWithCredentials] - request login for ${username}`
+        `[SioAppwriteUserService][createSessionWithCredentials] - request login for ${username}`,
       );
-      const session = await this.account.createEmailSession(username, password);
+      const session = await this.account.createSession(username, password);
       this.loggerService.info(
-        `[SioAppwriteUserService][createSessionWithCredentials] - Logged`
+        `[SioAppwriteUserService][createSessionWithCredentials] - Logged`,
       );
       return this.sioAuthSession(session);
     } catch (e) {
       this.loggerService.error(
-        '[SioAppwriteUserService][createSessionWithCredentials] - Error Logging in'
+        '[SioAppwriteUserService][createSessionWithCredentials] - Error Logging in',
       );
       throw this.throwError(e as Error);
     }
@@ -207,35 +208,35 @@ export class SioAppwriteUserService implements SioAuthPluginServiceInterface {
   async signup(email: string, password: string, name: string): Promise<any> {
     try {
       this.loggerService.info(
-        `[SioAppwriteUserService][signup] - signup for user ${email}`
+        `[SioAppwriteUserService][signup] - signup for user ${email}`,
       );
       name = name ? name : email;
       const account = await this.account.create(
         'unique()',
         email,
         password,
-        name
+        name,
       );
       this.loggerService.info(
-        `[SioAppwriteUserService][signup] - User created successfully`
+        `[SioAppwriteUserService][signup] - User created successfully`,
       );
       this.loggerService.debug(
-        `[SiliciaAppwriteBackendService][signup] - account: ${account}`
+        `[SiliciaAppwriteBackendService][signup] - account: ${account}`,
       );
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (e: any) {
       this.loggerService.error(
-        `[SiliciaAppwriteBackendService][signup] - Error creating Account`
+        `[SiliciaAppwriteBackendService][signup] - Error creating Account`,
       );
       throw this.throwError(e as Error);
     }
   }
 
-  oAuth2Login(provider: string): void {
+  oAuth2Login(provider: OAuthProvider): void {
     this.account.createOAuth2Session(
       provider,
       'http://localhost:4200/home',
-      'http://localhost:4200/auth/login'
+      'http://localhost:4200/auth/login',
     );
   }
 
@@ -265,7 +266,7 @@ export class SioAppwriteUserService implements SioAuthPluginServiceInterface {
         error.message = 'NO_NETWORK';
         break;
       case 'Invalid credentials. Please check the email and password.':
-        error.message = "BACKEND_AUTH_INVALID_CREDENTIALS";
+        error.message = 'BACKEND_AUTH_INVALID_CREDENTIALS';
         break;
       default:
         error.message = e.message;
