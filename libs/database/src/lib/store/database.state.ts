@@ -1,5 +1,6 @@
 import { EntityIdType } from '@angular-ru/cdk/entity';
 import { Computed, DataAction } from '@angular-ru/ngxs/decorators';
+import { NgxsDataAfterReset, NgxsDataDoCheck } from '@angular-ru/ngxs/typings';
 import { NgxsDataEntityCollectionsRepository } from '@angular-ru/ngxs/repositories';
 import { Injectable } from '@angular/core';
 import { SioDatabaseDocumentInterface } from '../models';
@@ -7,23 +8,26 @@ import { SioDatabaseService } from '../services';
 import { SioCoreLoggerService } from '@silicia/core';
 import { SioDatabaseDocumentListInterface } from '../interfaces';
 import { Query } from '../helpers';
+import { Subscription } from 'rxjs';
 
 @Injectable()
-export abstract class SioDatabaseState<
-  T extends SioDatabaseDocumentInterface,
-> extends NgxsDataEntityCollectionsRepository<
-  T,
-  EntityIdType,
-  {
-    remoteTotals: number;
-    localTotals: number;
-    databaseId: string;
-    collectionId: string;
-    remoteIndex: string | number;
-    queries: string[];
-  }
-> {
+export abstract class SioDatabaseState<T extends SioDatabaseDocumentInterface>
+  extends NgxsDataEntityCollectionsRepository<
+    T,
+    EntityIdType,
+    {
+      remoteTotals: number;
+      localTotals: number;
+      databaseId: string;
+      collectionId: string;
+      remoteIndex: string | number;
+      queries: string[];
+    }
+  >
+  implements NgxsDataDoCheck, NgxsDataAfterReset
+{
   public override primaryKey = '$id';
+  private subcriptions: Subscription | undefined;
 
   constructor(
     private sioCoreLoggerService: SioCoreLoggerService,
@@ -32,21 +36,33 @@ export abstract class SioDatabaseState<
     super();
   }
 
-  override ngxsAfterBootstrap(): void {
-    this.sioDatabaseService.subscribe().subscribe((event) => {
-      this.sioCoreLoggerService.debug(
-        `[SioDatabaseState][DataSocket] received events`,
-        event
-      );
-      const item = this.selectOne(event.payload.$id);
-      if (item) {
-        console.debug('[SioDatabaseState][DataSocket] items in list, updated');
-        this.setEntityOne(event.payload);
-      } else {
-        console.debug('[SioDatabaseState][DataSocket] items not in list, do anything');
-      }
-      this.load();
-    });
+  public ngxsDataDoCheck(): void {
+    {
+      this.subcriptions = this.sioDatabaseService
+        .subscribe()
+        .subscribe((event) => {
+          this.sioCoreLoggerService.debug(
+            `[SioDatabaseState][DataSocket] received events`,
+            event,
+          );
+          const item = this.selectOne(event.payload.$id);
+          if (item) {
+            console.debug(
+              '[SioDatabaseState][DataSocket] items in list, updated',
+            );
+            this.setEntityOne(event.payload);
+          } else {
+            console.debug(
+              '[SioDatabaseState][DataSocket] items not in list, do anything',
+            );
+          }
+          this.load();
+        });
+    }
+  }
+
+  public ngxsDataAfterReset(): void {
+    this.subcriptions?.unsubscribe();
   }
 
   @DataAction()
@@ -76,7 +92,11 @@ export abstract class SioDatabaseState<
       if (queries) this.setQueries(queries);
       if (this.snapshot.databaseId && this.snapshot.collectionId) {
         if (this.snapshot.queries) {
-          if (this.snapshot.remoteIndex) queries= [...this.snapshot.queries,Query.cursorAfter(this.snapshot.remoteIndex as string), ]
+          if (this.snapshot.remoteIndex)
+            queries = [
+              ...this.snapshot.queries,
+              Query.cursorAfter(this.snapshot.remoteIndex as string),
+            ];
         }
         const documents = <SioDatabaseDocumentListInterface<T>>(
           await this.sioDatabaseService.query(
