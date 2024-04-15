@@ -191,7 +191,7 @@ export class SioAppwriteUserService implements SioAuthPluginServiceInterface {
       this.loggerService.info(
         `[SioAppwriteUserService][createSessionWithCredentials] - request login for ${username}`,
       );
-      const session = await this.account.createSession(username, password);
+      const session = await this.account.createEmailPasswordSession(username, password);
       this.loggerService.info(
         `[SioAppwriteUserService][createSessionWithCredentials] - Logged`,
       );
