@@ -23,6 +23,7 @@ export class SioCorePageComponent implements OnInit {
   public page: SioCorePageComponentInterface | null = null;
 
   @Input() set title(value: string) {
+    this.sioLoggerService.debug(`[sioCorePageComponentState][set title]`, value);
     this.sioCorePagesComponentState.updateOne({
       id: this.id as string,
       changes: { title: value },
@@ -78,6 +79,7 @@ export class SioCorePageComponent implements OnInit {
     this.search = false;
     this.split = false;
     this.elementRef.nativeElement.classList.add('ion-page');
+    this.ngOnInit();
     //this.sioCoreAppComponentState.setSidemenu('pricetags');
   }
 
@@ -87,6 +89,7 @@ export class SioCorePageComponent implements OnInit {
     this.sioLoggerService.debug(`[sioCorePageComponentState][ngOnInit]`);
     if (this.id) this.page = this.sioCorePagesComponentState.selectOne(this.id);
     if (!this.page) {
+      this.sioLoggerService.debug(`[sioCorePageComponentState][ngOnInit] page ${this.page} not found in store`);
       this.page = {
         id: this.id as string,
         title: this.title,
