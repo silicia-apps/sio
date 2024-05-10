@@ -12,6 +12,7 @@ export interface SioCoreFormComponentInputInterface {
     | 'month'
     | 'number'
     | 'password'
+    | 'password-withtoogle'
     | 'search'
     | 'tel'
     | 'text'

@@ -13,7 +13,7 @@ import { SioCoreFormComponentState, SioCoreFormComponentStateModel } from '@sili
         type: 'email',
         required: true,
       },
-      { name: 'password', type: 'password', required: true },
+      { name: 'password', type: 'password-withtoogle', required: true },
     ],
   },
 })
