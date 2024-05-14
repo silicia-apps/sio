@@ -1,8 +1,8 @@
-:host[color=primary]{
-  --sio-color-menu-item: var(--ion-color-primary); 
+:host[color='primary'] {
+  --sio-color-menu-item: var(--ion-color-primary);
   --sio-color-menu-item-selected: var(--ion-color-primary-tint);
   --sio-color-menu-item-badge: var(--ion-color-warning);
-  
+
   ion-item.rounded {
     border-radius: 0 50px 50px 0;
   }
@@ -43,10 +43,10 @@
   }
 
   ion-item.selected {
-    --background: var(--sio-color-menu-item-selected); 
+    --background: var(--sio-color-menu-item-selected);
   }
 
   ion-badge {
     --background: var(--sio-color-menu-item-badge);
-  }  
+  }
 }
