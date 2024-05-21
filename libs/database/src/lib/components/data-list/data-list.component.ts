@@ -56,6 +56,10 @@ export class SioDatabaseListComponent implements OnInit {
 
   ngOnInit(): void {
     this.sioCoreLoggerService.debug('[SioDatabaseListComponent][ngOnInit]');
+    if (this.store) {
+      this.store.setRemoteIndex(0);
+      this.store.load();
+    }
   }
 
   public leftSwipe(event: Event) {
