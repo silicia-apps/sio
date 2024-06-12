@@ -48,7 +48,7 @@
     "@angular/cli": "~17.3.0",
     "@angular/compiler-cli": "17.3.9",
     "@angular/language-service": "17.3.9",
-    "@compodoc/compodoc": "^1.1.24",
+    "@compodoc/compodoc": "^1.1.25",
     "@ngxs/devtools-plugin": "^3.8.1",
     "@nx/cypress": "19.0.4",
     "@nx/eslint": "19.0.4",
