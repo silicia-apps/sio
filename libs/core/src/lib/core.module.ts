@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 import { IonicModule } from '@ionic/angular';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -51,83 +51,63 @@ export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
 
-@NgModule({
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  declarations: [...SioCoreComponents],
-  imports: [
-    HttpClientModule,
-    CommonModule,
-    FormsModule,
-    RouterModule,
-    MaskitoModule,
-    ReactiveFormsModule,
-    IonicModule,
-    ScrollingModule,
-    TranslateModule.forChild({
-      extend: true,
-      loader: {
-        provide: TranslateLoader,
-        useFactory: createTranslateLoader,
-        deps: [HttpClient],
-      },
-    }),
-    NgxsFormPluginModule,
-  ],
-  exports: [...SioCoreComponents, IonicModule, TranslateModule],
-})
+@NgModule({ schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    declarations: [...SioCoreComponents],
+    exports: [...SioCoreComponents, IonicModule, TranslateModule], imports: [CommonModule,
+        FormsModule,
+        RouterModule,
+        MaskitoModule,
+        ReactiveFormsModule,
+        IonicModule,
+        ScrollingModule,
+        TranslateModule.forChild({
+            extend: true,
+            loader: {
+                provide: TranslateLoader,
+                useFactory: createTranslateLoader,
+                deps: [HttpClient],
+            },
+        }),
+        NgxsFormPluginModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class SioCommonModule {
   
 }
 
-@NgModule({
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  declarations: [],
-  imports: [
-    HttpClientModule,
-    CommonModule,
-    FormsModule,
-    RouterModule,
-    ReactiveFormsModule,
-    IonicModule,
-    TranslateModule.forChild({
-      extend: true,
-      loader: {
-        provide: TranslateLoader,
-        useFactory: createTranslateLoader,
-        deps: [HttpClient],
-      },
-    }),
-    NgxsFormPluginModule,
-  ],
-  exports: [IonicModule, TranslateModule],
-})
+@NgModule({ schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    declarations: [],
+    exports: [IonicModule, TranslateModule], imports: [CommonModule,
+        FormsModule,
+        RouterModule,
+        ReactiveFormsModule,
+        IonicModule,
+        TranslateModule.forChild({
+            extend: true,
+            loader: {
+                provide: TranslateLoader,
+                useFactory: createTranslateLoader,
+                deps: [HttpClient],
+            },
+        }),
+        NgxsFormPluginModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class SioMinimalModule {
   
 }
 
-@NgModule({
-  imports: [
-    CommonModule,
-    HttpClientModule,
-    TranslateModule.forRoot(),
-    LoggerModule.forRoot(),
-    FormsModule,
-    ReactiveFormsModule,
-    IonicModule.forRoot(),
-    NgxsModule.forRoot(sioCoreStates, {
-      developmentMode: true,
-      executionStrategy: NoopNgxsExecutionStrategy,
-    }),
-    NgxsLoggerPluginModule.forRoot(),
-    NgxsDataPluginModule.forRoot(),
-    NgxsReduxDevtoolsPluginModule.forRoot(),
-    NgxsRouterPluginModule.forRoot(),
-    NgxsFormPluginModule.forRoot(),
-  
-  ],
-  providers: [],
-  exports: [TranslateModule],
-})
+@NgModule({ exports: [TranslateModule], imports: [CommonModule,
+        TranslateModule.forRoot(),
+        LoggerModule.forRoot(),
+        FormsModule,
+        ReactiveFormsModule,
+        IonicModule.forRoot(),
+        NgxsModule.forRoot(sioCoreStates, {
+            developmentMode: true,
+            executionStrategy: NoopNgxsExecutionStrategy,
+        }),
+        NgxsLoggerPluginModule.forRoot(),
+        NgxsDataPluginModule.forRoot(),
+        NgxsReduxDevtoolsPluginModule.forRoot(),
+        NgxsRouterPluginModule.forRoot(),
+        NgxsFormPluginModule.forRoot()], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class SioCoreModule extends EnsureModuleLoadedOnceGuard {
   constructor(@Optional() @SkipSelf() parentModule: SioCoreModule) {
     super(parentModule);
