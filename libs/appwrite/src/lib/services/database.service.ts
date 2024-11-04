@@ -1,11 +1,11 @@
-import { Injectable, Inject } from '@angular/core';
-import { Databases, ID } from 'appwrite';
+import { Injectable, Inject } from "@angular/core";
+import { Databases, ID } from "appwrite";
 
 import {
   SioDatabaseServiceInterface,
   SioDatabaseDocumentInterface,
   SioDatabaseDocumentListInterface,
-} from '@silicia/database';
+} from "@silicia/database";
 
 import {
   Loggable,
@@ -13,9 +13,9 @@ import {
   SioCoreLoggerService,
   SioCorePluginServiceConfigModel,
   sioCorePluginServiceConfigToken,
-} from '@silicia/core';
-import { SioAppwriteClientService } from './client.service';
-import { Observable } from 'rxjs';
+} from "@silicia/core";
+import { SioAppwriteClientService } from "./client.service";
+import { Observable } from "rxjs";
 
 @Loggable()
 @Injectable()
@@ -28,11 +28,11 @@ export class SioAppwriteDatabaseService implements SioDatabaseServiceInterface {
     readonly config: SioCorePluginServiceConfigModel,
     @Inject(SioCoreLoggerService)
     private loggerService: SioCoreLoggerService,
-    private sioAppwriteClientService: SioAppwriteClientService,
+    private sioAppwriteClientService: SioAppwriteClientService
   ) {
     this.sioAppwriteClientService.Connect(
       this.config.apiEndpoint as string,
-      this.config.projectID as string,
+      this.config.projectID as string
     );
     this.databases = new Databases(this.sioAppwriteClientService.client);
   }
@@ -41,7 +41,7 @@ export class SioAppwriteDatabaseService implements SioDatabaseServiceInterface {
     value: SioCoreDocumentInterface,
     collectionId?: string,
     databaseId?: string,
-    documentId?: string,
+    documentId?: string
   ): Promise<boolean> {
     try {
       if (!documentId) documentId = ID.unique();
@@ -49,7 +49,7 @@ export class SioAppwriteDatabaseService implements SioDatabaseServiceInterface {
         databaseId as string,
         collectionId as string,
         documentId as string,
-        value,
+        value
       );
       console.error(JSON.stringify(product));
       return true;
@@ -61,13 +61,13 @@ export class SioAppwriteDatabaseService implements SioDatabaseServiceInterface {
   async get(
     id: string,
     collection: string,
-    database?: string | undefined,
+    database?: string | undefined
   ): Promise<boolean> {
     try {
       const product = await this.databases.getDocument(
         database as string,
         collection,
-        id,
+        id
       );
       console.error(JSON.stringify(product));
       return true;
@@ -81,16 +81,24 @@ export class SioAppwriteDatabaseService implements SioDatabaseServiceInterface {
     id: string,
     data: SioDatabaseDocumentInterface,
     collectionId: string,
-    databaseId: string | undefined,
+    databaseId: string | undefined
   ): Promise<boolean> {
     try {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const { $collectionId, $databaseId, $createdAt, $permissions, $id, $updatedAt, ...newData } = data;
+      const {
+        $collectionId,
+        $databaseId,
+        $createdAt,
+        $permissions,
+        $id,
+        $updatedAt,
+        ...newData
+      } = data;
       const document = await this.databases.updateDocument(
         databaseId as string,
         collectionId,
         id,
-        newData,
+        newData
       );
       console.error(JSON.stringify(document));
       return true;
@@ -103,7 +111,7 @@ export class SioAppwriteDatabaseService implements SioDatabaseServiceInterface {
   async query(
     database: string,
     collection: string,
-    queries: string[] | undefined = undefined,
+    queries: string[] | undefined = undefined
   ): Promise<SioDatabaseDocumentListInterface<SioDatabaseDocumentInterface>> {
     try {
       return await this.databases.listDocuments(database, collection, queries);
@@ -115,14 +123,14 @@ export class SioAppwriteDatabaseService implements SioDatabaseServiceInterface {
   async delete(
     documentId: string | number,
     collectionId?: string,
-    databaseId?: string,
+    databaseId?: string
   ): Promise<boolean> {
     try {
-      console.log('try to delete '+documentId);
+      console.log("try to delete " + documentId);
       const items = await this.databases.deleteDocument(
         databaseId as string,
         collectionId as string,
-        documentId as string,
+        documentId as string
       );
       console.log(JSON.stringify(items));
       return true;
@@ -135,7 +143,7 @@ export class SioAppwriteDatabaseService implements SioDatabaseServiceInterface {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   subscribe(): Observable<any> {
     return new Observable((observer) => {
-      this.sioAppwriteClientService.client.subscribe('documents', (data) => {
+      this.sioAppwriteClientService.client.subscribe("documents", (data) => {
         observer.next(data);
       });
     });
