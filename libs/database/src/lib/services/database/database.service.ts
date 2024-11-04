@@ -1,16 +1,15 @@
-import { Inject, Injectable, Optional } from '@angular/core';
-import { Loggable, SioCoreAppComponentState } from '@silicia/core';
-import { SioDatabaseServiceInterface } from './interfaces';
+import { Inject, Injectable, Optional } from "@angular/core";
+import { Loggable, SioCoreAppComponentState } from "@silicia/core";
+import { SioDatabaseServiceInterface } from "./interfaces";
 import {
   SioDatabaseDocumentInterface,
   SioDatabaseDocumentListInterface,
-} from '../../interfaces';
-import { SioDatabaseToken } from '../../tokens';
-import { TranslateService } from '@ngx-translate/core';
-import { Observable } from 'rxjs';
-
+} from "../../interfaces";
+import { SioDatabaseToken } from "../../tokens";
+import { TranslateService } from "@ngx-translate/core";
+import { Observable } from "rxjs";
 @Loggable()
-@Injectable({ providedIn: 'root' })
+@Injectable({ providedIn: "root" })
 export class SioDatabaseService implements SioDatabaseServiceInterface {
   private readonly plugins: SioDatabaseServiceInterface[];
 
@@ -19,7 +18,7 @@ export class SioDatabaseService implements SioDatabaseServiceInterface {
     @Inject(SioDatabaseToken)
     plugins: SioDatabaseServiceInterface[],
     private sioCoreAppComponentState: SioCoreAppComponentState,
-    private translateService: TranslateService,
+    private translateService: TranslateService
   ) {
     plugins = plugins || [];
     this.plugins = Array.isArray(plugins) ? plugins : [plugins];
@@ -29,16 +28,16 @@ export class SioDatabaseService implements SioDatabaseServiceInterface {
     value: SioDatabaseDocumentInterface,
     collectionId?: string,
     databaseId?: string,
-    documentId?: string,
+    documentId?: string
   ): Promise<boolean> {
     try {
       return this.plugins[0].add(value, collectionId, databaseId, documentId);
     } catch (e) {
       const error = e as Error;
-      if (error.name === 'sio-error')
+      if (error.name === "sio-error")
         this.sioCoreAppComponentState.throwError(
           error.message,
-          'DATABASE_ERROR',
+          "DATABASE_ERROR"
         );
     }
     return false;
@@ -52,16 +51,16 @@ export class SioDatabaseService implements SioDatabaseServiceInterface {
   async query(
     databaseId: string,
     collectionId: string,
-    queries: string[] | undefined,
+    queries: string[] | undefined
   ): Promise<SioDatabaseDocumentListInterface<SioDatabaseDocumentInterface>> {
     try {
       return this.plugins[0].query(databaseId, collectionId, queries);
     } catch (e) {
       const error = e as Error;
-      if (error.name === 'sio-error')
+      if (error.name === "sio-error")
         this.sioCoreAppComponentState.throwError(
           error.message,
-          'DATABASE_ERROR',
+          "DATABASE_ERROR"
         );
       throw error;
     }
@@ -70,16 +69,16 @@ export class SioDatabaseService implements SioDatabaseServiceInterface {
   async get(
     id: string,
     collection: string,
-    database?: string,
+    database?: string
   ): Promise<boolean> {
     try {
       return this.plugins[0].get(id, collection, database);
     } catch (e) {
       const error = e as Error;
-      if (error.name === 'sio-error')
+      if (error.name === "sio-error")
         this.sioCoreAppComponentState.throwError(
           error.message,
-          'DATABASE_ERROR',
+          "DATABASE_ERROR"
         );
     }
     return false;
@@ -89,16 +88,16 @@ export class SioDatabaseService implements SioDatabaseServiceInterface {
     id: string,
     data: SioDatabaseDocumentInterface,
     collectionId: string,
-    databaseId: string,
+    databaseId: string
   ): Promise<boolean> {
     try {
       return this.plugins[0].set(id, data, collectionId, databaseId);
     } catch (e) {
       const error = e as Error;
-      if (error.name === 'sio-error')
+      if (error.name === "sio-error")
         this.sioCoreAppComponentState.throwError(
           error.message,
-          'DATABASE_ERROR',
+          "DATABASE_ERROR"
         );
     }
     return false;
@@ -107,17 +106,16 @@ export class SioDatabaseService implements SioDatabaseServiceInterface {
   async delete(
     documentId: string | number,
     collectionId?: string,
-    databaseId?: string,
+    databaseId?: string
   ): Promise<boolean> {
-    
     try {
       return this.plugins[0].delete(documentId, collectionId, databaseId);
     } catch (e) {
       const error = e as Error;
-      if (error.name === 'sio-error')
+      if (error.name === "sio-error")
         this.sioCoreAppComponentState.throwError(
           error.message,
-          'DATABASE_ERROR',
+          "DATABASE_ERROR"
         );
     }
     return false;

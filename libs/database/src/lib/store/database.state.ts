@@ -1,14 +1,14 @@
-import { EntityIdType } from '@angular-ru/cdk/entity';
-import { Computed, DataAction } from '@angular-ru/ngxs/decorators';
-import { NgxsDataAfterReset, NgxsDataDoCheck } from '@angular-ru/ngxs/typings';
-import { NgxsDataEntityCollectionsRepository } from '@angular-ru/ngxs/repositories';
-import { Injectable } from '@angular/core';
-import { SioDatabaseDocumentInterface } from '../models';
-import { SioDatabaseService } from '../services';
-import { SioCoreLoggerService } from '@silicia/core';
-import { SioDatabaseDocumentListInterface } from '../interfaces';
-import { Query } from '../helpers';
-import { Subscription } from 'rxjs';
+import { EntityIdType } from "@angular-ru/cdk/entity";
+import { Computed, DataAction } from "@angular-ru/ngxs/decorators";
+import { NgxsDataAfterReset, NgxsDataDoCheck } from "@angular-ru/ngxs/typings";
+import { NgxsDataEntityCollectionsRepository } from "@angular-ru/ngxs/repositories";
+import { Injectable } from "@angular/core";
+import { SioDatabaseDocumentInterface } from "../models";
+import { SioDatabaseService } from "../services";
+import { SioCoreLoggerService } from "@silicia/core";
+import { SioDatabaseDocumentListInterface } from "../interfaces";
+import { Query } from "../helpers";
+import { Subscription } from "rxjs";
 
 @Injectable()
 export abstract class SioDatabaseState<T extends SioDatabaseDocumentInterface>
@@ -26,12 +26,12 @@ export abstract class SioDatabaseState<T extends SioDatabaseDocumentInterface>
   >
   implements NgxsDataDoCheck, NgxsDataAfterReset
 {
-  public override primaryKey = '$id';
+  public override primaryKey = "$id";
   private subcriptions: Subscription | undefined;
 
   constructor(
     private sioCoreLoggerService: SioCoreLoggerService,
-    private sioDatabaseService: SioDatabaseService,
+    private sioDatabaseService: SioDatabaseService
   ) {
     super();
   }
@@ -43,17 +43,17 @@ export abstract class SioDatabaseState<T extends SioDatabaseDocumentInterface>
         .subscribe((event) => {
           this.sioCoreLoggerService.debug(
             `[SioDatabaseState][DataSocket] received events`,
-            event,
+            event
           );
           const item = this.selectOne(event.payload.$id);
           if (item) {
             console.debug(
-              '[SioDatabaseState][DataSocket] items in list, updated',
+              "[SioDatabaseState][DataSocket] items in list, updated"
             );
             this.setEntityOne(event.payload);
           } else {
             console.debug(
-              '[SioDatabaseState][DataSocket] items not in list, do anything',
+              "[SioDatabaseState][DataSocket] items not in list, do anything"
             );
           }
           this.load();
@@ -84,7 +84,7 @@ export abstract class SioDatabaseState<T extends SioDatabaseDocumentInterface>
   async load(
     queries?: string[],
     databaseId?: string,
-    collectionId?: string,
+    collectionId?: string
   ): Promise<boolean> {
     try {
       if (databaseId) this.setDatabaseId(databaseId);
@@ -98,11 +98,12 @@ export abstract class SioDatabaseState<T extends SioDatabaseDocumentInterface>
               Query.cursorAfter(this.snapshot.remoteIndex as string),
             ];
         }
+        console.log(JSON.stringify(queries));
         const documents = <SioDatabaseDocumentListInterface<T>>(
           await this.sioDatabaseService.query(
             this.snapshot.databaseId,
             this.snapshot.collectionId,
-            queries,
+            queries
           )
         );
         if (this.snapshot.remoteIndex) {
@@ -122,7 +123,7 @@ export abstract class SioDatabaseState<T extends SioDatabaseDocumentInterface>
       console.error((e as Error).message);
       this.sioCoreLoggerService.error(
         `[SioDatabaseState][load]`,
-        (e as Error).message,
+        (e as Error).message
       );
       return false;
     }
@@ -159,11 +160,11 @@ export abstract class SioDatabaseState<T extends SioDatabaseDocumentInterface>
   }
 
   override removeOne(id: string | number): void {
-    this.sioCoreLoggerService.debug('[SioDatabaseState][removeByEntity]', id);
+    this.sioCoreLoggerService.debug("[SioDatabaseState][removeByEntity]", id);
     this.sioDatabaseService.delete(
       id,
       this.snapshot.collectionId,
-      this.snapshot.databaseId,
+      this.snapshot.databaseId
     );
     super.removeOne(id);
   }
@@ -173,7 +174,7 @@ export abstract class SioDatabaseState<T extends SioDatabaseDocumentInterface>
     this.sioDatabaseService.add(
       entity,
       this.snapshot.collectionId,
-      this.snapshot.databaseId,
+      this.snapshot.databaseId
     );
   }
 
@@ -183,7 +184,7 @@ export abstract class SioDatabaseState<T extends SioDatabaseDocumentInterface>
       entity.$id as string,
       entity,
       this.snapshot.collectionId,
-      this.snapshot.databaseId,
+      this.snapshot.databaseId
     );
   }
 
