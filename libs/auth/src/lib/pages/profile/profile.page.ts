@@ -4,9 +4,10 @@ import { SioCoreLoggerService } from '@silicia/core';
 import { SioAuthState } from '../../store';
 
 @Component({
-  selector: 'sio-auth-profile-page',
-  templateUrl: './profile.page.html',
-  styleUrls: ['./profile.page.scss'],
+    selector: 'sio-auth-profile-page',
+    templateUrl: './profile.page.html',
+    styleUrls: ['./profile.page.scss'],
+    standalone: false
 })
 export class SioAuthProfilePageComponent {
   constructor(

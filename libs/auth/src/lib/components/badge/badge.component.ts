@@ -14,10 +14,11 @@ import { TranslateService } from '@ngx-translate/core';
 import { languages } from './i18n';
 
 @Component({
-  // tslint:disable-next-line: component-selector
-  selector: 'sio-auth-badge',
-  templateUrl: './badge.component.html',
-  styleUrls: ['./badge.component.scss'],
+    // tslint:disable-next-line: component-selector
+    selector: 'sio-auth-badge',
+    templateUrl: './badge.component.html',
+    styleUrls: ['./badge.component.scss'],
+    standalone: false
 })
 export class SioAuthBadgeComponent {
   @Input() public type: 'default' | 'button' = 'default';

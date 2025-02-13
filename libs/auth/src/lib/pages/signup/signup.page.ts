@@ -3,9 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { SioCoreAppComponentState, SioCoreLoggerService } from '@silicia/core';
 
 @Component({
-  selector: 'sio-auth-signup-page',
-  templateUrl: 'signup.page.html',
-  styleUrls: ['signup.page.scss'],
+    selector: 'sio-auth-signup-page',
+    templateUrl: 'signup.page.html',
+    styleUrls: ['signup.page.scss'],
+    standalone: false
 })
 export class SioAuthSignupPage implements OnInit {
   constructor(

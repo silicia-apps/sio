@@ -14,15 +14,16 @@ export function sioEmailValidator(): ValidatorFn {
 }
 
 @Directive({
-  // eslint-disable-next-line @angular-eslint/directive-selector
-  selector: '[sioEmailValidator]',
-  providers: [
-    {
-      provide: NG_VALIDATORS,
-      useExisting: EmailValidatorDirective,
-      multi: true,
-    },
-  ],
+    // eslint-disable-next-line @angular-eslint/directive-selector
+    selector: '[sioEmailValidator]',
+    providers: [
+        {
+            provide: NG_VALIDATORS,
+            useExisting: EmailValidatorDirective,
+            multi: true,
+        },
+    ],
+    standalone: false
 })
 export class EmailValidatorDirective implements Validator {
   validate(control: AbstractControl): { [key: string]: unknown } | null {

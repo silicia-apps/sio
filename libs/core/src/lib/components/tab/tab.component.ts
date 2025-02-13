@@ -7,9 +7,10 @@ import { Nullable } from '@angular-ru/cdk/typings';
 
 @Loggable()
 @Component({
-  selector: 'sio-tab',
-  templateUrl: './tab.component.html',
-  styleUrls: ['./tab.component.scss'],
+    selector: 'sio-tab',
+    templateUrl: './tab.component.html',
+    styleUrls: ['./tab.component.scss'],
+    standalone: false
 })
 export class SioCoreTabComponent implements OnInit {
   @Input() public tabID: string;

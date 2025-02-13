@@ -3,9 +3,10 @@ import { SioColorType } from '../../types';
 import { SioCoreLoggerService } from '../../services/logger';
 
 @Component({
-  selector: 'sio-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss'],
+    selector: 'sio-list',
+    templateUrl: './list.component.html',
+    styleUrls: ['./list.component.scss'],
+    standalone: false
 })
 export class SioCoreListComponent implements OnInit {
   @Input() public id = 'main';

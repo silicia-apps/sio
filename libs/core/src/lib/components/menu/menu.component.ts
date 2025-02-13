@@ -6,9 +6,10 @@ import { SioCoreLoggerService } from '../../services/logger';
 import { SioCoreAppComponentState } from '../app/store';
 
 @Component({
-  selector: 'sio-menu',
-  templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.scss'],
+    selector: 'sio-menu',
+    templateUrl: './menu.component.html',
+    styleUrls: ['./menu.component.scss'],
+    standalone: false
 })
 export class SioCoreMenuComponent implements OnInit {
   @Input() public menuID : string | undefined = undefined;

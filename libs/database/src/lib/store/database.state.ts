@@ -95,10 +95,10 @@ export abstract class SioDatabaseState<T extends SioDatabaseDocumentInterface>
           if (this.snapshot.remoteIndex)
             queries = [
               ...this.snapshot.queries,
-              Query.cursorAfter(this.snapshot.remoteIndex as string),
+              this.snapshot.remoteIndex as string,
             ];
         }
-        console.log(JSON.stringify(queries));
+        console.log("Questa è la query" + JSON.stringify(queries));
         const documents = <SioDatabaseDocumentListInterface<T>>(
           await this.sioDatabaseService.query(
             this.snapshot.databaseId,

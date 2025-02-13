@@ -4,9 +4,10 @@ import { AttributeBoolean } from '@angular-ru/cdk/decorators';
 import { InputBoolean } from '@angular-ru/cdk/typings';
 
 @Component({
-  selector: 'sio-card',
-  templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss'],
+    selector: 'sio-card',
+    templateUrl: './card.component.html',
+    styleUrls: ['./card.component.scss'],
+    standalone: false
 })
 export class SioCoreCardComponent {
   @Input() public disabled = false;

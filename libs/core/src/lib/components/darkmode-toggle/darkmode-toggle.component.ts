@@ -8,9 +8,10 @@ import { SioCoreAppComponentState } from '../../store';
 
 @Loggable()
 @Component({
-  selector: 'sio-darkmode-toggle',
-  templateUrl: './darkmode-toggle.component.html',
-  styleUrls: ['./darkmode-toggle.component.scss'],
+    selector: 'sio-darkmode-toggle',
+    templateUrl: './darkmode-toggle.component.html',
+    styleUrls: ['./darkmode-toggle.component.scss'],
+    standalone: false
 })
 export class SioCoreDarkModeToggleComponent implements OnInit {
   @Input() public caption = 'L_DARKMODE';

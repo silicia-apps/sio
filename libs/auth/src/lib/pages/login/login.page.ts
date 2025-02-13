@@ -7,9 +7,10 @@ import {
 
 @Loggable()
 @Component({
-  selector: 'sio-auth-login-page',
-  templateUrl: 'login.page.html',
-  styleUrls: ['login.page.scss'],
+    selector: 'sio-auth-login-page',
+    templateUrl: 'login.page.html',
+    styleUrls: ['login.page.scss'],
+    standalone: false
 })
 export class SioAuthLoginPage implements OnInit {
   constructor(

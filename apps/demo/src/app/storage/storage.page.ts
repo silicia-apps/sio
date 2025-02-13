@@ -5,11 +5,10 @@ import { SioStorageFileInterface, SioStorageState } from '@silicia/storage';
 import { Query } from 'appwrite';
 
 @Component({
-  selector: 'sio-storage',
-  templateUrl: 'storage.page.html',
-  styleUrls: ['storage.page.scss'],
-  standalone: true,
-  imports: [SioCommonModule, NgFor],
+    selector: 'sio-storage',
+    templateUrl: 'storage.page.html',
+    styleUrls: ['storage.page.scss'],
+    imports: [SioCommonModule, NgFor]
 })
 export class StoragePageComponent {
   constructor(

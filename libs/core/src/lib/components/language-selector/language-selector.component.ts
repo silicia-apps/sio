@@ -9,9 +9,10 @@ import { TranslateService } from '@ngx-translate/core';
 
 @Loggable()
 @Component({
-  selector: 'sio-language-selector',
-  templateUrl: './language-selector.component.html',
-  styleUrls: ['./language-selector.component.scss'],
+    selector: 'sio-language-selector',
+    templateUrl: './language-selector.component.html',
+    styleUrls: ['./language-selector.component.scss'],
+    standalone: false
 })
 export class SioCoreLanguageSelectorComponent implements OnInit {
   @Input() public caption = 'L_LANGUAGE';

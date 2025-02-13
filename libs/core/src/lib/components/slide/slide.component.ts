@@ -7,9 +7,10 @@ import { register } from 'swiper/element/bundle';
 register();
 
 @Component({
-  selector: 'sio-slide',
-  templateUrl: './slide.component.html',
-  styleUrls: ['./slide.component.scss'],
+    selector: 'sio-slide',
+    templateUrl: './slide.component.html',
+    styleUrls: ['./slide.component.scss'],
+    standalone: false
 })
 export class SioCoreSlideComponent implements OnInit {
   public swiperModules = [IonicSlides];

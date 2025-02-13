@@ -13,11 +13,11 @@ import { TranslateService } from '@ngx-translate/core';
 
 @Loggable()
 @Component({
-  //standalone: true,
-  selector: 'sio-auth-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
-  //imports: [CommonModule, SioCommonModule],
+    //standalone: true,
+    selector: 'sio-auth-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.scss'],
+    standalone: false
 })
 export class SioAuthLoginComponent {
   private _mode: 'signup' | 'signin' = 'signin';

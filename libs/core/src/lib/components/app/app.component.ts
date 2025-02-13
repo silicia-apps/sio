@@ -20,9 +20,10 @@ import {
 import type { SioColorType, SioSideMenuType } from '../../types';
 
 @Component({
-  selector: 'sio-app',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+    selector: 'sio-app',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
+    standalone: false
 })
 export class SioCoreAppComponent implements OnInit, OnDestroy {
   private ngUnsubscribe = new Subject();

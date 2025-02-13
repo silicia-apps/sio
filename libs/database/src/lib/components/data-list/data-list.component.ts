@@ -9,9 +9,10 @@ import {
 import { SioDatabaseState } from '../../store';
 
 @Component({
-  selector: 'sio-datalist',
-  templateUrl: './data-list.component.html',
-  styleUrls: ['./data-list.component.scss'],
+    selector: 'sio-datalist',
+    templateUrl: './data-list.component.html',
+    styleUrls: ['./data-list.component.scss'],
+    standalone: false
 })
 export class SioDatabaseListComponent implements OnInit {
   // input related to this component

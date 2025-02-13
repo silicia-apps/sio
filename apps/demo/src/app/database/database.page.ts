@@ -5,11 +5,10 @@ import { taskInterface } from './store/task.interface';
 import { Query, SioDatabaseModule } from '@silicia/database';
 
 @Component({
-  selector: 'sio-database',
-  templateUrl: 'database.page.html',
-  styleUrls: ['database.page.scss'],
-  standalone: true,
-  imports: [SioCommonModule, SioDatabaseModule],
+    selector: 'sio-database',
+    templateUrl: 'database.page.html',
+    styleUrls: ['database.page.scss'],
+    imports: [SioCommonModule, SioDatabaseModule]
 })
 export class DatabasePageComponent {
   constructor(

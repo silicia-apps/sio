@@ -7,9 +7,10 @@ import { SioColorType } from '../../types';
 import { SioCoreMenuInterface, SioCoreMenuState } from '../../store';
 
 @Component({
-  selector: 'sio-item',
-  templateUrl: './item.component.html',
-  styleUrls: ['./item.component.scss'],
+    selector: 'sio-item',
+    templateUrl: './item.component.html',
+    styleUrls: ['./item.component.scss'],
+    standalone: false
 })
 export class SioCoreItemComponent implements OnInit {
   private _color: SioColorType = undefined;

@@ -3,9 +3,10 @@ import { SioCoreLoggerService } from '../../services/logger';
 import { SioColorType } from '../../types';
 
 @Component({
-  selector: 'sio-menu-item',
-  templateUrl: './menu-item.component.html',
-  styleUrls: ['./menu-item.component.scss'],
+    selector: 'sio-menu-item',
+    templateUrl: './menu-item.component.html',
+    styleUrls: ['./menu-item.component.scss'],
+    standalone: false
 })
 export class SioCoreMenuItemComponent implements OnInit {
   @Input() public caption: string | undefined = undefined;

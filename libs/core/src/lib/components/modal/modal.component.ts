@@ -4,9 +4,10 @@ import { OverlayEventDetail } from '@ionic/core/components';
 import { IonModal } from '@ionic/angular';
 
 @Component({
-  selector: 'sio-modal',
-  templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.scss'],
+    selector: 'sio-modal',
+    templateUrl: './modal.component.html',
+    styleUrls: ['./modal.component.scss'],
+    standalone: false
 })
 export class SioCoreModalComponent implements OnInit {
 

@@ -3,9 +3,10 @@ import { SioColorType } from '../../types';
 import { SioCoreLoggerService } from '../../services/logger';
 
 @Component({
-  selector: 'sio-icon',
-  templateUrl: './icon.component.html',
-  styleUrls: ['./icon.component.scss'],
+    selector: 'sio-icon',
+    templateUrl: './icon.component.html',
+    styleUrls: ['./icon.component.scss'],
+    standalone: false
 })
 export class SioCoreIconComponent {
   @Input() public color: SioColorType;

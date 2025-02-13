@@ -12,9 +12,10 @@ import { InputBoolean } from '@angular-ru/cdk/typings';
 import { SioColorType } from '../../types';
 
 @Component({
-  selector: 'sio-page',
-  templateUrl: './page.component.html',
-  styleUrls: ['./page.component.scss'],
+    selector: 'sio-page',
+    templateUrl: './page.component.html',
+    styleUrls: ['./page.component.scss'],
+    standalone: false
 })
 export class SioCorePageComponent implements OnInit {
   @Input() color: SioColorType;

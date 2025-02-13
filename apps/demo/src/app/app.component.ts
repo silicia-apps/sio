@@ -4,11 +4,10 @@ import { SioCommonModule, SioCoreLoggerService, Loggable } from '@silicia/core';
 
 @Loggable()
 @Component({
-  selector: 'sio-root',
-  templateUrl: 'app.component.html',
-  styleUrls: ['app.component.scss'],
-  standalone: true,
-  imports: [ SioCommonModule, SioAuthModule ],
+    selector: 'sio-root',
+    templateUrl: 'app.component.html',
+    styleUrls: ['app.component.scss'],
+    imports: [SioCommonModule, SioAuthModule]
 })
 export class AppComponent {
   constructor(

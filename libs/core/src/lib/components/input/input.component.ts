@@ -10,9 +10,10 @@ import { SioCoreLoggerService } from '../../services';
 import { sioStorageFileInterface } from '../../interfaces';
 
 @Component({
-  selector: 'sio-input',
-  templateUrl: './input.component.html',
-  styleUrls: ['./input.component.scss'],
+    selector: 'sio-input',
+    templateUrl: './input.component.html',
+    styleUrls: ['./input.component.scss'],
+    standalone: false
 })
 export class SioCoreInputComponent implements OnInit {
   private pValue: string | number | boolean | sioStorageFileInterface[] | null | undefined;

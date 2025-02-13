@@ -10,8 +10,9 @@ import { SioColorType } from '../../types';
 
 @Loggable()
 @Component({
-  selector: 'sio-form',
-  templateUrl: './form.component.html',
+    selector: 'sio-form',
+    templateUrl: './form.component.html',
+    standalone: false
 })
 export class SioCoreFormComponent implements OnInit {
   @Input() public cancel = false;

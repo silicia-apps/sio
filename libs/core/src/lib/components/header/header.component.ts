@@ -8,9 +8,10 @@ import { InputBoolean } from '@angular-ru/cdk/typings';
 import { SioColorType } from '../../types';
 
 @Component({
-  selector: 'sio-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
+    selector: 'sio-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.scss'],
+    standalone: false
 })
 export class SioCoreHeaderComponent implements OnInit {
   
