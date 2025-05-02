@@ -1,1 +1,1 @@
-export * from './lib/chat/chat.component';
+export * from './lib/sio-chat.module';

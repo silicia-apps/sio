@@ -14,12 +14,14 @@ import { environment } from '../environments/environment';
 import { routes } from './app.routes';
 import { NgxsModule } from '@ngxs/store';
 import { SioStorageState } from '@silicia/storage';
+import { SioChatModule } from '@silicia/chat';
 import { TaskState } from './database/store/task.state';
 export const appConfig: ApplicationConfig = {
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     importProvidersFrom(SioCoreModule.forRoot(environment)),
     importProvidersFrom(SioAuthModule.forRoot()),
+    importProvidersFrom(SioChatModule.forRoot()),
     importProvidersFrom(AppwriteStorageModule.forRoot(environment.backend)),
     importProvidersFrom(AppwriteAuthModule.forRoot(environment.backend)),
     importProvidersFrom(AppwriteDatabaseModule.forRoot(environment.backend)),

@@ -87,7 +87,7 @@
       "options": {}
     }
   },
-  "useLegacyCache": true,
+  "useLegacyCache": false,
   "release": {
     "version": {
       "preVersionCommand": "npx nx run-many -t build"

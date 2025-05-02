@@ -40,6 +40,7 @@ import {
 //import { SioCoreErrorHandlerService } from "./shared/error.handle";
 import { LoggerModule } from "@angular-ru/cdk/logger";
 import { RouterModule } from "@angular/router";
+import { RelativeTime } from "./pipes";
 
 export class EnsureModuleLoadedOnceGuard {
   constructor(targetModule: NgModule) {

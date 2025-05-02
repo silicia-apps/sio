@@ -39,6 +39,7 @@ export const environment: SioCoreEnvironmentInterface = {
           1: { id: 1, icon: 'home', url: 'home' },
           2: { id: 2, icon: 'folder', url: 'storage' },
           3: { id: 3, icon: 'archive', url: 'database' },
+          4: { id: 4, icon: 'chatbubbles', url: 'chat' },
         },
       },
       logged: {

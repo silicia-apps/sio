@@ -1,0 +1,139 @@
+:host {
+  sio-page {
+    .message-wrap {
+      padding: 0 10px;
+
+      .message {
+        position: relative;
+        padding: 7px 0;
+
+        .user-img {
+          position: absolute;
+          border-radius: 45px;
+          width: 45px;
+          height: 45px;
+          box-shadow: 0 0 2px rgba(0, 0, 0, 0.36);
+        }
+
+        .msg-detail {
+          width: 100%;
+          display: inline-block;
+
+          p {
+            margin: 0;
+          }
+
+          .msg-info {
+            p {
+              font-size: .8em;
+              color: #888;
+            }
+          }
+
+      
+
+        }
+      }
+
+      .message.left {
+       
+
+        .msg-detail {
+          padding-left: 60px;
+        }
+
+        .user-img {
+          left: 0;
+        }
+
+        .msg-content {
+          color:#343434;
+          float: left;
+          position: relative;
+          margin-top: 5px;
+          border-radius: 5px;
+          padding: 8px;
+          border: 1px solid #ddd;
+          width: auto;
+          max-width: 80%;
+
+
+          span.triangle {
+            background-color: #fff; 
+            border-top-width: 0;
+            border-right-width: 0;
+            border-left-width: 1px;
+            border-bottom-width: 1px;
+            border-color: #ddd;
+            left: -5px;
+            border-radius: 2px;
+            height: 8px;
+            width: 8px;
+            top: 12px;
+            display: block;
+            border-style: solid;
+            -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+            position: absolute;
+          }
+        }
+
+      }
+
+      .message.right {
+        .msg-detail {
+          padding-right: 60px;
+
+          .msg-info {
+            text-align: right;
+          }
+        }
+
+        .user-img {
+          right: 0;
+        }
+
+        ion-spinner {
+          position: absolute;
+          right: 10px;
+          top: 50px;
+        }
+
+        .msg-content {
+          background-color: #387ef5;
+          color: #fff;          
+          float: right;
+          position: relative;
+          margin-top: 5px;
+          border-radius: 5px;
+          padding: 8px;
+          border: 1px solid #ddd;
+          width: auto;
+          max-width: 80%;
+
+          span.triangle {
+            border-radius: 2px;
+            background-color: #387ef5;
+            border-color: #ddd;
+            border-bottom-width: 0;
+            border-left-width: 0;
+            border-top-width: 1px;
+            border-right-width: 1px;
+            right: -5px;
+            height: 8px;
+            width: 8px;
+            top: 12px;
+            display: block;
+            border-style: solid;
+            -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+            position: absolute;
+          }
+        }
+
+      }
+
+    }
+  }
+
+}

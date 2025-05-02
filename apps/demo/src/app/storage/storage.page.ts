@@ -8,7 +8,7 @@ import { Query } from 'appwrite';
     selector: 'sio-storage',
     templateUrl: 'storage.page.html',
     styleUrls: ['storage.page.scss'],
-    imports: [SioCommonModule, NgFor]
+    imports: [SioCommonModule]
 })
 export class StoragePageComponent {
   constructor(
