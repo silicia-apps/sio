@@ -1,19 +1,6 @@
 <sio-page title="auth.PAGE_TITLE_PROFILE">
-  <div class="message-wrap">
-    <div *ngFor="let msg of this.msgList" class="message" [class.left]=" msg.user === this.id "
-      [class.right]=" msg.user === this.user ">
-      <img class="user-img" [src]="msg.avatar" alt="" src="" />
-      <ion-spinner name="dots" *ngIf="msg.status === 'pending'"></ion-spinner>
-      <div class="msg-detail">
-        <div class="msg-info">
-          <p>
-            {{msg.userName}}&nbsp;&nbsp;&nbsp;{{ msg.time }}</p>
-        </div>
-        <div class="msg-content">
-          <span class="triangle"></span>
-          <p class="line-breaker ">{{msg.text}}</p>
-        </div>
-      </div>
-    </div>
-  </div>
+  <sio-chat chatId="1" 
+    (sioOnInfinite)="this.load($event)" (sioOnRefresh)="this.refresh($event)"
+    (sioOnClick)="this.click($event)">
+  </sio-chat>  
 </sio-page>

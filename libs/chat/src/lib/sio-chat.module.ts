@@ -33,8 +33,9 @@ export class EnsureModuleLoadedOnceGuard {
 }
 
 @NgModule({
-  declarations: [...SioChatComponents],
+  declarations: [],
   imports: [
+    SioChatComponents,
     CommonModule,
     FormsModule,
     SioCommonModule,

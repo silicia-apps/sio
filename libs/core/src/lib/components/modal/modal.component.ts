@@ -11,7 +11,7 @@ import { IonModal } from '@ionic/angular';
 })
 export class SioCoreModalComponent implements OnInit {
 
-  @ViewChild(IonModal) modal!: IonModal;
+  @ViewChild(IonModal) modal!: IonModal; 
 
   @Input() public id = 'main';
 

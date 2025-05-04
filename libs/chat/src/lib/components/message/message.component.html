@@ -1,0 +1,14 @@
+<div class="message" [class.left]="true">
+  <img class="user-img" [src]="this.avatar" alt="" src="" />
+  <ion-spinner name="dots" *ngIf="this.state === 'pending'"></ion-spinner>
+  <div class="msg-detail">
+    <div class="msg-info">
+      <p>
+        {{this.user}}&nbsp;&nbsp;&nbsp;{{ this.date }}</p>
+    </div>
+    <div class="msg-content">
+      <span class="triangle"></span>
+      <p class="line-breaker ">{{this.message}}</p>
+    </div>
+  </div>
+</div>
