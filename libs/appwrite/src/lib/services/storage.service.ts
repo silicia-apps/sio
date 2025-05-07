@@ -77,11 +77,14 @@ export class SioAppwriteStorageService implements SioStorageServiceInterface {
       this.sioCoreLoggerService.debug(`[SioAppwriteStorageService][List]`);
       return await this.storage.listFiles(bucketId, query, search);
     } catch (e) {
+      this.sioCoreLoggerService.error(
+        `[SioAppwriteStorageService][List]`,
+        e as Error,
+      );
       return undefined;
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   subscribeEvents(): Observable<any> {
     return new Observable((observer) => {
       this.sioAppwriteClientService.client.subscribe('files', (data) => {

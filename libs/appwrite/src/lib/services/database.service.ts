@@ -84,7 +84,6 @@ export class SioAppwriteDatabaseService implements SioDatabaseServiceInterface {
     databaseId: string | undefined,
   ): Promise<boolean> {
     try {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const {
         $collectionId,
         $databaseId,

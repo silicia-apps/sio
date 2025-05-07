@@ -1,4 +1,3 @@
-/* eslint-disable */
 export default {
   displayName: 'appwrite',
   preset: '../../jest.preset.js',

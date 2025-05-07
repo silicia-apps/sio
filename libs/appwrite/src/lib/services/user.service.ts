@@ -134,7 +134,7 @@ export class SioAppwriteUserService implements SioAuthPluginServiceInterface {
       session,
       user,
     );
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+     
     return new Observable((observer) => {
       this.sioAppwriteClientService.client.subscribe('account', (data) => {
         this.loggerService.debug(
