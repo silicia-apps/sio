@@ -37,7 +37,7 @@ export class AppwriteDatabaseModule {
           deps: [SioDatabaseConfigToken, SioCoreLoggerService, SioAppwriteClientService],
           multi: true,
         },
-      ],
+      ]
     };
   }
 }

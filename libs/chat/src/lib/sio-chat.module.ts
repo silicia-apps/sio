@@ -3,30 +3,31 @@ import {
   NgModule,
   //Optional,
   //SkipSelf,
-} from '@angular/core';
+} from "@angular/core";
 
-import { CommonModule } from '@angular/common';
+import { CommonModule } from "@angular/common";
 import {
   PreloadAllModules,
   //RouterModule,
   provideRouter,
   withPreloading,
-} from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+} from "@angular/router";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
-import { NgxsModule } from '@ngxs/store';
-import { NgxsFormPluginModule } from '@ngxs/form-plugin';
+import { NgxsModule } from "@ngxs/store";
+import { NgxsFormPluginModule } from "@ngxs/form-plugin";
 
-import { SioChatComponents } from './components';
-import { SioCommonModule } from '@silicia/core';
+import { SioChatComponents } from "./components";
+import { SioCommonModule } from "@silicia/core";
+import { SioChatState } from "./components/chat/store";
 
-import { sioChatRoutes } from './sio-chat.routes';
+import { sioChatRoutes } from "./sio-chat.routes";
 
 export class EnsureModuleLoadedOnceGuard {
   constructor(targetModule: NgModule) {
     if (targetModule) {
       throw new Error(
-        `${targetModule.constructor.name} has already been loaded. Import this module in the AppModule only.`,
+        `${targetModule.constructor.name} has already been loaded. Import this module in the AppModule only.`
       );
     }
   }
@@ -40,7 +41,7 @@ export class EnsureModuleLoadedOnceGuard {
     FormsModule,
     SioCommonModule,
     ReactiveFormsModule,
-    //NgxsModule.forFeature([SioChatState]),
+    NgxsModule.forFeature([SioChatState]),
     NgxsFormPluginModule,
   ],
   exports: [...SioChatComponents],

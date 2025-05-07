@@ -6,12 +6,12 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
-import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { NgxsLoggerPluginModule } from "@ngxs/logger-plugin";
+import { NgxsReduxDevtoolsPluginModule } from "@ngxs/devtools-plugin";
 import {
   SioCoreEnvironmentInterface,
   //SioCorePluginServiceConfigModel,
-} from '@silicia/core';
+} from "@silicia/core";
 //import { LOGGER_OPTIONS } from '@angular-ru/cdk/logger';
 
 export const environment: SioCoreEnvironmentInterface = {
@@ -22,58 +22,58 @@ export const environment: SioCoreEnvironmentInterface = {
     NgxsReduxDevtoolsPluginModule.forRoot(),
   ],
   backend: {
-    apiEndpoint: 'https://cloud.appwrite.io/v1',
-    projectID: '6557f73331ab50cb50b6',
+    apiEndpoint: "https://cloud.appwrite.io/v1",
+    projectID: "6557f73331ab50cb50b6",
   },
   app: {
-    title: 'Demo App',
+    title: "Demo App",
     language: {
-      avaibles: ['it', 'en'],
-      default: 'it',
-      fallback: 'en',
+      avaibles: ["it", "en"],
+      default: "it",
+      fallback: "en",
     },
     menu: {
       main: {
-        id: 'main',
+        id: "main",
         items: {
-          1: { id: 1, icon: 'home', url: 'home' },
-          2: { id: 2, icon: 'folder', url: 'storage' },
-          3: { id: 3, icon: 'archive', url: 'database' },
-          4: { id: 4, icon: 'chatbubbles', url: 'chat' },
+          1: { id: 1, icon: "home", url: "home" },
+          2: { id: 2, icon: "folder", url: "storage" },
+          3: { id: 3, icon: "archive", url: "database" },
+          4: { id: 4, icon: "chatbubbles", url: "chat" },
         },
       },
       logged: {
-        id: 'logged',
+        id: "logged",
         items: {
           1: {
             id: 1,
-            icon: 'person',
-            caption: 'MENU_LOGGED_PROFILE',
-            url: '/auth/profile',
+            icon: "person",
+            caption: "MENU_LOGGED_PROFILE",
+            url: "/auth/profile",
           },
         },
       },
       left_items: {
-        id: 'left_items',
+        id: "left_items",
         items: {
           1: {
             id: 1,
-            caption: 'trash',
-            icon: 'trash',
-            color: 'danger',
-            url: '/',
+            caption: "trash",
+            icon: "trash",
+            color: "danger",
+            url: "/",
           },
         },
       },
       right_items: {
-        id: 'right_items',
+        id: "right_items",
         items: {
           1: {
             id: 1,
-            caption: 'archive',
-            icon: 'checkmark',
-            color: 'success',
-            url: '/',
+            caption: "archive",
+            icon: "checkmark",
+            color: "success",
+            url: "/",
           },
         },
       },

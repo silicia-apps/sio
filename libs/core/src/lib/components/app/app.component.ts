@@ -1,4 +1,13 @@
-import { Component, Input, OnDestroy, OnInit, ViewChild, EnvironmentInjector } from '@angular/core';
+import { addIcons } from 'ionicons';
+import * as allIcons from 'ionicons/icons';
+import {
+  Component,
+  Input,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+  EnvironmentInjector,
+} from '@angular/core';
 import { SioCoreAppComponentState } from '../../store/index';
 
 import { it } from '../../../i18n/it';
@@ -20,10 +29,10 @@ import {
 import type { SioColorType, SioSideMenuType } from '../../types';
 
 @Component({
-    selector: 'sio-app',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss'],
-    standalone: false
+  selector: 'sio-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
+  standalone: false,
 })
 export class SioCoreAppComponent implements OnInit, OnDestroy {
   private ngUnsubscribe = new Subject();
@@ -77,7 +86,7 @@ export class SioCoreAppComponent implements OnInit, OnDestroy {
   }
 
   @Input()
-  environmentInjector : EnvironmentInjector | undefined;
+  environmentInjector: EnvironmentInjector | undefined;
 
   /**
    * How display tabbar in desktop mode
@@ -116,6 +125,7 @@ export class SioCoreAppComponent implements OnInit, OnDestroy {
     private sioCoreLoggerService: SioCoreLoggerService,
     private translateService: TranslateService,
   ) {
+    addIcons(allIcons);
     this.sioCoreLoggerService.info(
       `[sioCoreAppComponentState][constructor] Check config...`,
     );

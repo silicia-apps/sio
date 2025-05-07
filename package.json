@@ -32,6 +32,7 @@
     "@nx/angular": "20.8.1",
     "appwrite": "17.0.2",
     "date-fns": "^4.1.0",
+    "ionicons": "^8.0.8",
     "ngx-translate-debug": "^0.1.4",
     "react": "19.1.0",
     "react-dom": "19.1.0",

@@ -5,48 +5,48 @@ import {
   NgModule,
   Optional,
   SkipSelf,
-} from "@angular/core";
+} from '@angular/core';
 
-import { CommonModule } from "@angular/common";
+import { CommonModule } from '@angular/common';
 import {
   HttpClient,
   provideHttpClient,
   withInterceptorsFromDi,
-} from "@angular/common/http";
+} from '@angular/common/http';
 
-import { IonicModule } from "@ionic/angular";
-import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
-import { TranslateHttpLoader } from "@ngx-translate/http-loader";
-import { sioCoreStates } from "./store";
+import { IonicModule } from '@ionic/angular';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { sioCoreStates } from './store';
 
 /* ngxs */
-import { NgxsDataPluginModule } from "@angular-ru/ngxs";
-import { NgxsModule, NoopNgxsExecutionStrategy } from "@ngxs/store";
-import { NgxsReduxDevtoolsPluginModule } from "@ngxs/devtools-plugin";
-import { NgxsRouterPluginModule } from "@ngxs/router-plugin";
-import { NgxsFormPluginModule } from "@ngxs/form-plugin";
-import { NgxsLoggerPluginModule } from "@ngxs/logger-plugin";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { NgxsDataPluginModule } from '@angular-ru/ngxs';
+import { NgxsModule, NoopNgxsExecutionStrategy } from '@ngxs/store';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
+import { NgxsFormPluginModule } from '@ngxs/form-plugin';
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //import { MaskitoModule } from '@maskito/angular';
-import { ScrollingModule } from "@angular/cdk/scrolling";
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
-import { SioCoreComponents } from "./components";
+import { SioCoreComponents } from './components';
 
 import {
   SioCoreEnvironmentConfig,
   SioCoreEnvironmentInterface,
-} from "./services";
+} from './services';
 
 //import { SioCoreErrorHandlerService } from "./shared/error.handle";
-import { LoggerModule } from "@angular-ru/cdk/logger";
-import { RouterModule } from "@angular/router";
-import { RelativeTime } from "./pipes";
+import { LoggerModule } from '@angular-ru/cdk/logger';
+import { RouterModule } from '@angular/router';
+import { RelativeTime } from './pipes';
 
 export class EnsureModuleLoadedOnceGuard {
   constructor(targetModule: NgModule) {
     if (targetModule) {
       throw new Error(
-        `${targetModule.constructor.name} has already been loaded. Import this module in the AppModule only.`
+        `${targetModule.constructor.name} has already been loaded. Import this module in the AppModule only.`,
       );
     }
   }
@@ -133,7 +133,7 @@ export class SioCoreModule extends EnsureModuleLoadedOnceGuard {
   }
 
   static forRoot(
-    config?: SioCoreEnvironmentInterface
+    config?: SioCoreEnvironmentInterface,
   ): ModuleWithProviders<SioCoreModule> {
     return {
       ngModule: SioCoreModule,

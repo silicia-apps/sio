@@ -89,6 +89,9 @@ importers:
       date-fns:
         specifier: ^4.1.0
         version: 4.1.0
+      ionicons:
+        specifier: ^8.0.8
+        version: 8.0.8
       ngx-translate-debug:
         specifier: ^0.1.4
         version: 0.1.4(@angular/common@19.2.9(@angular/core@19.2.9(rxjs@7.8.2)(zone.js@0.15.0))(rxjs@7.8.2))(@angular/core@19.2.9(rxjs@7.8.2)(zone.js@0.15.0))(@ngx-translate/core@16.0.4(@angular/common@19.2.9(@angular/core@19.2.9(rxjs@7.8.2)(zone.js@0.15.0))(rxjs@7.8.2))(@angular/core@19.2.9(rxjs@7.8.2)(zone.js@0.15.0)))
@@ -6529,6 +6532,9 @@ packages:
 
   ionicons@7.4.0:
     resolution: {integrity: sha512-ZK94MMqgzMCPPMhmk8Ouu6goyVHFIlw/ACP6oe3FrikcI0N7CX0xcwVaEbUc0G/v3W0shI93vo+9ve/KpvcNhQ==}
+
+  ionicons@8.0.8:
+    resolution: {integrity: sha512-CRHhDQA5vsNxC7raeEPqddgO90iR2F13VZS7hB0Vx7JrxJMM2060E3ddgYbpMQNJjzeBsgpkNwdBeK5qQ7RbLA==}
 
   ip-address@9.0.5:
     resolution: {integrity: sha512-zHtQzGojZXTwZTHQqra+ETKd4Sn3vgi7uBmlPoXVWZqYvuKmtI0l/VZTjqGmJY9x88GGOaZ9+G9ES8hC4T4X8g==}
@@ -18808,6 +18814,10 @@ snapshots:
       tslib: 2.8.1
 
   ionicons@7.4.0:
+    dependencies:
+      '@stencil/core': 4.30.0
+
+  ionicons@8.0.8:
     dependencies:
       '@stencil/core': 4.30.0
 
