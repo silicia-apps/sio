@@ -2,6 +2,7 @@ import { FlatCompat } from '@eslint/eslintrc';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import js from '@eslint/js';
+import stylistic from '@stylistic/eslint-plugin'
 import nxEslintPlugin from '@nx/eslint-plugin';
 
 const compat = new FlatCompat({
@@ -13,7 +14,7 @@ export default [
   {
     ignores: ['**/dist'],
   },
-  { plugins: { '@nx': nxEslintPlugin } },
+  { plugins: { '@nx': nxEslintPlugin , '@stylistic': stylistic } },
   {
     files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
     rules: {
