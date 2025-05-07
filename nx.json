@@ -2,11 +2,22 @@
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "targetDefaults": {
     "build": {
-      "dependsOn": ["^build"],
-      "inputs": ["production", "^production"],
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "production",
+        "^production"
+      ],
       "cache": true
     },
-    "e2e": { "inputs": ["default", "^production"], "cache": true },
+    "e2e": {
+      "inputs": [
+        "default",
+        "^production"
+      ],
+      "cache": true
+    },
     "build-storybook": {
       "cache": true,
       "inputs": [
@@ -24,8 +35,15 @@
         "{workspaceRoot}/jest.preset.js"
       ],
       "cache": true,
-      "options": { "passWithNoTests": true },
-      "configurations": { "ci": { "ci": true, "codeCoverage": true } }
+      "options": {
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
     },
     "@nx/eslint:lint": {
       "inputs": [
@@ -37,12 +55,20 @@
     },
     "@nx/angular:package": {
       "cache": true,
-      "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "production",
+        "^production"
+      ]
     }
   },
   "namedInputs": {
-    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "default": [
+      "{projectRoot}/**/*",
+      "sharedGlobals"
+    ],
     "production": [
       "default",
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
@@ -63,12 +89,25 @@
       "unitTestRunner": "jest",
       "e2eTestRunner": "cypress"
     },
-    "@nx/angular:library": { "linter": "eslint", "unitTestRunner": "jest" },
-    "@nx/angular:component": { "style": "scss" }
+    "@nx/angular:library": {
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nx/angular:component": {
+      "style": "scss"
+    }
   },
-  "nxCloudAccessToken": "YTgyOTY2NGYtZjNiYy00M2I2LWJjMzctYWViM2EwZTgzNTUxfHJlYWQtd3JpdGU=",
-  "tasksRunnerOptions": { "default": { "options": {} } },
+  "nxCloudAccessToken": "ZWRmM2M0YTMtNDU0ZC00OGQ1LTllZmItOGE4OGI1MDUzOTJkfHJlYWQ=",
+  "tasksRunnerOptions": {
+    "default": {
+      "options": {}
+    }
+  },
   "useLegacyCache": false,
-  "release": { "version": { "preVersionCommand": "npx nx run-many -t build" } },
+  "release": {
+    "version": {
+      "preVersionCommand": "npx nx run-many -t build"
+    }
+  },
   "nxCloudId": "681bb738853a4921d6a88db8"
 }
