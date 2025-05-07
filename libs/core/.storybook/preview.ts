@@ -69,12 +69,15 @@ const preview: Preview = {
       ],
     }),
   ],
+
   parameters: {
     layout: 'centered',
     docs: {
       toc: false, 
     },
   },
+
+  tags: ['autodocs']
 };
 
 export default preview;
