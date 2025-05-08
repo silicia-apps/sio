@@ -9,17 +9,13 @@ import {
 import { SioDatabaseState } from '../../store';
 
 @Component({
-    selector: 'sio-datalist',
-    templateUrl: './data-list.component.html',
-    styleUrls: ['./data-list.component.scss'],
-    standalone: false
+  selector: 'sio-datalist',
+  templateUrl: './data-list.component.html',
+  styleUrls: ['./data-list.component.scss'],
+  standalone: false,
 })
 export class SioDatabaseListComponent implements OnInit {
-  // input related to this component
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @Input() public store: SioDatabaseState<any> | undefined = undefined;
-
-  // Wrapped input for subcomponents
 
   @Input() public id = 'main';
   @Input() public lines: 'full' | 'inset' | 'none' = 'none';
@@ -92,7 +88,7 @@ export class SioDatabaseListComponent implements OnInit {
       (event as RefresherCustomEvent).target.complete();
     }, 500);
   }
-  
+
   public infinite(event: CustomEvent) {
     this.sioCoreLoggerService.debug(
       '[sioDatabaseListComponent][infinite]',

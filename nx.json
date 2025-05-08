@@ -2,12 +2,20 @@
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "targetDefaults": {
     "build": {
-      "dependsOn": ["^build"],
-      "inputs": ["production", "^production"],
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "production",
+        "^production"
+      ],
       "cache": true
     },
     "e2e": {
-      "inputs": ["default", "^production"],
+      "inputs": [
+        "default",
+        "^production"
+      ],
       "cache": true
     },
     "build-storybook": {
@@ -48,12 +56,20 @@
     },
     "@nx/angular:package": {
       "cache": true,
-      "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "production",
+        "^production"
+      ]
     }
   },
   "namedInputs": {
-    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "default": [
+      "{projectRoot}/**/*",
+      "sharedGlobals"
+    ],
     "production": [
       "default",
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
@@ -66,7 +82,9 @@
       "!{projectRoot}/tsconfig.storybook.json",
       "!{projectRoot}/eslint.config.mjs"
     ],
-    "sharedGlobals": ["{workspaceRoot}/.github/workflows/ci.yml"]
+    "sharedGlobals": [
+      "{workspaceRoot}/.github/workflows/ci.yml"
+    ]
   },
   "generators": {
     "@nx/angular:application": {
@@ -86,7 +104,10 @@
   "nxCloudAccessToken": "ZWRmM2M0YTMtNDU0ZC00OGQ1LTllZmItOGE4OGI1MDUzOTJkfHJlYWQ=",
   "tasksRunnerOptions": {
     "default": {
-      "options": {}
+      "runner": "nx-cloud",
+      "options": {
+        "accessToken": "N2U3NjBlNTItZmVmNy00MjQyLWJmODQtNjNjZTg2MTkzYWMyfHJlYWQtd3JpdGU="
+      }
     }
   },
   "useLegacyCache": false,
