@@ -68,7 +68,7 @@
     "@nx/angular:library": { "linter": "eslint", "unitTestRunner": "jest" },
     "@nx/angular:component": { "style": "scss" }
   },
-  "nxCloudAccessToken": "ZWRmM2M0YTMtNDU0ZC00OGQ1LTllZmItOGE4OGI1MDUzOTJkfHJlYWQ=",
+  "nxCloudAccessToken": "NDg3OWEzZDEtMzAzNC00OTdjLTg5ZDctZDYxZWUyNGE2ZTBhfHJlYWQtd3JpdGU=",
   "tasksRunnerOptions": {
     "default": {
       "runner": "nx-cloud",
