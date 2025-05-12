@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { SioChatMessageComponent } from '../message';
+import { SioChatMessageComponent,SioCoreMessageInterface } from '../message';
 
 import {
   SioCoreLoggerService,
@@ -28,8 +28,8 @@ import { SioChatState } from './store';
 export class SioChatComponent implements OnInit {
   @Input() public id: string | undefined;
 
-  public storeMessages: SioChatComponentStateModel[] = [];
-  public store: SioDatabaseState<SioChatComponentStateModel> | undefined;
+  public messages: SioCoreMessageInterface[] = [];
+  public SioChatState: SioDatabaseState<SioChatComponentStateModel> | undefined;
 
   @AttributeBoolean()
   @Input()
@@ -50,13 +50,17 @@ export class SioChatComponent implements OnInit {
     this.sioChatState.load([this.sioDatabaseService.limit(1)]);
   }
 
+  
+
   ngOnInit(): void {
     this.sioCoreLoggerService.debug('[SioChatComponent][ngOnInit]');
     if (this.sioChatState) {
       this.sioChatState.setRemoteIndex(0);
+      
       this.sioChatState.load([
         this.sioDatabaseService.equal('$id', this.id as string),
       ]);
+      this.messages = (this.sioChatState.snapshot).entities[0].messages;
       this.enableInfinite =
         this.sioChatState.localTotals < this.sioChatState.remoteTotals;
     }
@@ -64,9 +68,10 @@ export class SioChatComponent implements OnInit {
 
   public refresh(event: CustomEvent) {
     this.sioCoreLoggerService.debug('[SioChatComponent][refresh]', event);
-    if (this.store) {
-      this.store.setRemoteIndex(0);
-      this.store.load();
+    if (this.sioChatState
+    ) {
+      this.sioChatState.setRemoteIndex(0);
+      this.sioChatState.load();
     }
     this.sioOnRefresh.emit();
     setTimeout(() => {
@@ -76,8 +81,8 @@ export class SioChatComponent implements OnInit {
 
   public infinite(event: CustomEvent) {
     this.sioCoreLoggerService.debug('[SioChatComponent][infinite]', event);
-    if (this.store) {
-      this.store.load();
+    if (this.sioChatState) {
+      this.sioChatState.load();
     }
     this.sioOnInfinite.emit(event);
     setTimeout(() => {

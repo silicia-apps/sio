@@ -4,9 +4,9 @@
       refreshingSpinner="circles" refreshingText="{{ 'LIST_PULL_WAITING' | translate }}">
     </ion-refresher-content>
   </ion-refresher>
-  <sio-chat-message *ngFor="let message of this.storeMessages; trackItem" [ID]="'1'"
+  <sio-chat-message *ngFor="let message of this.messages; trackItem" [ID]="'1'"
   (sioOnInfinite)="null" (sioOnRefresh)="null" [user]="'io'"></sio-chat-message>
-  <ion-infinite-scroll *ngIf="this.infinite !== null && this.store?.localTotals !== this.store?.remoteTotals"
+  <ion-infinite-scroll *ngIf="this.infinite !== null && this.sioChatState.localTotals !== this.sioChatState.remoteTotals"
     threshold="20%" (ionInfinite)="null">
     <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="{{ 'CHAT_LOADING' | translate }}">
     </ion-infinite-scroll-content>
