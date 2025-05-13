@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { SioChatMessageComponent,SioCoreMessageInterface } from '../message';
+import { SioChatMessageComponent, SioCoreMessageInterface } from '../message';
 
 import {
   SioCoreLoggerService,
@@ -15,7 +15,7 @@ import {
 import { SioDatabaseState, SioDatabaseService } from '@silicia/database';
 import { SioChatComponentStateModel } from './store/chat.model';
 import { CommonModule } from '@angular/common';
-import { NgxsModule } from '@ngxs/store';
+import { NgxsModule, NgxsOnInit, StateContext } from '@ngxs/store';
 import { SioChatState } from './store';
 
 @Component({
@@ -25,10 +25,9 @@ import { SioChatState } from './store';
   imports: [CommonModule, SioCommonModule, SioChatMessageComponent],
   standalone: true,
 })
-export class SioChatComponent implements OnInit {
+export class SioChatComponent implements OnInit, NgxsOnInit {
   @Input() public id: string | undefined;
 
-  public messages: SioCoreMessageInterface[] = [];
   public SioChatState: SioDatabaseState<SioChatComponentStateModel> | undefined;
 
   @AttributeBoolean()
@@ -44,23 +43,28 @@ export class SioChatComponent implements OnInit {
     private sioDatabaseService: SioDatabaseService,
     public sioChatState: SioChatState,
   ) {
-    this.sioCoreLoggerService.debug('[SioChatComponent][constructor]');
-    this.sioChatState.setDatabaseId('demo');
-    this.sioChatState.setCollectionId('68189e8a00241e559889');
-    this.sioChatState.load([this.sioDatabaseService.limit(1)]);
+    if (this.id) {
+      this.sioCoreLoggerService.debug('[SioChatComponent][constructor]');
+      this.sioChatState.setDatabaseId('demo');
+      this.sioChatState.setCollectionId('68189e8a00241e559889');
+      this.sioChatState.load([this.sioDatabaseService.equal('$id', this.id)]);
+    }
   }
 
-  
+  ngxsOnInit(ctx: StateContext<any>): void {
+    this.sioCoreLoggerService.debug('[SioChatComponent][ngxsOnInit]', ctx);
+  }
 
   ngOnInit(): void {
     this.sioCoreLoggerService.debug('[SioChatComponent][ngOnInit]');
     if (this.sioChatState) {
       this.sioChatState.setRemoteIndex(0);
-      
+
       this.sioChatState.load([
         this.sioDatabaseService.equal('$id', this.id as string),
       ]);
-      this.messages = (this.sioChatState.snapshot).entities[0].messages;
+      
+
       this.enableInfinite =
         this.sioChatState.localTotals < this.sioChatState.remoteTotals;
     }
@@ -68,8 +72,7 @@ export class SioChatComponent implements OnInit {
 
   public refresh(event: CustomEvent) {
     this.sioCoreLoggerService.debug('[SioChatComponent][refresh]', event);
-    if (this.sioChatState
-    ) {
+    if (this.sioChatState) {
       this.sioChatState.setRemoteIndex(0);
       this.sioChatState.load();
     }

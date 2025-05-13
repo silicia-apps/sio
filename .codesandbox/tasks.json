@@ -11,7 +11,7 @@
   "tasks": {
     "npx nx serve demo --host=0.0.0.0": {
       "name": "preview",
-      "command": "npx nx serve demo --disableHostCheck",
+      "command": "pnpm dlx nx serve demo --disableHostCheck",
       "runAtStart": true,
       "preview": {
         "port": 4200

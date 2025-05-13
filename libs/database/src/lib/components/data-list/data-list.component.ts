@@ -47,9 +47,7 @@ export class SioDatabaseListComponent implements OnInit {
   @Output() sioOnInfinite = new EventEmitter<Event>();
   @Output() sioOnRefresh = new EventEmitter<Event>();
 
-  constructor(private sioCoreLoggerService: SioCoreLoggerService) {
-    this.sioCoreLoggerService.debug('[SioDatabaseListComponent][constructor]');
-  }
+  constructor(private sioCoreLoggerService: SioCoreLoggerService) {}
 
   ngOnInit(): void {
     this.sioCoreLoggerService.debug('[SioDatabaseListComponent][ngOnInit]');
