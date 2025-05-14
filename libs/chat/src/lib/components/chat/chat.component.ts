@@ -1,9 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { SioChatMessageComponent, SioCoreMessageInterface } from '../message';
+import { SioChatMessageComponent } from '../message';
 
 import {
   SioCoreLoggerService,
-  SioColorType,
   SioCommonModule,
 } from '@silicia/core';
 import { AttributeBoolean } from '@angular-ru/cdk/decorators';
@@ -15,7 +14,7 @@ import {
 import { SioDatabaseState, SioDatabaseService } from '@silicia/database';
 import { SioChatComponentStateModel } from './store/chat.model';
 import { CommonModule } from '@angular/common';
-import { NgxsModule, NgxsOnInit, StateContext } from '@ngxs/store';
+import { NgxsOnInit, StateContext } from '@ngxs/store';
 import { SioChatState } from './store';
 
 @Component({
@@ -45,9 +44,7 @@ export class SioChatComponent implements OnInit, NgxsOnInit {
   ) {
     if (this.id) {
       this.sioCoreLoggerService.debug('[SioChatComponent][constructor]');
-      this.sioChatState.setDatabaseId('demo');
-      this.sioChatState.setCollectionId('68189e8a00241e559889');
-      this.sioChatState.load([this.sioDatabaseService.equal('$id', this.id)]);
+      
     }
   }
 
@@ -58,12 +55,11 @@ export class SioChatComponent implements OnInit, NgxsOnInit {
   ngOnInit(): void {
     this.sioCoreLoggerService.debug('[SioChatComponent][ngOnInit]');
     if (this.sioChatState) {
+      this.sioChatState.setDatabaseId('demo');
+      this.sioChatState.setCollectionId('6824f6c5002424ca7d81');
       this.sioChatState.setRemoteIndex(0);
+      this.sioChatState.load();
 
-      this.sioChatState.load([
-        this.sioDatabaseService.equal('$id', this.id as string),
-      ]);
-      
 
       this.enableInfinite =
         this.sioChatState.localTotals < this.sioChatState.remoteTotals;
@@ -92,7 +88,6 @@ export class SioChatComponent implements OnInit, NgxsOnInit {
       (event as InfiniteScrollCustomEvent).target.complete();
     }, 500);
   }
-
   public load(event: CustomEvent) {
     this.sioCoreLoggerService.debug('[SioChatComponent][load]', event);
   }

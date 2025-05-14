@@ -1,4 +1,4 @@
-<div class="message" [class.left]="true">
+<div class="message" [class.left]="this.received" [class.right]="!this.received">
   <img class="user-img" [src]="this.avatar" alt="" src="" />
   <ion-spinner name="dots" *ngIf="this.state === 'pending'"></ion-spinner>
   <div class="msg-detail">

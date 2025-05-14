@@ -2,7 +2,7 @@ import { Component} from '@angular/core';
 import { SioCommonModule, SioCoreLoggerService } from '@silicia/core';
 import { TaskState } from './store/task.state';
 import { taskInterface } from './store/task.interface';
-import { Query, SioDatabaseModule } from '@silicia/database';
+import { SioDatabaseService, SioDatabaseModule } from '@silicia/database';
 
 @Component({
     selector: 'sio-database',
@@ -14,10 +14,11 @@ export class DatabasePageComponent {
   constructor(
     public taskState: TaskState,
     private sioCoreLoggerService: SioCoreLoggerService,
+    private sioDatabaseService: SioDatabaseService,
   ) {
     this.taskState.setDatabaseId('demo');
     this.taskState.setCollectionId('tasks');
-    this.taskState.load([Query.limit(50)]);
+    this.taskState.load([this.sioDatabaseService.limit(25)]);
   }
 
   public async create() {

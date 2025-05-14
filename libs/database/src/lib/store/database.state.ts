@@ -7,7 +7,6 @@ import { SioDatabaseDocumentInterface } from "../models";
 import { SioDatabaseService } from "../services";
 import { SioCoreLoggerService } from "@silicia/core";
 import { SioDatabaseDocumentListInterface } from "../interfaces";
-import { Query } from "../helpers";
 import { Subscription } from "rxjs";
 
 @Injectable()
@@ -95,10 +94,9 @@ export abstract class SioDatabaseState<T extends SioDatabaseDocumentInterface>
           if (this.snapshot.remoteIndex)
             queries = [
               ...this.snapshot.queries,
-              this.snapshot.remoteIndex as string,
+              this.sioDatabaseService.cursorAfter(this.snapshot.remoteIndex as string),
             ];
         }
-        console.log("Questa è la query" + JSON.stringify(queries));
         const documents = <SioDatabaseDocumentListInterface<T>>(
           await this.sioDatabaseService.query(
             this.snapshot.databaseId,
@@ -113,10 +111,7 @@ export abstract class SioDatabaseState<T extends SioDatabaseDocumentInterface>
         }
         this.setRemoteTotals(documents.total);
         this.setLocalTotals(this.snapshot.ids.length);
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        //console.error(documents.documents.pop()!.$id!);
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        this.setRemoteIndex(documents.documents.pop()!.$id!);
+        this.setRemoteIndex(documents.documents.pop()?.$id as string);
       }
       return true;
     } catch (e) {

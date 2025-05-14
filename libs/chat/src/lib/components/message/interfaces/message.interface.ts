@@ -1,5 +1,9 @@
-export interface SioCoreMessageInterface {
+import { SioDatabaseDocumentInterface } from "@silicia/database";
+
+export interface SioCoreMessageInterface extends SioDatabaseDocumentInterface {
+  from: any;
+  to: any[];
   content: string;
   type: "text" | "image" | "video" | "audio" | "file";
-  status: "pending" | "sent" | "received" | "read";
+  state: "pending" | "sended" | "received" | "readed";
 }
