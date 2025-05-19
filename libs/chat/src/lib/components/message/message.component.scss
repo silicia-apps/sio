@@ -1,18 +1,20 @@
 :host {
+  .avatar-top {
+    margin: 16px 16px 8px 0;
+    margin-bottom: auto;
+    border: 2px;
+    border-color: #fff;
+  }
 
-
+  ion-item {
+    --background: rgba(255, 255, 255, 0.0);
+    --border-color: rgba(255, 255, 255, 0.0);
+  }
 
   .message {
     position: relative;
     padding: 7px 0;
 
-    .user-img {
-      position: absolute;
-      border-radius: 45px;
-      width: 45px;
-      height: 45px;
-      box-shadow: 0 0 2px rgba(0, 0, 0, 0.36);
-    }
 
     .msg-detail {
       width: 100%;
@@ -22,15 +24,6 @@
         margin: 0;
       }
 
-      .msg-info {
-        p {
-          font-size: .8em;
-          color: #888;
-        }
-      }
-
-
-
     }
   }
 
@@ -38,7 +31,8 @@
 
 
     .msg-detail {
-      padding-left: 60px;
+      width: 100%;
+      padding-left: 5px;
     }
 
     .user-img {
@@ -46,6 +40,7 @@
     }
 
     .msg-content {
+      background-color: #ffffff;
       color: #343434;
       float: left;
       position: relative;
@@ -81,16 +76,11 @@
 
   .message.right {
     .msg-detail {
-      padding-right: 60px;
-
-      .msg-info {
-        text-align: right;
-      }
+      width: 100%;
+      padding-right: 5px;
     }
 
-    .user-img {
-      right: 0;
-    }
+  
 
     ion-spinner {
       position: absolute;

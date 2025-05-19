@@ -1,15 +1,19 @@
 <ion-refresher slot="fixed" *ngIf="this.refresh !== null" (ionRefresh)="this.refresh($event)">
   <ion-refresher-content pullingIcon="chevron-down-circle-outline" pullingText="{{ 'CHAT_PULL_TEXT' | translate }}"
-    refreshingSpinner="circles" refreshingText="{{ 'LIST_PULL_WAITING' | translate }}">
+    refreshingSpinner="circles" refreshingText="{{ 'CHAT_PULL_WAITING' | translate }}">
   </ion-refresher-content>
 </ion-refresher>
-<ion-list>
+<ion-list fullscreen="true">
+  <ion-item-group>
+  <ion-item-divider>
+    <ion-label>15 Maggio 2025</ion-label>
+  </ion-item-divider>
   <sio-chat-message *ngFor="
     let item of this.sioChatState.selectAll()[0]?.messages;
     " [message]="item.content" (sioOnInfinite)="(null)" (sioOnRefresh)="(null)" [user]="item.from.nick"
-    [avatar]="item.from.avatar"
-    [date]="item.$createdAt?item.$createdAt:''"
-    [state]="item.state" [received]="item.from.nick !== 'Fr4'"></sio-chat-message>
+    [avatar]="item.from.avatar" [date]="item.$createdAt?item.$createdAt:''" [state]="item.state"
+    [received]="item.from.nick !== 'Fr4'"></sio-chat-message>
+    </ion-item-group>
 </ion-list>
 <ion-infinite-scroll *ngIf="
     this.infinite !== null &&

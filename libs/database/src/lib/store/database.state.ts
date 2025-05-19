@@ -44,7 +44,13 @@ export abstract class SioDatabaseState<T extends SioDatabaseDocumentInterface>
             `[SioDatabaseState][DataSocket] received events`,
             event
           );
-          console.log('Passa ' + event.channels.some(event.events));
+          /*this.sioCoreLoggerService.debug(`databases.${this.snapshot.databaseId}.collections.${this.snapshot.collectionId}`, event.events);
+          if ((event.events as string[]).includes(`databases.${this.snapshot.databaseId}.collections.${this.snapshot.collectionId}`)) {
+            this.sioCoreLoggerService.debug(
+              `[SioDatabaseState][DataSocket] event matched`,
+              this.snapshot.collectionId,
+            );
+          }*/
           const item = this.selectOne(event.payload.$id);
           if (item) {
             console.debug(
@@ -56,7 +62,7 @@ export abstract class SioDatabaseState<T extends SioDatabaseDocumentInterface>
               "[SioDatabaseState][DataSocket] items not in list, add"
             );
           }
-          
+          this.setRemoteIndex(0);
           this.load();
         });
     }

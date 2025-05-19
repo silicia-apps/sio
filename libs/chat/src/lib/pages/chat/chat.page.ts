@@ -22,6 +22,9 @@ export class SioChatPage implements OnInit {
 
   }
 
+  public sendMessage() {
+    this.sioCoreLoggerService.debug('[SioChatPage][sendMessage]');
+  }
   ngOnInit() {
     this.sioCoreLoggerService.debug('[SioChatPage][ngOnInit]');
   }
@@ -29,6 +32,11 @@ export class SioChatPage implements OnInit {
   public click(event: Event) {
     this.sioCoreLoggerService.debug('[SioChatPage][onClick]', event);
   }
+
+  public onFocus() {
+    this.sioCoreLoggerService.debug('[SioChatPage][onFocus]');
+  }
+
 
   public infinite(event: Event) {
     this.sioCoreLoggerService.debug('[SioChatPage][onInfinite]', event);
