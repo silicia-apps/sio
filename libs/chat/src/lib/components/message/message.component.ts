@@ -21,7 +21,7 @@ export class SioChatMessageComponent {
   @Input() public date: string = '';
   @Input() public received: boolean = false;
   @Input() public user: string = '';
-  @Input() public avatar: string = 'https://gravatar.com/avatar/a3007c7ee09b7157b4ca921712dbd814?s=400&d=robohash&r=x';
+  @Input() public avatar: string | undefined = 'https://gravatar.com/avatar/a3007c7ee09b7157b4ca921712dbd814?s=400&d=robohash&r=x';
   @Input() public sent_color: SioColorType = 'primary';
   @Input() public received_color: SioColorType = 'secondary';
 

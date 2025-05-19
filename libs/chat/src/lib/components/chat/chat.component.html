@@ -7,6 +7,7 @@
   <sio-chat-message *ngFor="
     let item of this.sioChatState.selectAll()[0]?.messages;
     " [message]="item.content" (sioOnInfinite)="(null)" (sioOnRefresh)="(null)" [user]="item.from.nick"
+    [avatar]="item.from.avatar"
     [date]="item.$createdAt?item.$createdAt:''"
     [state]="item.state" [received]="item.from.nick !== 'Fr4'"></sio-chat-message>
 </ion-list>

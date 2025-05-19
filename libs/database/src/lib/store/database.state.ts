@@ -44,6 +44,7 @@ export abstract class SioDatabaseState<T extends SioDatabaseDocumentInterface>
             `[SioDatabaseState][DataSocket] received events`,
             event
           );
+          console.log('Passa ' + event.channels.some(event.events));
           const item = this.selectOne(event.payload.$id);
           if (item) {
             console.debug(
@@ -52,9 +53,10 @@ export abstract class SioDatabaseState<T extends SioDatabaseDocumentInterface>
             this.setEntityOne(event.payload);
           } else {
             console.debug(
-              "[SioDatabaseState][DataSocket] items not in list, do anything"
+              "[SioDatabaseState][DataSocket] items not in list, add"
             );
           }
+          
           this.load();
         });
     }
@@ -165,6 +167,7 @@ export abstract class SioDatabaseState<T extends SioDatabaseDocumentInterface>
   }
 
   override addOne(entity: T): void {
+    this.sioCoreLoggerService.debug("[SioDatabaseState][addOne]", entity);
     //super.addOne(entity);
     this.sioDatabaseService.add(
       entity,
@@ -174,6 +177,7 @@ export abstract class SioDatabaseState<T extends SioDatabaseDocumentInterface>
   }
 
   override setOne(entity: T): void {
+    this.sioCoreLoggerService.debug("[SioDatabaseState][setOne]", entity);
     //super.setOne(entity);
     this.sioDatabaseService.set(
       entity.$id as string,
