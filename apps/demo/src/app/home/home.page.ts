@@ -12,7 +12,7 @@ export class HomePageComponent {
   constructor(
     
   ) {
-   
+   this.sioCoreLoggerService.debug('[HomePageComponent][constructor]');
     
   }
 

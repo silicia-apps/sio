@@ -32,12 +32,11 @@ export class DatabasePageComponent {
     //this.taskState.setOne(task);
   }
   
-  public delete(event: any) {
+  public delete(event: unknown) {
     this.sioCoreLoggerService.debug('[DatabasePageComponent][delete]', event.id);
     this.taskState.removeOne(event.id);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
   public archive(event: Event) {
     this.sioCoreLoggerService.log('you have right swiped ', event);
   }

@@ -1,4 +1,3 @@
-/* eslint-disable */
 export default {
   displayName: 'sio',
   preset: '../../jest.preset.js',
