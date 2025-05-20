@@ -18,6 +18,7 @@ import { languages } from './i18n';
     selector: 'sio-auth-badge',
     templateUrl: './badge.component.html',
     styleUrls: ['./badge.component.scss'],
+    // eslint-disable-next-line @angular-eslint/prefer-standalone
     standalone: false
 })
 export class SioAuthBadgeComponent {

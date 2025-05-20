@@ -7,6 +7,7 @@ import { SioAuthState } from '../../store';
     selector: 'sio-auth-profile-page',
     templateUrl: './profile.page.html',
     styleUrls: ['./profile.page.scss'],
+    // eslint-disable-next-line @angular-eslint/prefer-standalone
     standalone: false
 })
 export class SioAuthProfilePageComponent {

@@ -9,8 +9,8 @@ export const sioChatRoutes: Route[] = [
       canActivate: [SioAuthGuard],
   },
   {
-    path: 'chat/list',
-    loadChildren: () =>
+    path: 'chats',
+    loadComponent: () =>
       import('./pages/chats').then((m) => m.SioChatsPage),
       canActivate: [SioAuthGuard],
   } 

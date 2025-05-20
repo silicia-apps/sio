@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SioCommonModule } from '@silicia/core';
+import { SioCommonModule, SioCoreLoggerService } from '@silicia/core';
 
 
 @Component({
@@ -10,12 +10,9 @@ import { SioCommonModule } from '@silicia/core';
 })
 export class HomePageComponent {
   constructor(
-    
+    private sioCoreLoggerService: SioCoreLoggerService
   ) {
    this.sioCoreLoggerService.debug('[HomePageComponent][constructor]');
     
   }
-
- 
-  
 }

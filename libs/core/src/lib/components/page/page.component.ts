@@ -15,6 +15,7 @@ import { SioColorType } from '../../types';
     selector: 'sio-page',
     templateUrl: './page.component.html',
     styleUrls: ['./page.component.scss'],
+    // eslint-disable-next-line @angular-eslint/prefer-standalone
     standalone: false
 })
 export class SioCorePageComponent implements OnInit {
@@ -24,7 +25,7 @@ export class SioCorePageComponent implements OnInit {
   public page: SioCorePageComponentInterface | null = null;
 
   @Input() set title(value: string) {
-    this.sioLoggerService.debug(`[sioCorePageComponentState][set title]`, value);
+    this.sioLoggerService.debug(`[sioCorePageComponentState][set title]`, value, this.id);
     this.sioCorePagesComponentState.updateOne({
       id: this.id as string,
       changes: { title: value },

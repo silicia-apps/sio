@@ -3,7 +3,7 @@ import { StateRepository } from "@angular-ru/ngxs/decorators";
 import { Injectable } from "@angular/core";
 import { State } from "@ngxs/store";
 import { SioDatabaseState } from "@silicia/database";
-import { SioChatComponentStateModel } from "./chat.model";
+import { SioChatStateModel } from "./chat.model";
 
 @StateRepository()
 @State({
@@ -11,4 +11,4 @@ import { SioChatComponentStateModel } from "./chat.model";
   defaults: createEntityCollections(),
 })
 @Injectable()
-export class SioChatState extends SioDatabaseState<SioChatComponentStateModel> {}
+export class SioChatState extends SioDatabaseState<SioChatStateModel> {}

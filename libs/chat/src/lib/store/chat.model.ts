@@ -1,7 +1,7 @@
 import { SioDatabaseDocumentInterface } from "@silicia/database";
 import { SioChatInterface } from "../interfaces/chat.interface";
 
-export interface SioChatComponentStateModel extends SioChatInterface, SioDatabaseDocumentInterface {
+export interface SioChatStateModel extends SioChatInterface, SioDatabaseDocumentInterface {
   isLoading?: boolean;
   error?: string;
   isConnected?: boolean;

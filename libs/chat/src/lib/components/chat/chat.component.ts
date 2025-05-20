@@ -12,10 +12,9 @@ import {
   RefresherCustomEvent,
 } from '@ionic/angular';
 import { SioDatabaseState, SioDatabaseService } from '@silicia/database';
-import { SioChatComponentStateModel } from '../../store';
+import { SioChatStateModel, SioChatState } from '../../store';
 import { CommonModule } from '@angular/common';
 import { NgxsOnInit, StateContext } from '@ngxs/store';
-import { SioChatState } from './store';
 
 @Component({
   selector: 'sio-chat',
@@ -27,7 +26,7 @@ import { SioChatState } from './store';
 export class SioChatComponent implements OnInit, NgxsOnInit {
   @Input() public id: string | undefined;
 
-  public SioChatState: SioDatabaseState<SioChatComponentStateModel> | undefined;
+  public SioChatState: SioDatabaseState<SioChatStateModel> | undefined;
 
   @AttributeBoolean()
   @Input()
@@ -44,8 +43,8 @@ export class SioChatComponent implements OnInit, NgxsOnInit {
   ) {
     if (this.id) {
       this.sioCoreLoggerService.debug('[SioChatComponent][constructor]');
-      
     }
+    
   }
 
   ngxsOnInit(ctx: StateContext<any>): void {

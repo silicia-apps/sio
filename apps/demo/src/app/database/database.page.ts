@@ -32,7 +32,8 @@ export class DatabasePageComponent {
     //this.taskState.setOne(task);
   }
   
-  public delete(event: unknown) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  public delete(event: any) {
     this.sioCoreLoggerService.debug('[DatabasePageComponent][delete]', event.id);
     this.taskState.removeOne(event.id);
   }

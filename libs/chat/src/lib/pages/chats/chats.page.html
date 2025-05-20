@@ -1,8 +1,8 @@
 <sio-page
   id="chats"
-  [title]="TITLE">
-  <sio-datalist [store]="this.taskState" header="name" label="description" thumbnail="thumbnail"
-    [enableInfinite]="this.taskState.localTotals < this.taskState.remoteTotals"
+  title="{{ 'PAGE_CHATS_TITLE' | translate }}">
+  <sio-datalist [store]="this.sioChatState" header="name" label="description" thumbnail="from.avatar"
+    [enableInfinite]="this.sioChatState.localTotals < this.sioChatState.remoteTotals"
     (sioOnInfinite)="this.load($event)" (sioOnRefresh)="this.refresh($event)"
     rightMenuId="left_items"
     leftMenuId="right_items"

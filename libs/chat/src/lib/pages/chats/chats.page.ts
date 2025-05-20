@@ -1,53 +1,53 @@
-import { Component} from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { SioCommonModule, SioCoreLoggerService } from '@silicia/core';
-import { TaskState } from './store/task.state';
-import { taskInterface } from './store/task.interface';
 import { SioDatabaseService, SioDatabaseModule } from '@silicia/database';
+import { SioChatState } from '../../store';
+import { SioChatInterface } from '../../interfaces';
+
+import { languages } from './i18n';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'sio-chats-page',
     templateUrl: 'chats.page.html',
     styleUrls: ['chats.page.scss'],
+    standalone: true,
     imports: [SioCommonModule, SioDatabaseModule]
 })
 export class SioChatsPage {
   constructor(
-    public taskState: TaskState,
+    public sioChatState: SioChatState,
     private sioCoreLoggerService: SioCoreLoggerService,
     private sioDatabaseService: SioDatabaseService,
+    private translateService: TranslateService,
   ) {
-    this.taskState.setDatabaseId('demo');
-    this.taskState.setCollectionId('tasks');
-    this.taskState.load([this.sioDatabaseService.limit(25)]);
+    languages.forEach((lang:any) => {
+      this.translateService.setTranslation(lang.key, lang.value, true);
+    });
+    this.sioChatState.setDatabaseId('demo');
+    this.sioChatState.setCollectionId('6824f6c5002424ca7d81');
+    this.sioChatState.load([this.sioDatabaseService.limit(25)]);
   }
 
   public async create() {
-    const test: taskInterface = {
-      name : 'test',
-      description : 'test descrption'
-    }
-    this.taskState.addOne(test);
-    const task = {...this.taskState.selectOne('65a841c4577a8c033b25')}
-    task.name = 'task ciao';
-    //this.taskState.setOne(task);
+    this.sioCoreLoggerService.debug(`[SioChatPage]['create']`);
   }
   
-  public delete(event: any) {
-    this.sioCoreLoggerService.debug('[DatabasePageComponent][delete]', event.id);
-    this.taskState.removeOne(event.id);
+  public async delete(event: any) {
+    this.sioCoreLoggerService.debug('[SioChatPage][delete]', event.id);
+    this.sioChatState.removeOne(event.id);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
   public archive(event: Event) {
     this.sioCoreLoggerService.log('you have right swiped ', event);
   }
 
   public load(event: Event):void {
-    this.sioCoreLoggerService.debug('[DatabasePageComponent][load]', event);
+    this.sioCoreLoggerService.debug('[SioChatPage][load]', event);
   }
 
   public refresh(event: Event): void {
-    this.sioCoreLoggerService.debug('[DatabasePageComponent][refresh]', event);
+    this.sioCoreLoggerService.debug('[SioChatPage][refresh]', event);
   }
 }
 

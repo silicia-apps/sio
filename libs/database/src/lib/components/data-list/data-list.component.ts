@@ -12,9 +12,11 @@ import { SioDatabaseState } from '../../store';
   selector: 'sio-datalist',
   templateUrl: './data-list.component.html',
   styleUrls: ['./data-list.component.scss'],
+  // eslint-disable-next-line @angular-eslint/prefer-standalone
   standalone: false,
 })
 export class SioDatabaseListComponent implements OnInit {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @Input() public store: SioDatabaseState<any> | undefined = undefined;
 
   @Input() public id = 'main';

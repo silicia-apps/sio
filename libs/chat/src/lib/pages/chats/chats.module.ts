@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 import { SioCommonModule } from '@silicia/core';
 
 import { Routes, RouterModule } from '@angular/router';
-import { SioChatListPage } from './chat-list.page';
+import { SioChatsPage } from './chats.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: SioChatListPage,
+    component: SioChatsPage,
   },
 ];
 
@@ -18,6 +18,6 @@ const routes: Routes = [
     SioCommonModule,
     RouterModule.forChild(routes),
   ],
-  declarations: [SioChatListPage],
+  declarations: [SioChatsPage],
 })
-export class SioChatListPageModule {}
+export class SioChatsPageModule {}

@@ -19,7 +19,7 @@ import { NgxsFormPluginModule } from "@ngxs/form-plugin";
 
 import { SioChatComponents } from "./components";
 import { SioCommonModule } from "@silicia/core";
-import { SioChatState } from "./components/chat/store";
+import { SioChatState } from "./store";
 
 import { sioChatRoutes } from "./sio-chat.routes";
 
