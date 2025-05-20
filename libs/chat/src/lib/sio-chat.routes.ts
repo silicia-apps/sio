@@ -11,7 +11,7 @@ export const sioChatRoutes: Route[] = [
   {
     path: 'chat/list',
     loadChildren: () =>
-      import('./pages/chat-list').then((m) => m.SioChatListPageModule),
+      import('./pages/chats').then((m) => m.SioChatsPage),
       canActivate: [SioAuthGuard],
   } 
 ];

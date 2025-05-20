@@ -12,7 +12,7 @@ import {
   RefresherCustomEvent,
 } from '@ionic/angular';
 import { SioDatabaseState, SioDatabaseService } from '@silicia/database';
-import { SioChatComponentStateModel } from './store/chat.model';
+import { SioChatComponentStateModel } from '../../store';
 import { CommonModule } from '@angular/common';
 import { NgxsOnInit, StateContext } from '@ngxs/store';
 import { SioChatState } from './store';
