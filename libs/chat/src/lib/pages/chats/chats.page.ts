@@ -46,6 +46,10 @@ export class SioChatsPage {
     this.sioCoreLoggerService.debug('[SioChatPage][load]', event);
   }
 
+  public openChat(event: Event): void {
+    this.sioCoreLoggerService.debug('[SioChatListPage][openChat]', event);
+  }
+
   public refresh(event: Event): void {
     this.sioCoreLoggerService.debug('[SioChatPage][refresh]', event);
   }

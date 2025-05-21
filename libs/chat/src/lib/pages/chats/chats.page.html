@@ -1,11 +1,12 @@
 <sio-page
-  id="chats"
   title="{{ 'PAGE_CHATS_TITLE' | translate }}">
-  <sio-datalist [store]="this.sioChatState" header="name" label="description" thumbnail="from.avatar"
+  <sio-datalist [store]="this.sioChatState" header="name" label="$updatedAt" thumbnail="avatar"
     [enableInfinite]="this.sioChatState.localTotals < this.sioChatState.remoteTotals"
-    (sioOnInfinite)="this.load($event)" (sioOnRefresh)="this.refresh($event)"
+    (sioOnInfinite)="this.load($event)" (sioOnRefresh)="this.refresh($event)" (sioOnClick)="this.openChat($event)"
     rightMenuId="left_items"
     leftMenuId="right_items"
+
+    
   >
   </sio-datalist>
   <ion-fab slot="footer" vertical="bottom" horizontal="end">

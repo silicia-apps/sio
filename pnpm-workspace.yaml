@@ -1,0 +1,11 @@
+ignoredBuiltDependencies:
+  - '@compodoc/compodoc'
+  - '@parcel/watcher'
+  - '@swc/core'
+  - core-js
+  - cypress
+  - esbuild
+  - lmdb
+  - msgpackr-extract
+onlyBuiltDependencies:
+  - nx

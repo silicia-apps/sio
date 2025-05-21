@@ -120,8 +120,8 @@ export class SioCoreItemComponent implements OnInit {
     this.sioOnLeftSwipe.emit(event);
   }
 
-  public async click(event: CustomEvent): Promise<void> {
-    event.detail.id = this.$id;
+  public async click(event: Event): Promise<void> {
+    //event.detail.id = this.$id;
     this.sioCoreLoggerService.info(
       '[SioCoreItemComponent][click] raise event click',
       event,

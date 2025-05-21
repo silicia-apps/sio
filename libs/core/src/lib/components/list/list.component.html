@@ -9,6 +9,7 @@
     [icon]="this.icon ? item[this.icon] : undefined"
     [rightMenuId]="this.rightMenuId"
     [leftMenuId]="this.leftMenuId"
+    (OnClick) = "this.click($event)"
   >
   </sio-item>
 </ion-list>

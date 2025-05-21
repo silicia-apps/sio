@@ -74,6 +74,14 @@ export class SioDatabaseListComponent implements OnInit {
     this.sioOnRightSwipe.emit(event);
   }
 
+  public click(event: Event) {
+    this.sioCoreLoggerService.debug(
+      '[SioDatabaseListComponent][click]',
+      event,
+    );
+    this.sioOnClick.emit(event);
+  }
+
   public refresh(event: CustomEvent) {
     this.sioCoreLoggerService.debug(
       '[SioDatabaseListComponent][refresh]',

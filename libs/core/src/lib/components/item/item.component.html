@@ -1,17 +1,15 @@
 <ion-item-sliding [disabled]="this.disabled" #slidingItem>
-  @if(this.leftMenuId) {
-  <ion-item-options side="start">
-    <ion-item-option
-      *ngFor="
-          let item of this.sioCoreLeftMenuState?.items | keyvalue;
-        "
-      [color]="item.value.color"
-    >
-      <ion-icon slot="icon-only" [name]="item.value.icon"></ion-icon>
-    </ion-item-option>
-  </ion-item-options>
+  @if (this.leftMenuId) {
+    <ion-item-options side="start">
+      <ion-item-option
+        *ngFor="let item of this.sioCoreLeftMenuState?.items | keyvalue"
+        [color]="item.value.color"
+      >
+        <ion-icon slot="icon-only" [name]="item.value.icon"></ion-icon>
+      </ion-item-option>
+    </ion-item-options>
   }
-  <ion-item button="this.button" [color]="this.color">
+  <ion-item button="this.button" [color]="this.color" (onClick)="this.click($event)">
     <sio-icon *ngIf="this.icon" name="this.icon" slot="start"></sio-icon>
     <ion-avatar *ngIf="this.avatar" slot="start">
       <ion-img [alt]="this.alt" [src]="this.avatar" />
@@ -33,16 +31,14 @@
       ></sio-button>
     </div>
   </ion-item>
-  @if(this.rightMenuId) {
-  <ion-item-options side="end">
-    <ion-item-option
-      *ngFor="
-          let item of this.sioCoreRightMenuState?.items | keyvalue;
-        "
-      [color]="item.value.color"
-    >
-      <ion-icon slot="icon-only" [name]="item.value.icon"></ion-icon>
-    </ion-item-option>
-  </ion-item-options>
+  @if (this.rightMenuId) {
+    <ion-item-options side="end">
+      <ion-item-option
+        *ngFor="let item of this.sioCoreRightMenuState?.items | keyvalue"
+        [color]="item.value.color"
+      >
+        <ion-icon slot="icon-only" [name]="item.value.icon"></ion-icon>
+      </ion-item-option>
+    </ion-item-options>
   }
 </ion-item-sliding>
