@@ -17,9 +17,10 @@ const routes: Routes = [
   imports: [
     CommonModule,
     SioCommonModule,
+    SioChatPage,
     SioChatComponents,
     RouterModule.forChild(routes),
   ],
-  declarations: [SioChatPage],
+  declarations: [],
 })
 export class SioChatPageModule { }

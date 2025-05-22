@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-inferrable-types */
+/* eslint-disable @typescript-eslint/no-unsafe-function-type */
 import { Injectable } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 
@@ -11,7 +13,6 @@ export class SioCoreAlertService {
   async show(
     name = 'error',
     message: string,
-    // eslint-disable-next-line @typescript-eslint/ban-types
     action: Function, 
     cancel: boolean = false,
 

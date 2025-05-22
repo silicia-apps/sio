@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-function-type */
 import { Injectable } from '@angular/core';
 import { Selector, StateToken } from '@ngxs/store';
 import { SioCoreAppComponentStateModel } from './app.model';
@@ -289,7 +290,7 @@ export class SioCoreAppComponentState extends NgxsDataRepository<SioCoreAppCompo
   public async throwError(
     message: string,
     name = 'sio-error',
-    // eslint-disable-next-line @typescript-eslint/ban-types
+    
     action: Function = (): null => {
       return null;
     },

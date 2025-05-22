@@ -2,8 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {
   //SioCoreAppComponentState,
   Loggable,
+  SioCommonModule,
   SioCoreLoggerService
 } from '@silicia/core';
+import { SioDatabaseModule } from '@silicia/database';
+import { SioChatComponent } from '../../components/chat';
 
 
 @Loggable()
@@ -11,7 +14,8 @@ import {
   selector: 'sio-chat-page',
   templateUrl: 'chat.page.html',
   styleUrls: ['chat.page.scss'],
-  standalone: false,
+  imports: [SioCommonModule, SioDatabaseModule, SioChatComponent],
+  standalone: true,
 })
 export class SioChatPage implements OnInit {
 

@@ -11,7 +11,8 @@ export interface SioCoreAppComponentStateModel
     | undefined;
   errors?:
     | {
-        // eslint-disable-next-line @typescript-eslint/ban-types
+        
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
         action: Function;
         name: string;
         message: string;

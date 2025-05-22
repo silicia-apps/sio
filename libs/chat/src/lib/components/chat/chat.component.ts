@@ -44,7 +44,6 @@ export class SioChatComponent implements OnInit, NgxsOnInit {
     if (this.id) {
       this.sioCoreLoggerService.debug('[SioChatComponent][constructor]');
     }
-    
   }
 
   ngxsOnInit(ctx: StateContext<any>): void {

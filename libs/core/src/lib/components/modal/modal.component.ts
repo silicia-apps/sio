@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter, Output, ViewChild, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, ViewChild } from '@angular/core';
 import { SioCoreLoggerService } from '../../services/logger';
 import { OverlayEventDetail } from '@ionic/core/components';
 import { IonModal } from '@ionic/angular';
@@ -7,6 +7,7 @@ import { IonModal } from '@ionic/angular';
     selector: 'sio-modal',
     templateUrl: './modal.component.html',
     styleUrls: ['./modal.component.scss'],
+    // eslint-disable-next-line @angular-eslint/prefer-standalone
     standalone: false
 })
 export class SioCoreModalComponent implements OnInit {

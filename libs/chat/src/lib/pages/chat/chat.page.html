@@ -1,4 +1,4 @@
-<sio-page title="chat.PAGE_TITLE_CHAT" fullmode>
+<sio-page back="true" title="chat.PAGE_TITLE_CHAT">
   <sio-chat
     id="681931b100386fcbbab2"
     (sioOnInfinite)="this.load($event)"
@@ -7,16 +7,13 @@
   >
   </sio-chat>
   <div class="input-wrap" slot="footer">
-    <button ion-button clear icon-only item-right>
-      <ion-icon name="happy"></ion-icon>
-    </button>
     <textarea #chat_input
               placeholder="Text Input"
               (keyup.enter)="this.sendMessage()"
               (focusin)="this.onFocus()">
     </textarea>
-    <button ion-button clear icon-only item-right (click)="this.sendMessage()">
+    <ion-button clear icon-only item-right (click)="this.sendMessage()">
       <ion-icon name="ios-send" ios="ios-send" md="md-send"></ion-icon>
-    </button>
+    </ion-button>
   </div>
 </sio-page>

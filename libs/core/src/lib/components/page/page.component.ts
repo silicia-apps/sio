@@ -10,6 +10,7 @@ import { AttributeBoolean } from '@angular-ru/cdk/decorators';
 import { InputBoolean } from '@angular-ru/cdk/typings';
 
 import { SioColorType } from '../../types';
+import { ModalController } from '@ionic/angular';
 
 @Component({
     selector: 'sio-page',
@@ -71,6 +72,7 @@ export class SioCorePageComponent implements OnInit {
     private sioLoggerService: SioCoreLoggerService,
     public sioCoreAppComponentState: SioCoreAppComponentState,
     public sioCorePagesComponentState: SioCorePagesComponentState,
+    private modalCtrl: ModalController
   ) {
     this.toolbar = true;
     if (this.id) {
@@ -107,4 +109,6 @@ export class SioCorePageComponent implements OnInit {
     }
     // this.split$.subscribe((value) => { this.split = value});
   }
+
+  
 }

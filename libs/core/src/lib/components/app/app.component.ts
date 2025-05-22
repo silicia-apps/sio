@@ -1,3 +1,4 @@
+
 import { addIcons } from 'ionicons';
 import * as allIcons from 'ionicons/icons';
 import {
@@ -19,6 +20,7 @@ import { TranslateService } from '@ngx-translate/core';
 
 import { Platform, IonRouterOutlet } from '@ionic/angular';
 import { App } from '@capacitor/app';
+import { AutocloseOverlaysService } from './app.service';
 import {
   SioCoreEnvironmentService,
   SioCoreLoadingService,
@@ -27,11 +29,13 @@ import {
 } from '../../services';
 
 import type { SioColorType, SioSideMenuType } from '../../types';
+import { NavigationStart, Router } from '@angular/router';
 
 @Component({
   selector: 'sio-app',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  // eslint-disable-next-line @angular-eslint/prefer-standalone
   standalone: false,
 })
 export class SioCoreAppComponent implements OnInit, OnDestroy {
@@ -111,7 +115,7 @@ export class SioCoreAppComponent implements OnInit, OnDestroy {
 
   @Select(SioCoreAppComponentState.error)
 
-  // eslint-disable-next-line @typescript-eslint/ban-types
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
   error$!: Observable<{ name: string; message: string; action: Function }>;
   @ViewChild(IonRouterOutlet, { static: true })
   ionRouterOutlet!: IonRouterOutlet;
@@ -124,6 +128,8 @@ export class SioCoreAppComponent implements OnInit, OnDestroy {
     private sioCoreEnvironmentService: SioCoreEnvironmentService,
     private sioCoreLoggerService: SioCoreLoggerService,
     private translateService: TranslateService,
+    private autoCloseOverlaysService: AutocloseOverlaysService,
+    private router: Router
   ) {
     addIcons(allIcons);
     this.sioCoreLoggerService.info(
@@ -250,6 +256,15 @@ export class SioCoreAppComponent implements OnInit, OnDestroy {
         '[sioCoreAppComponent][ngOnInit] - Platform Ready',
         this.platform,
       );
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      this.router.events.subscribe((event: any): void => {
+        this.sioCoreLoggerService.debug('movimento nella route', event);
+      if (event instanceof NavigationStart) {
+        if (event.navigationTrigger === 'imperative') {
+          this.autoCloseOverlaysService.trigger();
+        }
+      }
+    });
     })();
   }
 
