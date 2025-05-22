@@ -32,7 +32,7 @@ export class SioCoreListComponent implements OnInit {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @Input() public data: any[] | undefined;
 
-  @Output() sioOnClickItem = new EventEmitter<Event>();
+  @Output() sioOnClick = new EventEmitter<Event>();
   @Output() sioOnLeftSwipe = new EventEmitter<Event>();
   @Output() sioOnRightSwipe = new EventEmitter<Event>();
   @Output() sioOnInfinite = new EventEmitter<CustomEvent>();
@@ -58,7 +58,7 @@ export class SioCoreListComponent implements OnInit {
       '[sioCoreListItemComponent][click]',
       event,
     );
-    this.sioOnClickItem.emit(event);
+    this.sioOnClick.emit(event);
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
