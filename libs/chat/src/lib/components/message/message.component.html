@@ -1,14 +1,35 @@
-<ion-item class="message" [class.left]="this.received" [class.right]="!this.received">
-  <ion-avatar class="avatar-top" aria-hidden="true" [slot]="this.received?'start':'end'">
-    <img [src]="this.avatar" />
-  </ion-avatar>
-  <ion-label>
-    <div class="msg-detail">
-      <div class="msg-content">
-        <span class="triangle"></span>
-        <p>{{this.user}} - {{ this.date }}</p>
-        <p class="line-breaker ">{{this.message}}</p>
-      </div>
+<div *ngIf="this.received" >
+  <img
+    (click)="(null)"
+    class="profile-pic left"
+    [src]="this.avatar"
+    onerror="null"
+  />
+  <!--  wave-->
+  <div class="chat-bubble left slide-left">
+    <div class="message" [innerHTML]="this.message" autolinker></div>
+
+    <div class="message-detail">
+      <span (click)="(null)" class="bold">{{this.user}}</span>,
+      <span>0:00</span>
     </div>
-  </ion-label>
-</ion-item>
+  </div>
+</div>
+
+<div *ngIf="!this.received" >
+  <img
+    (click)="(null)"
+    class="profile-pic right"
+    [src]="this.avatar"
+    onerror="null"
+  />
+
+  <div class="chat-bubble right slide-right">
+    <div class="message" [innerHTML]="this.message" autolinker></div>
+
+    <div class="message-detail">
+      <span (click)="(null)" class="bold">{{this.user}}</span>,
+      <span>0:00</span>
+    </div>
+  </div>
+</div>

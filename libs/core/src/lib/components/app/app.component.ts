@@ -257,14 +257,7 @@ export class SioCoreAppComponent implements OnInit, OnDestroy {
         this.platform,
       );
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      this.router.events.subscribe((event: any): void => {
-        this.sioCoreLoggerService.debug('movimento nella route', event);
-      if (event instanceof NavigationStart) {
-        if (event.navigationTrigger === 'imperative') {
-          this.autoCloseOverlaysService.trigger();
-        }
-      }
-    });
+      
     })();
   }
 

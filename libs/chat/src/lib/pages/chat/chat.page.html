@@ -1,19 +1,19 @@
 <sio-page back="true" title="chat.PAGE_TITLE_CHAT">
-  <sio-chat
-    id="681931b100386fcbbab2"
-    (sioOnInfinite)="this.load($event)"
-    (sioOnRefresh)="this.refresh($event)"
-    (sioOnClick)="this.click($event)"
-  >
-  </sio-chat>
-  <div class="input-wrap" slot="footer">
-    <textarea #chat_input
-              placeholder="Text Input"
-              (keyup.enter)="this.sendMessage()"
-              (focusin)="this.onFocus()">
-    </textarea>
-    <ion-button clear icon-only item-right (click)="this.sendMessage()">
-      <ion-icon name="ios-send" ios="ios-send" md="md-send"></ion-icon>
-    </ion-button>
+  <div class="chatwindow">
+    <sio-chat
+      id="681931b100386fcbbab2"
+      (sioOnInfinite)="this.load($event)"
+      (sioOnRefresh)="this.refresh($event)"
+      (sioOnClick)="this.click($event)"
+    >
+    </sio-chat>
   </div>
+  <ion-toolbar slot="footer">
+    <form  novalidate >
+		<ion-item>
+			<ion-input  placeholder="Send a message..."></ion-input>
+			<button ion-button clear (click)="null" item-end><ion-icon class="footer-btn" name="send"></ion-icon></button>
+		</ion-item>
+	</form>
+  </ion-toolbar>
 </sio-page>

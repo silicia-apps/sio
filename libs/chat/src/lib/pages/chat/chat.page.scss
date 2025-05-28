@@ -1,5 +1,32 @@
 :host {
-  sio-page {
-    --sio-page-background: url('/assets/bg/chat.png') no-repeat;
+  input,
+  textarea,
+  .item-input,
+  .item-input-wrapper {
+    background-color: #f4f4f4 !important;
   }
+
+  .bar.item-input-inset .item-input-wrapper input {
+    width: 100% !important;
+  }
+
+  .footer {
+    overflow: visible !important;
+  }
+
+  .footer textarea {
+    resize: none;
+    height: 25px;
+  }
+
+  /* fixes an ios bug bear */
+  button.ion-android-send {
+    padding-top: 2px;
+  }
+
+  .footer-btn {
+    font-size: x-large;
+  }
+
+  
 }
