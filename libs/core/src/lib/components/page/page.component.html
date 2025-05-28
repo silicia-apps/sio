@@ -1,6 +1,6 @@
 <ion-header *ngIf="this.sioCorePagesComponentState.entities![this.id!]?.toolbar && !this.fullmode" collapse="fade"
   [translucent]="true" class="ion-no-border">
-  <ion-toolbar [color]="this.sioCorePagesComponentState.entities[this.id!].color!">
+  <ion-toolbar [color]="this.sioCorePagesComponentState.entities[this.id!].color || 'light'">
     <ion-buttons slot="start">
       <ng-container>
         <ion-menu-button *ngIf="!this.back" menu="start"></ion-menu-button>

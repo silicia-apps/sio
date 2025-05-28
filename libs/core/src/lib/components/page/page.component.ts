@@ -29,7 +29,7 @@ export class SioCorePageComponent implements OnInit {
     this.sioLoggerService.debug(`[sioCorePageComponentState][set title]`, value, this.id);
     this.sioCorePagesComponentState.updateOne({
       id: this.id as string,
-      changes: { title: value },
+      changes: { 'title': value },
     });
   }
 
