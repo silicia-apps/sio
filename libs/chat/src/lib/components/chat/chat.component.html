@@ -5,8 +5,9 @@
 </ion-refresher>
 
 <ion-item-group class="messages-item-group" *ngFor="let item of this.sioChatState.selectAll()[0]?.messages;">
-    <!-- Date message divider -->
-    <sio-message-divider [isPageScrolling]="isPageScrolling" [createdAt]="item.$createdAt?item.$createdAt:''" />
+    <!-- Date message divider 
+    <sio-message-divider [isPageScrolling]="this.isPageScrolling" [createdAt]="item.$createdAt?item.$createdAt:''" />
+    -->
 
 <sio-chat-message class="message-wrapper"
   [message]="item.content" (sioOnInfinite)="(null)" (sioOnRefresh)="(null)" [user]="item.from.nick"

@@ -28,7 +28,7 @@
           }
         ],
         "styles": [
-          "apps/demo/src/theme/variables.scss",
+          "apps/demo/src/theme/silicia.scss",
           "apps/demo/src/global.scss"
         ],
         "scripts": []

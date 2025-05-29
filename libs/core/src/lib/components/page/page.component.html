@@ -19,7 +19,12 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content [fullscreen]="true" class="ion-padding">
+<ion-content [fullscreen]="true" [fullscreen]="true"
+  [scrollEvents]="true"
+  [scrollY]="this.isAllowScroll"
+  (ionScrollStart)="this.logScrollStart()"
+  (ionScroll)="this.logScrolling($event)"
+  (ionScrollEnd)="this.logScrollEnd()" class="ion-padding">
   <ion-header *ngIf="this.sioCorePagesComponentState.entities![this.id!]?.toolbar!" collapse="condense">
     <ion-toolbar>
       <ion-title size="large">{{ this.sioCorePagesComponentState.entities[this.id!].title! |

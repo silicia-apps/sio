@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { NgClass } from '@angular/common';
 import { IonItemDivider, IonLabel } from '@ionic/angular/standalone';
 import { MomentModule } from 'ngx-moment';
 
@@ -6,7 +7,7 @@ import { MomentModule } from 'ngx-moment';
   selector: 'sio-message-divider',
   templateUrl: './message-divider.component.html',
   styleUrls: ['./message-divider.component.scss'],
-  imports: [IonItemDivider, MomentModule],
+  imports: [IonItemDivider, IonLabel, MomentModule, NgClass],
   standalone: true,
 })
 export class SioChatMessageDividerComponent implements OnInit {

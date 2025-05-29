@@ -1,4 +1,5 @@
 import { Component, ElementRef, Input, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import { SioCoreLoggerService } from '../../services';
 import {
   SioCorePageComponentInterface,
@@ -10,20 +11,26 @@ import { AttributeBoolean } from '@angular-ru/cdk/decorators';
 import { InputBoolean } from '@angular-ru/cdk/typings';
 
 import { SioColorType } from '../../types';
-import { ModalController } from '@ionic/angular';
+
+import { BehaviorSubject, debounceTime, tap } from 'rxjs';
 
 @Component({
-    selector: 'sio-page',
-    templateUrl: './page.component.html',
-    styleUrls: ['./page.component.scss'],
-    // eslint-disable-next-line @angular-eslint/prefer-standalone
-    standalone: false
+  selector: 'sio-page',
+  templateUrl: './page.component.html',
+  styleUrls: ['./page.component.scss'],
+  // eslint-disable-next-line @angular-eslint/prefer-standalone
+  standalone: false
 })
 export class SioCorePageComponent implements OnInit {
   @Input() color: SioColorType;
   @Input() id: string | undefined;
 
+  public isPageScrolling = false;
+  public isAllowScroll = true;
+
   public page: SioCorePageComponentInterface | null = null;
+
+  public ionContentScrolling: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   @Input() set title(value: string) {
     this.sioLoggerService.debug(`[sioCorePageComponentState][set title]`, value, this.id);
@@ -107,8 +114,37 @@ export class SioCorePageComponent implements OnInit {
         this.page as SioCorePageComponentInterface,
       );
     }
+
+    this.setupIonContentScrollingListner();
     // this.split$.subscribe((value) => { this.split = value});
   }
 
-  
+  setupIonContentScrollingListner() {
+    this.ionContentScrolling
+      .pipe(
+        tap((isScrolling) => {
+          if (isScrolling) {
+            this.isPageScrolling = isScrolling;
+          }
+        }),
+        debounceTime(1000),
+      )
+      .subscribe((isScrolling) => (this.isPageScrolling = isScrolling));
+  }
+
+  logScrollStart() {
+    this.sioLoggerService.debug('[sioCorePageComponent][logScrollStart]');
+    this.ionContentScrolling.next(true);
+  }
+
+  logScrolling(event: Event) {
+    this.sioLoggerService.debug('[sioCorePageComponent][logScrolling]', event);
+  }
+
+  logScrollEnd() {
+    this.sioLoggerService.debug('[sioCorePageComponent][logScrollEnd]');
+    this.ionContentScrolling.next(false);
+  }
+
+
 }

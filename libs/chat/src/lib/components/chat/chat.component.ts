@@ -27,6 +27,8 @@ import { NgxsOnInit, StateContext } from '@ngxs/store';
 export class SioChatComponent implements OnInit, NgxsOnInit {
   @Input() public id: string | undefined;
 
+  public isPageScrolling = false;
+
   public SioChatState: SioDatabaseState<SioChatStateModel> | undefined;
 
   @AttributeBoolean()

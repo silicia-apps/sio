@@ -1,0 +1,9 @@
+<ion-item lines="none" class="message-user">
+  <ion-avatar slot="start" class="ion-align-self-end user-avatar" *ngIf="this.isLastMessage">
+    <img [src]="this.avatar" />
+  </ion-avatar>
+  <div class="message-container" [ngClass]="{ 'user-msg-padding': isLastUserMessage }">
+    <span class="text" [innerHTML]="this.message"></span>
+    <small class="time">{{ this.date | amDateFormat: 'hh:mm' }}</small>
+  </div>
+</ion-item>
