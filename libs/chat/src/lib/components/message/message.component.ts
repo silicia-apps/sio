@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { SioCommonModule } from '@silicia/core';
 import { CommonModule } from '@angular/common';
+import { MomentModule } from 'ngx-moment';
 
 import { SioColorType } from '@silicia/core';
 
@@ -11,7 +12,7 @@ import { languages } from './i18n';
   selector: 'sio-chat-message',
   templateUrl: './message.component.html',
   styleUrls: ['./message.component.scss'],
-  imports: [CommonModule, SioCommonModule],
+  imports: [CommonModule, SioCommonModule, MomentModule],
   standalone: true,
 })
 export class SioChatMessageComponent {
@@ -24,6 +25,8 @@ export class SioChatMessageComponent {
   @Input() public avatar: string | undefined = 'https://gravatar.com/avatar/a3007c7ee09b7157b4ca921712dbd814?s=400&d=robohash&r=x';
   @Input() public sent_color: SioColorType = 'primary';
   @Input() public received_color: SioColorType = 'secondary';
+  @Input() public isLastMessage: boolean = false;
+  @Input() public isLastUserMessage: boolean = false;
 
   constructor(private translateService: TranslateService) {
     languages.forEach((lang) => {

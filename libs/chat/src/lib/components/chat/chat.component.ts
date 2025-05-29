@@ -53,6 +53,10 @@ export class SioChatComponent implements OnInit, NgxsOnInit {
     this.sioCoreLoggerService.debug('[SioChatComponent][ngxsOnInit]', ctx);
   }
 
+  trackBy(index: number) {
+    return index;
+  }
+
   ngOnInit(): void {
     this.sioCoreLoggerService.debug('[SioChatComponent][ngOnInit]');
     if (this.sioChatState) {

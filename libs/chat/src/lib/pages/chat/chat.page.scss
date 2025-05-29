@@ -1,32 +1,11 @@
 :host {
-  input,
-  textarea,
-  .item-input,
-  .item-input-wrapper {
-    background-color: #f4f4f4 !important;
+  .message-textarea {
+    max-height: 100px;
+    --background: var(--ion-color-light);
+    --border-radius: 20px;
+    --padding-top: 10px;
+    --padding-end: 10px;
+    --padding-bottom: 10px;
+    --padding-start: 10px;
   }
-
-  .bar.item-input-inset .item-input-wrapper input {
-    width: 100% !important;
-  }
-
-  .footer {
-    overflow: visible !important;
-  }
-
-  .footer textarea {
-    resize: none;
-    height: 25px;
-  }
-
-  /* fixes an ios bug bear */
-  button.ion-android-send {
-    padding-top: 2px;
-  }
-
-  .footer-btn {
-    font-size: x-large;
-  }
-
-  
 }

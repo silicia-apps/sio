@@ -1,19 +1,27 @@
 <sio-page back="true" title="chat.PAGE_TITLE_CHAT" full="true">
   <div class="chatwindow">
-    <sio-chat
-      id="681931b100386fcbbab2"
-      (sioOnInfinite)="this.load($event)"
-      (sioOnRefresh)="this.refresh($event)"
-      (sioOnClick)="this.click($event)"
-    >
+    <sio-chat id="681931b100386fcbbab2" (sioOnInfinite)="this.load($event)" (sioOnRefresh)="this.refresh($event)"
+      (sioOnClick)="this.click($event)">
     </sio-chat>
   </div>
-  <ion-toolbar slot="footer">
-    <form  novalidate >
-		<ion-item>
-			<ion-input  placeholder="Send a message..."></ion-input>
-			<button ion-button clear (click)="null" item-end><ion-icon class="footer-btn" name="send"></ion-icon></button>
-		</ion-item>
-	</form>
+  <ion-toolbar style="height: auto" slot="footer">
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-icon slot="icon-only" name="add-circle-outline" color="primary"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-textarea autoGrow rows="1" cols="10" [placeholder]="'message'" 
+      class="message-textarea"></ion-textarea>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="happy-outline" color="primary"></ion-icon>
+      </ion-button>
+      <ion-button (mousedown)="null">
+        <ion-icon slot="icon-only" name="send-outline" color="primary"></ion-icon>
+      </ion-button>
+      <ion-button *ngIf="false">
+        <ion-icon slot="icon-only" name="mic-outline" color="primary"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </sio-page>
