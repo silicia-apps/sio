@@ -6,7 +6,10 @@
       "inputs": ["production", "^production"],
       "cache": true
     },
-    "e2e": { "inputs": ["default", "^production"], "cache": true },
+    "e2e": {
+      "inputs": ["default", "^production"],
+      "cache": true
+    },
     "build-storybook": {
       "cache": true,
       "inputs": [
@@ -24,8 +27,15 @@
         "{workspaceRoot}/jest.preset.js"
       ],
       "cache": true,
-      "options": { "passWithNoTests": true },
-      "configurations": { "ci": { "ci": true, "codeCoverage": true } }
+      "options": {
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
     },
     "@nx/eslint:lint": {
       "inputs": [
@@ -65,19 +75,28 @@
       "unitTestRunner": "jest",
       "e2eTestRunner": "cypress"
     },
-    "@nx/angular:library": { "linter": "eslint", "unitTestRunner": "jest" },
-    "@nx/angular:component": { "style": "scss" }
+    "@nx/angular:library": {
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nx/angular:component": {
+      "style": "scss"
+    }
   },
-  "nxCloudAccessToken": "NDg3OWEzZDEtMzAzNC00OTdjLTg5ZDctZDYxZWUyNGE2ZTBhfHJlYWQtd3JpdGU=",
+  "nxCloudAccessToken": "NWNlNTVlOWItZTRmYy00ZDM2LThjYTktNGE2MWViNzYxZGY5fHJlYWQtd3JpdGU=",
   "tasksRunnerOptions": {
     "default": {
       "runner": "nx-cloud",
       "options": {
-        "accessToken": "N2U3NjBlNTItZmVmNy00MjQyLWJmODQtNjNjZTg2MTkzYWMyfHJlYWQtd3JpdGU="
+        "accessToken": "NWNlNTVlOWItZTRmYy00ZDM2LThjYTktNGE2MWViNzYxZGY5fHJlYWQtd3JpdGU="
       }
     }
   },
   "useLegacyCache": false,
-  "release": { "version": { "preVersionCommand": "npx nx run-many -t build" } },
-  "nxCloudId": "6838b9cc345041dd19f7ab2c"
+  "release": {
+    "version": {
+      "preVersionCommand": "npx nx run-many -t build"
+    }
+  },
+  "nxCloudId": "6838be18f58fd31fb1eb92c6"
 }
