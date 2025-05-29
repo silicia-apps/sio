@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { SioChatMessageComponent } from '../message';
+import { SioChatMessageDividerComponent } from '../message-divider';
 
 import {
   SioCoreLoggerService,
@@ -20,7 +21,7 @@ import { NgxsOnInit, StateContext } from '@ngxs/store';
   selector: 'sio-chat',
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss'],
-  imports: [CommonModule, SioCommonModule, SioChatMessageComponent],
+  imports: [CommonModule, SioCommonModule, SioChatMessageComponent, SioChatMessageDividerComponent],
   standalone: true,
 })
 export class SioChatComponent implements OnInit, NgxsOnInit {

@@ -1,9 +1,12 @@
 import {
   ModuleWithProviders,
   NgModule,
+  
   //Optional,
   //SkipSelf,
 } from "@angular/core";
+
+import { MomentModule } from 'ngx-moment';
 
 import { CommonModule } from "@angular/common";
 import {
@@ -40,6 +43,7 @@ export class EnsureModuleLoadedOnceGuard {
     CommonModule,
     FormsModule,
     SioCommonModule,
+    MomentModule.forRoot(),
     ReactiveFormsModule,
     NgxsModule.forFeature([SioChatState]),
     NgxsFormPluginModule,

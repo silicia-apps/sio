@@ -4,11 +4,15 @@
   </ion-refresher-content>
 </ion-refresher>
 
-<sio-chat-message *ngFor="let item of this.sioChatState.selectAll()[0]?.messages;" class="message-wrapper"
+<ion-item-group class="messages-item-group" *ngFor="let item of this.sioChatState.selectAll()[0]?.messages;">
+    <!-- Date message divider -->
+    <sio-message-divider [isPageScrolling]="isPageScrolling" [createdAt]="item.$createdAt?item.$createdAt:''" />
+
+<sio-chat-message class="message-wrapper"
   [message]="item.content" (sioOnInfinite)="(null)" (sioOnRefresh)="(null)" [user]="item.from.nick"
   [avatar]="item.from.avatar" [date]="item.$createdAt?item.$createdAt:''" [state]="item.state"
   [received]="item.from.nick !== 'Fr4'"></sio-chat-message>
-
+ </ion-item-group>
 <ion-infinite-scroll *ngIf="
     this.infinite !== null &&
     this.sioChatState.localTotals !== this.sioChatState.remoteTotals
