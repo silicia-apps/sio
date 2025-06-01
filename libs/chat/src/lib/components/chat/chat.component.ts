@@ -31,6 +31,9 @@ export class SioChatComponent implements OnInit, NgxsOnInit {
 
   public SioChatState: SioDatabaseState<SioChatStateModel> | undefined;
 
+  public _last_sender: 'me' | 'other' = 'me';
+  public _last_day: string = '';
+
   @AttributeBoolean()
   @Input()
   public enableInfinite: InputBoolean;
@@ -53,7 +56,11 @@ export class SioChatComponent implements OnInit, NgxsOnInit {
     this.sioCoreLoggerService.debug('[SioChatComponent][ngxsOnInit]', ctx);
   }
 
-  trackBy(index: number) {
+  async trackBy(index: number, message: any) {
+    this._last_sender = message.from.$id;
+    this._last_day = message.$createdAt;
+    console.log(this._last_sender);
+    console.log(this._last_day);
     return index;
   }
 
