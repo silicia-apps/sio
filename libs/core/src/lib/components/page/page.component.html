@@ -4,14 +4,14 @@
     <ion-buttons slot="start">
       <ng-container>
         <ion-menu-button *ngIf="!this.back" menu="start"></ion-menu-button>
-        <ion-back-button *ngIf="this.back" default-href="#"></ion-back-button>
+        <ion-back-button *ngIf="this.back"></ion-back-button>
       </ng-container>
     </ion-buttons>
     <ion-title>{{ this.sioCorePagesComponentState.entities[this.id!].title! | translate
       }}</ion-title>
     <ion-buttons slot="end">
       <ng-content select="[slot='end']"> </ng-content>
-    </ion-buttons>
+    </ion-buttons> 
     <ion-buttons *ngIf="!this.sioCoreAppComponentState.snapshot.layout!.split" slot="end">
       <ng-content select="[slot='mobile']"></ng-content>
 

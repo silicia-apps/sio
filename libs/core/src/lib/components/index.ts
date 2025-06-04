@@ -15,6 +15,7 @@ import { SioCoreItemComponent } from './item';
 import { SioCoreModalComponent } from './modal';
 import { SioCoreSlideComponent } from './slide';
 import { SioCoreButtonComponent } from './button';
+import { SioCoreAvatarComponent } from './avatar';
 import { SioCoreLanguageSelectorComponent } from './language-selector/language-selector.component';
 
 export { SioCoreAppComponent } from './app';
@@ -35,6 +36,7 @@ export { SioCoreItemComponent } from './item';
 export { SioCoreModalComponent } from './modal';
 export { SioCoreSlideComponent } from './slide';
 export { SioCoreButtonComponent } from './button';
+export { SioCoreAvatarComponent} from './avatar';
 
 export const SioCoreComponents = [
   SioCoreAppComponent,
@@ -55,4 +57,5 @@ export const SioCoreComponents = [
   SioCoreModalComponent,
   SioCoreItemComponent,
   SioCoreSlideComponent,
+  SioCoreAvatarComponent
 ];

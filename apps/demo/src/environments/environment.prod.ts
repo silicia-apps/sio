@@ -22,8 +22,8 @@ export const environment: SioCoreEnvironmentInterface = {
     NgxsReduxDevtoolsPluginModule.forRoot(),
   ],
   backend: {
-    apiEndpoint: 'https://cloud.appwrite.io/v1',
-    projectID: '6557f73331ab50cb50b6'
+    apiEndpoint: 'https://baas.jcomwifi.net/v1',
+    projectID: '6817a60b003e0208c550'
   },
   app: {
     title: 'Demo App',

@@ -9,7 +9,7 @@
       </ion-item-option>
     </ion-item-options>
   }
-  <ion-item button="this.button" [color]="this.color" (click)="this.click($event)">
+  <ion-item lines="none" button="this.button" [color]="this.color" (click)="this.click($event)">
     <sio-icon *ngIf="this.icon" name="this.icon" slot="start"></sio-icon>
     <ion-avatar *ngIf="this.avatar" slot="start">
       <ion-img [alt]="this.alt" [src]="this.avatar" />

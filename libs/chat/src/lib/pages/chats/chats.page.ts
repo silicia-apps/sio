@@ -1,19 +1,21 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { SioCommonModule, SioCoreLoggerService, SioCoreModalService } from '@silicia/core';
 import { SioDatabaseService, SioDatabaseModule } from '@silicia/database';
 import { SioChatState } from '../../store';
-import { SioChatInterface } from '../../interfaces';
-import { SioChatPage } from '../chat/chat.page';
-
 import { languages } from './i18n';
 import { TranslateService } from '@ngx-translate/core';
+import { Navigate } from '@ngxs/router-plugin';
+import { Action } from 'rxjs/internal/scheduler/Action';
+import { ActionType } from '@ngxs/store';
+import { MomentModule } from 'ngx-moment';
+
 
 @Component({
   selector: 'sio-chats-page',
   templateUrl: 'chats.page.html',
   styleUrls: ['chats.page.scss'],
   standalone: true,
-  imports: [SioCommonModule, SioDatabaseModule]
+  imports: [SioCommonModule, SioDatabaseModule, MomentModule]
 })
 export class SioChatsPage {
   constructor(
@@ -26,8 +28,8 @@ export class SioChatsPage {
     languages.forEach((lang: any) => {
       this.translateService.setTranslation(lang.key, lang.value, true);
     });
-    this.sioChatState.setDatabaseId('demo');
-    this.sioChatState.setCollectionId('6824f6c5002424ca7d81');
+    this.sioChatState.setDatabaseId('6817a6cc0008ab4f96fb');
+    this.sioChatState.setCollectionId('683d7afc001fac5c00bc');
     this.sioChatState.load([this.sioDatabaseService.limit(25)]);
   }
 
@@ -50,10 +52,7 @@ export class SioChatsPage {
 
   public openChat(event: Event): void {
     this.sioCoreLoggerService.debug('[SioChatListPage][openChat]', event);
-    this.sioCoreModalService.create(SioChatPage).then(() => {
-      this.sioCoreModalService.show()
-    });
-
+    this.sioChatState.dispatch(new Navigate(['/chat']) as unknown as ActionType);
   }
 
   public refresh(event: Event): void {

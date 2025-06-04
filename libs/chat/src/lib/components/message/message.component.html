@@ -1,12 +1,15 @@
-<ion-item *ngIf="this.received" lines="none" class="message-me">
-  <ion-avatar slot="start" class="ion-align-self-end user-avatar" *ngIf="this.isLastMessage">
-    <img [src]="this.avatar" />
-  </ion-avatar>
+@if (this.received) {
+  <ion-item lines="none" class="message-me">
+    @if (this.isLastMessage) {
+      <sio-avatar slot="start" [name]="this.user" class="ion-align-self-end user-avatar" *ngIf="this.isLastMessage" />
+    }
   <div class="message-container" [ngClass]="{ 'user-msg-padding': this.isLastMessage}">
     <span class="text" [innerHTML]="this.message"></span>
     <small class="time">{{ this.date | amDateFormat: 'hh:mm' }}</small>
   </div>
 </ion-item>
+} 
+@else {
 <ion-item *ngIf="!this.received" lines="none" class="message-user">
   <div class="message-container" slot="end">
     <span class="text" [innerHTML]="this.message"></span>
@@ -16,3 +19,4 @@
     <img [src]="this.avatar" />
   </ion-avatar>
 </ion-item>
+}

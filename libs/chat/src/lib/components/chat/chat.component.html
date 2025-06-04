@@ -5,9 +5,11 @@
 </ion-refresher>
 
 <ion-item-group class="messages-item-group"
-  *ngFor="let item of this.sioChatState.selectAll()[0]?.messages;trackBy: trackBy;let index = index; let last = last">
-  <sio-message-divider *ngIf="(this._last_day && item.$createdAt)?this._last_day.split('T')[0] != item.$createdAt.split('T')[0]:true" [isPageScrolling]="this.isPageScrolling" [createdAt]="item.$createdAt?item.$createdAt:''" />
-  {{this._last_day!.split('T')[0]}} = {{item!.$createdAt!.split('T')[0]}}
+  *ngFor="let item of this.sioChatState.selectAll()[0]?.messages;trackBy: trackBy;let index = index; let last = last, let first = first">
+  <sio-message-divider
+    *ngIf="first || (this.sioChatState.selectAll()[0]!.messages[index - 1].$createdAt!.split('T')[0] !== item.$createdAt!.split('T')[0])"
+    [isPageScrolling]="this.isPageScrolling" [createdAt]="item.$createdAt?item.$createdAt:''" />
+  
   <sio-chat-message class="message-wrapper" [message]="item.content" (sioOnInfinite)="(null)" (sioOnRefresh)="(null)"
     [user]="item.from.nick" [avatar]="item.from.avatar" [date]="item.$createdAt?item.$createdAt:''" [state]="item.state"
     [received]="item.from.nick !== 'Fr4'"

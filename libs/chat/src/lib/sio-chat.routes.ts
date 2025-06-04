@@ -4,8 +4,8 @@ import { SioAuthGuard} from '@silicia/auth';
 export const sioChatRoutes: Route[] = [
   {
     path: 'chat',
-    loadChildren: () =>
-      import('./pages/chat').then((m) => m.SioChatPageModule),
+    loadComponent: () =>
+      import('./pages/chat').then((m) => m.SioChatPage),
       canActivate: [SioAuthGuard],
   },
   {

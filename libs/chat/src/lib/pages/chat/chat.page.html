@@ -1,17 +1,28 @@
-<sio-page back="true" title="chat.PAGE_TITLE_CHAT" full="true">
-  <div class="chatwindow">
-    <sio-chat id="681931b100386fcbbab2" (sioOnInfinite)="this.load($event)" (sioOnRefresh)="this.refresh($event)"
-      (sioOnClick)="this.click($event)">
-    </sio-chat>
-  </div>
+<sio-page id="chat" back="true" toolbar="false" full="true">
+  <ion-header [translucent]="true" class="ion-no-border">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button [text]="''" color="primary" defaultHref="/chats"></ion-back-button>
+      </ion-buttons>
+      <ion-item lines="none" style="--background: transparent">
+        <sio-avatar slot="start" name="Francesco Bozzotta" />
+        <ion-label class="ion-no-margin">
+          francesco bozzotta
+          <p class="ion-no-margin">{{'2025-05-20' | amTimeAgo}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-toolbar>
+  </ion-header>
+  <sio-chat id="681931b100386fcbbab2" (sioOnInfinite)="this.load($event)" (sioOnRefresh)="this.refresh($event)"
+    (sioOnClick)="this.click($event)">
+  </sio-chat>
   <ion-toolbar style="height: auto" slot="footer">
     <ion-buttons slot="start">
       <ion-button>
         <ion-icon slot="icon-only" name="add-circle-outline" color="primary"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-textarea autoGrow rows="1" cols="10" [placeholder]="'message'" 
-      class="message-textarea"></ion-textarea>
+    <ion-textarea autoGrow rows="1" cols="10" [placeholder]="'message'" class="message-textarea"></ion-textarea>
     <ion-buttons slot="end">
       <ion-button>
         <ion-icon slot="icon-only" name="happy-outline" color="primary"></ion-icon>
@@ -19,9 +30,11 @@
       <ion-button (mousedown)="null">
         <ion-icon slot="icon-only" name="send-outline" color="primary"></ion-icon>
       </ion-button>
-      <ion-button *ngIf="false">
-        <ion-icon slot="icon-only" name="mic-outline" color="primary"></ion-icon>
-      </ion-button>
+      @if (true) {
+        <ion-button>
+          <ion-icon slot="icon-only" name="mic-outline" color="primary"></ion-icon>
+        </ion-button>
+      }
     </ion-buttons>
   </ion-toolbar>
 </sio-page>
