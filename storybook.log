@@ -1,0 +1,16 @@
+Progress: resolved 0, reused 1, downloaded 0, added 0
+ WARN  deprecated @storybook/jest@0.2.3: In Storybook 8, this package functionality has been integrated to a new package called @storybook/test, which uses Vitest APIs for an improved experience. When upgrading to Storybook 8 with 'npx storybook@latest upgrade', you will get prompted and will get an automigration for the new package. Please migrate when you can.
+ WARN  deprecated @storybook/testing-library@0.2.2: In Storybook 8, this package functionality has been integrated to a new package called @storybook/test, which uses Vitest APIs for an improved experience. When upgrading to Storybook 8 with 'npx storybook@latest upgrade', you will get prompted and will get an automigration for the new package. Please migrate when you can.
+Progress: resolved 63, reused 63, downloaded 0, added 0
+ ERR_PNPM_NO_MATCHING_VERSION  No matching version found for eslint-plugin-storybook@8.6.14 while fetching it from https://registry.npmjs.org/
+
+This error happened while installing a direct dependency of /Users/fr4/workspace/libs/sio
+
+The latest release of eslint-plugin-storybook is "9.0.4".
+
+Other releases are:
+  * alpha: 0.0.1-alpha.9
+  * next: 9.1.0-alpha.2
+  * canary: 0.0.0-pr-31557-sha-460c6ef3
+
+If you need the full list of all 270 published versions run "$ pnpm view eslint-plugin-storybook versions".

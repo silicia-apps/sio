@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { IonAvatar } from '@ionic/angular/standalone';
 import { SioColorType } from '../../types';
 import { SioCoreLoggerService } from '../../services/logger';
 

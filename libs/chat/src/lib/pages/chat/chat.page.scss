@@ -8,4 +8,16 @@
     --padding-bottom: 10px;
     --padding-start: 10px;
   }
+
+  sio-page {
+    ion-header {
+      ion-toolbar {
+        ion-item {
+          sio-avatar {
+            --sio-border-radius: 10px;
+          }
+        }
+      }
+    }
+  }
 }

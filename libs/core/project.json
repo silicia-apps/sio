@@ -39,24 +39,7 @@
         "port": 4400,
         "configDir": "libs/core/.storybook",
         "browserTarget": "core:build-storybook",
-        "assets": [
-          {
-            "glob": "**/*",
-            "input": "app/demo/src/assets",
-            "output": "assets"
-          },
-          {
-            "glob": "**/*.svg",
-            "input": "node_modules/ionicons/dist/ionicons/svg",
-            "output": "./svg"
-          }
-        ],
-        "styles": [
-          "apps/demo/src/theme/variables.scss",
-          "apps/demo/src/global.scss"
-        ],
-        "compodoc": true,
-        "compodocArgs": ["-e", "json", "-d", "libs/core"]
+        "compodoc": false
       },
       "configurations": {
         "ci": {
@@ -71,8 +54,7 @@
         "outputDir": "dist/storybook/core",
         "configDir": "libs/core/.storybook",
         "browserTarget": "core:build-storybook",
-        "compodoc": true,
-        "compodocArgs": ["-e", "json", "-d", "libs/core"]
+        "compodoc": false
       },
       "configurations": {
         "ci": {

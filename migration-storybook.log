@@ -1,0 +1,507 @@
+🔎 checking possible migrations..
+
+🔎 found a 'eslintPlugin' migration:
+╭ Automigration detected ──────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                              │
+│   We've detected you are not using the Storybook ESLint plugin.                                              │
+│                                                                                                              │
+│   In order to have the best experience with Storybook and follow best practices, we advise you to install    │
+│   eslint-plugin-storybook.                                                                                   │
+│                                                                                                              │
+│   We can set it up automatically for you.                                                                    │
+│                                                                                                              │
+│   More info: https://storybook.js.org/docs/9/configure/integration/eslint-plugin                             │
+│                                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+✅ Adding dependencies: eslint-plugin-storybook@8.6.14
+
+An error occurred while installing dependencies:
+PNPM error ERR_PNPM_NO_MATCHING_VERSION  No matching version found for eslint-plugin-storybook@8.6.14 while fetching it from https://registry.npmjs.org/
+
+Please check the logfile generated at ./storybook.log for troubleshooting and try again.
+❌ error when running eslintPlugin migration
+HandledError: Error: PNPM error ERR_PNPM_NO_MATCHING_VERSION  No matching version found for eslint-plugin-storybook@8.6.14 while fetching it from https://registry.npmjs.org/
+
+Please check the logfile generated at ./storybook.log for troubleshooting and try again.
+    at ps.addDependencies (/Users/fr4/.npm/_npx/22a2e474f1fcccdb/node_modules/storybook/dist/common/index.cjs:26126:72)
+    at async Object.run (/Users/fr4/.npm/_npx/22a2e474f1fcccdb/node_modules/@storybook/cli/dist/bin/index.cjs:297:252)
+    ... 3 lines matching cause stack trace ...
+    at async Command.<anonymous> (/Users/fr4/.npm/_npx/22a2e474f1fcccdb/node_modules/@storybook/cli/dist/bin/index.cjs:481:2880) {
+  handled: true,
+  cause: Error: PNPM error ERR_PNPM_NO_MATCHING_VERSION  No matching version found for eslint-plugin-storybook@8.6.14 while fetching it from https://registry.npmjs.org/
+  
+  Please check the logfile generated at ./storybook.log for troubleshooting and try again.
+      at ps.runAddDeps (/Users/fr4/.npm/_npx/22a2e474f1fcccdb/node_modules/storybook/dist/common/index.cjs:26861:24)
+      at async ps.addDependencies (/Users/fr4/.npm/_npx/22a2e474f1fcccdb/node_modules/storybook/dist/common/index.cjs:26119:9)
+      at async Object.run (/Users/fr4/.npm/_npx/22a2e474f1fcccdb/node_modules/@storybook/cli/dist/bin/index.cjs:297:252)
+      at async runFixes (/Users/fr4/.npm/_npx/22a2e474f1fcccdb/node_modules/@storybook/cli/dist/bin/index.cjs:413:1798)
+      at async automigrate (/Users/fr4/.npm/_npx/22a2e474f1fcccdb/node_modules/@storybook/cli/dist/bin/index.cjs:411:1834)
+      at async doAutomigrate (/Users/fr4/.npm/_npx/22a2e474f1fcccdb/node_modules/@storybook/cli/dist/bin/index.cjs:411:453)
+      at async Command.<anonymous> (/Users/fr4/.npm/_npx/22a2e474f1fcccdb/node_modules/@storybook/cli/dist/bin/index.cjs:481:2880)
+}
+
+
+🔎 found a 'removeAddonInteractions' migration:
+╭ Automigration detected ─────────────────────────────────────────────────────────────────────────╮
+│                                                                                                 │
+│   @storybook/addon-interactions has been consolidated into Storybook core.                      │
+│                                                                                                 │
+│   We'll remove it from your dependencies and unregister it from your Storybook configuration.   │
+│   The functionality will continue to work as before, but now it's built into Storybook core.    │
+│                                                                                                 │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────╯
+Removing @storybook/addon-interactions...
+❌ error when running removeAddonInteractions migration
+Error: Command failed with exit code 7: pnpm exec storybook remove @storybook/addon-interactions --config-dir libs/core/.storybook
+An error occurred while removing dependencies.
+/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/cli/bin/index.cjs:23
+  throw error;
+  ^
+
+HandledError: Error: Command failed with exit code 1: pnpm remove @storybook/addon-interactions -w
+    at Ai.removeDependencies (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:19117:94)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async removeAddon (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:20391:32)
+    at async /Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/cli/dist/bin/index.cjs:664:5107
+    at async withTelemetry (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/core-server/index.cjs:35788:12) {
+  handled: true,
+  cause: Error: Command failed with exit code 1: pnpm remove @storybook/addon-interactions -w
+      at makeError (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:18187:67)
+      at handlePromise (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:18805:16)
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+      at async Ai.executeCommand (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:19254:15)
+      at async Ai.runRemoveDeps (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:19823:5)
+      at async Ai.removeDependencies (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:19115:9)
+      at async removeAddon (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:20391:32)
+      at async /Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/cli/dist/bin/index.cjs:664:5107
+      at async withTelemetry (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/core-server/index.cjs:35788:12) {
+    shortMessage: 'Command failed with exit code 1: pnpm remove @storybook/addon-interactions -w',
+    command: 'pnpm remove @storybook/addon-interactions -w',
+    escapedCommand: 'pnpm remove "@storybook/addon-interactions" -w',
+    exitCode: 1,
+    signal: undefined,
+    signalDescription: undefined,
+    stdout: undefined,
+    stderr: undefined,
+    cwd: '/Users/fr4/workspace/libs/sio',
+    failed: true,
+    timedOut: false,
+    isCanceled: false,
+    killed: false
+  }
+}
+
+Node.js v22.14.0
+Uninstalling @storybook/addon-interactions
+ ERR_PNPM_CANNOT_REMOVE_MISSING_DEPS  Cannot remove '@storybook/addon-interactions': no such dependency found
+
+Available dependencies: @angular-devkit/build-angular, @angular-devkit/core, @angular-devkit/schematics, @angular-eslint/eslint-plugin, @angular-eslint/eslint-plugin-template, @angular-eslint/template-parser, @angular/cli, @angular/compiler-cli, @angular/language-service, @capacitor/cli, @chromatic-com/storybook, @eslint/eslintrc, @eslint/js, @ngxs/devtools-plugin, @nx/cypress, @nx/eslint, @nx/eslint-plugin, @nx/jest, @nx/js, @nx/storybook, @nx/web, @nx/workspace, @schematics/angular, @storybook/addon-docs, @storybook/angular, @storybook/jest, @storybook/test-runner, @storybook/testing-library, @stylistic/eslint-plugin, @swc-node/register, @swc/core, @swc/helpers, @types/jest, @types/node, @typescript-eslint/utils, angular-eslint, autoprefixer, cypress, eslint, eslint-config-prettier, eslint-plugin-cypress, jest, jest-environment-jsdom, jest-preset-angular, jsonc-eslint-parser, ng-packagr, nx, postcss, postcss-import, postcss-preset-env, postcss-url, prettier, storybook, ts-jest, ts-node, typescript, typescript-eslint, verdaccio, @angular-ru/cdk, @angular-ru/ngxs, @angular/animations, @angular/cdk, @angular/common, @angular/compiler, @angular/core, @angular/forms, @angular/platform-browser, @angular/platform-browser-dynamic, @angular/router, @capacitor/app, @capacitor/core, @capawesome/capacitor-file-picker, @ionic/angular, @ionic/core, @maskito/angular, @maskito/core, @module-federation/enhanced, @ngx-translate/core, @ngx-translate/http-loader, @ngxs/form-plugin, @ngxs/logger-plugin, @ngxs/router-plugin, @ngxs/store, @nrwl/nx-cloud, @nx/angular, appwrite, date-fns, ionicons, ngx-moment, ngx-translate-debug, rxjs, swiper, tslib, zone.js
+Error: Command failed with exit code 1: pnpm remove @storybook/addon-interactions -w
+Error: Error: Command failed with exit code 1: pnpm remove @storybook/addon-interactions -w
+    at Ai.removeDependencies (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:19117:94)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async removeAddon (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:20391:32)
+    at async /Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/cli/dist/bin/index.cjs:664:5107
+    at async withTelemetry (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/core-server/index.cjs:35788:12)
+    at makeError (/Users/fr4/.npm/_npx/22a2e474f1fcccdb/node_modules/storybook/dist/common/index.cjs:25217:67)
+    at handlePromise (/Users/fr4/.npm/_npx/22a2e474f1fcccdb/node_modules/storybook/dist/common/index.cjs:25835:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ps.executeCommand (/Users/fr4/.npm/_npx/22a2e474f1fcccdb/node_modules/storybook/dist/common/index.cjs:26293:15)
+    at async Object.run (/Users/fr4/.npm/_npx/22a2e474f1fcccdb/node_modules/@storybook/cli/dist/bin/index.cjs:316:119)
+    at async runFixes (/Users/fr4/.npm/_npx/22a2e474f1fcccdb/node_modules/@storybook/cli/dist/bin/index.cjs:413:1798)
+    at async automigrate (/Users/fr4/.npm/_npx/22a2e474f1fcccdb/node_modules/@storybook/cli/dist/bin/index.cjs:411:1834)
+    at async doAutomigrate (/Users/fr4/.npm/_npx/22a2e474f1fcccdb/node_modules/@storybook/cli/dist/bin/index.cjs:411:453)
+    at async Command.<anonymous> (/Users/fr4/.npm/_npx/22a2e474f1fcccdb/node_modules/@storybook/cli/dist/bin/index.cjs:481:2880) {
+  shortMessage: 'Command failed with exit code 7: pnpm exec storybook remove @storybook/addon-interactions --config-dir libs/core/.storybook',
+  command: 'pnpm exec storybook remove @storybook/addon-interactions --config-dir libs/core/.storybook',
+  escapedCommand: 'pnpm exec storybook remove "@storybook/addon-interactions" --config-dir "libs/core/.storybook"',
+  exitCode: 7,
+  signal: undefined,
+  signalDescription: undefined,
+  stdout: 'Uninstalling @storybook/addon-interactions\n' +
+    " ERR_PNPM_CANNOT_REMOVE_MISSING_DEPS  Cannot remove '@storybook/addon-interactions': no such dependency found\n" +
+    '\n' +
+    'Available dependencies: @angular-devkit/build-angular, @angular-devkit/core, @angular-devkit/schematics, @angular-eslint/eslint-plugin, @angular-eslint/eslint-plugin-template, @angular-eslint/template-parser, @angular/cli, @angular/compiler-cli, @angular/language-service, @capacitor/cli, @chromatic-com/storybook, @eslint/eslintrc, @eslint/js, @ngxs/devtools-plugin, @nx/cypress, @nx/eslint, @nx/eslint-plugin, @nx/jest, @nx/js, @nx/storybook, @nx/web, @nx/workspace, @schematics/angular, @storybook/addon-docs, @storybook/angular, @storybook/jest, @storybook/test-runner, @storybook/testing-library, @stylistic/eslint-plugin, @swc-node/register, @swc/core, @swc/helpers, @types/jest, @types/node, @typescript-eslint/utils, angular-eslint, autoprefixer, cypress, eslint, eslint-config-prettier, eslint-plugin-cypress, jest, jest-environment-jsdom, jest-preset-angular, jsonc-eslint-parser, ng-packagr, nx, postcss, postcss-import, postcss-preset-env, postcss-url, prettier, storybook, ts-jest, ts-node, typescript, typescript-eslint, verdaccio, @angular-ru/cdk, @angular-ru/ngxs, @angular/animations, @angular/cdk, @angular/common, @angular/compiler, @angular/core, @angular/forms, @angular/platform-browser, @angular/platform-browser-dynamic, @angular/router, @capacitor/app, @capacitor/core, @capawesome/capacitor-file-picker, @ionic/angular, @ionic/core, @maskito/angular, @maskito/core, @module-federation/enhanced, @ngx-translate/core, @ngx-translate/http-loader, @ngxs/form-plugin, @ngxs/logger-plugin, @ngxs/router-plugin, @ngxs/store, @nrwl/nx-cloud, @nx/angular, appwrite, date-fns, ionicons, ngx-moment, ngx-translate-debug, rxjs, swiper, tslib, zone.js\n' +
+    'Error: Command failed with exit code 1: pnpm remove @storybook/addon-interactions -w\n' +
+    '\x1B[38;2;241;97;97mError: Error: Command failed with exit code 1: pnpm remove @storybook/addon-interactions -w\x1B[39m\n' +
+    '    at Ai.removeDependencies (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:19117:94)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async removeAddon (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:20391:32)\n' +
+    '    at async /Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/cli/dist/bin/index.cjs:664:5107\n' +
+    '    at async withTelemetry (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/core-server/index.cjs:35788:12)',
+  stderr: 'An error occurred while removing dependencies.\n' +
+    '/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/cli/bin/index.cjs:23\n' +
+    '  throw error;\n' +
+    '  ^\n' +
+    '\n' +
+    'HandledError: Error: Command failed with exit code 1: pnpm remove @storybook/addon-interactions -w\n' +
+    '    at Ai.removeDependencies (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:19117:94)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async removeAddon (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:20391:32)\n' +
+    '    at async /Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/cli/dist/bin/index.cjs:664:5107\n' +
+    '    at async withTelemetry (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/core-server/index.cjs:35788:12) {\n' +
+    '  handled: true,\n' +
+    '  cause: Error: Command failed with exit code 1: pnpm remove @storybook/addon-interactions -w\n' +
+    '      at makeError (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:18187:67)\n' +
+    '      at handlePromise (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:18805:16)\n' +
+    '      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '      at async Ai.executeCommand (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:19254:15)\n' +
+    '      at async Ai.runRemoveDeps (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:19823:5)\n' +
+    '      at async Ai.removeDependencies (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:19115:9)\n' +
+    '      at async removeAddon (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:20391:32)\n' +
+    '      at async /Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/cli/dist/bin/index.cjs:664:5107\n' +
+    '      at async withTelemetry (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/core-server/index.cjs:35788:12) {\n' +
+    "    shortMessage: 'Command failed with exit code 1: pnpm remove @storybook/addon-interactions -w',\n" +
+    "    command: 'pnpm remove @storybook/addon-interactions -w',\n" +
+    `    escapedCommand: 'pnpm remove "@storybook/addon-interactions" -w',\n` +
+    '    exitCode: 1,\n' +
+    '    signal: undefined,\n' +
+    '    signalDescription: undefined,\n' +
+    '    stdout: undefined,\n' +
+    '    stderr: undefined,\n' +
+    "    cwd: '/Users/fr4/workspace/libs/sio',\n" +
+    '    failed: true,\n' +
+    '    timedOut: false,\n' +
+    '    isCanceled: false,\n' +
+    '    killed: false\n' +
+    '  }\n' +
+    '}\n' +
+    '\n' +
+    'Node.js v22.14.0',
+  cwd: '/Users/fr4/workspace/libs/sio',
+  failed: true,
+  timedOut: false,
+  isCanceled: false,
+  killed: false
+}
+
+
+🔎 found a 'remove-essentials' migration:
+╭ Automigration detected ────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                        │
+│   We've detected that you have @storybook/addon-essentials installed.                                  │
+│                                                                                                        │
+│   In Storybook 9.0, all features from @storybook/addon-essentials (except docs)                        │
+│   have been moved into Storybook's core. You no longer need to install or configure them separately.   │
+│                                                                                                        │
+│   We'll remove @storybook/addon-essentials from your configuration and dependencies.                   │
+│                                                                                                        │
+│   Since you were using the docs feature, we'll install @storybook/addon-docs                           │
+│   separately and add it to your configuration if it's not already present.                             │
+│                                                                                                        │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+Removing @storybook/addon-essentials...
+❌ error when running remove-essentials migration
+Error: Command failed with exit code 7: pnpm exec storybook remove @storybook/addon-essentials --config-dir libs/core/.storybook
+An error occurred while removing dependencies.
+/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/cli/bin/index.cjs:23
+  throw error;
+  ^
+
+HandledError: Error: Command failed with exit code 1: pnpm remove @storybook/addon-essentials -w
+    at Ai.removeDependencies (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:19117:94)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async removeAddon (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:20391:32)
+    at async /Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/cli/dist/bin/index.cjs:664:5107
+    at async withTelemetry (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/core-server/index.cjs:35788:12) {
+  handled: true,
+  cause: Error: Command failed with exit code 1: pnpm remove @storybook/addon-essentials -w
+      at makeError (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:18187:67)
+      at handlePromise (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:18805:16)
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+      at async Ai.executeCommand (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:19254:15)
+      at async Ai.runRemoveDeps (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:19823:5)
+      at async Ai.removeDependencies (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:19115:9)
+      at async removeAddon (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:20391:32)
+      at async /Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/cli/dist/bin/index.cjs:664:5107
+      at async withTelemetry (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/core-server/index.cjs:35788:12) {
+    shortMessage: 'Command failed with exit code 1: pnpm remove @storybook/addon-essentials -w',
+    command: 'pnpm remove @storybook/addon-essentials -w',
+    escapedCommand: 'pnpm remove "@storybook/addon-essentials" -w',
+    exitCode: 1,
+    signal: undefined,
+    signalDescription: undefined,
+    stdout: undefined,
+    stderr: undefined,
+    cwd: '/Users/fr4/workspace/libs/sio',
+    failed: true,
+    timedOut: false,
+    isCanceled: false,
+    killed: false
+  }
+}
+
+Node.js v22.14.0
+Uninstalling @storybook/addon-essentials
+ ERR_PNPM_CANNOT_REMOVE_MISSING_DEPS  Cannot remove '@storybook/addon-essentials': no such dependency found
+
+Available dependencies: @angular-devkit/build-angular, @angular-devkit/core, @angular-devkit/schematics, @angular-eslint/eslint-plugin, @angular-eslint/eslint-plugin-template, @angular-eslint/template-parser, @angular/cli, @angular/compiler-cli, @angular/language-service, @capacitor/cli, @chromatic-com/storybook, @eslint/eslintrc, @eslint/js, @ngxs/devtools-plugin, @nx/cypress, @nx/eslint, @nx/eslint-plugin, @nx/jest, @nx/js, @nx/storybook, @nx/web, @nx/workspace, @schematics/angular, @storybook/addon-docs, @storybook/angular, @storybook/jest, @storybook/test-runner, @storybook/testing-library, @stylistic/eslint-plugin, @swc-node/register, @swc/core, @swc/helpers, @types/jest, @types/node, @typescript-eslint/utils, angular-eslint, autoprefixer, cypress, eslint, eslint-config-prettier, eslint-plugin-cypress, jest, jest-environment-jsdom, jest-preset-angular, jsonc-eslint-parser, ng-packagr, nx, postcss, postcss-import, postcss-preset-env, postcss-url, prettier, storybook, ts-jest, ts-node, typescript, typescript-eslint, verdaccio, @angular-ru/cdk, @angular-ru/ngxs, @angular/animations, @angular/cdk, @angular/common, @angular/compiler, @angular/core, @angular/forms, @angular/platform-browser, @angular/platform-browser-dynamic, @angular/router, @capacitor/app, @capacitor/core, @capawesome/capacitor-file-picker, @ionic/angular, @ionic/core, @maskito/angular, @maskito/core, @module-federation/enhanced, @ngx-translate/core, @ngx-translate/http-loader, @ngxs/form-plugin, @ngxs/logger-plugin, @ngxs/router-plugin, @ngxs/store, @nrwl/nx-cloud, @nx/angular, appwrite, date-fns, ionicons, ngx-moment, ngx-translate-debug, rxjs, swiper, tslib, zone.js
+Error: Command failed with exit code 1: pnpm remove @storybook/addon-essentials -w
+Error: Error: Command failed with exit code 1: pnpm remove @storybook/addon-essentials -w
+    at Ai.removeDependencies (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:19117:94)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async removeAddon (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:20391:32)
+    at async /Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/cli/dist/bin/index.cjs:664:5107
+    at async withTelemetry (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/core-server/index.cjs:35788:12)
+    at makeError (/Users/fr4/.npm/_npx/22a2e474f1fcccdb/node_modules/storybook/dist/common/index.cjs:25217:67)
+    at handlePromise (/Users/fr4/.npm/_npx/22a2e474f1fcccdb/node_modules/storybook/dist/common/index.cjs:25835:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ps.executeCommand (/Users/fr4/.npm/_npx/22a2e474f1fcccdb/node_modules/storybook/dist/common/index.cjs:26293:15)
+    at async Object.run (/Users/fr4/.npm/_npx/22a2e474f1fcccdb/node_modules/@storybook/cli/dist/bin/index.cjs:342:315)
+    at async runFixes (/Users/fr4/.npm/_npx/22a2e474f1fcccdb/node_modules/@storybook/cli/dist/bin/index.cjs:413:1798)
+    at async automigrate (/Users/fr4/.npm/_npx/22a2e474f1fcccdb/node_modules/@storybook/cli/dist/bin/index.cjs:411:1834)
+    at async doAutomigrate (/Users/fr4/.npm/_npx/22a2e474f1fcccdb/node_modules/@storybook/cli/dist/bin/index.cjs:411:453)
+    at async Command.<anonymous> (/Users/fr4/.npm/_npx/22a2e474f1fcccdb/node_modules/@storybook/cli/dist/bin/index.cjs:481:2880) {
+  shortMessage: 'Command failed with exit code 7: pnpm exec storybook remove @storybook/addon-essentials --config-dir libs/core/.storybook',
+  command: 'pnpm exec storybook remove @storybook/addon-essentials --config-dir libs/core/.storybook',
+  escapedCommand: 'pnpm exec storybook remove "@storybook/addon-essentials" --config-dir "libs/core/.storybook"',
+  exitCode: 7,
+  signal: undefined,
+  signalDescription: undefined,
+  stdout: 'Uninstalling @storybook/addon-essentials\n' +
+    " ERR_PNPM_CANNOT_REMOVE_MISSING_DEPS  Cannot remove '@storybook/addon-essentials': no such dependency found\n" +
+    '\n' +
+    'Available dependencies: @angular-devkit/build-angular, @angular-devkit/core, @angular-devkit/schematics, @angular-eslint/eslint-plugin, @angular-eslint/eslint-plugin-template, @angular-eslint/template-parser, @angular/cli, @angular/compiler-cli, @angular/language-service, @capacitor/cli, @chromatic-com/storybook, @eslint/eslintrc, @eslint/js, @ngxs/devtools-plugin, @nx/cypress, @nx/eslint, @nx/eslint-plugin, @nx/jest, @nx/js, @nx/storybook, @nx/web, @nx/workspace, @schematics/angular, @storybook/addon-docs, @storybook/angular, @storybook/jest, @storybook/test-runner, @storybook/testing-library, @stylistic/eslint-plugin, @swc-node/register, @swc/core, @swc/helpers, @types/jest, @types/node, @typescript-eslint/utils, angular-eslint, autoprefixer, cypress, eslint, eslint-config-prettier, eslint-plugin-cypress, jest, jest-environment-jsdom, jest-preset-angular, jsonc-eslint-parser, ng-packagr, nx, postcss, postcss-import, postcss-preset-env, postcss-url, prettier, storybook, ts-jest, ts-node, typescript, typescript-eslint, verdaccio, @angular-ru/cdk, @angular-ru/ngxs, @angular/animations, @angular/cdk, @angular/common, @angular/compiler, @angular/core, @angular/forms, @angular/platform-browser, @angular/platform-browser-dynamic, @angular/router, @capacitor/app, @capacitor/core, @capawesome/capacitor-file-picker, @ionic/angular, @ionic/core, @maskito/angular, @maskito/core, @module-federation/enhanced, @ngx-translate/core, @ngx-translate/http-loader, @ngxs/form-plugin, @ngxs/logger-plugin, @ngxs/router-plugin, @ngxs/store, @nrwl/nx-cloud, @nx/angular, appwrite, date-fns, ionicons, ngx-moment, ngx-translate-debug, rxjs, swiper, tslib, zone.js\n' +
+    'Error: Command failed with exit code 1: pnpm remove @storybook/addon-essentials -w\n' +
+    '\x1B[38;2;241;97;97mError: Error: Command failed with exit code 1: pnpm remove @storybook/addon-essentials -w\x1B[39m\n' +
+    '    at Ai.removeDependencies (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:19117:94)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async removeAddon (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:20391:32)\n' +
+    '    at async /Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/cli/dist/bin/index.cjs:664:5107\n' +
+    '    at async withTelemetry (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/core-server/index.cjs:35788:12)',
+  stderr: 'An error occurred while removing dependencies.\n' +
+    '/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/cli/bin/index.cjs:23\n' +
+    '  throw error;\n' +
+    '  ^\n' +
+    '\n' +
+    'HandledError: Error: Command failed with exit code 1: pnpm remove @storybook/addon-essentials -w\n' +
+    '    at Ai.removeDependencies (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:19117:94)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async removeAddon (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:20391:32)\n' +
+    '    at async /Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/cli/dist/bin/index.cjs:664:5107\n' +
+    '    at async withTelemetry (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/core-server/index.cjs:35788:12) {\n' +
+    '  handled: true,\n' +
+    '  cause: Error: Command failed with exit code 1: pnpm remove @storybook/addon-essentials -w\n' +
+    '      at makeError (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:18187:67)\n' +
+    '      at handlePromise (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:18805:16)\n' +
+    '      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '      at async Ai.executeCommand (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:19254:15)\n' +
+    '      at async Ai.runRemoveDeps (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:19823:5)\n' +
+    '      at async Ai.removeDependencies (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:19115:9)\n' +
+    '      at async removeAddon (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:20391:32)\n' +
+    '      at async /Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/cli/dist/bin/index.cjs:664:5107\n' +
+    '      at async withTelemetry (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/core-server/index.cjs:35788:12) {\n' +
+    "    shortMessage: 'Command failed with exit code 1: pnpm remove @storybook/addon-essentials -w',\n" +
+    "    command: 'pnpm remove @storybook/addon-essentials -w',\n" +
+    `    escapedCommand: 'pnpm remove "@storybook/addon-essentials" -w',\n` +
+    '    exitCode: 1,\n' +
+    '    signal: undefined,\n' +
+    '    signalDescription: undefined,\n' +
+    '    stdout: undefined,\n' +
+    '    stderr: undefined,\n' +
+    "    cwd: '/Users/fr4/workspace/libs/sio',\n" +
+    '    failed: true,\n' +
+    '    timedOut: false,\n' +
+    '    isCanceled: false,\n' +
+    '    killed: false\n' +
+    '  }\n' +
+    '}\n' +
+    '\n' +
+    'Node.js v22.14.0',
+  cwd: '/Users/fr4/workspace/libs/sio',
+  failed: true,
+  timedOut: false,
+  isCanceled: false,
+  killed: false
+}
+
+
+╭ Migration check ran with failures ──────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                     │
+│   Failed migrations:                                                                                                │
+│                                                                                                                     │
+│   eslintPlugin:                                                                                                     │
+│   Error: PNPM error ERR_PNPM_NO_MATCHING_VERSION  No matching version found for eslint-plugin-storybook@8.6.14      │
+│   while fetching it from https://registry.npmjs.org/                                                                │
+│                                                                                                                     │
+│   Please check the logfile generated at ./storybook.log for troubleshooting and try again.                          │
+│   removeAddonInteractions:                                                                                          │
+│   Command failed with exit code 7: pnpm exec storybook remove @storybook/addon-interactions --config-dir            │
+│   libs/core/.storybook                                                                                              │
+│   An error occurred while removing dependencies.                                                                    │
+│   /Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/cli/bin/index.cjs:23                                │
+│   throw error;                                                                                                      │
+│   ^                                                                                                                 │
+│                                                                                                                     │
+│   HandledError: Error: Command failed with exit code 1: pnpm remove @storybook/addon-interactions -w                │
+│   at Ai.removeDependencies                                                                                          │
+│   (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:19117:94)               │
+│   at process.processTicksAndRejections (node:internal/process/task_queues:105:5)                                    │
+│   at async removeAddon                                                                                              │
+│   (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:20391:32)               │
+│   at async /Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/cli/dist/bin/index.cjs:664:5107            │
+│   at async withTelemetry                                                                                            │
+│   (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/core-server/index.cjs:35788:12) {        │
+│   handled: true,                                                                                                    │
+│   cause: Error: Command failed with exit code 1: pnpm remove @storybook/addon-interactions -w                       │
+│   at makeError                                                                                                      │
+│   (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:18187:67)               │
+│   at handlePromise                                                                                                  │
+│   (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:18805:16)               │
+│   at process.processTicksAndRejections (node:internal/process/task_queues:105:5)                                    │
+│   at async Ai.executeCommand                                                                                        │
+│   (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:19254:15)               │
+│   at async Ai.runRemoveDeps                                                                                         │
+│   (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:19823:5)                │
+│   at async Ai.removeDependencies                                                                                    │
+│   (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:19115:9)                │
+│   at async removeAddon                                                                                              │
+│   (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:20391:32)               │
+│   at async /Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/cli/dist/bin/index.cjs:664:5107            │
+│   at async withTelemetry                                                                                            │
+│   (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/core-server/index.cjs:35788:12) {        │
+│   shortMessage: 'Command failed with exit code 1: pnpm remove @storybook/addon-interactions -w',                    │
+│   command: 'pnpm remove @storybook/addon-interactions -w',                                                          │
+│   escapedCommand: 'pnpm remove "@storybook/addon-interactions" -w',                                                 │
+│   exitCode: 1,                                                                                                      │
+│   signal: undefined,                                                                                                │
+│   signalDescription: undefined,                                                                                     │
+│   stdout: undefined,                                                                                                │
+│   stderr: undefined,                                                                                                │
+│   cwd: '/Users/fr4/workspace/libs/sio',                                                                             │
+│   failed: true,                                                                                                     │
+│   timedOut: false,                                                                                                  │
+│   isCanceled: false,                                                                                                │
+│   killed: false                                                                                                     │
+│   }                                                                                                                 │
+│   }                                                                                                                 │
+│                                                                                                                     │
+│   Node.js v22.14.0                                                                                                  │
+│   Uninstalling @storybook/addon-interactions                                                                        │
+│   ERR_PNPM_CANNOT_REMOVE_MISSING_DEPS  Cannot remove '@storybook/addon-interactions': no such dependency found      │
+│                                                                                                                     │
+│   Available dependencies: @angular-devkit/build-angular, @angular-devkit/core, @angular-devkit/schematics,          │
+│   @angular-eslint/eslint-plugin, @angular-eslint/eslint-plugin-template, @angular-eslint/template-parser,           │
+│   @angular/cli, @angular/compiler-cli, @angular/language-service, @capacitor/cli, @chromatic-com/storybook,         │
+│   @eslint/eslintrc, @eslint/js, @ngxs/devtools-plugin, @nx/cypress, @nx/eslint, @nx/eslint-plugin, @nx/jest,        │
+│   @nx/js, @nx/storybook, @nx/web, @nx/workspace, @schematics/angular, @storybook/addon-docs, @storybook/angular,    │
+│   @storybook/jest, @storybook/test-runner, @storybook/testing-library, @stylistic/eslint-plugin,                    │
+│   @swc-node/register, @swc/core, @swc/helpers, @types/jest, @types/node, @typescript-eslint/utils,                  │
+│   angular-eslint, autoprefixer, cypress, eslint, eslint-config-prettier, eslint-plugin-cypress, jest,               │
+│   jest-environment-jsdom, jest-preset-angular, jsonc-eslint-parser, ng-packagr, nx, postcss, postcss-import,        │
+│   postcss-preset-env, postcss-url, prettier, storybook, ts-jest, ts-node, typescript, typescript-eslint,            │
+│   verdaccio, @angular-ru/cdk, @angular-ru/ngxs, @angular/animations, @angular/cdk, @angular/common,                 │
+│   @angular/compiler, @angular/core, @angular/forms, @angular/platform-browser, @angular/platform-browser-dynamic,   │
+│   @angular/router, @capacitor/app, @capacitor/core, @capawesome/capacitor-file-picker, @ionic/angular,              │
+│   @ionic/core, @maskito/angular, @maskito/core, @module-federation/enhanced, @ngx-translate/core,                   │
+│   @ngx-translate/http-loader, @ngxs/form-plugin, @ngxs/logger-plugin, @ngxs/router-plugin, @ngxs/store,             │
+│   @nrwl/nx-cloud, @nx/angular, appwrite, date-fns, ionicons, ngx-moment, ngx-translate-debug, rxjs, swiper,         │
+│   tslib, zone.js                                                                                                    │
+│   Error: Command failed with exit code 1: pnpm remove @storybook/addon-interactions -w                              │
+│   Error: Error: Command failed with exit code 1: pnpm remove @storybook/addon-interactions -w                       │
+│   at Ai.removeDependencies                                                                                          │
+│   (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:19117:94)               │
+│   at process.processTicksAndRejections (node:internal/process/task_queues:105:5)                                    │
+│   at async removeAddon                                                                                              │
+│   (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:20391:32)               │
+│   at async /Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/cli/dist/bin/index.cjs:664:5107            │
+│   at async withTelemetry                                                                                            │
+│   (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/core-server/index.cjs:35788:12)          │
+│   remove-essentials:                                                                                                │
+│   Command failed with exit code 7: pnpm exec storybook remove @storybook/addon-essentials --config-dir              │
+│   libs/core/.storybook                                                                                              │
+│   An error occurred while removing dependencies.                                                                    │
+│   /Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/cli/bin/index.cjs:23                                │
+│   throw error;                                                                                                      │
+│   ^                                                                                                                 │
+│                                                                                                                     │
+│   HandledError: Error: Command failed with exit code 1: pnpm remove @storybook/addon-essentials -w                  │
+│   at Ai.removeDependencies                                                                                          │
+│   (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:19117:94)               │
+│   at process.processTicksAndRejections (node:internal/process/task_queues:105:5)                                    │
+│   at async removeAddon                                                                                              │
+│   (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:20391:32)               │
+│   at async /Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/cli/dist/bin/index.cjs:664:5107            │
+│   at async withTelemetry                                                                                            │
+│   (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/core-server/index.cjs:35788:12) {        │
+│   handled: true,                                                                                                    │
+│   cause: Error: Command failed with exit code 1: pnpm remove @storybook/addon-essentials -w                         │
+│   at makeError                                                                                                      │
+│   (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:18187:67)               │
+│   at handlePromise                                                                                                  │
+│   (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:18805:16)               │
+│   at process.processTicksAndRejections (node:internal/process/task_queues:105:5)                                    │
+│   at async Ai.executeCommand                                                                                        │
+│   (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:19254:15)               │
+│   at async Ai.runRemoveDeps                                                                                         │
+│   (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:19823:5)                │
+│   at async Ai.removeDependencies                                                                                    │
+│   (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:19115:9)                │
+│   at async removeAddon                                                                                              │
+│   (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:20391:32)               │
+│   at async /Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/cli/dist/bin/index.cjs:664:5107            │
+│   at async withTelemetry                                                                                            │
+│   (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/core-server/index.cjs:35788:12) {        │
+│   shortMessage: 'Command failed with exit code 1: pnpm remove @storybook/addon-essentials -w',                      │
+│   command: 'pnpm remove @storybook/addon-essentials -w',                                                            │
+│   escapedCommand: 'pnpm remove "@storybook/addon-essentials" -w',                                                   │
+│   exitCode: 1,                                                                                                      │
+│   signal: undefined,                                                                                                │
+│   signalDescription: undefined,                                                                                     │
+│   stdout: undefined,                                                                                                │
+│   stderr: undefined,                                                                                                │
+│   cwd: '/Users/fr4/workspace/libs/sio',                                                                             │
+│   failed: true,                                                                                                     │
+│   timedOut: false,                                                                                                  │
+│   isCanceled: false,                                                                                                │
+│   killed: false                                                                                                     │
+│   }                                                                                                                 │
+│   }                                                                                                                 │
+│                                                                                                                     │
+│   Node.js v22.14.0                                                                                                  │
+│   Uninstalling @storybook/addon-essentials                                                                          │
+│   ERR_PNPM_CANNOT_REMOVE_MISSING_DEPS  Cannot remove '@storybook/addon-essentials': no such dependency found        │
+│                                                                                                                     │
+│   Available dependencies: @angular-devkit/build-angular, @angular-devkit/core, @angular-devkit/schematics,          │
+│   @angular-eslint/eslint-plugin, @angular-eslint/eslint-plugin-template, @angular-eslint/template-parser,           │
+│   @angular/cli, @angular/compiler-cli, @angular/language-service, @capacitor/cli, @chromatic-com/storybook,         │
+│   @eslint/eslintrc, @eslint/js, @ngxs/devtools-plugin, @nx/cypress, @nx/eslint, @nx/eslint-plugin, @nx/jest,        │
+│   @nx/js, @nx/storybook, @nx/web, @nx/workspace, @schematics/angular, @storybook/addon-docs, @storybook/angular,    │
+│   @storybook/jest, @storybook/test-runner, @storybook/testing-library, @stylistic/eslint-plugin,                    │
+│   @swc-node/register, @swc/core, @swc/helpers, @types/jest, @types/node, @typescript-eslint/utils,                  │
+│   angular-eslint, autoprefixer, cypress, eslint, eslint-config-prettier, eslint-plugin-cypress, jest,               │
+│   jest-environment-jsdom, jest-preset-angular, jsonc-eslint-parser, ng-packagr, nx, postcss, postcss-import,        │
+│   postcss-preset-env, postcss-url, prettier, storybook, ts-jest, ts-node, typescript, typescript-eslint,            │
+│   verdaccio, @angular-ru/cdk, @angular-ru/ngxs, @angular/animations, @angular/cdk, @angular/common,                 │
+│   @angular/compiler, @angular/core, @angular/forms, @angular/platform-browser, @angular/platform-browser-dynamic,   │
+│   @angular/router, @capacitor/app, @capacitor/core, @capawesome/capacitor-file-picker, @ionic/angular,              │
+│   @ionic/core, @maskito/angular, @maskito/core, @module-federation/enhanced, @ngx-translate/core,                   │
+│   @ngx-translate/http-loader, @ngxs/form-plugin, @ngxs/logger-plugin, @ngxs/router-plugin, @ngxs/store,             │
+│   @nrwl/nx-cloud, @nx/angular, appwrite, date-fns, ionicons, ngx-moment, ngx-translate-debug, rxjs, swiper,         │
+│   tslib, zone.js                                                                                                    │
+│   Error: Command failed with exit code 1: pnpm remove @storybook/addon-essentials -w                                │
+│   Error: Error: Command failed with exit code 1: pnpm remove @storybook/addon-essentials -w                         │
+│   at Ai.removeDependencies                                                                                          │
+│   (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:19117:94)               │
+│   at process.processTicksAndRejections (node:internal/process/task_queues:105:5)                                    │
+│   at async removeAddon                                                                                              │
+│   (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/common/index.cjs:20391:32)               │
+│   at async /Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/cli/dist/bin/index.cjs:664:5107            │
+│   at async withTelemetry                                                                                            │
+│   (/Users/fr4/.npm/_npx/b5263ddf27476ba2/node_modules/@storybook/core/dist/core-server/index.cjs:35788:12)          │
+│                                                                                                                     │
+│   You can find the full logs in /Users/fr4/workspace/libs/sio/migration-storybook.log                               │
+│                                                                                                                     │
+│   ─────────────────────────────────────────────────                                                                 │
+│                                                                                                                     │
+│   If you'd like to run the migrations again, you can do so by running 'npx storybook automigrate'                   │
+│                                                                                                                     │
+│   The automigrations try to migrate common patterns in your project, but might not contain everything needed to     │
+│   migrate to the latest version of Storybook.                                                                       │
+│                                                                                                                     │
+│   Please check the changelog and migration guide for manual migrations and more information:                        │
+│   https://storybook.js.org/docs/migration-guide                                                                     │
+│   And reach out on Discord if you need help: https://discord.gg/storybook                                           │
+│                                                                                                                     │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
