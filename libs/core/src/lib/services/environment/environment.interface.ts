@@ -8,4 +8,5 @@ export interface SioCoreEnvironmentInterface {
   production: boolean,
   plugins?: ModuleWithProviders<unknown>[],
   app: SioCoreAppCompomentInterface,
+  other?: {}
 }

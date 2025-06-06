@@ -22,7 +22,7 @@ import { NgxsFormPluginModule } from "@ngxs/form-plugin";
 
 import { SioChatComponents } from "./components";
 import { SioCommonModule } from "@silicia/core";
-import { SioChatState } from "./store";
+import { SioChatState, SioChatMessageState } from "./store";
 
 import { sioChatRoutes } from "./sio-chat.routes";
 
@@ -45,7 +45,7 @@ export class EnsureModuleLoadedOnceGuard {
     SioCommonModule,
     MomentModule.forRoot(),
     ReactiveFormsModule,
-    NgxsModule.forFeature([SioChatState]),
+    NgxsModule.forFeature([SioChatMessageState, SioChatState]),
     NgxsFormPluginModule,
   ],
   exports: [...SioChatComponents],

@@ -8,6 +8,7 @@ export class SioCoreEnvironmentConfig implements SioCoreEnvironmentInterface {
   production = false;
   logLevel = LogLevel.Info;
   backend = {};
+  other = {};
 
   app: SioCoreAppCompomentInterface = {
     title: 'APP_TITLE',

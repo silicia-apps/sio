@@ -25,6 +25,14 @@ export const environment: SioCoreEnvironmentInterface = {
     apiEndpoint: "https://baas.jcomwifi.net/v1",
     projectID: "6817a60b003e0208c550",
   },
+  other: {
+    'chat': {
+      'database_id': '6817a6cc0008ab4f96fb',
+      'collection_rooms_id': '683d7afc001fac5c00bc',
+      'collection_messages_id': '683d7b9d0005eeefa56f',
+      'collection_profiles_id': '683d897400027c1ed4bf'
+    }
+  },
   app: {
     title: "Demo App",
     language: {

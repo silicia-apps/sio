@@ -13,9 +13,8 @@
       </ion-item>
     </ion-toolbar>
   </ion-header>
-  <sio-chat id="681931b100386fcbbab2" (sioOnInfinite)="this.load($event)" (sioOnRefresh)="this.refresh($event)"
-    (sioOnClick)="this.click($event)">
-  </sio-chat>
+  <sio-room id="681931b100386fcbbab2" (sioOnInfinite)="this.load($event)" (sioOnRefresh)="this.refresh($event)"
+    (sioOnClick)="this.click($event)" />
   <ion-toolbar style="height: auto" slot="footer">
     <ion-buttons slot="start">
       <ion-button>

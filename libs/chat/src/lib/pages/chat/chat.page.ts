@@ -6,7 +6,7 @@ import {
   SioCoreLoggerService
 } from '@silicia/core';
 import { SioDatabaseModule } from '@silicia/database';
-import { SioChatComponent } from '../../components/chat';
+import { SioChatRoomComponent } from '../../components/room';
 import { MomentModule } from 'ngx-moment';
 
 
@@ -16,7 +16,7 @@ import { MomentModule } from 'ngx-moment';
   selector: 'sio-chat-page',
   templateUrl: 'chat.page.html',
   styleUrls: ['chat.page.scss'],
-  imports: [SioCommonModule, SioDatabaseModule, SioChatComponent, MomentModule],
+  imports: [SioCommonModule, SioDatabaseModule, SioChatRoomComponent, MomentModule],
   standalone: true,
 })
 export class SioChatPage implements OnInit {

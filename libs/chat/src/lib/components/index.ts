@@ -1,6 +1,6 @@
-import { SioChatComponent } from './chat'
+import { SioChatRoomComponent } from './room'
 import { SioChatMessageComponent } from './message';
 
 export const SioChatComponents = [
-  SioChatComponent, SioChatMessageComponent
+  SioChatRoomComponent, SioChatMessageComponent
 ];

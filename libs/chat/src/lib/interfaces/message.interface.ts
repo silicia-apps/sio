@@ -1,6 +1,6 @@
 import { SioDatabaseDocumentInterface } from "@silicia/database";
 
-export interface SioCoreMessageInterface extends SioDatabaseDocumentInterface {
+export interface SioChatMessageInterface extends SioDatabaseDocumentInterface {
   from: any;
   to: any[];
   content: string;
