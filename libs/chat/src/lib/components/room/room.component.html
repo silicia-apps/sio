@@ -10,8 +10,8 @@
     *ngIf="first || (this.sioChatMessageState.selectAll()[index - 1].$createdAt!.split('T')[0] !== item.$createdAt!.split('T')[0])"
     [isPageScrolling]="this.isPageScrolling" [createdAt]="item.$createdAt?item.$createdAt:''" />
   
-  <sio-chat-message class="message-wrapper" [message]="item.content" (sioOnInfinite)="(null)" (sioOnRefresh)="(null)"
-    [user]="item.from.nick" [avatar]="item.from.avatar" [date]="item.$createdAt?item.$createdAt:''" [state]="item.state"
+  <sio-chat-message class="message-wrapper" [message]="item.body" (sioOnInfinite)="(null)" (sioOnRefresh)="(null)"
+    [user]="item.senderId" [avatar]="" [date]="item.$createdAt?item.$createdAt:''" [state]="item.state"
     [received]="item.from.nick !== 'Fr4'"
     [isLastMessage]="this.sioChatMessageState.selectAll()[index + 1]!.from.nick !== item.from.nick || false"></sio-chat-message>
 </ion-item-group>

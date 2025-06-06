@@ -1,7 +1,7 @@
 import { SioDatabaseDocumentInterface } from "@silicia/database";
 
 export interface SioChatMessageInterface extends SioDatabaseDocumentInterface {
-  from: any;
+  chatId: any;
   to: any[];
   content: string;
   type: "text" | "image" | "video" | "audio" | "file";
