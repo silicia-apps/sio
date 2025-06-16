@@ -1,68 +1,69 @@
 @switch (this.type) {
   @case ('swipe') {
-      <ion-item-options>
+    <ion-item-options>
+      @for (
+        item of this.sioCoreMenuState.items | keyvalue; track trackItems($index,
+        item)) {
         <ion-item-option
-          *ngFor="
-            let item of this.sioCoreMenuState.items | keyvalue;
-            trackBy: trackItems
-          "
           [color]="item.value.color"
           >{{ item.value.caption }}</ion-item-option
-        >
-      </ion-item-options>
-  }
-  @default {
-    @if (this.sioCoreMenuState.caption) {
-      <ion-accordion-group
-        *ngIf="this.sioCoreMenuState.caption"
-        [expand]="this.shape"
-      >
-        <ion-accordion
-          [value]="this.sioCoreMenuState.caption"
-          [toggleIconSlot]="this.toggleIconSlot"
-          [toggleIcon]="this.toggleIcon"
-        >
-          <ion-item slot="header" [color]="this.color">
-            <ion-label>{{
-              this.sioCoreMenuState.caption | translate
-            }}</ion-label>
-          </ion-item>
-          <ion-list slot="content" inset="true">
-            <sio-menu-item
-              *ngFor="
-                let item of sioCoreMenuState.items | keyvalue;
-                trackBy: trackItems
-              "
-              [color]="this.color"
-              [icon]="item.value.icon"
-              [caption]="item.value.caption"
-              [lines]="this.lines"
-              [style]="this.style"
-            >
-            </sio-menu-item>
-          </ion-list>
-        </ion-accordion>
-      </ion-accordion-group>
-    } @else {
-      <ion-menu-toggle auto-hide="false">
-        <ion-list [inset]="true">
-          <sio-menu-item
-            *ngFor="
-              let item of this.sioCoreMenuState.items | keyvalue;
-              trackBy: trackItems
-            "
-            [icon]="item.value.icon"
-            [caption]="item.value.caption"
-            [lines]="this.lines"
-            [url]="item.value.url"
-            [style]="this.style"
-            [tabbed]="false"
-            [badge]="item.value.badge!"
-            [color]="this.color"
           >
-          </sio-menu-item>
-        </ion-list>
-      </ion-menu-toggle>
+        }
+      </ion-item-options>
+    }
+    @default {
+      @if (this.sioCoreMenuState.caption) {
+        @if (this.sioCoreMenuState.caption) {
+          <ion-accordion-group
+            [expand]="this.shape"
+            >
+            <ion-accordion
+              [value]="this.sioCoreMenuState.caption"
+              [toggleIconSlot]="this.toggleIconSlot"
+              [toggleIcon]="this.toggleIcon"
+              >
+              <ion-item slot="header" [color]="this.color">
+                <ion-label>{{
+                  this.sioCoreMenuState.caption | translate
+                }}</ion-label>
+              </ion-item>
+              <ion-list slot="content" inset="true">
+                @for (
+                  item of sioCoreMenuState.items | keyvalue; track trackItems($index,
+                  item)) {
+                  <sio-menu-item
+                    [color]="this.color"
+                    [icon]="item.value.icon"
+                    [caption]="item.value.caption"
+                    [lines]="this.lines"
+                    [style]="this.style"
+                    >
+                  </sio-menu-item>
+                }
+              </ion-list>
+            </ion-accordion>
+          </ion-accordion-group>
+        }
+      } @else {
+        <ion-menu-toggle auto-hide="false">
+          <ion-list [inset]="true">
+            @for (
+              item of this.sioCoreMenuState.items | keyvalue; track trackItems($index,
+              item)) {
+              <sio-menu-item
+                [icon]="item.value.icon"
+                [caption]="item.value.caption"
+                [lines]="this.lines"
+                [url]="item.value.url"
+                [style]="this.style"
+                [tabbed]="false"
+                [badge]="item.value.badge!"
+                [color]="this.color"
+                >
+              </sio-menu-item>
+            }
+          </ion-list>
+        </ion-menu-toggle>
+      }
     }
   }
-}

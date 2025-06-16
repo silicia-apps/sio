@@ -1,19 +1,27 @@
 <ion-app>
-  <div
-    *ngIf="
-      (this.sioCoreAppComponentState.leftPanelType === 'none' &&
-        this.sioCoreAppComponentState.rightPanelType === 'none') ||
-        this.sioCoreAppComponentState.full;
-      then blank;
-      else split
-    "
-  ></div>
-  <ng-template #split>
+  @if (
+    (this.sioCoreAppComponentState.leftPanelType === 'none' &&
+    this.sioCoreAppComponentState.rightPanelType === 'none') ||
+    this.sioCoreAppComponentState.full) {
+    <ion-router-outlet [environmentInjector]="environmentInjector" id="main-content">
+      @if (
+        this.sioCoreAppComponentState.tabMenuID &&
+        this.sioCoreAppComponentState.full
+        ) {
+        <sio-menu
+          menuID="tab"
+          position="bottom"
+          [color]="this.color"
+        ></sio-menu>
+      }
+      <ng-content></ng-content>
+    </ion-router-outlet>
+  } @else {
     <ion-split-pane
       when="lg"
       contentId="main-content"
       (ionSplitPaneVisible)="sioAppSplitPanelVisible($event)"
-    >
+      >
       <ion-menu
         contentId="main-content"
         side="start"
@@ -26,144 +34,135 @@
           this.sioCoreAppComponentState.leftPanelType !== 'toggle'
         "
         [disabled]="this.sioCoreAppComponentState.leftPanelType === 'none'"
-      >
+        >
         <ion-header class="ion-no-border">
           <ion-toolbar [color]="this.color">
             <div #left_header>
               <ng-content select="[slot='left_header']"></ng-content>
             </div>
-            <ng-container *ngIf="!left_header.hasChildNodes()">
+            @if (!left_header.hasChildNodes()) {
               <ion-title>{{
                 (this.sioCoreAppComponentState.state$ | async)?.title
               }}</ion-title>
-            </ng-container>
+            }
           </ion-toolbar>
         </ion-header>
         <ion-content>
-          <sio-menu
-            *ngIf="
-              this.sioCoreAppComponentState.tabMenuID &&
-              this.sioCoreAppComponentState.tabDesktopPosition === 'left' &&
-              this.sioCoreAppComponentState.split
-            "
-            id="tab"
-            [color]="this.color"
-          >
-          </sio-menu>
+          @if (
+            this.sioCoreAppComponentState.tabMenuID &&
+            this.sioCoreAppComponentState.tabDesktopPosition === 'left' &&
+            this.sioCoreAppComponentState.split
+            ) {
+            <sio-menu
+              id="tab"
+              [color]="this.color"
+              >
+            </sio-menu>
+          }
           <div #left_content>
             <ng-content select="[slot='left_content']"></ng-content>
           </div>
-          <ng-container *ngIf="!left_content.hasChildNodes()">
-            <sio-menu
-              *ngIf="this.sioCoreAppComponentState.leftMenuID"
-              [menuID]="this.sioCoreAppComponentState.leftMenuID"
-              [color]="this.color"
-            ></sio-menu>
-          </ng-container>
+          @if (!left_content.hasChildNodes()) {
+            @if (this.sioCoreAppComponentState.leftMenuID) {
+              <sio-menu
+                [menuID]="this.sioCoreAppComponentState.leftMenuID"
+                [color]="this.color"
+              ></sio-menu>
+            }
+          }
         </ion-content>
         <ion-footer class="ion-no-border">
           <div #left_footer>
             <ng-content select="[slot='left_footer']"></ng-content>
           </div>
-          <ng-container *ngIf="!left_footer.hasChildNodes()">
+          @if (!left_footer.hasChildNodes()) {
             <ion-toolbar class="ion-no-border" [color]="this.color">
               <ion-item lines="none" [color]="this.color"
                 ><ion-label>powered by Sio</ion-label></ion-item
-              >
-              <ion-buttons slot="end">
-                <ion-button
-                  href="https://github.com/silicia-apps/sio"
-                  target="_blank"
-                  shape="round"
-                  fill="clear"
                 >
-                  <ion-icon slot="start" name="logo-github"></ion-icon>
-                </ion-button>
-              </ion-buttons>
-            </ion-toolbar>
-          </ng-container>
-        </ion-footer>
-      </ion-menu>
-      <ion-menu
-        [disabled]="this.sioCoreAppComponentState.rightPanelType === 'none'"
-        contentId="main-content"
-        side="end"
-        [type]="this.sioCoreAppComponentState.rightPanelType"
+                <ion-buttons slot="end">
+                  <ion-button
+                    href="https://github.com/silicia-apps/sio"
+                    target="_blank"
+                    shape="round"
+                    fill="clear"
+                    >
+                    <ion-icon slot="start" name="logo-github"></ion-icon>
+                  </ion-button>
+                </ion-buttons>
+              </ion-toolbar>
+            }
+          </ion-footer>
+        </ion-menu>
+        <ion-menu
+          [disabled]="this.sioCoreAppComponentState.rightPanelType === 'none'"
+          contentId="main-content"
+          side="end"
+          [type]="this.sioCoreAppComponentState.rightPanelType"
         [swipeGesture]="
           this.sioCoreAppComponentState.rightPanelType !== 'toggle'
         "
-      >
-        <ion-header class="ion-no-border">
-          <ion-toolbar [color]="this.color">
-            <div #right_header>
-              <ng-content select="[slot='right_header']"></ng-content>
-            </div>
-            <ng-container *ngIf="!right_header.hasChildNodes()">
-              <ion-title>{{
-                (this.sioCoreAppComponentState.state$ | async)?.title
-              }}</ion-title>
-            </ng-container>
-          </ion-toolbar>
-        </ion-header>
-        <ion-content [color]="this.color">
-          <sio-menu
-            *ngIf="
+          >
+          <ion-header class="ion-no-border">
+            <ion-toolbar [color]="this.color">
+              <div #right_header>
+                <ng-content select="[slot='right_header']"></ng-content>
+              </div>
+              @if (!right_header.hasChildNodes()) {
+                <ion-title>{{
+                  (this.sioCoreAppComponentState.state$ | async)?.title
+                }}</ion-title>
+              }
+            </ion-toolbar>
+          </ion-header>
+          <ion-content [color]="this.color">
+            @if (
               this.sioCoreAppComponentState.tabMenuID &&
               this.sioCoreAppComponentState.tabDesktopPosition === 'right' &&
               this.sioCoreAppComponentState.split
-            "
-            id="tab"
-            [color]="this.color"
-          ></sio-menu>
-          <div #right_content>
-            <ng-content select="[slot='right_content']"></ng-content>
-          </div>
-          <ng-container *ngIf="!right_content.hasChildNodes()">
-            <sio-menu
-              *ngIf="this.sioCoreAppComponentState.rightMenuID"
-              [menuID]="this.sioCoreAppComponentState.rightMenuID"
-              [color]="this.color"
-            ></sio-menu>
-          </ng-container>
-        </ion-content>
-        <ion-footer class="ion-no-border">
-          <div #right_footer>
-            <ng-content select="[slot='right_footer']"></ng-content>
-          </div>
-          <ng-container *ngIf="!right_footer.hasChildNodes()">
-            <ion-toolbar class="ion-no-border" [color]="this.color">
-              <sio-dark-mode-toggle></sio-dark-mode-toggle>
-            </ion-toolbar>
-          </ng-container>
-        </ion-footer>
-      </ion-menu>
-      <ion-router-outlet [environmentInjector]="this.environmentInjector" id="main-content">
-        <ng-content></ng-content>
-        <sio-tab
-          *ngIf="this.sioCoreAppComponentState.tabMenuID"
-          [tabID]="this.sioCoreAppComponentState.tabMenuID"
+              ) {
+              <sio-menu
+                id="tab"
+                [color]="this.color"
+              ></sio-menu>
+            }
+            <div #right_content>
+              <ng-content select="[slot='right_content']"></ng-content>
+            </div>
+            @if (!right_content.hasChildNodes()) {
+              @if (this.sioCoreAppComponentState.rightMenuID) {
+                <sio-menu
+                  [menuID]="this.sioCoreAppComponentState.rightMenuID"
+                  [color]="this.color"
+                ></sio-menu>
+              }
+            }
+          </ion-content>
+          <ion-footer class="ion-no-border">
+            <div #right_footer>
+              <ng-content select="[slot='right_footer']"></ng-content>
+            </div>
+            @if (!right_footer.hasChildNodes()) {
+              <ion-toolbar class="ion-no-border" [color]="this.color">
+                <sio-dark-mode-toggle></sio-dark-mode-toggle>
+              </ion-toolbar>
+            }
+          </ion-footer>
+        </ion-menu>
+        <ion-router-outlet [environmentInjector]="this.environmentInjector" id="main-content">
+          <ng-content></ng-content>
+          @if (this.sioCoreAppComponentState.tabMenuID) {
+            <sio-tab
+              [tabID]="this.sioCoreAppComponentState.tabMenuID"
           [position]="
             this.sioCoreAppComponentState.split
               ? this.sioCoreAppComponentState.tabDesktopPosition
               : this.sioCoreAppComponentState.tabMobilePosition
           "
-          [color]="this.color"
-        ></sio-tab>
-      </ion-router-outlet>
-    </ion-split-pane>
-  </ng-template>
-  <ng-template #blank>
-    <ion-router-outlet [environmentInjector]="environmentInjector" id="main-content">
-      <sio-menu
-        *ngIf="
-          this.sioCoreAppComponentState.tabMenuID &&
-          this.sioCoreAppComponentState.full
-        "
-        menuID="tab"
-        position="bottom"
-        [color]="this.color"
-      ></sio-menu>
-      <ng-content></ng-content>
-    </ion-router-outlet>
-  </ng-template>
-</ion-app>
+              [color]="this.color"
+            ></sio-tab>
+          }
+        </ion-router-outlet>
+      </ion-split-pane>
+    }
+  </ion-app>

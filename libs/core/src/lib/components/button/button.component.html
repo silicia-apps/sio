@@ -1,5 +1,8 @@
-<div *ngIf="this.type === 'fab'; then fab; else default"></div>
-<ng-template #default>
+@if (this.type === 'fab') {
+  <ion-fab-button [color]="this.color" [disabled]="this.disabled" [size]="this.size" (click)="onClick()">
+    <ion-icon [name]="this.icon"></ion-icon>
+  </ion-fab-button>
+} @else {
   <ion-button
     [color]="this.color"
     [disabled]="this.disabled"
@@ -8,18 +11,16 @@
     [size]="this.size"
     [fill]="this.clear?'clear':'solid'"
     (click)="onClick()"
-  >
-    <ion-icon
-      *ngIf="this.icon"
-      [name]="this.icon"
-      [size]="this.size"
-      [slot]="(this.display_icon === 'left')?'start':(this.display_icon === 'right')?'end':(this.display_icon === 'only')?'icon-only':'left'"
-    ></ion-icon>
-    <ng-content *ngIf="this.display_icon !== 'only'"></ng-content>
+    >
+    @if (this.icon) {
+      <ion-icon
+        [name]="this.icon"
+        [size]="this.size"
+        [slot]="(this.display_icon === 'left')?'start':(this.display_icon === 'right')?'end':(this.display_icon === 'only')?'icon-only':'left'"
+      ></ion-icon>
+    }
+    @if (this.display_icon !== 'only') {
+      <ng-content></ng-content>
+    }
   </ion-button>
-</ng-template>
-<ng-template #fab>
-  <ion-fab-button [color]="this.color" [disabled]="this.disabled" [size]="this.size" (click)="onClick()">
-    <ion-icon [name]="this.icon"></ion-icon>
-  </ion-fab-button>
-</ng-template>
+}

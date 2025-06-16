@@ -1,34 +1,38 @@
-<form
-  *ngIf="(this.state.state$ | async)?.layout"
-  ngxsForm="{{ this.state.name }}.data"
-  [formGroup]="this.form"
-  (ngSubmit)="this.onSubmit()"
->
-  <div *ngFor="let item of (this.state.state$ | async)?.layout">
-    <sio-input
-      [label]="item.label"
-      [name]="item.name"
-      [type]="item.type"
-      [formControlName]="item.name"
-      [color]="this.color"
-    ></sio-input>
-    <br />
-  </div>
-  <ion-button
-    size="large"
-    expand="block"
-    color="primary"
-    type="submit"
-    [disabled]="!this.state.valid"
-  >
-    {{ 'SUBMIT' | translate }}
-  </ion-button>
-  <ion-button
-    *ngIf="this.cancel"
-    expand="block"
-    color="danger"
-    (click)="this.state.resetForm()"
-  >
-    {{ 'RESET' | translate }}
-  </ion-button>
-</form>
+@if ((this.state.state$ | async)?.layout) {
+  <form
+    ngxsForm="{{ this.state.name }}.data"
+    [formGroup]="this.form"
+    (ngSubmit)="this.onSubmit()"
+    >
+    @for (item of (this.state.state$ | async)?.layout; track item) {
+      <div>
+        <sio-input
+          [label]="item.label"
+          [name]="item.name"
+          [type]="item.type"
+          [formControlName]="item.name"
+          [color]="this.color"
+        ></sio-input>
+        <br />
+      </div>
+    }
+    <ion-button
+      size="large"
+      expand="block"
+      color="primary"
+      type="submit"
+      [disabled]="!this.state.valid"
+      >
+      {{ 'SUBMIT' | translate }}
+    </ion-button>
+    @if (this.cancel) {
+      <ion-button
+        expand="block"
+        color="danger"
+        (click)="this.state.resetForm()"
+        >
+        {{ 'RESET' | translate }}
+      </ion-button>
+    }
+  </form>
+}

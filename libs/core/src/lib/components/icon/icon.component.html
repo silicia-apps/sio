@@ -1,4 +1,12 @@
-<ion-icon *ngIf="this.slot === 'start'" slot="start" [name]="this.name" [ios]="this.name+ '-outline'" [md]="this.name+ '-sharp'" [color]="this.color" [size]="this.size"></ion-icon>
-<ion-icon *ngIf="this.slot === 'end'" slot="end" [name]="this.name" [ios]="this.name+ '-outline'" [md]="this.name+ '-sharp'" [color]="this.color" [size]="this.size"></ion-icon>
-<ion-icon *ngIf="this.slot === 'icon-only'" slot="icon-only" [name]="this.name" [ios]="this.name+ '-outline'" [md]="this.name+ '-sharp'" [color]="this.color" [size]="this.size"></ion-icon>
-<ion-icon *ngIf="!this.slot" [name]="this.name" [ios]="this.name+ '-outline'" [md]="this.name+ '-sharp'" [color]="this.color" [size]="this.size"></ion-icon>
+@if (this.slot === 'start') {
+  <ion-icon slot="start" [name]="this.name" [ios]="this.name+ '-outline'" [md]="this.name+ '-sharp'" [color]="this.color" [size]="this.size"></ion-icon>
+}
+@if (this.slot === 'end') {
+  <ion-icon slot="end" [name]="this.name" [ios]="this.name+ '-outline'" [md]="this.name+ '-sharp'" [color]="this.color" [size]="this.size"></ion-icon>
+}
+@if (this.slot === 'icon-only') {
+  <ion-icon slot="icon-only" [name]="this.name" [ios]="this.name+ '-outline'" [md]="this.name+ '-sharp'" [color]="this.color" [size]="this.size"></ion-icon>
+}
+@if (!this.slot) {
+  <ion-icon [name]="this.name" [ios]="this.name+ '-outline'" [md]="this.name+ '-sharp'" [color]="this.color" [size]="this.size"></ion-icon>
+}

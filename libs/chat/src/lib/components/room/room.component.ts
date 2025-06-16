@@ -11,7 +11,7 @@ import {
   RefresherCustomEvent,
 } from '@ionic/angular';
 import { SioDatabaseState, SioDatabaseService } from '@silicia/database';
-import { CommonModule } from '@angular/common';
+
 import { NgxsOnInit, StateContext } from '@ngxs/store';
 import { SioChatMessageState} from './store';
 
@@ -27,11 +27,10 @@ export interface SioChatConfigInterface {
   templateUrl: './room.component.html',
   styleUrls: ['./room.component.scss'],
   imports: [
-    CommonModule,
     SioCommonModule,
     SioChatMessageComponent,
-    SioChatMessageDividerComponent,
-  ],
+    SioChatMessageDividerComponent
+],
   standalone: true,
 })
 export class SioChatRoomComponent implements OnInit, NgxsOnInit {

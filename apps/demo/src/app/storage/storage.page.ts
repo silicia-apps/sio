@@ -1,4 +1,4 @@
-import { NgFor } from '@angular/common';
+
 import { Component } from '@angular/core';
 import { SioCommonModule } from '@silicia/core';
 import { SioStorageFileInterface, SioStorageState } from '@silicia/storage';

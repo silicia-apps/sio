@@ -1,24 +1,30 @@
-<ion-refresher slot="fixed" *ngIf="this.refresh !== null" (ionRefresh)="this.refresh($event)">
-  <ion-refresher-content pullingIcon="chevron-down-circle-outline" pullingText="{{ 'CHAT_PULL_TEXT' | translate }}"
-    refreshingSpinner="circles" refreshingText="{{ 'CHAT_PULL_WAITING' | translate }}">
-  </ion-refresher-content>
-</ion-refresher>
+@if (this.refresh !== null) {
+  <ion-refresher slot="fixed" (ionRefresh)="this.refresh($event)">
+    <ion-refresher-content pullingIcon="chevron-down-circle-outline" pullingText="{{ 'CHAT_PULL_TEXT' | translate }}"
+      refreshingSpinner="circles" refreshingText="{{ 'CHAT_PULL_WAITING' | translate }}">
+    </ion-refresher-content>
+  </ion-refresher>
+}
 
-<ion-item-group class="messages-item-group"
-  *ngFor="let item of this.sioChatMessageState.selectAll();trackBy: trackBy;let index = index; let last = last, let first = first">
-  <sio-message-divider
-    *ngIf="first || (this.sioChatMessageState.selectAll()[index - 1].$createdAt!.split('T')[0] !== item.$createdAt!.split('T')[0])"
-    [isPageScrolling]="this.isPageScrolling" [createdAt]="item.$createdAt?item.$createdAt:''" />
-  
-  <sio-chat-message class="message-wrapper" [message]="item.body" (sioOnInfinite)="(null)" (sioOnRefresh)="(null)"
-    [user]="item.senderId" [avatar]="" [date]="item.$createdAt?item.$createdAt:''" [state]="item.state"
-    [received]="item.from.nick !== 'Fr4'"
-    [isLastMessage]="this.sioChatMessageState.selectAll()[index + 1]!.from.nick !== item.from.nick || false"></sio-chat-message>
-</ion-item-group>
-<ion-infinite-scroll *ngIf="
-    this.infinite !== null &&
-    this.sioChatMessageState.localTotals !== this.sioChatMessageState.remoteTotals
-  " threshold="20%" (ionInfinite)="(null)">
-  <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="{{ 'CHAT_LOADING' | translate }}">
-  </ion-infinite-scroll-content>
-</ion-infinite-scroll>
+@for (item of this.sioChatMessageState.selectAll(); track trackBy(index, item); let index = $index; let last = $last; let first = $first) {
+  <ion-item-group class="messages-item-group"
+    >
+    @if (first || (this.sioChatMessageState.selectAll()[index - 1].$createdAt!.split('T')[0] !== item.$createdAt!.split('T')[0])) {
+      <sio-message-divider
+        [isPageScrolling]="this.isPageScrolling" [createdAt]="item.$createdAt?item.$createdAt:''" />
+    }
+    <sio-chat-message class="message-wrapper" [body]="item.body" (sioOnInfinite)="(null)" (sioOnRefresh)="(null)"
+      [user]="item.user" [avatar]="item.avatar" [date]="item.$createdAt?item.$createdAt:''" [state]="item.state"
+      [received]="item.user !== 'Fr4'"
+    [isLastMessage]="this.sioChatMessageState.selectAll()[index + 1]!.user !== item.user || false"></sio-chat-message>
+  </ion-item-group>
+}
+@if (
+  this.infinite !== null &&
+  this.sioChatMessageState.localTotals !== this.sioChatMessageState.remoteTotals
+  ) {
+  <ion-infinite-scroll threshold="20%" (ionInfinite)="(null)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="{{ 'CHAT_LOADING' | translate }}">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+}

@@ -1,30 +1,50 @@
 <ion-tabs (ionTabsDidChange)="this.ionTabsDidChange(1)" (ionTabsWillChange)="this.ionTabsWillChange(1)">
-  <ion-tab-bar *ngIf="this.position === 'bottom'" slot="bottom" [color]="this.color" class="ion-no-border">
-    <ion-tab-button *ngFor="let item of sioCoreMenuState?.items | keyvalue" [tab]="item.value.url" [disabled]="false" 
-      [download]="undefined">
-      <ion-icon *ngIf="item.value.caption !== '--' && item.value.id < 6" [ios]="item.value.icon + '-outline'"
-        [md]="item.value.icon + '-sharp'">
-      </ion-icon>
-      <ion-label *ngIf="item.value.caption !== '--' && item.value.id < 6">{{ (item.value.caption ? item.value.caption :
-        'M_'+item.value.url!.replace('/',
-        '_').toUpperCase()) |
-        translate }}</ion-label>
-      <ion-badge *ngIf="item.value.caption !== '--' && item.value.id < 6 && item.value.badge! > 0">{{ item.value.badge
-        }}</ion-badge>
-    </ion-tab-button>
-  </ion-tab-bar>
-  <ion-tab-bar *ngIf="this.position === 'top'" slot="top" [color]="this.color" class="ion-no-border top">
-    <ion-tab-button *ngFor="let item of sioCoreMenuState?.items | keyvalue" [tab]="item.value.url" [disabled]="false" 
-      [download]="undefined" layout="icon-start">
-      <ion-icon *ngIf="item.value.caption !== '--' && item.value.id < 6" [ios]="item.value.icon + '-outline'"
-        [md]="item.value.icon + '-sharp'">
-      </ion-icon>
-      <ion-label *ngIf="item.value.caption !== '--' && item.value.id < 6">{{ (item.value.caption ? item.value.caption :
-        'M_'+item.value.url!.replace('/',
-        '_').toUpperCase()) |
-        translate }}</ion-label>
-      <ion-badge *ngIf="item.value.caption !== '--' && item.value.id < 6 && item.value.badge! > 0">{{ item.value.badge
-        }}</ion-badge>
-    </ion-tab-button>
-  </ion-tab-bar>
+  @if (this.position === 'bottom') {
+    <ion-tab-bar slot="bottom" [color]="this.color" class="ion-no-border">
+      @for (item of sioCoreMenuState?.items | keyvalue; track item) {
+        <ion-tab-button [tab]="item.value.url" [disabled]="false"
+          [download]="undefined">
+          @if (item.value.caption !== '--' && item.value.id < 6) {
+            <ion-icon [ios]="item.value.icon + '-outline'"
+              [md]="item.value.icon + '-sharp'">
+            </ion-icon>
+          }
+          @if (item.value.caption !== '--' && item.value.id < 6) {
+            <ion-label>{{ (item.value.caption ? item.value.caption :
+              'M_'+item.value.url!.replace('/',
+              '_').toUpperCase()) |
+            translate }}</ion-label>
+          }
+          @if (item.value.caption !== '--' && item.value.id < 6 && item.value.badge! > 0) {
+            <ion-badge>{{ item.value.badge
+            }}</ion-badge>
+          }
+        </ion-tab-button>
+      }
+    </ion-tab-bar>
+  }
+  @if (this.position === 'top') {
+    <ion-tab-bar slot="top" [color]="this.color" class="ion-no-border top">
+      @for (item of sioCoreMenuState?.items | keyvalue; track item) {
+        <ion-tab-button [tab]="item.value.url" [disabled]="false"
+          [download]="undefined" layout="icon-start">
+          @if (item.value.caption !== '--' && item.value.id < 6) {
+            <ion-icon [ios]="item.value.icon + '-outline'"
+              [md]="item.value.icon + '-sharp'">
+            </ion-icon>
+          }
+          @if (item.value.caption !== '--' && item.value.id < 6) {
+            <ion-label>{{ (item.value.caption ? item.value.caption :
+              'M_'+item.value.url!.replace('/',
+              '_').toUpperCase()) |
+            translate }}</ion-label>
+          }
+          @if (item.value.caption !== '--' && item.value.id < 6 && item.value.badge! > 0) {
+            <ion-badge>{{ item.value.badge
+            }}</ion-badge>
+          }
+        </ion-tab-button>
+      }
+    </ion-tab-bar>
+  }
 </ion-tabs>

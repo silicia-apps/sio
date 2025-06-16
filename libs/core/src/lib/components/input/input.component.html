@@ -1,11 +1,9 @@
-<div *ngIf="this._type === 'file'; then file; else default"></div>
-<ng-template #file>
+@if (this._type === 'file') {
   <ion-item>
     <ion-label> {{ this.label | translate }} </ion-label>
     <ion-button (click)="pickFile()" slot="end">UPLOAD</ion-button>
   </ion-item>
-</ng-template>
-<ng-template #default>
+} @else {
   <ion-input
     label="{{ this.label | translate }}"
     [labelPlacement]="this.position"
@@ -24,9 +22,9 @@
     errorText="{{ this.name.toUpperCase() + '-ERROR-TEXT' | translate }}"
     helperText="{{ this.name.toUpperCase() + '-HELPER-TEXT' | translate }}"
     [class]="this.invalid && this.dirty ? 'ng-invalid ng-touched' : ''"
-  >
+    >
     @if (this._type === 'password-withtoogle') {
-    <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+      <ion-input-password-toggle slot="end"></ion-input-password-toggle>
     }
-  </ion-input></ng-template
->
+  </ion-input>
+}

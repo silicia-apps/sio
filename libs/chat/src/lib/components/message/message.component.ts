@@ -18,7 +18,7 @@ import { languages } from './i18n';
 export class SioChatMessageComponent {
   @Input() public ID: string = '';
   @Input() public state: 'pending' | 'sended' | 'received' | 'readed' = 'pending';
-  @Input() public message: string = '';
+  @Input() public body: string = '';
   @Input() public date: string = '';
   @Input() public received: boolean = false;
   @Input() public user: string = '';
@@ -26,7 +26,6 @@ export class SioChatMessageComponent {
   @Input() public sent_color: SioColorType = 'primary';
   @Input() public received_color: SioColorType = 'secondary';
   @Input() public isLastMessage: boolean = false;
-  @Input() public isLastUserMessage: boolean = false;
 
   constructor(private translateService: TranslateService) {
     languages.forEach((lang) => {

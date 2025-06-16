@@ -1,10 +1,4 @@
-<div *ngIf="this.caption !== '-'; then menu; else break"></div>
-<ng-template #break>
-  <ion-item-divider>
-    <label>test</label>
-  </ion-item-divider>
-</ng-template>
-<ng-template #menu>
+@if (this.caption !== '-') {
   <ion-item
     button
     [color]="this.color"
@@ -15,19 +9,25 @@
     routerLinkActive="selected"
     [class]="this.style"
     (click)="this.Click()"
-  >
+    >
     <div #start>
       <ng-content slot="start" select="[slot='start']"></ng-content>
     </div>
-    <ng-container *ngIf="!start.hasChildNodes()">
+    @if (!start.hasChildNodes()) {
       <sio-icon [name]="this.icon" slot="start"></sio-icon>
-    </ng-container>
+    }
     <ion-label>{{ this.caption! | translate }}</ion-label>
     <div #end>
       <ng-content slot="end" select="[slot='end']"></ng-content>
     </div>
-    <ng-container *ngIf="!end.hasChildNodes()">
-      <ion-badge *ngIf="this.badge! > 0" slot="end">{{ this.badge }}</ion-badge>
-    </ng-container>
+    @if (!end.hasChildNodes()) {
+      @if (this.badge! > 0) {
+        <ion-badge slot="end">{{ this.badge }}</ion-badge>
+      }
+    }
   </ion-item>
-</ng-template>
+} @else {
+  <ion-item-divider>
+    <label>test</label>
+  </ion-item-divider>
+}
