@@ -1,6 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input, Signal } from '@angular/core';
 
-import { Store, Select } from '@ngxs/store';
+import { Store } from '@ngxs/store';
 
 import { Navigate } from '@ngxs/router-plugin';
 
@@ -35,9 +35,8 @@ export class SioAuthBadgeComponent {
   @Input() public text = 'LOGIN';
   @Input() public size: 'small' | 'large' = 'small';
 
-  @Select(SioAuthState)
-  public user$!: Observable<SioAuthUserInterface>;
-
+  public user: Signal<SioAuthUserInterface> = this.store.selectSignal(SioAuthState.user);
+  
   constructor(
     private store: Store,
     public sioAuthState: SioAuthState,

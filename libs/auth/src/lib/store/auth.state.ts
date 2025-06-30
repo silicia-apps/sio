@@ -22,7 +22,6 @@ import { SioAuthPluginService } from '../services/plugins';
   name: 'auth',
   defaults: {
     session: null,
-    user: null,
     routes: {
       home: '/home',
       login: '/auth/login',
@@ -48,10 +47,15 @@ export class SioAuthState
     return state.session;
   }
 
-  @Computed()
-  public get user(): SioAuthUserInterface | null {
-    return this.snapshot.user;
-  }
+  @Selector()
+  static user(state: SioAuthStateModel): SioAuthUserInterface  {
+    return state.user!;
+  } 
+  
+  /*@Computed()
+  public get user(): SioAuthUserInterface  {
+    return this.snapshot.user!;
+  }*/
 
   @Computed()
   public get isAutenticated(): boolean {
@@ -188,7 +192,7 @@ export class SioAuthState
   public async logout(): Promise<void> {
     try {  
       await this.sioAuthPluginService.logout('current');
-      if (this.snapshot.session) this.patchState({ user: null, session: null });
+      if (this.snapshot.session) this.patchState({ user: undefined, session: null });
     } catch (e) {
       const error = e as Error;
       if (error.name === 'sio-error')

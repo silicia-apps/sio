@@ -1,4 +1,4 @@
-@if (this.sioCorePagesComponentState.entities![this.id!]?.toolbar && !this.fullmode) {
+@if (this.sioCorePagesComponentState.entities![this.id!]?.toolbar! && !this.fullmode) {
   <ion-header collapse="fade"
     [translucent]="true" class="ion-no-border">
     <ion-toolbar [color]="this.sioCorePagesComponentState.entities[this.id!].color || 'light'">

@@ -1,6 +1,6 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, inject, Input, OnInit, ViewChild } from '@angular/core';
 import { IonToggle } from '@ionic/angular';
-import { Select } from '@ngxs/store';
+import { Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Loggable, SioCoreLoggerService } from '../../services';
 import { SioColorType } from '../../types';
@@ -21,7 +21,7 @@ export class SioCoreDarkModeToggleComponent implements OnInit {
 
   public label = 'L_DARKMODE';
 
-  @Select(SioCoreAppComponentState.darkmode) darkmode$!: Observable<boolean>; 
+  darkmode$: Observable<boolean | undefined> =  inject(Store).select(SioCoreAppComponentState.darkmode);; 
 
   @ViewChild('darkmode_toggle', { static: true }) ionToggle!: IonToggle;
 
@@ -33,7 +33,7 @@ export class SioCoreDarkModeToggleComponent implements OnInit {
   ngOnInit(): void {
     this.darkmode$.subscribe((value) => {
       document.body.classList.toggle('dark', value);
-      this.ionToggle.checked = value;
+      this.ionToggle.checked = value || false;
       this.label = this.caption + ((value)?'_ON':'_OFF');   
       this.icon = (value)?'moon':'sunny'; 
     });
