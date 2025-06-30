@@ -43,6 +43,7 @@ export interface SioAuthUserInterface {
 export class SioAuthUser implements SioAuthUserInterface {
   uid = '';
   displayName = 'Guest';
-  status = <SioAuthUserStatusType>'guest'; 
+  status = <SioAuthUserStatusType>'guest';
+  details = {};
   other = {};
 }
