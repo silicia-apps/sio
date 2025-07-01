@@ -1,7 +1,4 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { IonToggle } from '@ionic/angular';
-import { Select } from '@ngxs/store';
-import { Observable } from 'rxjs';
 import { Loggable, SioCoreLoggerService } from '../../services';
 import { SioColorType } from '../../types';
 import { SioCoreAppComponentState } from '../../store';

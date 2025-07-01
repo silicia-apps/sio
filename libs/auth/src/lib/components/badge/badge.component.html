@@ -7,7 +7,7 @@
     } @else {
       <a (click)="this.goPage(this.urlProfilePage)">
         <ion-avatar [class]="this.size">
-          <ion-img [src]="this.sioAuthState.user?.details?.photoURL"></ion-img>
+          <ion-img [src]="this.user.details.photoURL"></ion-img>
         </ion-avatar>
       </a>
     }
@@ -27,10 +27,10 @@
         <ion-accordion value="badge">
           <ion-item slot="header" [color]="this.color">
             <ion-avatar [class]="this.size" slot="start">
-              <ion-img [src]="this.sioAuthState.user?.details?.photoURL"></ion-img>
+              <ion-img [src]="this.user.details.photoURL | async"></ion-img>
             </ion-avatar>
             <ion-label>
-              <h2>{{this.sioAuthState.user!.displayName}}</h2>
+              <h2>{{this.user.displayName}}</h2>
             </ion-label>
           </ion-item>
           <div class="ion-padding" slot="content">

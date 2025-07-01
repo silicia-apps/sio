@@ -21,7 +21,7 @@ import { sioCoreStates } from './store';
 
 /* ngxs */
 import { NgxsDataPluginModule } from '@angular-ru/ngxs';
-import { NgxsModule, NoopNgxsExecutionStrategy } from '@ngxs/store';
+import { NgxsModule } from '@ngxs/store';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { NgxsFormPluginModule } from '@ngxs/form-plugin';
@@ -117,7 +117,7 @@ export class SioMinimalModule {}
     IonicModule.forRoot(),
     NgxsModule.forRoot(sioCoreStates, {
       developmentMode: true,
-      executionStrategy: NoopNgxsExecutionStrategy,
+      //executionStrategy: NoopNgxsExecutionStrategy,
     }),
     NgxsLoggerPluginModule.forRoot(),
     NgxsDataPluginModule.forRoot(),

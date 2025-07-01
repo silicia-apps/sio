@@ -8,13 +8,13 @@ import {
   OnInit,
   ViewChild,
   EnvironmentInjector,
+  inject,
 } from '@angular/core';
 import { SioCoreAppComponentState } from '../../store/index';
 
 import { it } from '../../../i18n/it';
 import { en } from '../../../i18n/en';
 
-import { Select } from '@ngxs/store';
 import { Observable, Subject } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -30,6 +30,7 @@ import {
 
 import type { SioColorType, SioSideMenuType } from '../../types';
 import { NavigationStart, Router } from '@angular/router';
+import { Store } from '@ngxs/store';
 
 @Component({
   selector: 'sio-app',
@@ -110,13 +111,9 @@ export class SioCoreAppComponent implements OnInit, OnDestroy {
 
   @Input() color: SioColorType;
 
-  @Select(SioCoreAppComponentState.loading)
-  loading$!: Observable<{ show: boolean; message: string }>;
-
-  @Select(SioCoreAppComponentState.error)
-
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
-  error$!: Observable<{ name: string; message: string; action: Function }>;
+  loading$: Observable<{ show: boolean; message?: string | undefined} | undefined> = inject(Store).select(SioCoreAppComponentState.loading);
+  error$: Observable<{ name: string; message: string; action: Function } | undefined> = inject(Store).select(SioCoreAppComponentState.error);
+  
   @ViewChild(IonRouterOutlet, { static: true })
   ionRouterOutlet!: IonRouterOutlet;
 
@@ -249,7 +246,7 @@ export class SioCoreAppComponent implements OnInit, OnDestroy {
         '[sioCoreAppComponent][ngOnInit] - Subscribe for Loader',
       );
       this.loading$.subscribe((value) => {
-        if (value.show) this.sioCoreLoadingService.show(value.message);
+        if (value!.show) this.sioCoreLoadingService.show(value!.message!);
         else this.sioCoreLoadingService.hide();
       });
       this.sioCoreLoggerService.debug(

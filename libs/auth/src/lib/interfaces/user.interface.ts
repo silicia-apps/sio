@@ -4,7 +4,7 @@ export interface SioAuthUserInterface {
   uid: string;
   displayName: string;
 
-  details?: {
+  details: {
     firstname?: string;
     lastname?: string;
     language?: string;
