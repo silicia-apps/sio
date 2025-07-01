@@ -1,4 +1,4 @@
-@if (this.sioCorePagesComponentState.entities![this.id!]?.toolbar! && !this.fullmode) {
+@if (this.sioCorePagesComponentState.entities[this.id!].toolbar && !this.fullmode) {
   <ion-header collapse="fade"
     [translucent]="true" class="ion-no-border">
     <ion-toolbar [color]="this.sioCorePagesComponentState.entities[this.id!].color || 'light'">
@@ -32,7 +32,7 @@
   (ionScrollStart)="this.logScrollStart()"
   (ionScroll)="this.logScrolling($event)"
   (ionScrollEnd)="this.logScrollEnd()" class="ion-padding">
-  @if (this.sioCorePagesComponentState.entities![this.id!]?.toolbar!) {
+  @if (this.sioCorePagesComponentState.entities[this.id!].toolbar) {
     <ion-header collapse="condense">
       <ion-toolbar>
         <ion-title size="large">{{ this.sioCorePagesComponentState.entities[this.id!].title! |

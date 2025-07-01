@@ -1,25 +1,29 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { SioColorType } from '../../types';
+import { IonIcon } from '@ionic/angular/standalone';
 import { SioCoreLoggerService } from '../../services/logger';
 
 @Component({
-    selector: 'sio-icon',
-    templateUrl: './icon.component.html',
-    styleUrls: ['./icon.component.scss'],
-    standalone: false
+  selector: 'sio-icon',
+  templateUrl: './icon.component.html',
+  styleUrls: ['./icon.component.scss'],
+  providers: [SioCoreLoggerService],
+  imports: [IonIcon],
+  standalone: true,
 })
 export class SioCoreIconComponent {
-  @Input() public color: SioColorType;
-  @Input() public slot : 'start' | 'end' | 'icon-only' | undefined;
-  @Input() public name: string | undefined = undefined;
-  @Input() public url: string | undefined = undefined;
-  @Input() public size: 'small' | 'large' | undefined = undefined;
-  @Input() public only = false;
+  public color = input<SioColorType>();
+  public slot = input<'start' | 'end' | 'icon-only'>();
+  public name = input<string>();
+  public url = input<string>();
+  public size = input<'small' | 'large'>();
+  public only = input<boolean>(false);
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  constructor(
-    private sioLoggerService: SioCoreLoggerService,
-  ) {
-    this.sioLoggerService.debug('[SioCoreIconComponent] Create Icon' + this.name, this.name);
+  constructor(private sioLoggerService: SioCoreLoggerService) {
+    this.sioLoggerService.debug(
+      '[SioCoreIconComponent] Create Icon' + this.name,
+      this.name,
+    );
   }
 }

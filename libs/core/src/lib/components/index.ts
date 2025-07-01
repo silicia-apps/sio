@@ -45,7 +45,7 @@ export const SioCoreComponents = [
   SioCoreCardComponent,
   SioCoreDarkModeToggleComponent,
   SioCoreFormComponent,
-  SioCoreIconComponent,
+  //SioCoreIconComponent,
   SioCoreInputComponent,
   SioCoreMenuComponent,
   SioCoreMenuItemComponent,
