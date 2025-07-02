@@ -37,16 +37,41 @@
     [size]="this.size"
   ></ion-icon>
 }
-<ion-icon [slot]="slot" class="icon" [@rotateAnim]="state" (@rotateAnim.done)="rotateAnimDone($event)" [name]="_name"
-    [color]="color"></ion-icon>
-<span [@scaleAnim]="indicatorState" *ngIf="dot" class="indicator-dot"></span>
-<span class="off-background" *ngIf="off"></span>
-<span class="off" *ngIf="off"></span>
-<span *ngIf="smallIcon && badge == 0 && !dot" class="indicator-small-icon">
-    <ion-icon [color]="color" slot="icon-only" [name]="smallIcon"></ion-icon>
-</span>
-<span *ngIf="badge > 0 && !dot" [@scaleAnim]="badgeState" (@scaleAnim.done)="incrementDone($event)"
-    class="indicator-badge">
-    <span *ngIf="badge <= 9">{{badge}}</span>
-    <span *ngIf="badge > 9">9+</span>
-</span>
+<ion-icon
+  [slot]="this.state().slot"
+  class="icon"
+  [@rotateAnim]="state"
+  (@rotateAnim.done)="rotateAnimDone($event)"
+  [name]="this.store.state().name"
+  [color]="color"
+></ion-icon>
+@if (this.dot) {
+  <span [@scaleAnim]="this.store.state().indicatorState" class="indicator-dot"></span>
+}
+@if (this.off) {
+  <span class="off-background"></span>
+  <span class="off"></span>
+}
+@if (this.store.state().smallIcon && this.store.state().badge) {
+  <span class="indicator-small-icon">
+    <ion-icon
+      [color]="color"
+      slot="icon-only"
+      [name]="this.store.state().smallIcon"
+    ></ion-icon>
+  </span>
+}
+@if (this.store.state().badge && this.store.state().badge > 0 && !this.dot) {
+  <span
+    [@scaleAnim]="badgeState"
+    (@scaleAnim.done)="incrementDone($event)"
+    class="indicator-badge"
+  >
+    @if (this.store.state().badge <= 9) {
+      <span>{{ this.store.state().badge }}</span>
+    }
+    @if (this.store.state().badge > 9) {
+      <span>9+</span>
+    }
+  </span>
+}

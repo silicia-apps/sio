@@ -14,38 +14,38 @@ import {
 } from 'signalstory';
 
 export interface IconData {
-  name: string;
+  name?: string;
   badge: number;
-  dot: boolean;
-  tempValue: number;
-  temp: string;
-  indicatorState: 'normal' | 'scale';
+  dot?: boolean;
+  tempValue?: number;
+  temp?: string;
+  indicatorState?: 'normal' | 'scale';
 }
 
 export interface IconUI {
-  color: string;
-  slot: string;
-  smallicon: string;
-  off: string;
-  animationDisabled: boolean;
+  color?: string;
+  slot?: string;
+  smallIcon?: string;
+  off?: string;
+  animationDisabled?: boolean;
 }
 
-export type IconState = (IconData & IconUI)[];
+export type IconState = (IconData & IconUI);
 
 @Injectable({ providedIn: 'root' })
 export class IconComponentStore extends ImmutableStore<IconState> {
   constructor() {
     super({
-      initialState: [],
+      initialState: { badge:0 },
       name: 'IconStore',
       plugins: [
         useDevtools(),
         useDeepFreeze(),
-        useStorePersistence(
-          configureIndexedDb({
+        /*useStorePersistence(
+          /*configureIndexedDb({
             dbName: 'test',
           }),
-        ),
+        ),*/
         useLogger(),
         useStoreStatus(),
         usePerformanceCounter(),
@@ -59,6 +59,5 @@ export class IconComponentStore extends ImmutableStore<IconState> {
   }
 
   // Expose functions to query the state
-  public get _name():any {
-  }
+  
 }

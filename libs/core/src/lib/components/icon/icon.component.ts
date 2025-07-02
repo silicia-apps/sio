@@ -1,4 +1,13 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  effect,
+  inject,
+  input,
+  Signal,
+} from '@angular/core';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { SioColorType } from '../../types';
 import { IonIcon } from '@ionic/angular/standalone';
 import { SioCoreLoggerService } from '../../services/logger';
@@ -7,14 +16,15 @@ import {
   transition,
   animate,
   state,
-  style,
+  style, 
 } from '@angular/animations';
+import { IconComponentStore, IconState } from './state/icon.component.store';
 
 @Component({
   selector: 'sio-icon',
   templateUrl: './icon.component.html',
   styleUrls: ['./icon.component.scss'],
-  providers: [SioCoreLoggerService],
+  providers: [SioCoreLoggerService, provideAnimations()],
   imports: [IonIcon],
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
@@ -53,12 +63,30 @@ export class SioCoreIconComponent {
   public url = input<string>();
   public size = input<'small' | 'large'>();
   public only = input<boolean>(false);
+  public dot = true;
+  public badgeState : any;
+  public off = true;
+  public state : any;
+
+  public store = inject(IconComponentStore);
+  private sioLoggerService = inject(SioCoreLoggerService); 
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  constructor(private sioLoggerService: SioCoreLoggerService) {
+  constructor() {
+    effect(() => {
+      this.store.set({
+        badge: 0,
+        color: this.color(),
+        name: this.name(),
+        slot: this.slot(),
+      },'Store Inputs To State');
+    });
     this.sioLoggerService.debug(
       '[SioCoreIconComponent] Create Icon' + this.name,
       this.name,
     );
   }
+
+  incrementDone($event: any) {}
+  rotateAnimDone($event: any) {}
 }

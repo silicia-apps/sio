@@ -52,6 +52,8 @@ export class EnsureModuleLoadedOnceGuard {
   }
 }
 
+import { SioCoreIconComponent} from './components'
+
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
@@ -59,7 +61,7 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   declarations: [...SioCoreComponents],
-  exports: [...SioCoreComponents, IonicModule, TranslateModule],
+  exports: [...SioCoreComponents, SioCoreIconComponent, IonicModule, TranslateModule],
   imports: [
     CommonModule,
     FormsModule,
@@ -76,6 +78,7 @@ export function createTranslateLoader(http: HttpClient) {
         deps: [HttpClient],
       },
     }),
+    SioCoreIconComponent,
     NgxsFormPluginModule,
   ],
   providers: [provideHttpClient(withInterceptorsFromDi())],
