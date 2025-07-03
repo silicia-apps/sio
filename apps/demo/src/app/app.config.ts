@@ -16,9 +16,11 @@ import { NgxsModule } from '@ngxs/store';
 import { SioStorageState } from '@silicia/storage';
 import { SioChatModule } from '@silicia/chat';
 import { TaskState } from './database/store/task.state';
+import { provideAnimations } from '@angular/platform-browser/animations';
 export const appConfig: ApplicationConfig = {
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    provideAnimations(),
     importProvidersFrom(SioCoreModule.forRoot(environment)),
     importProvidersFrom(SioAuthModule.forRoot()),
     importProvidersFrom(SioChatModule.forRoot()),

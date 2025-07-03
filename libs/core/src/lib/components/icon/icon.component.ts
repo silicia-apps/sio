@@ -3,6 +3,7 @@ import {
   Component,
   computed,
   effect,
+  importProvidersFrom,
   inject,
   input,
   Signal,
@@ -57,6 +58,10 @@ import { IconComponentStore, IconState } from './state/icon.component.store';
   standalone: true,
 })
 export class SioCoreIconComponent {
+
+  public store = inject(IconComponentStore);
+  private sioLoggerService = inject(SioCoreLoggerService); 
+
   public color = input<SioColorType>();
   public slot = input<'start' | 'end' | 'icon-only'>();
   public name = input<string>();
@@ -68,25 +73,67 @@ export class SioCoreIconComponent {
   public off = true;
   public state : any;
 
-  public store = inject(IconComponentStore);
-  private sioLoggerService = inject(SioCoreLoggerService); 
+ 
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   constructor() {
-    effect(() => {
+    /*effect(() => {*/
       this.store.set({
         badge: 0,
         color: this.color(),
         name: this.name(),
         slot: this.slot(),
       },'Store Inputs To State');
-    });
+    /* });*/
     this.sioLoggerService.debug(
       '[SioCoreIconComponent] Create Icon' + this.name,
       this.name,
     );
   }
 
-  incrementDone($event: any) {}
-  rotateAnimDone($event: any) {}
+  transform(name: string) {
+    this.temp = name;
+    this.state = 'rotate';
+  }
+
+  transformIndicator(value: number) {
+    if (this.dot) {
+      this.store.state().badge = value;
+      return;
+    }
+    if (value === 0) {
+      this._badge = value;
+      this.badgeState = 'scale';
+    } else {
+      if (this.badgeState === 'scale') {
+        this.badgeState = 'normal';
+        this._badge = value;
+      } else {
+        this.tempValue = value;
+        this.badgeState = 'scale';
+      }
+    }
+  }
+
+  rotateAnimDone(event) {
+    if (event.fromState === 'normal' && event.toState === 'rotate') {
+      this._name = this.temp;
+      this.state = 'normal';
+    }
+
+    if (event.fromState === 'rotate' && event.toState === 'normal') {
+      this.transitionDone.emit(this._name);
+    }
+  }
+
+  incrementDone(event) {
+    if (event.fromState === 'normal' && event.toState === 'scale') {
+      if (this.tempValue > 0) {
+        this.badgeState = 'normal';
+        this._badge = this.tempValue;
+      } else {
+        this._badge = this.tempValue;
+      }
+    }
+  }
 }
