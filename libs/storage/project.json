@@ -10,15 +10,14 @@
       "executor": "@nx/angular:package",
       "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
       "options": {
-        "project": "libs/storage/ng-package.json"
+        "project": "libs/storage/ng-package.json",
+        "tsConfig": "libs/storage/tsconfig.lib.json"
       },
       "configurations": {
         "production": {
           "tsConfig": "libs/storage/tsconfig.lib.prod.json"
         },
-        "development": {
-          "tsConfig": "libs/storage/tsconfig.lib.json"
-        }
+        "development": {}
       },
       "defaultConfiguration": "production"
     },
@@ -26,7 +25,8 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "libs/storage/jest.config.ts"
+        "jestConfig": "libs/storage/jest.config.ts",
+        "tsConfig": "libs/storage/tsconfig.spec.json"
       }
     },
     "lint": {
