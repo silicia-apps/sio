@@ -1,37 +1,37 @@
 <ion-icon
-  [slot]="this.store.state().slot"
+  [slot]="this.slot()"
   class="icon"
-  [@rotateAnim]="state"
+  [@rotateAnim]="state()"
   (@rotateAnim.done)="rotateAnimDone($event)"
-  [name]="this.store.state().name"
+  [name]="this.name()"
   [color]="color"
 ></ion-icon>
-@if (this.dot) {
-  <span [@scaleAnim]="this.store.state().indicatorState" class="indicator-dot"></span>
+@if (this.dot()) {
+  <span [@scaleAnim]="this.indicatorState()" class="indicator-dot"></span>
 }
 @if (this.off) {
   <span class="off-background"></span>
   <span class="off"></span>
 }
-@if (this.store.state().smallIcon && this.store.state().badge) {
+@if (this.smallIcon() && this.badge()) {
   <span class="indicator-small-icon">
     <ion-icon
       [color]="color"
       slot="icon-only"
-      [name]="this.store.state().smallIcon"
+      [name]="this.smallIcon()"
     ></ion-icon>
   </span>
 }
-@if (this.store.state().badge && this.store.state().badge > 0 && !this.dot) {
+@if (this.badge() && this.badge() > 0 && !this.dot()) {
   <span
-    [@scaleAnim]="badgeState"
+    [@scaleAnim]="this.badgeState()"
     (@scaleAnim.done)="incrementDone($event)"
     class="indicator-badge"
   >
-    @if (this.store.state().badge <= 9) {
-      <span>{{ this.store.state().badge }}</span>
+    @if (this.badge() <= 9) {
+      <span>{{ this.badge() }}</span>
     }
-    @if (this.store.state().badge > 9) {
+    @if (this.badge() > 9) {
       <span>9+</span>
     }
   </span>

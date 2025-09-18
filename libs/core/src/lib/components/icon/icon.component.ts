@@ -17,9 +17,8 @@ import {
   transition,
   animate,
   state,
-  style, 
+  style,
 } from '@angular/animations';
-import { IconComponentStore, IconState } from './state/icon.component.store';
 
 @Component({
   selector: 'sio-icon',
@@ -58,9 +57,7 @@ import { IconComponentStore, IconState } from './state/icon.component.store';
   standalone: true,
 })
 export class SioCoreIconComponent {
-
-  public store = inject(IconComponentStore);
-  private sioLoggerService = inject(SioCoreLoggerService); 
+  private sioLoggerService = inject(SioCoreLoggerService);
 
   public color = input<SioColorType>();
   public slot = input<'start' | 'end' | 'icon-only'>();
@@ -68,56 +65,60 @@ export class SioCoreIconComponent {
   public url = input<string>();
   public size = input<'small' | 'large'>();
   public only = input<boolean>(false);
-  public dot = true;
-  public badgeState : any;
+  public dot = input<boolean>(false);
+  public badge = input<number>(0);
   public off = true;
-  public state : any;
+  public smallIcon = input<boolean>(false);
 
- 
+  public state = computed(() => {
+    return 'rotate';
+  });
+
+  public temp = computed(() => {
+    return this.name();
+  });
+
+  public badgeState = computed(() => {
+    if (this.badge()  === 0) {
+      return 'scale';
+    }
+    if (this.badgeState() === 'scale') {
+      return 'normal';
+    } else {
+      return 'scale';
+    };
+  });
+
+  public indicatorState = computed(() => {
+    if (this.dot()) {
+      return 'normal';
+    } else {
+      return 'scale';
+    }
+  });
+
+  public tempValue: Signal<number> = computed(() => {
+    if (this.badgeState() === 'scale') {
+      return this.badge();
+    } else { return this.tempValue();}
+  });
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   constructor() {
-    /*effect(() => {*/
-      this.store.set({
-        badge: 0,
-        color: this.color(),
-        name: this.name(),
-        slot: this.slot(),
-      },'Store Inputs To State');
-    /* });*/
     this.sioLoggerService.debug(
       '[SioCoreIconComponent] Create Icon' + this.name,
       this.name,
     );
   }
 
-  transform(name: string) {
-    this.temp = name;
-    this.state = 'rotate';
-  }
 
-  transformIndicator(value: number) {
-    if (this.dot) {
-      this.store.state().badge = value;
-      return;
-    }
-    if (value === 0) {
-      this._badge = value;
-      this.badgeState = 'scale';
-    } else {
-      if (this.badgeState === 'scale') {
-        this.badgeState = 'normal';
-        this._badge = value;
-      } else {
-        this.tempValue = value;
-        this.badgeState = 'scale';
-      }
-    }
-  }
+rotateAnimDone($event:any) {}
+incrementDone(event:any) {}
 
-  rotateAnimDone(event) {
+
+ /*rotateAnimDone(event) {
     if (event.fromState === 'normal' && event.toState === 'rotate') {
-      this._name = this.temp;
+      this.name = this.temp;
       this.state = 'normal';
     }
 
@@ -135,5 +136,5 @@ export class SioCoreIconComponent {
         this._badge = this.tempValue;
       }
     }
-  }
+  }*/
 }
