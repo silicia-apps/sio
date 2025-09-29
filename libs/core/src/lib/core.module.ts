@@ -42,8 +42,21 @@ import { LoggerModule } from '@angular-ru/cdk/logger';
 import { RouterModule } from '@angular/router';
 import { RelativeTime } from './pipes';
 
+/**
+ * Guard che previene il caricamento multiplo del modulo core.
+ *
+ * Questo costruttore viene chiamato dalle classi che estendono
+ * `EnsureModuleLoadedOnceGuard` (es. `SioCoreModule`) e lancia un errore
+ * se il modulo è già stato istanziato in un'altra parte dell'applicazione.
+ *
+ * Motivazione: alcuni provider devono essere singletons nell'app principale
+ * (ad es. store NGXS, Logger). Importare il modulo core più volte può
+ * causare comportamenti inaspettati.
+ */
 export class EnsureModuleLoadedOnceGuard {
   constructor(targetModule: NgModule) {
+    // Se è presente un modulo genitore significa che il modulo è già stato
+    // importato altrove: lanciamo un errore per guidare lo sviluppatore.
     if (targetModule) {
       throw new Error(
         `${targetModule.constructor.name} has already been loaded. Import this module in the AppModule only.`,
@@ -54,6 +67,14 @@ export class EnsureModuleLoadedOnceGuard {
 
 import { SioCoreIconComponent} from './components'
 
+/**
+ * Factory per il loader delle traduzioni usato da ngx-translate.
+ *
+ * Viene fornito al `TranslateModule` e utilizza `HttpClient` per caricare
+ * i file JSON di traduzione.
+ *
+ * @param http HttpClient iniettato dal DI di Angular
+ */
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
@@ -83,6 +104,13 @@ export function createTranslateLoader(http: HttpClient) {
   ],
   providers: [provideHttpClient(withInterceptorsFromDi())],
 })
+/**
+ * Modulo che espone i componenti SIO comuni da usare all'interno dei
+ * moduli lazy-loaded dell'applicazione.
+ *
+ * Importare `SioCommonModule` all'interno dei feature modules per avere
+ * accesso a componenti, pipe e servizi non singleton ma riutilizzabili.
+ */
 export class SioCommonModule {}
 
 @NgModule({
